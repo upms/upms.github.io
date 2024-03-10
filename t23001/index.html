@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
     
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="这里写你想要展示的文章标题2" />
+    <meta name="description" content="t23001" />
     <meta name="hexo-theme-A4" content="v1.8.8" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>UP</title>
@@ -23,6 +23,10 @@
 <link rel="stylesheet" href="/css/fonts.css">
  
          <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
         
         
         
@@ -100,6 +104,14 @@
                 <li><a href="/list/">文章</a></li>
             
         
+            
+                <li><a href="/categories/">板块</a></li>
+            
+        
+            
+                <li><a href="/channel/">通道</a></li>
+            
+        
     </ul>
 </div> 
         
@@ -115,7 +127,7 @@
 
     
         <div class="post-main-title">
-            这里写你想要展示的文章标题2
+            t23001
         </div>
       
     
@@ -151,6 +163,35 @@
         <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
     </div> -->
 
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        &lt;&lt;EOF 
+    </div>
+    
+    
+        
+
+    <div id="tcomment"></div>
+    <script src="https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/js/twikoo.all.min.js"></script>
+    <script>
+    twikoo.init({
+      envId: 'https://upms-twikoo.hf.space',
+      el: '#tcomment',
+      region: '',
+      lang: '',
+    })
+    </script>
+
+
+
+    
+    
+    </div>
+
+
      
 </div>
 
@@ -162,7 +203,7 @@
                     <div class="footer">
     
         <span> 
-            © 2000-2024 China 
+            © 2024 UP 
 
             
                 
@@ -174,7 +215,7 @@
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-            <span>🌊 远离颠倒梦想，究竟涅槃 🌊</span>
+            <span></span>
             
                 <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
@@ -240,29 +281,4 @@
     </body>
 
 
-    <!--暗黑模式-->
-    <script src="/js/darkmode-js.min.js"></script>
-    <script>
-        function addDarkmodeWidget() {
-        const options = {
-            bottom: '53px', // default: '32px'
-            right: 'unset', // default: '32px'
-            left: '42px', // default: 'unset'
-            time: '0.3s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
-            buttonColorDark: '#100f2c',  // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: true, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-    
-        const darkmode = new Darkmode(options);
-        darkmode.showWidget();
-        
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-    </script>
-  
 </html>

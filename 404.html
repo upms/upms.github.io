@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
     
     <head>
     <meta charset="utf-8">
@@ -81,6 +81,19 @@
             <div style="text-align: center;">
                 <!--这里要如何处理-->
                 
+                    <div class="index-header-line" >
+                        
+                            <div id="hiddenHeaderContentArray" style="display: none;">
+                                
+                                
+                                
+                                    <span>...</span>
+                                
+                            </div>
+                            <span id="targetSpan" style="font-size: large;"></span>
+                        
+                    </div>
+                
                 <a href="/">Go Back Home</a>
             </div>
     </div>
@@ -89,7 +102,7 @@
                     <div class="footer">
     
         <span> 
-            © 2000-2024 China 
+            © 2024 UP 
 
             
                 
@@ -101,7 +114,7 @@
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-            <span>🌊 远离颠倒梦想，究竟涅槃 🌊</span>
+            <span></span>
             
                 <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
@@ -167,29 +180,4 @@
     </body>
 
 
-    <!--暗黑模式-->
-    <script src="/js/darkmode-js.min.js"></script>
-    <script>
-        function addDarkmodeWidget() {
-        const options = {
-            bottom: '53px', // default: '32px'
-            right: 'unset', // default: '32px'
-            left: '42px', // default: 'unset'
-            time: '0.3s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
-            buttonColorDark: '#100f2c',  // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: true, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-    
-        const darkmode = new Darkmode(options);
-        darkmode.showWidget();
-        
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-    </script>
-  
 </html>
