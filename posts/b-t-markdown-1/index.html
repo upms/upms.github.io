@@ -12,7 +12,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="channel" />
+    <meta name="description" content="markdown 文本高亮" />
     <meta name="hexo-theme-A4" content="v1.8.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>UP</title>
@@ -117,11 +117,7 @@
             
         
             
-                <li><i>
-                    
-                        <a style="color: #4e7dde;" href="/channel/">通道</a>
-                    
-                </i></li>
+                <li><a href="/channel/">通道</a></li>
             
         
     </ul>
@@ -138,25 +134,43 @@
                         <div class="post-main">
 
     
+        <div class="post-main-title">
+            markdown 文本高亮
+        </div>
+      
+    
 
     <div class="post-md">
         
             
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-1markmark"><span class="post-toc-text"> 方式 1：&lt;mark&gt;...&lt;&#x2F;mark&gt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-2"><span class="post-toc-text"> 方式 2：&#x3D;&#x3D;...&#x3D;&#x3D;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-3font-colorredfont"><span class="post-toc-text"> 方式 3：&lt;font color&#x3D;Red&gt;...&lt;&#x2F;font&gt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A9-hexo-%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E7%AD%89%E5%8F%B7%E9%AB%98%E4%BA%AE%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 让 Hexo 博客支持等号高亮的方法</span></a></li></ol>
+            
         
-        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h4 id="本站通道"><a class="markdownIt-Anchor" href="#本站通道"></a> 本站通道</h4>
-<ul>
-<li>托管 <a target="_blank" rel="noopener" href="https://upms.github.io/">upms.github.io</a></li>
-<li>监控 <a target="_blank" rel="noopener" href="https://upms.betteruptime.com/">betteruptime.com</a></li>
-<li>评论 <a target="_blank" rel="noopener" href="https://upms-twikoo.hf.space/">upms-twikoo.hf.space</a></li>
-<li>图床 <a target="_blank" rel="noopener" href="https://smms.app/">smms.app</a></li>
-</ul>
-<hr />
-<h4 id="外部链接"><a class="markdownIt-Anchor" href="#外部链接"></a> 外部链接</h4>
-<ul>
-<li>A4主题 作者 <a target="_blank" rel="noopener" href="https://ninojay.top/">Ninojay</a></li>
-<li>Twikoo 作者 <a target="_blank" rel="noopener" href="https://www.imaegoo.com/">iMaeGoo</a></li>
-<li>2010后 小博主 <a target="_blank" rel="noopener" href="https://yisous.xyz/">Ariasaka</a></li>
-</ul>
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h3 id="方式-1markmark"><a class="markdownIt-Anchor" href="#方式-1markmark"></a> 方式 1：<code>&lt;mark&gt;...&lt;/mark&gt;</code></h3>
+<p>源码:<br />
+<code>&lt;mark&gt;用 mark 标签让文字高亮&lt;/mark&gt;</code></p>
+<p>效果:<br />
+<mark>用 mark 标签让文字高亮</mark></p>
+<p><code>也可以在 &lt;mark&gt; 标签中添加参数 style=&quot;background-color: #FFFF00&quot; 指定背景高亮的颜色。</code></p>
+<h3 id="方式-2"><a class="markdownIt-Anchor" href="#方式-2"></a> 方式 2：<code>==...==</code></h3>
+<p>源码:<br />
+<code>==用两个等号（MarkDown 语法）让文字高亮==</code></p>
+<p>效果:<br />
+<mark>用两个等号（MarkDown 语法）让文字高亮</mark></p>
+<p><code>在文字两边分别加两个等号（==...==）。有些编辑器支持这种 MarkDown 语法，会把文字两侧的等号渲染成 &lt;mark&gt;...&lt;/mark&gt; 标签。 </code></p>
+<p>但是，很遗憾 Hexo 默认情况不支持。</p>
+<h3 id="方式-3font-colorredfont"><a class="markdownIt-Anchor" href="#方式-3font-colorredfont"></a> 方式 3：<code>&lt;font color=Red&gt;...&lt;/font&gt;</code></h3>
+<p>源码:<br />
+<code>&lt;font color=Red&gt;用 font（HTML 语法）设置字体颜色&lt;/font&gt;</code></p>
+<p>效果:<br />
+<font color=Red>用 font（HTML 语法）设置字体颜色</font></p>
+<h3 id="让-hexo-博客支持等号高亮的方法"><a class="markdownIt-Anchor" href="#让-hexo-博客支持等号高亮的方法"></a> 让 Hexo 博客支持等号高亮的方法</h3>
+<p>首先，给 Hexo 更换渲染器，把渲染器换成 hexo-renderer-markdown-it-plus，并且安装两个依赖 markdown-it 和 markdown-it-mark。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install markdown-it --save</span><br><span class="line">npm install markdown-it-mark --save</span><br></pre></td></tr></table></figure>
+<p>然后，修改博客目录里的 _config.yml 文件，添加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">markdown:</span><br><span class="line">  plugins:</span><br><span class="line">    - &quot;markdown-it&quot;</span><br><span class="line">    - &quot;markdown-it-mark&quot;</span><br></pre></td></tr></table></figure>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://blog.kukmoon.com/3eacfb91/">https://blog.kukmoon.com/3eacfb91/</a></p>
+<p>end</p>
 </div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -167,6 +181,35 @@
 
     <div class="post-meta">
         <i>
+        
+            <span>2024-03-19</span>
+            
+                <span>该篇文章被 admin</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/markdown/'>
+                            markdown
+                        </a>
+                    
+                        <a href='/tags/hexo/'>
+                            hexo
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
