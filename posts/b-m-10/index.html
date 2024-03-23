@@ -532,11 +532,11 @@ te =(to +4tm +tp)/<mark>6</mark></p>
 </tbody>
 </table>
 <pre class="mermaid">graph LR
-A:1` --> B:2`
-A:1` --> D:5`
-B:2` --> C:1`
-C:1` --> E:2`
-D:5` --> E:2`</pre>
+A:1 --> B:2
+A:1 --> D:5
+B:2 --> C:1
+C:1 --> E:2
+D:5 --> E:2</pre>
 <h5 id="资源平衡"><a class="markdownIt-Anchor" href="#资源平衡"></a> 资源平衡</h5>
 <p>根据资源制约对开始日期和结束日期进行调整</p>
 <p>往往导致关键路径改变，通常是延长</p>
@@ -545,9 +545,14 @@ D:5` --> E:2`</pre>
 <p>不会改变项目关键路径，完工日期也不会延迟</p>
 <p>可能无法实现所有资源的优化</p>
 <pre class="mermaid">graph LR
-开始 --> A:1人5天` --> 结束
-开始 --> B:1人3天` --> 结束
-开始 --> C:1人2天` --> 结束</pre>
+开始 --> A:1人5天
+A:1人5天 --> 结束
+
+开始 --> B:1人3天
+B:1人3天 --> 结束
+
+开始 --> C:1人2天
+C:1人2天 --> 结束</pre>
 <blockquote>
 <p>示例<br />
 <a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/22/UPSuEzk7sqheKWD.png" title="117.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/22/UPSuEzk7sqheKWD.png" alt="117.png" /></a><br />
@@ -781,6 +786,14 @@ D:5` --> E:2`</pre>
 <script src="/js/lightgallery.min.js"></script>
 
 
+
+                    
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
                 </div>
             

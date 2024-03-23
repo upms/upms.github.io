@@ -180,7 +180,7 @@
 <p>源码:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    B((开始)) --&gt;C&#123;判断&#125;</span><br><span class="line">    C --  a=1 --&gt;D[执行语句1]</span><br><span class="line">    C --  a=2  --&gt;E[执行语句2]</span><br><span class="line">    C --  a=3 --&gt;F[执行语句3]</span><br><span class="line">    C -- a=4  --&gt;G[执行语句4]</span><br><span class="line">    D--&gt; AA((结束))</span><br><span class="line">    E--&gt; AA</span><br><span class="line">    F--&gt; AA</span><br><span class="line">   G--&gt; AA      </span><br></pre></td></tr></table></figure>
 <p>写好后，可以在本地启动hexo查看效果如下图</p>
-<p>效果:</p>
+<p>效果：</p>
 <pre class="mermaid">graph TD
     B((开始)) -->C{判断}
     C --  a=1 -->D[执行语句1]
@@ -191,9 +191,32 @@
     E--> AA
     F--> AA
    G--> AA</pre>
+<p>其他示例：</p>
+<pre class="mermaid">graph TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]</pre>
+<pre class="mermaid">graph LR
+开始 --> A:1人5天
+A:1人5天 --> 结束
+
+开始 --> B:1人3天
+B:1人3天 --> 结束
+
+开始 --> C:1人2天
+C:1人2天 --> 结束</pre>
+<pre class="mermaid">graph LR
+A:1 --> B:2
+A:1 --> D:5
+B:2 --> C:1
+C:1 --> E:2
+D:5 --> E:2</pre>
 <p>文章参考：<br />
 <a target="_blank" rel="noopener" href="https://xianmengfei.gitee.io/2021/03/01/09%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/hexo%E4%BC%98%E5%8C%96%EF%BC%9AMarkdown%E8%AF%AD%E6%B3%95%E5%BC%95%E5%85%A5Flowchart%E3%80%81Mermaid%E5%92%8Csequence%E6%B5%81%E7%A8%8B%E5%9B%BE">https://xianmengfei.gitee.io/2021/03/01/09相关工具/hexo优化：Markdown语法引入Flowchart、Mermaid和sequence流程图</a></p>
-<p>mermaid 官方文档：<a target="_blank" rel="noopener" href="https://mermaid.js.org/intro/">https://mermaid.js.org/intro/</a></p>
+<p>mermaid 官方文档：<a target="_blank" rel="noopener" href="https://mermaid.js.org/intro/">https://mermaid.js.org/intro/</a><br />
+mermaid 中文文档：<a target="_blank" rel="noopener" href="https://mermaid.nodejs.cn/intro/">https://mermaid.nodejs.cn/intro/</a></p>
 <p>end</p>
 </div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
@@ -340,6 +363,14 @@
 <script src="/js/lightgallery.min.js"></script>
 
 
+
+                    
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
                 </div>
             
