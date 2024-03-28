@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     
-    <style>
-        body
-        {
-            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
-
-        }
-    </style>
-
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
@@ -31,10 +23,6 @@
 <link rel="stylesheet" href="/css/fonts.css">
  
          <!--注意：首页既不是post也不是page-->
-        
-            
-<link rel="stylesheet" href="/css/waline.css">
-
         
         
         
@@ -110,14 +98,6 @@
         
             
                 <li><a href="/list/">文章</a></li>
-            
-        
-            
-                <li><a href="/categories/">板块</a></li>
-            
-        
-            
-                <li><a href="/channel/">通道</a></li>
             
         
     </ul>
@@ -842,32 +822,6 @@
 
     
         
-    <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        &lt;&lt;EOF 
-    </div>
-    
-    
-        
-
-    <div id="tcomment"></div>
-    <script src="https://npm.onmicrosoft.cn/hexo-theme-a4@v1.8.8/source/js/twikoo.all.min.js"></script>
-    <script>
-    twikoo.init({
-      envId: 'https://upms-twikoo.hf.space',
-      el: '#tcomment',
-      region: '',
-      lang: '',
-    })
-    </script>
-
-
-
-    
-    
-    </div>
-
 
      
 </div>
@@ -880,7 +834,7 @@
                     <div class="footer">
     
         <span> 
-            © 2024 UP 
+            © 1949-2024 China 
 
             
                 
@@ -892,7 +846,7 @@
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-            <span></span>
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
                 <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
@@ -937,6 +891,15 @@
 
 
 
+                    
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+//       mermaid.initialize({theme: 'forest'});
+      mermaid.initialize({theme: 'default'});
+    }
+  </script>
+
                 </div>
             
             
@@ -958,4 +921,29 @@
     </body>
 
 
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
 </html>
