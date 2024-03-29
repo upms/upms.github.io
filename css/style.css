@@ -439,12 +439,12 @@ a
 }
 .archive li span
 {
-    width: 108px;
+    width: 88px;
     color: var(--font-color-2);
 }
 .archive-main
 {
-    flex: 0 1 calc( 100% - 108px );
+    flex: 0 1 calc( 100% - 88px );
 }
 
 
