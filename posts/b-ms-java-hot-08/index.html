@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <style>
+        body
+        {
+            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
+
+        }
+    </style>
+
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-08" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/">
+    <title></title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/highlight/style1.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css">
+
+            
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/ui.css">
+ 
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/style.css">
+
+    
+            <!--返回顶部css-->
+            
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/returnToTop.css">
+
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/unicons.css">
+
+            
+            
+                <!--目录-->
+                
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/toc.css">
+
+            
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <!-- <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/" width="10%"></img>
+         -->
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/channel/">通道</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Java 热门面试题-08
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-aop"><span class="post-toc-text"> 什么是 AOP？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7"><span class="post-toc-text"> 什么是服务降级？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#synchronized-%E5%92%8C-reentrantlock-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> Synchronized 和 ReentrantLock 有什么区别？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E7%9A%84-lua-%E8%84%9A%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="post-toc-text"> Redis 的 Lua 脚本功能是什么？如何使用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#http-20-%E5%92%8C-30-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> HTTP 2.0 和 3.0 有什么区别？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="post-toc-text"> 单例模式有哪几种实现？如何保证线程安全？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java-%E7%9A%84-synchronized-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="post-toc-text"> Java 的 synchronized 是怎么实现的？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%A7%92%E6%9D%80%E5%8A%9F%E8%83%BD"><span class="post-toc-text"> 如何设计一个秒杀功能？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9F%E7%9A%84-nio-%E8%80%8C%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8-netty-%E5%91%A2"><span class="post-toc-text"> 为什么不选择使用原生的 NIO 而选择使用 Netty 呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9C%8B%E8%BF%87%E6%BA%90%E7%A0%81%E5%90%97%E8%AF%B4%E4%B8%8B-spring-%E7%94%B1%E5%93%AA%E4%BA%9B%E9%87%8D%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97%E7%BB%84%E6%88%90"><span class="post-toc-text"> 看过源码吗？说下 Spring 由哪些重要的模块组成？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-java-%E4%B8%AD%E7%9A%84%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="post-toc-text"> 如何优化 Java 中的锁的使用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E7%9A%84-pipeline-%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> Redis 的 Pipeline 功能是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%88%86%E5%B8%83%E5%BC%8F-id-%E5%8F%91%E5%8F%B7%E5%99%A8%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="post-toc-text"> 让你设计一个分布式 ID 发号器，怎么设计？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E9%9B%AA%E5%B4%A9"><span class="post-toc-text"> 什么是服务雪崩？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jvm-%E7%94%B1%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90"><span class="post-toc-text"> JVM 由哪些部分组成？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E9%80%9A%E5%B8%B8%E5%BA%94%E7%94%A8%E4%BA%8E%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> Redis 通常应用于哪些场景？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9F%AD%E9%93%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="post-toc-text"> 让你设计一个短链系统，怎么设计？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%B8%B8%E9%97%AE"><span class="post-toc-text"> 什么是循环依赖（常问）？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jvm-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E8%B0%83%E4%BC%98%E7%9A%84%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> JVM 垃圾回收调优的主要目标是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%AD%E7%9A%84-big-key-%E9%97%AE%E9%A2%98%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="post-toc-text"> Redis 中的 Big Key 问题是什么？如何解决？</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><!-- 
+什么是 AOP？
+什么是服务降级？
+Synchronized 和 ReentrantLock 有什么区别？
+Redis 的 Lua 脚本功能是什么？如何使用？
+HTTP 2.0 和 3.0 有什么区别？
+单例模式有哪几种实现？如何保证线程安全？
+Java 的 synchronized 是怎么实现的？
+如何设计一个秒杀功能？
+为什么不选择使用原生的 NIO 而选择使用 Netty 呢？
+看过源码吗？说下 Spring 由哪些重要的模块组成？
+如何优化 Java 中的锁的使用？
+Redis 的 Pipeline 功能是什么？
+让你设计一个分布式 ID 发号器，怎么设计？
+什么是服务雪崩？
+JVM 由哪些部分组成？
+Redis 通常应用于哪些场景？
+让你设计一个短链系统，怎么设计？
+什么是循环依赖（常问）？
+JVM 垃圾回收调优的主要目标是什么？
+Redis 中的 Big Key 问题是什么？如何解决？
+
+-->
+<h2 id="什么是-aop"><a class="markdownIt-Anchor" href="#什么是-aop"></a> 什么是 AOP？</h2>
+<h2 id="什么是服务降级"><a class="markdownIt-Anchor" href="#什么是服务降级"></a> 什么是服务降级？</h2>
+<h2 id="synchronized-和-reentrantlock-有什么区别"><a class="markdownIt-Anchor" href="#synchronized-和-reentrantlock-有什么区别"></a> Synchronized 和 ReentrantLock 有什么区别？</h2>
+<h2 id="redis-的-lua-脚本功能是什么如何使用"><a class="markdownIt-Anchor" href="#redis-的-lua-脚本功能是什么如何使用"></a> Redis 的 Lua 脚本功能是什么？如何使用？</h2>
+<h2 id="http-20-和-30-有什么区别"><a class="markdownIt-Anchor" href="#http-20-和-30-有什么区别"></a> HTTP 2.0 和 3.0 有什么区别？</h2>
+<h2 id="单例模式有哪几种实现如何保证线程安全"><a class="markdownIt-Anchor" href="#单例模式有哪几种实现如何保证线程安全"></a> 单例模式有哪几种实现？如何保证线程安全？</h2>
+<h2 id="java-的-synchronized-是怎么实现的"><a class="markdownIt-Anchor" href="#java-的-synchronized-是怎么实现的"></a> Java 的 synchronized 是怎么实现的？</h2>
+<h2 id="如何设计一个秒杀功能"><a class="markdownIt-Anchor" href="#如何设计一个秒杀功能"></a> 如何设计一个秒杀功能？</h2>
+<h2 id="为什么不选择使用原生的-nio-而选择使用-netty-呢"><a class="markdownIt-Anchor" href="#为什么不选择使用原生的-nio-而选择使用-netty-呢"></a> 为什么不选择使用原生的 NIO 而选择使用 Netty 呢？</h2>
+<h2 id="看过源码吗说下-spring-由哪些重要的模块组成"><a class="markdownIt-Anchor" href="#看过源码吗说下-spring-由哪些重要的模块组成"></a> 看过源码吗？说下 Spring 由哪些重要的模块组成？</h2>
+<h2 id="如何优化-java-中的锁的使用"><a class="markdownIt-Anchor" href="#如何优化-java-中的锁的使用"></a> 如何优化 Java 中的锁的使用？</h2>
+<h2 id="redis-的-pipeline-功能是什么"><a class="markdownIt-Anchor" href="#redis-的-pipeline-功能是什么"></a> Redis 的 Pipeline 功能是什么？</h2>
+<h2 id="让你设计一个分布式-id-发号器怎么设计"><a class="markdownIt-Anchor" href="#让你设计一个分布式-id-发号器怎么设计"></a> 让你设计一个分布式 ID 发号器，怎么设计？</h2>
+<h2 id="什么是服务雪崩"><a class="markdownIt-Anchor" href="#什么是服务雪崩"></a> 什么是服务雪崩？</h2>
+<h2 id="jvm-由哪些部分组成"><a class="markdownIt-Anchor" href="#jvm-由哪些部分组成"></a> JVM 由哪些部分组成？</h2>
+<h2 id="redis-通常应用于哪些场景"><a class="markdownIt-Anchor" href="#redis-通常应用于哪些场景"></a> Redis 通常应用于哪些场景？</h2>
+<h2 id="让你设计一个短链系统怎么设计"><a class="markdownIt-Anchor" href="#让你设计一个短链系统怎么设计"></a> 让你设计一个短链系统，怎么设计？</h2>
+<h2 id="什么是循环依赖常问"><a class="markdownIt-Anchor" href="#什么是循环依赖常问"></a> 什么是循环依赖（常问）？</h2>
+<h2 id="jvm-垃圾回收调优的主要目标是什么"><a class="markdownIt-Anchor" href="#jvm-垃圾回收调优的主要目标是什么"></a> JVM 垃圾回收调优的主要目标是什么？</h2>
+<h2 id="redis-中的-big-key-问题是什么如何解决"><a class="markdownIt-Anchor" href="#redis-中的-big-key-问题是什么如何解决"></a> Redis 中的 Big Key 问题是什么？如何解决？</h2>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        
+            <span>发布日期：2025-02-08</span>
+            <br>
+            <span>字数统计：231</span>
+            <!--
+            
+                <span>该篇文章被 up</span>
+             -->
+            
+            
+            
+                <br>
+                <span>所属标签：
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+    </div>
+    <!-- <br> -->
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        留言 
+    </div>
+    
+    
+        
+
+    
+    
+    </div>
+
+
+    
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2024 UP 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/randomHeaderContent.js"></script>
+
+        <!--回到顶部按钮-->
+        
+            
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+            
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/returnToTop.js"></script>
+
+        
+    
+        <!--目录-->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+            
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/toc.js"></script>
+
+        
+
+    
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                    
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+//       mermaid.initialize({theme: 'forest'});
+      mermaid.initialize({theme: 'default'});
+    }
+  </script>
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+
+
+</html>
