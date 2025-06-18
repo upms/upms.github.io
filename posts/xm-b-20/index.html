@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="第20章-高级项目管理" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    第20章-高级项目管理
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.8k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC20%E7%AB%A0-%E9%AB%98%E7%BA%A7%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 第20章-高级项目管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#201-%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.1 项目集管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2011-%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86"><span class="post-toc-text"> 20.1.1 项目集管理标准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2012-%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%AE%A1%E7%90%86%E8%A7%92%E8%89%B2%E5%92%8C%E8%81%8C%E8%B4%A3"><span class="post-toc-text"> 20.1.2 项目集管理角色和职责</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2013-%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%AE%A1%E7%90%86%E7%BB%A9%E6%95%88%E5%9F%9F"><span class="post-toc-text"> 20.1.3 项目集管理绩效域</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#202-%E9%A1%B9%E7%9B%AE%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.2 项目组合管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2021-%E9%A1%B9%E7%9B%AE%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86"><span class="post-toc-text"> 20.2.1 项目组合管理标准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2022-%E9%A1%B9%E7%9B%AE%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86%E8%A7%92%E8%89%B2%E5%92%8C%E8%81%8C%E8%B4%A3"><span class="post-toc-text"> 20.2.2 项目组合管理角色和职责</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2023-%E9%A1%B9%E7%9B%AE%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86%E7%BB%A9%E6%95%88%E5%9F%9F"><span class="post-toc-text"> 20.2.3 项目组合管理绩效域</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#203-%E7%BB%84%E7%BB%87%E7%BA%A7%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.3 组织级项目管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2031-%E7%BB%84%E7%BB%87%E7%BA%A7%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86"><span class="post-toc-text"> 20.3.1 组织级项目管理标准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2032-%E4%B8%9A%E5%8A%A1%E4%BB%B7%E5%80%BC%E4%B8%8E%E4%B8%9A%E5%8A%A1%E8%AF%84%E4%BC%B0"><span class="post-toc-text"> 20.3.2 业务价值与业务评估</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2033-opm%E6%A1%86%E6%9E%B6%E8%A6%81%E7%B4%A0"><span class="post-toc-text"> 20.3.3 OPM框架要素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2034-opm%E6%88%90%E7%86%9F%E5%BA%A6%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 20.3.4 OPM成熟度模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#204-%E9%87%8F%E5%8C%96%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.4 量化项目管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2041-%E9%87%8F%E5%8C%96%E7%AE%A1%E7%90%86%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8"><span class="post-toc-text"> 20.4.1 量化管理理论及应用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2042-%E7%BB%84%E7%BB%87%E7%BA%A7%E9%87%8F%E5%8C%96%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.4.2 组织级量化管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2043-%E9%A1%B9%E7%9B%AE%E7%BA%A7%E9%87%8F%E5%8C%96%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 20.4.3 项目级量化管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#205-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 20.5 项目管理实践模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2051-cmmi%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 20.5.1 CMMI模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2052-prince2%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 20.5.2 PRINCE2模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#prince2-%E7%AE%80%E4%BB%8B"><span class="post-toc-text"> PRINCE2 简介</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#prince2-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> PRINCE2 是什么？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#prince2-7%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="post-toc-text"> PRINCE2 - 7个原则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#prince2-7%E4%B8%AA%E4%B8%BB%E9%A2%98"><span class="post-toc-text"> PRINCE2 - 7个主题</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#prince2-7%E4%B8%AA%E6%B5%81%E7%A8%8B"><span class="post-toc-text"> PRINCE2 - 7个流程</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#206-%E6%9C%AC%E7%AB%A0%E7%BB%83%E4%B9%A0"><span class="post-toc-text"> 20.6 本章练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E9%80%89%E6%8B%A9%E9%A2%98"><span class="post-toc-text"> 1.选择题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2%E6%80%9D%E8%80%83%E9%A2%98"><span class="post-toc-text"> 2.思考题</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="第20章-高级项目管理"><a class="markdownIt-Anchor" href="#第20章-高级项目管理"></a> 第20章-高级项目管理</h2>
+<p><mark>引言</mark></p>
+<p>在信息系统项目管理工作中，组织管理者和项目管理者还会面临多项目的管理或组织级的项目管理、项目的量化管理等。</p>
+<p>项目集管理、项目组合管理和组织级项目管理为组织当中的多项目管理和组织级管理提供了有效的指导。</p>
+<p>量化项目管理为组织及项目管理的量化、数学化提供了指导。</p>
+<p>PMI、ITSS、CMMI和PRINCE2等为各类信息系统项目管理提供了最佳实践，并提供了对组织的项目管理能力进行持续改进和评估的方法。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/bCkKdQum8WIoeFn.jpg" title="362.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/bCkKdQum8WIoeFn.jpg" alt="362.jpg" /></a></p>
+<h3 id="201-项目集管理"><a class="markdownIt-Anchor" href="#201-项目集管理"></a> 20.1 项目集管理</h3>
+<h4 id="2011-项目集管理标准"><a class="markdownIt-Anchor" href="#2011-项目集管理标准"></a> 20.1.1 项目集管理标准</h4>
+<p>由项目管理协会（PMI）出版的《项目集管理标准》（第4版）为项目集管理的原则、实践和活动提供了指导。</p>
+<p>该标准为项目集和项目集管理提供了公认的定义，为项目集管理绩效域、项目集生命周期以及重要的项目集管理原则、实践和活动的成功提供了重要的概念。</p>
+<p>该标准与项目管理协会（PMI）的核心基本标准和指导性文件保持一致，并做出补充。</p>
+<p>这些标准和文件包括<br />
+《项目管理知识体系》（PMBOK指南）；<br />
+《项目组合管理标准》；<br />
+《组织级项目管理实践指南》；<br />
+《PMI项目管理术语词典》。</p>
+<h4 id="2012-项目集管理角色和职责"><a class="markdownIt-Anchor" href="#2012-项目集管理角色和职责"></a> 20.1.2 项目集管理角色和职责</h4>
+<p><mark>项目集发起人</mark>和收益人是负责承诺将组织的资源应用于项目集，并致力于使项目集取得成功的人。项目集发起人角色往往由项目集指导委员会的高管担任。</p>
+<p><mark>项目集指导委员会</mark>应使项目集得到适当治理，由该委员会负责定义和实施适当的治理实践。</p>
+<p><mark>项目集经理</mark>是由执行组织授权，组建并带领团队实现项目集目标的人员。项目集经理对项目集的管理、实施和绩效负责。</p>
+<p><mark>其他影响项目集的干系人</mark>是指能够影响项目集决策、活动、结果，或者受到影响的个人或组织。他们可能来自项目内部，也可能来自项目外部，如客户、用户、供应商等。</p>
+<h4 id="2013-项目集管理绩效域"><a class="markdownIt-Anchor" href="#2013-项目集管理绩效域"></a> 20.1.3 项目集管理绩效域</h4>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/UNPJilHuj5qcZKd.jpg" title="363.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/UNPJilHuj5qcZKd.jpg" alt="363.jpg" /></a></p>
+<p>在项目集过程活动或职能中，分为5个项目集管理绩效域，如图所示。</p>
+<p>项目集管理绩效域包括：<br />
+项目集战略一致性；<br />
+项目集效益管理；<br />
+项目集干系人参与；<br />
+项目集治理；<br />
+和项目集生命周期管理。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/hV8DfOLy7cRbsKa.jpg" title="364.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/hV8DfOLy7cRbsKa.jpg" alt="364.jpg" /></a></p>
+<h3 id="202-项目组合管理"><a class="markdownIt-Anchor" href="#202-项目组合管理"></a> 20.2 项目组合管理</h3>
+<h4 id="2021-项目组合管理标准"><a class="markdownIt-Anchor" href="#2021-项目组合管理标准"></a> 20.2.1 项目组合管理标准</h4>
+<p>由项目管理协会（PMI）出版的《项目组合管理标准》（第4版）识别了被组织普遍认可且视为良好实践的项目组合管理原则和绩效管理域。</p>
+<p>该标准中包括一个常用的、统一的术语表，适合在项目组合管理中使用，以便推广、探讨、运用以及持续改进项目组合的管理概念。</p>
+<p>该标准与《项目管理知识体系》（PMBOK指南）、《项目集管理标准》提供的知识体系相匹配。</p>
+<h4 id="2022-项目组合管理角色和职责"><a class="markdownIt-Anchor" href="#2022-项目组合管理角色和职责"></a> 20.2.2 项目组合管理角色和职责</h4>
+<p><mark>项目组合经理</mark>负责建立和实施项目组合管理。项目组合经理通常扮演许多重要角色，包括项目组合管理原则、过程和实践的架构师、促成者和引导者，以及担当项目组合分析师的角色。</p>
+<p>项目组合管理中的<mark>其他角色</mark>包括：<br />
+1、发起人。<br />
+2、项目组合治理机构。<br />
+3、项目组合、项目集和项目管理办公室（PMO）。<br />
+4、项目组合分析师，<br />
+5、项目集经理。<br />
+6、项目经理。<br />
+7、变更控制委员会。</p>
+<h4 id="2023-项目组合管理绩效域"><a class="markdownIt-Anchor" href="#2023-项目组合管理绩效域"></a> 20.2.3 项目组合管理绩效域</h4>
+<p>项目组合管理绩效域代表了一系列良好实践，包括项目组合生命周期、项目组合战略管理、项目组合治理、项目组合产能与能力管理、项目组合干系人参与、项目组合价值管理和项目组合风险管理。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/BVv7a1cEdKTkNwW.jpg" title="365.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/BVv7a1cEdKTkNwW.jpg" alt="365.jpg" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/V2aLlMURNEoexuP.jpg" title="366.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/V2aLlMURNEoexuP.jpg" alt="366.jpg" /></a></p>
+<h3 id="203-组织级项目管理"><a class="markdownIt-Anchor" href="#203-组织级项目管理"></a> 20.3 组织级项目管理</h3>
+<h4 id="2031-组织级项目管理标准"><a class="markdownIt-Anchor" href="#2031-组织级项目管理标准"></a> 20.3.1 组织级项目管理标准</h4>
+<p>由项目管理协会（PMI）出版的《组织级项目管理标准》取代了由PMI在2014年出版的《组织级项目管理实践指南》，并对内容进行了扩展。</p>
+<p>该标准为组织在组织层级实施项目管理实践，为组织持续发展其能力和成熟度提供指导。OPM3（组织级项目管理成热度模型）用来测量这些能力，确定需要改进的领域，并提高与项目管理实践有关的组织成熟度等级的工具。</p>
+<h4 id="2032-业务价值与业务评估"><a class="markdownIt-Anchor" href="#2032-业务价值与业务评估"></a> 20.3.2 业务价值与业务评估</h4>
+<p>业务价值的实现始于全面的战略规划和管理，组织战略通过愿景和使命来表达，包括市场、定位、竞争和其他环境因素。通过不断整合和优化项目组合，执行业务影响分析及开发强健的组织驱动因素，实现组织业务价值的达成。</p>
+<p>业务评估是建立OPM框架的必要组件。组织管理层或发起人需要说明实施OPM解决的业务问题、OPM特征和关键绩效指标的定义。尽可能通过财务量化的方式确定收益，确定OPM实施成本和投资回报。</p>
+<h4 id="2033-opm框架要素"><a class="markdownIt-Anchor" href="#2033-opm框架要素"></a> 20.3.3 OPM框架要素</h4>
+<p>组织级项目管理框架描述了提供持续支持所需的要素。</p>
+<p>OPM框架的关键要素包括：<mark>OPM治理</mark>、<mark>OPM方法论</mark>、<mark>知识管理</mark>和<mark>人才管理</mark>。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/vwXEncSmGHp3Rox.jpg" title="367.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/vwXEncSmGHp3Rox.jpg" alt="367.jpg" /></a></p>
+<h4 id="2034-opm成熟度模型"><a class="markdownIt-Anchor" href="#2034-opm成熟度模型"></a> 20.3.4 OPM成熟度模型</h4>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/3XcmTKil1CewPnW.jpg" title="368.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/3XcmTKil1CewPnW.jpg" alt="368.jpg" /></a></p>
+<h3 id="204-量化项目管理"><a class="markdownIt-Anchor" href="#204-量化项目管理"></a> 20.4 量化项目管理</h3>
+<h4 id="2041-量化管理理论及应用"><a class="markdownIt-Anchor" href="#2041-量化管理理论及应用"></a> 20.4.1 量化管理理论及应用</h4>
+<p>泰勒总结出了<mark>科学管理的五大原则</mark>：<br />
+1、工时定额化。2、分工合理化。3、程序标准化。4、薪酬差额化。5、管理职能化。</p>
+<p>==统计过程控制（SPC）==是指应用统计技术对工作过程中的各个阶段进行分析、监控和评估，建立并保持工作过程处于可接受的并直稳定的水平，从而确保产品与服务符合规格要求的一种管理技术。</p>
+<p><mark>六西格玛</mark>是一种改善组织质量流程管理的技术，强调“零缺陷”的预防控制和过程控制，带动组织质量大幅提升，同时降低生产和交付成本的方法。</p>
+<p><mark>CMMI</mark>（能力成熟度模型集成）。</p>
+<h4 id="2042-组织级量化管理"><a class="markdownIt-Anchor" href="#2042-组织级量化管理"></a> 20.4.2 组织级量化管理</h4>
+<p>组织并展量化管理工作的前提在于该组织已经定义了产品或项目管理的组织级标准过程，各个产品或项目团队能够遵循组织统一的管理流程、规程和产出要求开展工作，组织收集的度量数据才具备统计意义，可供开展量化管理建设。</p>
+<p>建立组织级的量化管理体系的内容主要包括：<br />
+定义组织量化过程性能目标；<br />
+识别关键过程；<br />
+建立度量体系及数据收集；<br />
+建立过程性能基线；<br />
+建立过程性能模型。</p>
+<h4 id="2043-项目级量化管理"><a class="markdownIt-Anchor" href="#2043-项目级量化管理"></a> 20.4.3 项目级量化管理</h4>
+<ol>
+<li class="lvl-3">
+<p>项目过程性能目标定义</p>
+</li>
+<li class="lvl-3">
+<p>过程优化组合</p>
+</li>
+<li class="lvl-3">
+<p>过程性能监控</p>
+</li>
+<li class="lvl-3">
+<p>项目性能预测</p>
+</li>
+</ol>
+<h3 id="205-项目管理实践模型"><a class="markdownIt-Anchor" href="#205-项目管理实践模型"></a> 20.5 项目管理实践模型</h3>
+<h4 id="2051-cmmi模型"><a class="markdownIt-Anchor" href="#2051-cmmi模型"></a> 20.5.1 CMMI模型</h4>
+<p>4大能力域类别（行动、管理、使能、提高）共包含了<mark>9个能力域</mark>。<br />
+CMMI模型将共<mark>196条实践</mark>分组，形成<mark>20个实践域</mark>，并将20个实践域分别归属于9个能力域。</p>
+<p>CMMI共划分了<mark>5个成熟度级别</mark>，分为1~5级。<br />
+第1级-初始级、<br />
+第2级-管理级、<br />
+第3级-定义级、<br />
+第4级-量化管理级、<br />
+第5级-优化级。</p>
+<p>组织基于CMMI的<mark>改进工作</mark>主要包括：<br />
+1、定义改进目标。<br />
+2、建立改进团队。<br />
+3、开展差距分析。<br />
+4、导入培训和过程定义。<br />
+5、过程部署。<br />
+6、CMMI评估。</p>
+<h4 id="2052-prince2模型"><a class="markdownIt-Anchor" href="#2052-prince2模型"></a> 20.5.2 PRINCE2模型</h4>
+<h5 id="prince2-简介"><a class="markdownIt-Anchor" href="#prince2-简介"></a> PRINCE2 简介</h5>
+<p>PRINCE2（PRojectINControlledEnvironment，受控环境下的项目管理）是当今在世界范围内广泛使用的项目管理方法之一，是一个基于经验的结构化项目管理方法。</p>
+<p>PRINCE2结构包括原则、主题、流程和项目环境。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/RBjCoNzO3VFpa8S.jpg" title="371.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/RBjCoNzO3VFpa8S.jpg" alt="371.jpg" /></a></p>
+<blockquote>
+<p>—— PMBOK5th-1.1 PMBOK指南的目的<br />
+它（PMBoK）是一份指南，而不是一套具体的方法论。<br />
+人们可以利用各种方法论和工具（如敏捷、瀑布、<mark>PRINCE2</mark>）来实施该指南中的框架。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>—— PRINCE2<br />
+方法论与知识体系之间的差异，使它们具有很强的互补性。<br />
+方法论规定了<mark>何人</mark>、<mark>何时</mark>、<mark>做何事</mark>。<br />
+知识体系提供了<mark>怎样做这些事的一系列技术</mark>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>PRINCE2</th>
+<th>知识体系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一种项目管理方法</td>
+<td>一种项目管理“好的实践”的广泛汇编</td>
+</tr>
+<tr>
+<td>规定性的</td>
+<td>非规定性的</td>
+</tr>
+<tr>
+<td>涵盖所有项目管理角色</td>
+<td>瞄准的是项目经理</td>
+</tr>
+<tr>
+<td>参考技术</td>
+<td>描述技术</td>
+</tr>
+</tbody>
+</table>
+<h5 id="prince2-是什么"><a class="markdownIt-Anchor" href="#prince2-是什么"></a> PRINCE2 是什么？</h5>
+<p>PRINCE（PRojectIN Controlled Environment 受控环境下的项目管理）<br />
+&lt;是&gt;<br />
+英国政府商务办公室（OGC）推出的一种结构化的项目管理<mark>方法论</mark>。</p>
+<blockquote>
+<p>—— PRINCE2 11.1<br />
+PRINCE2是一种基于<mark>流程</mark>的项目管理方法。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>—— PRINCE2 19.10<br />
+PRINCE2是一种完整的项目管理方法，提供了一整套流程和主题，可用于从头到尾管理项目。<br />
+PRINCE2与知识体系之间的差异，使它们具有很强的互补性。<br />
+PRINCE2提供了一个框架，规定了由谁、在什么时候、需要做什么事。<br />
+知识体系提供了怎样做这些事的一系列技术。</p>
+</blockquote>
+<h5 id="prince2-7个原则"><a class="markdownIt-Anchor" href="#prince2-7个原则"></a> PRINCE2 - 7个原则</h5>
+<p>1.持续业务验证<br />
+2.吸取经验教训<br />
+3.明确定义的角色和职责<br />
+4.按阶段管理<br />
+5.例外管理<br />
+6.关注产品<br />
+7.根据项目环境剪裁</p>
+<hr />
+<p>1.持续业务验证<br />
+有一个开始项目的合理理由<br />
+合理性在项目生命周期中保持有效<br />
+合理性用文档记录井得到批准</p>
+<p>2.吸取经验教训<br />
+当准备一个项目时<br />
+当项目进展时<br />
+当项目结束时</p>
+<p>3.明确定义的角色和职责<br />
+所有项目都有：<br />
+发起人（Business）<br />
+使用方（User）<br />
+供应商（Supplier）</p>
+<p>4.按阶段管理<br />
+将项目划分为多个管理阶段<br />
+制定高层次的项目计划和详细的阶段计划<br />
+逐个阶段计划、授权、监督、控制<br />
+最少有两个管理阶段</p>
+<p>5.例外管理<br />
+设定绩效指标的允许偏差<br />
+为预计突破允许偏差建立分层次的控制方法</p>
+<p>6.关注产品<br />
+交付什么<br />
+质量要求是什么</p>
+<p>7.根据项目环境剪裁<br />
+确保方法论与环境相关<br />
+确保项目控制程度是基于项目规模、复杂性、重要性、能力和风险</p>
+<h5 id="prince2-7个主题"><a class="markdownIt-Anchor" href="#prince2-7个主题"></a> PRINCE2 - 7个主题</h5>
+<p>1.商业论证<br />
+2.组织<br />
+3.质量<br />
+4.计划<br />
+5.风险<br />
+6.变更<br />
+7.进展</p>
+<hr />
+<p>1.商业论证–为什么做？<br />
+2.组织–谁来做？<br />
+3.质量–做什么，做到什么程度？<br />
+4.计划–什么时候做？怎样做？投入是多少？<br />
+5.风险–如果…将会怎样？<br />
+6.变更–影响是什么？<br />
+7.进展–现在在哪里？要去哪里？是否应该继续？</p>
+<h5 id="prince2-7个流程"><a class="markdownIt-Anchor" href="#prince2-7个流程"></a> PRINCE2 - 7个流程</h5>
+<p>1.项目准备流程<br />
+2.项目指导流程<br />
+3.项目启动流程<br />
+4.阶段控制流程<br />
+5.阶段边界管理<br />
+6.产品交付管理流程<br />
+7.项目收尾流程</p>
+<h3 id="206-本章练习"><a class="markdownIt-Anchor" href="#206-本章练习"></a> 20.6 本章练习</h3>
+<h4 id="1选择题"><a class="markdownIt-Anchor" href="#1选择题"></a> 1.选择题</h4>
+<p>（1）关于项目集管理的理解，不正确的是____。<br />
+A.项目集经理是承诺将组织的资源应用于项目集，并致力于使项目集取得成功的人<br />
+B.组件项目或项目集不能促进共同目标或互补目标的实现时，则使用项目组合管理的效果更好<br />
+C.项目集管理绩效域包括项目集战略一致性、项目集效益管理、项目集干系人参与、项目集治理、项目集生命周期管理<br />
+D.项目集效益管理的主要活动包括效益识别、效益分析和规划、效益交付、效益移交、效益维持</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（2）组织级项目管理（OPM）框架包括____。<br />
+A. OPM方法论、知识管理、人才管理<br />
+B. OPM方法论、流程管理、资源管理<br />
+C. OPM治理、OPM方法论、流程管理、资源管理<br />
+D. OPM治理、OPM方法论、知识管理、人才管理</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（3）关于统计过程控制方法的描述，不正确的是____。<br />
+A.统计过程控制是一种预防性方法，强调全员参与<br />
+B.统计过程控制技术可以判定工作过程运行的状态是否稳定，也可以判断过程能力是否满足规格要求<br />
+C.统计过程控制方法认为任何组织或个人执行过程的能力都会有一定的波动性，这是正常的<br />
+D.统计过程控制方法认为项目团队或人员的能力应该是恒定的，不应发生波动</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（4）关于六西格玛的描述，不正确的是____。<br />
+A.五步循环改进法即DMAIC模式，包括：定义（Define）、度量（Measure）、分析（Analyze）、改进（Improve）、控制（Control）<br />
+B.六西格玛是一种基于数据统计分析的管理方法，强调用数据来客观体现管理流程的能力<br />
+C.六西格玛的代表特征是组织有了统一的管理流程、管理指标<br />
+D.六西格玛的五步实施流程并不是单一的，而是各个管理流程实施改进时相互关联的统一体</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<p>（5）关于量化管理中建立过程性能模型的描述，正确的是____。<br />
+A.建立过程性能模型的因子只能选择当前过程性能基线中已有的因子<br />
+B.对于相关性系数达到强相关（&gt;0.8）的因子，方可纳入建模因子<br />
+C.对于过程性能模型的校验，重点关注P值、R-sq值，通常无须关注残差值<br />
+D.基于统计的量化技术主要包括：过程性能基线、过程性能模型、回归分析、蒙特卡洛模拟等</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<h4 id="2思考题"><a class="markdownIt-Anchor" href="#2思考题"></a> 2.思考题</h4>
+<p>请指出项目、项目集、项目组合管理的差异，以及与OPM的关系。请列举适宜使用项目组合管理的场景，并说明其对战略目标的支撑效果。</p>
+<p>参考答案：略</p>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/PM/'>
+                            PM
+                        </a>
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E6%95%99%E7%A8%8B/'>
+                            信息系统项目管理师教程
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%AB%98%E9%A1%B9/'>
+                            高项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="第19章-配置与变更管理" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    第19章-配置与变更管理
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：6.3k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 第19章-配置与变更管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#191-%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 19.1 配置管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1911-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 19.1.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 配置项-概念</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-%E7%8A%B6%E6%80%81"><span class="post-toc-text"> 配置项-状态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="post-toc-text"> 配置项-版本号</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E5%9F%BA%E7%BA%BF"><span class="post-toc-text"> 配置基线</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="post-toc-text"> 配置管理数据库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E5%BA%93"><span class="post-toc-text"> 配置库</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1912-%E8%A7%92%E8%89%B2%E4%B8%8E%E8%81%8C%E8%B4%A3"><span class="post-toc-text"> 19.1.2 角色与职责</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E8%B4%9F%E8%B4%A3%E4%BA%BA"><span class="post-toc-text"> 1.配置管理负责人</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%91%98"><span class="post-toc-text"> 2.配置管理员</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%B4%9F%E8%B4%A3%E4%BA%BA"><span class="post-toc-text"> 3.配置项负责人</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1913-%E7%9B%AE%E6%A0%87%E4%B8%8E%E6%96%B9%E9%92%88"><span class="post-toc-text"> 19.1.3 目标与方针</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1%E7%AE%A1%E7%90%86%E7%9B%AE%E6%A0%87"><span class="post-toc-text"> 1.管理目标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2%E7%AE%A1%E7%90%86%E6%96%B9%E9%92%88"><span class="post-toc-text"> 2.管理方针</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1914-%E7%AE%A1%E7%90%86%E6%B4%BB%E5%8A%A8"><span class="post-toc-text"> 19.1.4 管理活动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1%E5%88%B6%E8%AE%A2%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 1.制订配置管理计划</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AF%86%E5%88%AB"><span class="post-toc-text"> 2.配置项识别</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%8E%A7%E5%88%B6"><span class="post-toc-text"> 3.配置项控制</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4%E9%85%8D%E7%BD%AE%E7%8A%B6%E6%80%81%E6%8A%A5%E5%91%8A"><span class="post-toc-text"> 4.配置状态报告</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#5%E9%85%8D%E7%BD%AE%E5%AE%A1%E8%AE%A1"><span class="post-toc-text"> 5.配置审计</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%94%B9%E8%BF%9B"><span class="post-toc-text"> 6.配置管理回顾与改进</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#192-%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 19.2 变更管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1921-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 19.2.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 1.变更管理与配置管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2%E5%8F%98%E6%9B%B4%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="post-toc-text"> 2.变更产生的原因</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3%E5%8F%98%E6%9B%B4%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text"> 3.变更的分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1922-%E7%AE%A1%E7%90%86%E5%8E%9F%E5%88%99"><span class="post-toc-text"> 19.2.2 管理原则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1923-%E8%A7%92%E8%89%B2%E4%B8%8E%E8%81%8C%E8%B4%A3"><span class="post-toc-text"> 19.2.3 角色与职责</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86%E8%B4%9F%E8%B4%A3%E4%BA%BA"><span class="post-toc-text"> 1.变更管理负责人</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2%E5%8F%98%E6%9B%B4%E8%AF%B7%E6%B1%82%E8%80%85"><span class="post-toc-text"> 2.变更请求者</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3%E5%8F%98%E6%9B%B4%E5%AE%9E%E6%96%BD%E8%80%85"><span class="post-toc-text"> 3.变更实施者</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4%E5%8F%98%E6%9B%B4%E9%A1%BE%E9%97%AE%E5%A7%94%E5%91%98%E4%BC%9A"><span class="post-toc-text"> 4.变更顾问委员会</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1924-%E5%B7%A5%E4%BD%9C%E7%A8%8B%E5%BA%8F"><span class="post-toc-text"> 19.2.4 工作程序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1925-%E5%8F%98%E6%9B%B4%E6%8E%A7%E5%88%B6"><span class="post-toc-text"> 19.2.5 变更控制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1926-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%92%8C%E5%9B%9E%E9%80%80%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 19.2.6 版本发布和回退计划</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#193-%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 19.3 项目文档管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1931-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 19.3.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3-%E5%88%86%E7%B1%BB"><span class="post-toc-text"> 软件文档-分类</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3-%E8%B4%A8%E9%87%8F%E5%88%86%E7%BA%A7"><span class="post-toc-text"> 软件文档-质量分级</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1932-%E8%A7%84%E5%88%99%E5%92%8C%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 19.3.2 规则和方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#194-%E6%9C%AC%E7%AB%A0%E7%BB%83%E4%B9%A0"><span class="post-toc-text"> 19.4 本章练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E9%80%89%E6%8B%A9%E9%A2%98"><span class="post-toc-text"> 1.选择题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2%E5%88%A4%E6%96%AD%E9%A2%98"><span class="post-toc-text"> 2.判断题</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="第19章-配置与变更管理"><a class="markdownIt-Anchor" href="#第19章-配置与变更管理"></a> 第19章-配置与变更管理</h2>
+<p><mark>引言</mark></p>
+<p>配置管理是通过技术或者行政的手段对项目管理对象和信息系统的信息进行管理的一系列活动。</p>
+<p>这些信息不仅包括具体配置项信息，还包括这些配置项之间的相互关系。</p>
+<p>配置管理包含配置库的建立和配置管理数据库（Configuration Management Databases, CMDB）准确性的维护，以支持信息系统项目的正常运行。</p>
+<p>在信息系统项目中，配置管理可用于问题分析、变更影响度分析和异常分析等，因此，配置项与真实情况的匹配度和详细度非常重要。</p>
+<p>在组织实施信息系统项目过程中，常常会遇到变更的发生。</p>
+<p>变更的诱发一般有主动变更和被动变更两种。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>主动变更是主动发起的变更，常用于提高项目收益，包括降低成本、改进过程以及提高项目的便捷性和有效性等；</p>
+</li>
+<li class="lvl-2">
+<p>被动变更常用于范围变化、异常、错误和适应不断变化的环境等，如随需求的增加，相应需要增加系统的功能或投资等。</p>
+</li>
+</ul>
+<p>变更管理是对变更从提出、审议、批准到实施、完成的整个过程的管理。</p>
+<h3 id="191-配置管理"><a class="markdownIt-Anchor" href="#191-配置管理"></a> 19.1 配置管理</h3>
+<p>定义</p>
+<p>在（GB/T114S7）《信息技术软件工程术语》中，将“配置管理”正式定义为：<br />
+应用技术的和管理的指导和监控方法以标识和说明配置项的功能和物理特征，控制这些特征的变更，记录和报告变更处理和实现状态并验证与规定的需求的遵循性。</p>
+<p>在（GB/T28827.1）《信息技术服务运行维护第1部分：通用要求》中指出：<br />
+组织应建立配置管理过程，整体规划配置管理范围，保留配置信息，并保证配置信息的可靠性、完整性和时效性，以对其他服务过程提供支持；应建立与配置管理过程相一致的活动，包括对配置项的识别、收集、记录、更新和审核等。</p>
+<p>尽管硬件配置管理和软件配置管理的实现有所不同，但配置管理的概念可以应用于各种信息系统项目。</p>
+<h4 id="1911-管理基础"><a class="markdownIt-Anchor" href="#1911-管理基础"></a> 19.1.1 管理基础</h4>
+<h5 id="配置项-概念"><a class="markdownIt-Anchor" href="#配置项-概念"></a> 配置项-概念</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>GB/T11457-2006：为配置管理设计的硬件、软件或二者的集合，在配置管理过程中作为一个单个实体来对待</p>
+</li>
+<li class="lvl-2">
+<p>分为<mark>基线配置项</mark>和<mark>非基线配置项</mark>两类。例如，基线配置项可能包括所有的设计文档和源程序等；非基线配置项可能包括项目的各类计划和报告等。</p>
+</li>
+<li class="lvl-2">
+<p>所有配置项的操作权限应由CMO（配置管理员）严格管理，基本原则是：基线配置项向开发人员开放读取的权限；非基线配置项向PM、CCB及相关人员开放</p>
+</li>
+</ul>
+<h5 id="配置项-状态"><a class="markdownIt-Anchor" href="#配置项-状态"></a> 配置项-状态</h5>
+<p>草稿、正式、修改</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>配置项刚建立时，其状态为“草稿”</p>
+</li>
+<li class="lvl-2">
+<p>配置项通过评审后，其状态变为“正式”</p>
+</li>
+<li class="lvl-2">
+<p>此后若更改配置项，则其状态变为“修改”</p>
+</li>
+<li class="lvl-2">
+<p>当配置项修改完毕并重新通过评审后，状态变为“正式”</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/98rZTbGqUgP6hVB.jpg" title="357.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/98rZTbGqUgP6hVB.jpg" alt="357.jpg" /></a></p>
+<h5 id="配置项-版本号"><a class="markdownIt-Anchor" href="#配置项-版本号"></a> 配置项-版本号</h5>
+<ol>
+<li class="lvl-3">
+<p>草稿：格式为<mark>0.YZ</mark>，YZ的数字范围为01~99</p>
+</li>
+<li class="lvl-3">
+<p>正式：格式为<mark>X.Y</mark>，X为主版本号，取值范围为1~9</p>
+</li>
+<li class="lvl-3">
+<p>修改：格式为<mark>X.YZ</mark></p>
+</li>
+</ol>
+<blockquote>
+<p>for example<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/OnCZKuW9jPD5Aib.jpg" title="358.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/OnCZKuW9jPD5Aib.jpg" alt="358.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/XQOzJbGoS2ymqHs.jpg" title="359.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/XQOzJbGoS2ymqHs.jpg" alt="359.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/FnipcaPG6Duq7Cb.jpg" title="360.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/FnipcaPG6Duq7Cb.jpg" alt="360.jpg" /></a></p>
+</blockquote>
+<h5 id="配置基线"><a class="markdownIt-Anchor" href="#配置基线"></a> 配置基线</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>由一组配置项组成，构成一个相对稳定的<mark>逻辑实体</mark></p>
+</li>
+<li class="lvl-2">
+<p>基线中的配置项被“冻结”了，不能再被任何人随意修改</p>
+</li>
+<li class="lvl-2">
+<p>对基线的变更必须遵循正式的变更控制程序</p>
+</li>
+<li class="lvl-2">
+<p>基线通常对应于开发过程中的里程碑，一个产品可以有多个基线，也可以只有一个基线</p>
+</li>
+<li class="lvl-2">
+<p>交付给外部顾客的基线一般称为<mark>发行基线</mark></p>
+</li>
+<li class="lvl-2">
+<p>内部开发使用的基线一般称为<mark>构造基线</mark></p>
+</li>
+</ul>
+<p>建立基线的价值可包括：</p>
+<ol>
+<li class="lvl-3">
+<p>基线为项目工作提供了一个定点和快照。</p>
+</li>
+<li class="lvl-3">
+<p>新项目可以在基线提供的定点上建立。新项目作为一个单独分支，将与随后对原始项目（在主要分支上）所进行的变更进行隔离。</p>
+</li>
+<li class="lvl-3">
+<p>当认为更新不稳定或不可信时，基线为团队提供一种取消变更的方法。</p>
+</li>
+<li class="lvl-3">
+<p>可以利用基线重新建立基于某个特定发布版本的配置，以重现已报告的错误。</p>
+</li>
+</ol>
+<h5 id="配置管理数据库"><a class="markdownIt-Anchor" href="#配置管理数据库"></a> 配置管理数据库</h5>
+<p>指包含每个配置项及配置项之间重要关系的详细资料的数据库。</p>
+<p>配置管理数据库主要内容包括：<br />
+1、发布内容，包括每个配置项及其版本号；<br />
+2、经批准的变更可能影响到的配置项；<br />
+3、与某个配置项有关的所有变更请求；<br />
+4、配置项变更轨迹；<br />
+5、特定的设备和软件；<br />
+6、计划升级、替换或弃用的配置项：<br />
+7、与配置项有关的变更和问题：<br />
+8、来自于特定时期特定供应商的配置项；<br />
+9、受问题影响的所有配置项。</p>
+<h5 id="配置库"><a class="markdownIt-Anchor" href="#配置库"></a> 配置库</h5>
+<p>存放配置项并记录与配置项相关的所有信息</p>
+<ol>
+<li class="lvl-3">
+<p><mark>开发库</mark>，也称为<mark>动态库、程序员库或工作库</mark>，保存当前正在开发的配置实体，是个人工作区，开发人员自行控制。</p>
+</li>
+<li class="lvl-3">
+<p><mark>受控库</mark>，也称为<mark>主库</mark>，包含当前的基线加上对基线的变更。库中配置项被置于完全的配置管理之下。</p>
+</li>
+<li class="lvl-3">
+<p><mark>产品库</mark>，也称为静态库、发行库、软件仓库，包含已发布使用的各种基线的存档，被置于完全的配置管理之下。产品完成系统测试后，作为最终产品存入，等待交付用户或现场安装。</p>
+</li>
+</ol>
+<p>配置库的建库模式</p>
+<ol>
+<li class="lvl-3">
+<p>按<mark>配置项的类型</mark>分类建库，适用于<mark>通用</mark>软件的开发组织</p>
+</li>
+<li class="lvl-3">
+<p>按<mark>开发任务</mark>建立相应的配置库，适合<mark>专业</mark>软件开发组织</p>
+</li>
+</ol>
+<h4 id="1912-角色与职责"><a class="markdownIt-Anchor" href="#1912-角色与职责"></a> 19.1.2 角色与职责</h4>
+<h5 id="1配置管理负责人"><a class="markdownIt-Anchor" href="#1配置管理负责人"></a> 1.配置管理负责人</h5>
+<p>配置管理负责人也称<mark>配置经理</mark>，负责管理和决策整个项目生命周期中的配置活动，具体有：<br />
+1、管理所有活动，包括计划、识别、控制、审计和回顾：<br />
+2、负责配置管理过程；<br />
+3、通过审计过程确保配置管理数据库的准确和真实；<br />
+4、审批配置库或配置管理数据库的结构性变更；<br />
+5、定义配置项责任人；<br />
+6、指派配置审计员；<br />
+7、定义配置管理数据库范围、配置项属性、配置项之间关系和配置项状态；<br />
+8、评估配置管理过程并持续改进：<br />
+9、参与变更管理过程评估；<br />
+10、对项目成员进行配置管理培训。</p>
+<h5 id="2配置管理员"><a class="markdownIt-Anchor" href="#2配置管理员"></a> 2.配置管理员</h5>
+<p>配置管理员负责在整个项目生命周期中进行配置管理的主要实施活动，具体有：<br />
+1、建立和维护配置管理系统；<br />
+2、建立和维护配置库或配置管理数据库；<br />
+3、配置项识别；<br />
+4、建立和管理基线；<br />
+5、版本管理和配置控制：<br />
+6、配置状态报告；<br />
+7、配置审计；<br />
+8、发布管理和交付。</p>
+<h5 id="3配置项负责人"><a class="markdownIt-Anchor" href="#3配置项负责人"></a> 3.配置项负责人</h5>
+<p>配置项负责人确保所负责的配置项的准确和真实：<br />
+1、记录所负责配置项的所有变更；<br />
+2、维护配置项之间的关系；<br />
+3、调查审计中发现的配置项差异，完成差异报告；<br />
+4、遵从配置管理过程；<br />
+5、参与配置管理过程评估。</p>
+<h4 id="1913-目标与方针"><a class="markdownIt-Anchor" href="#1913-目标与方针"></a> 19.1.3 目标与方针</h4>
+<h5 id="1管理目标"><a class="markdownIt-Anchor" href="#1管理目标"></a> 1.管理目标</h5>
+<p>在<mark>信息系统项目</mark>中，配置管理的<mark>目标</mark>主要用以<mark>定义并控制信息系统的组件</mark>，<mark>维护准确的配置信息</mark>，具体包括：<br />
+1、所有配置项能够被识别和记录；<br />
+2、维护配置项记录的完整性；<br />
+3、为其他管理过程提供有关配置项的准确信息；<br />
+4、核实有关信息系统的配置记录的正确性并纠正发现的错误；<br />
+5、配置项当前和历史状态得到汇报；<br />
+6、确保信息系统的配置项的有效控制和管理。</p>
+<p><mark>组织</mark>需要实现的配置管理<mark>目标</mark>主要包括：<br />
+1、确保软件配置管理计划得以制订，并经过相关人员的评审和确认；<br />
+2、应该识别出要控制的项目产品有哪些，并且制定相关控制策略，以确保这些项目产品被合适的人员获取；<br />
+3、应制定控制策略，以确保项目产品在受控制范围内更改；<br />
+4、应该采取适当的工具和方法，确保相关组别和个人能够及时了解到软件基线的状态和内容。</p>
+<h5 id="2管理方针"><a class="markdownIt-Anchor" href="#2管理方针"></a> 2.管理方针</h5>
+<p>配置管理关键<mark>成功因素</mark>主要包括：<br />
+1、所有配置项应该记录：<br />
+2、配置项应该分类；<br />
+3、所有配置项要编号；<br />
+4、应该定期对配置库或配置管理数据库中的配置项信息进行审计；<br />
+5、每个配置项在建立后，应有配置负责人负责；<br />
+6、要关注配置项的变化情况；<br />
+7、应该定期对配置管理进行回顾；<br />
+8、能够与项目的其他管理活动进行关联。</p>
+<h4 id="1914-管理活动"><a class="markdownIt-Anchor" href="#1914-管理活动"></a> 19.1.4 管理活动</h4>
+<h5 id="1制订配置管理计划"><a class="markdownIt-Anchor" href="#1制订配置管理计划"></a> 1.制订配置管理计划</h5>
+<p>配置管理计划是对如何开展项目配置管理工作的规划，是配置管理过程的基础，应该形成文件并在整个项目生命周期内处干受控状态。</p>
+<p><mark>CCB负责审批该计划</mark></p>
+<h5 id="2配置项识别"><a class="markdownIt-Anchor" href="#2配置项识别"></a> 2.配置项识别</h5>
+<p>配置项识别是识别所有信息系统组件的关键配置，以及各配置项间的关系和配置文档等结构识别。它包括为配置项分配标识和版本号等。配置项识别是配置管理的一项基础性工作，要确定配置项的范围、属性、标识符、基准线以及配置结构和命名规则等。</p>
+<p>内容：<br />
+1、确定配置项范围。<br />
+2、确认和记录配置项属性。<br />
+3、为配置项定义标识符。<br />
+4、确定配置基准线。<br />
+5、确定配置结构。<br />
+6、确定配置项命名规则。</p>
+<h5 id="3配置项控制"><a class="markdownIt-Anchor" href="#3配置项控制"></a> 3.配置项控制</h5>
+<p>配置项控制即对配置项和基线的变更控制，包括：<br />
+标识和记录变更申请、分析和评价变更、批准或否决审请、实现、验证和发布已修改的配置项等任务。</p>
+<p>流程：<br />
+1、变更申请。<br />
+2、变更评估。<br />
+3、通过评估结果。<br />
+4、实施变更。<br />
+5、变更验证与确认。<br />
+6、变更发布。<br />
+7、基于配置库的变更控制</p>
+<h5 id="4配置状态报告"><a class="markdownIt-Anchor" href="#4配置状态报告"></a> 4.配置状态报告</h5>
+<p>配置状态报告也称<mark>配置状态统计</mark>，其任务是有效地记录和报告管理配置所需要的信息，目的是及时、准确地给出配置项的当前状况，供相关人员了解，以加强配置管理工作。在信息系统项目中，配置项在不停地演化着。配置状态报告就是要在某个特定的时刻观察当时的配置状态，对动态演化着的配置项取个瞬时的“照片”，以利于在状态报告信<br />
+息分析的基础上，更好地进行控制。</p>
+<p>配置状态报告应该主要包含：</p>
+<ol>
+<li class="lvl-3">
+<p>每个受控配置项的标识和状态。</p>
+</li>
+<li class="lvl-3">
+<p>每个变更申请的状态和已批准的修改的实施状态。</p>
+</li>
+<li class="lvl-3">
+<p>每个基线的当前和过去版本的状态以及各版本的比较。</p>
+</li>
+<li class="lvl-3">
+<p>其他配置管理过程活动的记录等。</p>
+</li>
+</ol>
+<h5 id="5配置审计"><a class="markdownIt-Anchor" href="#5配置审计"></a> 5.配置审计</h5>
+<p>配置审计也称<mark>配置审核</mark>或<mark>配置评价</mark>，包括功能配置审计和物理配置审计。配置审计的实施是为了确保项目配置管理的有效性，体现了配置管理的最根本要求，不允许出现任何混乱现象：<br />
+1、防止向用户提交不适合的产品；<br />
+2、发现不完善的实现；<br />
+3、找出各配置项间不匹配或不相容的现象；<br />
+4、确认配置项已在所要求的质量控制审核之后纳入基线开入库保存；<br />
+5、确认记录和文档保持看可追溯性等。</p>
+<p><mark>功能配置审计</mark>。审计配置项的一致性（配置项的实际功效是否与其需求一致），具体验证主要包括：<br />
+1、配置项的并发已圆满完成：<br />
+2、配置项已达到配置标识中规定的性能和功能特征；<br />
+3、配置项的操作和支持文档已完成并且是符合要求的等。</p>
+<p><mark>物理配置审计</mark>。审计配置项的完整性（配置项的物理存在是否与预期一致），具体验证主要包括：<br />
+1、要交付的配置项是否存在；<br />
+2、配置项中是否包含了所有必需的项目等。</p>
+<p>一般来说，配置审验应当定期进行，应当进行<mark>配置审计的场景包括</mark>：<br />
+1、实施新的配置库或配置管理数据库之后；<br />
+2、对信息系统实施重大变更前后；<br />
+3、在一项软件发布和安装被导入实际运作环境之前；<br />
+4、灾难恢复之后或事件恢复正常之后；<br />
+5、发现未经授权的配置项后；<br />
+6、任何其他必要的时候等。</p>
+<h5 id="6配置管理回顾与改进"><a class="markdownIt-Anchor" href="#6配置管理回顾与改进"></a> 6.配置管理回顾与改进</h5>
+<p>即定期回顾配置管理活动的实施情况，发现在配置管理执行过程中有无问题，找到改进点，继而优化配置管理过程。</p>
+<p>配置管理回顾及改进活动包括：</p>
+<ol>
+<li class="lvl-3">
+<p>对本次配置管理回顾进行准备，设定日期和主题，通知相关人等参加会议。根据配置管理绩效衡量指标，要求配置项责任人提供配置项统计信息；</p>
+</li>
+<li class="lvl-3">
+<p>召开配置管理回顾会议，在设定日期召开回顾会议，对配置管理报告进行汇报，听取各方意见，回顾上次过程改进计划执行情况；</p>
+</li>
+<li class="lvl-3">
+<p>根据会议结论，制订并提交服务改进计划；</p>
+</li>
+<li class="lvl-3">
+<p>根据过程改进计划，协调、落实改进等。</p>
+</li>
+</ol>
+<h3 id="192-变更管理"><a class="markdownIt-Anchor" href="#192-变更管理"></a> 19.2 变更管理</h3>
+<h4 id="1921-管理基础"><a class="markdownIt-Anchor" href="#1921-管理基础"></a> 19.2.1 管理基础</h4>
+<p>变更管理的实质是根据项目推进过程中越来越丰富的项目认知，不断调整项目努力方向和资源配置，最大程度地满足项目需求，提升项目价值。</p>
+<h5 id="1变更管理与配置管理"><a class="markdownIt-Anchor" href="#1变更管理与配置管理"></a> 1.变更管理与配置管理</h5>
+<p>如果把项目整体的交付物视作项目的配置项，配置管理可视为对项目完整性管理的一套系统，当用于项目基准调整时，<mark>变更管理可视为其一部分</mark>。亦可视变更管理与配置管理为相关联的<mark>两套机制</mark>，变更管理由项目交付或基准配置调整时，由配置管理过程调用，变更管理最终应将对项目的调整结果反馈给配置管理过程，以确保项目执行与项目配置信息相一致。</p>
+<h5 id="2变更产生的原因"><a class="markdownIt-Anchor" href="#2变更产生的原因"></a> 2.变更产生的原因</h5>
+<p>变更的<mark>常见原因包括</mark>：<br />
+1、产品范围（成果）定义的过失或者疏忽；<br />
+2、项目范围（工作）定义的过失或者疏忽；<br />
+3、增值变更；<br />
+4、应对风险的紧急计划或回避计划；<br />
+5、项目执行过程与基准要求不一致带来的被动调整；<br />
+6、外部事件等。</p>
+<h5 id="3变更的分类"><a class="markdownIt-Anchor" href="#3变更的分类"></a> 3.变更的分类</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>根据变更<mark>性质</mark>可分为<mark>重大变更</mark>、<mark>重要变更</mark>和<mark>一般变更</mark>，通过不同审批权限进行控制；</p>
+</li>
+<li class="lvl-2">
+<p>根据变更的<mark>迫切性</mark>可分为<mark>紧急变更</mark>、<mark>非紧急变更</mark>；</p>
+</li>
+<li class="lvl-2">
+<p>根据行业特点分类，如弱电工程行业的常见分类方法为产品（工作）范围变更、环境变更、设计变更、实施变更和技术标准变更。</p>
+</li>
+</ul>
+<h4 id="1922-管理原则"><a class="markdownIt-Anchor" href="#1922-管理原则"></a> 19.2.2 管理原则</h4>
+<p>变更管理的<mark>原则</mark>是项目基准化和变更管理过程规范化，主要内容包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基准管理：基准是变更的依据。</p>
+</li>
+<li class="lvl-2">
+<p>变更控制流程化。</p>
+</li>
+<li class="lvl-2">
+<p>明确组织分工：至少应明确变更相关工作的评估、评审、执行的职能。</p>
+</li>
+<li class="lvl-2">
+<p>评估变更的可能影响。</p>
+</li>
+<li class="lvl-2">
+<p>妥善保存变更产生的相关文档。</p>
+</li>
+</ul>
+<h4 id="1923-角色与职责"><a class="markdownIt-Anchor" href="#1923-角色与职责"></a> 19.2.3 角色与职责</h4>
+<p>规范的项目实施，提倡分权操作。项目经理是组织委托的项目经营过程负责者，其正式权利由项目章程取得，而资源调度的权力通常由基准中明确。基准中不包括的储备资源需经授权人批准后方可使用。</p>
+<p><mark>项目经理</mark>在变更中的作用是：<mark>响应</mark>变更提出者的需求；评估变更对项目的影响及应对方案；将需求由技术要求转化为<mark>资源需求</mark>，供授权人决策；并据评审结果<mark>实施</mark>（即调整基准），确保项目基准反映项目实施情况。</p>
+<p>信息系统项目中，除项目经理和CCB外，通常还会定义变更管理负责人、变更请求者、变更实施者和变更顾问委员会等。</p>
+<h5 id="1变更管理负责人"><a class="markdownIt-Anchor" href="#1变更管理负责人"></a> 1.变更管理负责人</h5>
+<p>也称变更经理，通常是变更管理过程解决方案的负责人，其主要职责包括：<br />
+1、负责整个变更过程方案的结果；<br />
+2、负责变更管理过程的监控；<br />
+3、负责协调相关的资源，保障所有变更按照预定过程顺利运作；<br />
+4、确定变更类型，组织变更计划和日程安排；<br />
+5、管理变更的日程安排；<br />
+6、变更实施完成之后的回顾和关闭；<br />
+7、承担变更相关责任，并且具有相应权限；<br />
+8、可能以逐级审批形式或团队会议的形式参与变更的风险评估和审批等。</p>
+<h5 id="2变更请求者"><a class="markdownIt-Anchor" href="#2变更请求者"></a> 2.变更请求者</h5>
+<p>负责记录与提交变更请求单，具体为：<br />
+1、提交初步的变更方案和计划；<br />
+2、初步评价变更的风险和影响，给变更请求设定适当的变更类型；<br />
+3、对理解变更过程有能力要求等。</p>
+<h5 id="3变更实施者"><a class="markdownIt-Anchor" href="#3变更实施者"></a> 3.变更实施者</h5>
+<p>需要拥有有执行变更方案的内容的技术能力，负责按照实施计划实施具体的变更任务。</p>
+<h5 id="4变更顾问委员会"><a class="markdownIt-Anchor" href="#4变更顾问委员会"></a> 4.变更顾问委员会</h5>
+<p>负责对重大变更行使审批，提供专业意见和辅助审批，具体为：<br />
+1、在紧急变更时，其中被授权者行使审批权限；<br />
+2、定期听取变更经理汇报，评估变更管理执行情况，必要时提出改进建议等。</p>
+<h4 id="1924-工作程序"><a class="markdownIt-Anchor" href="#1924-工作程序"></a> 19.2.4 工作程序</h4>
+<p>1.变更申请。<br />
+2.对变更的初审。<br />
+3.变更方案论证。<br />
+4.变更审查。<br />
+5.发出通知并实施。<br />
+6.实施监控。<br />
+7.效果评估。<br />
+8.变更收尾。</p>
+<h4 id="1925-变更控制"><a class="markdownIt-Anchor" href="#1925-变更控制"></a> 19.2.5 变更控制</h4>
+<p>1.变更申请的控制。<br />
+变更申请的提交，首先应当确保覆盖所有变更操作；但项目应根据变更的影响和代价提高变更流程的效率，并在某些情况下使用进度管理中的快速跟进等方法。</p>
+<p>2.变更过程控制。<br />
+包括：对进度变更的控制；对成本变更的控制；对合同变更的控制。</p>
+<h4 id="1926-版本发布和回退计划"><a class="markdownIt-Anchor" href="#1926-版本发布和回退计划"></a> 19.2.6 版本发布和回退计划</h4>
+<p><mark>版本发布前的准备工作</mark>包括：<br />
+1、进行相关的回退分析；<br />
+2、备份版本发布所涉及的存储过程、函数等其他数据的存储及回退管理；<br />
+3、备份配置数据，包括数据备份的方式；<br />
+4、备份在线生产平台接口、应用、工作流等版本；<br />
+5、启动回退机制的触发条件；<br />
+6、对变更回退的机制职责的说明，如通知相关部门，确定需要回退的关联系统和回退时间点等。</p>
+<p><mark>回退步骤</mark>通常包括：<br />
+1、通知相关用户系统开始回退；<br />
+2、通知各关联系统进行版本回退；<br />
+3、回退存储过程等数据对象；<br />
+4、配置数据回退；<br />
+5、应用程序、接口程序、工作流等版本回退；<br />
+6、回退宪成通知各周边关联系统；<br />
+7、回退后进行相关测试，保证回退系统能够正常运行；<br />
+8、通知用户回退完成等，</p>
+<h3 id="193-项目文档管理"><a class="markdownIt-Anchor" href="#193-项目文档管理"></a> 19.3 项目文档管理</h3>
+<h4 id="1931-管理基础"><a class="markdownIt-Anchor" href="#1931-管理基础"></a> 19.3.1 管理基础</h4>
+<h5 id="软件文档-分类"><a class="markdownIt-Anchor" href="#软件文档-分类"></a> 软件文档-分类</h5>
+<ol>
+<li class="lvl-3">
+<p><mark>开发文档</mark>，描述开发过程本身，包括：可行性研究报告和项目任务书、需求规格说明、功能规格说明、设计规格说明、开发计划、软件集成和测试计划、质量保证计划、安全和测试信息。</p>
+</li>
+<li class="lvl-3">
+<p><mark>产品文档</mark>，描述开发过程的产物，包括：培训手册、参考手册和用户指南、软件支持手册、产品手册和信息广告。</p>
+</li>
+<li class="lvl-3">
+<p><mark>管理文档</mark>，记录项目管理的信息，例如：每个阶段的进度和进度变更的记录、软件变更情况的记录、开发团队的职责定义、项目计划、项目阶段报告、配置管理计划。</p>
+</li>
+</ol>
+<h5 id="软件文档-质量分级"><a class="markdownIt-Anchor" href="#软件文档-质量分级"></a> 软件文档-质量分级</h5>
+<p>文档质量通常可分为4级：</p>
+<ol>
+<li class="lvl-3">
+<p>最低限度文档（1级文档）。开发者自用程序。</p>
+</li>
+<li class="lvl-3">
+<p>内部文档（2级文档）。没有与其他用户共享的专用程序。</p>
+</li>
+<li class="lvl-3">
+<p>工作文档（3级文档）。由同一单位内若干人联合开发的程序，或可被其他单位使用的程序。</p>
+</li>
+<li class="lvl-3">
+<p>正式文档（4级文档）。那些要正式发行供普遍使用的软件产品、关键性程序或具有重复管理应用性质（如工资计算）的程序。</p>
+</li>
+</ol>
+<h4 id="1932-规则和方法"><a class="markdownIt-Anchor" href="#1932-规则和方法"></a> 19.3.2 规则和方法</h4>
+<p>信息系统文档的规范化管理主要体现在<mark>文档书写规范</mark>、<mark>图表编号规则</mark>、<mark>文档目录编写标准</mark>和<mark>文档管理制度</mark>等方面。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/05/19/X2Wn74duzFVRtHb.jpg" title="361.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/05/19/X2Wn74duzFVRtHb.jpg" alt="361.jpg" /></a></p>
+<h3 id="194-本章练习"><a class="markdownIt-Anchor" href="#194-本章练习"></a> 19.4 本章练习</h3>
+<h4 id="1选择题"><a class="markdownIt-Anchor" href="#1选择题"></a> 1.选择题</h4>
+<p>（1）配置管理是为了系统地控制配置变更，在信息系统项目的整个生命周期中维持配置的____和____。<br />
+A.完整性  可跟踪性<br />
+B.完整性  真实性<br />
+C.高效性  可跟踪性<br />
+D.高效性  真实性</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（2）____负责在整个项目生命周期中进行配置管理的主要实施活动。<br />
+A.配置管理负责人<br />
+B.配置项负责人<br />
+C.项目经理<br />
+D.配置管理员</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（3）若对配置项进行更改，配置项状态为____。当配置项修改完毕并重新通过评审时，其状态变为____。<br />
+A.修改  正式<br />
+B.草稿  正式<br />
+C.草稿  修改<br />
+D.正式  草稿</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（4）配置管理的日常管理活动主要包括：制订配置管理计划、配置项识别、配置项控制、配置状态报告、（ ）、配置管理回顾与改进等。<br />
+A.配置审计<br />
+B.配置变更<br />
+C.配置项重新定义<br />
+D.配置管理</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（5）对于大型的变更，可以召开相关的变更方案论证会议，通常需要由____（相关技术和经济方面的专家组成）进行相关论证。<br />
+A.变更控制委员会 CCB<br />
+B.变更实施委员会<br />
+C.变更顾问委员会<br />
+D.配置管理委员会</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<p>（6）对于信息系统开发项目来说，其文档一般分为开发文档、产品文档和____。<br />
+A.管理文档<br />
+B.应用文档<br />
+C.指南文档<br />
+D.规范文档</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（7）对于信息系统开发项目来说，参考手册和用户指南属于____。<br />
+A.规划文档<br />
+B.开发文档<br />
+C.配置文档<br />
+D.产品文档</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<h4 id="2判断题"><a class="markdownIt-Anchor" href="#2判断题"></a> 2.判断题</h4>
+<p>判断下列表述正误，正确的选√，错误的选×。<br />
+（1）配置项是信息系统组件或与其有关的项目，包括软件和各种文档，不包括硬件。<br />
+（2）合同变更控制是规定合同修改的过程，合同变更控制应当单独执行，不要与整体变更控制结合起来。<br />
+（3）变更管理虽然遵循一致的工作过程，但需要针对不同类型的变更，明确其不同的控制要求。</p>
+<details> <summary>Answer</summary> 参考答案：（1）×（2）×（3）√ </details>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/PM/'>
+                            PM
+                        </a>
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E6%95%99%E7%A8%8B/'>
+                            信息系统项目管理师教程
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%AB%98%E9%A1%B9/'>
+                            高项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

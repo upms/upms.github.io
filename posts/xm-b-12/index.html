@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="第12章-项目质量管理" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    第12章-项目质量管理
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：7.3k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC12%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 第12章-项目质量管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#121-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 12.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1211-%E8%B4%A8%E9%87%8F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 12.1.1 质量与项目质量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 质量</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 项目质量</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1212-%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 12.1.2 质量管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 质量管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%96%B9%E9%92%88%E4%B8%8E%E8%B4%A8%E9%87%8F%E7%9B%AE%E6%A0%87"><span class="post-toc-text"> 质量方针与质量目标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%8C%89%E6%9C%89%E6%95%88%E6%80%A7%E9%80%92%E5%A2%9E%E6%8E%92%E5%88%97%E7%9A%84%E4%BA%94%E7%A7%8D%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E6%B0%B4%E5%B9%B3"><span class="post-toc-text"> 按有效性递增排列的五种质量管理水平</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1213-%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E4%BC%91%E7%B3%BB"><span class="post-toc-text"> 12.1.3 质量管理标准休系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#gbt19000%E7%B3%BB%E5%88%97%E6%A0%87%E5%87%86"><span class="post-toc-text"> GB&#x2F;T19000系列标准</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%A8%E9%9D%A2%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 全面质量管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1214-%E7%AE%A1%E7%90%86%E6%96%B0%E5%AE%9E%E8%B7%B5"><span class="post-toc-text"> 12.1.4 管理新实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#pdca"><span class="post-toc-text"> PDCA</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#122-%E9%A1%B9%E7%9B%AE%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 12.2 项目质量管理过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1221-%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="post-toc-text"> 12.2.1 过程概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 规划质量管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 管理质量</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 控制质量</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1222-%E8%A3%81%E5%89%AA%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="post-toc-text"> 12.2.2 裁剪考虑因素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1223-%E6%95%8F%E6%8D%B7%E4%B8%8E%E9%80%82%E5%BA%94%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 12.2.3 敏捷与适应方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#123-%E8%A7%84%E5%88%92%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 12.3 规划质量管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 规划质量管理-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86-itto"><span class="post-toc-text"> 规划质量管理-ITTO</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 质量管理计划</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%B5%8B%E9%87%8F%E6%8C%87%E6%A0%87"><span class="post-toc-text"> 质量测量指标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="post-toc-text"> 数据分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90"><span class="post-toc-text"> 成本效益分析</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%88%90%E6%9C%ACcoq"><span class="post-toc-text"> 质量成本（COQ）</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%8E%B0"><span class="post-toc-text"> 数据表现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="post-toc-text"> 流程图</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E9%80%BB%E8%BE%91%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 逻辑数据模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E6%A3%80%E6%9F%A5%E7%9A%84%E8%A7%84%E5%88%92"><span class="post-toc-text"> 测试与检查的规划</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#124-%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 12.4 管理质量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 管理质量-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-itto"><span class="post-toc-text"> 管理质量-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 管理质量-相关概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E8%BE%93%E5%87%BA"><span class="post-toc-text"> 管理质量-输出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A"><span class="post-toc-text"> 质量报告</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%AF%84%E4%BC%B0%E6%96%87%E4%BB%B6"><span class="post-toc-text"> 测试与评估文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E6%8A%80%E6%9C%AF-%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="post-toc-text"> 管理质量-技术-数据收集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%A0%B8%E5%AF%B9%E5%8D%95"><span class="post-toc-text"> 核对单</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E6%8A%80%E6%9C%AF-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%8E%B0"><span class="post-toc-text"> 管理质量-技术-数据表现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9B%A0%E6%9E%9C%E5%9B%BE"><span class="post-toc-text"> 因果图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="post-toc-text"> 直方图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="post-toc-text"> 散点图</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E6%8A%80%E6%9C%AF-%E5%AE%A1%E8%AE%A1"><span class="post-toc-text"> 管理质量-技术-审计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%A8%E9%87%8F-%E6%8A%80%E6%9C%AF-%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF"><span class="post-toc-text"> 管理质量-技术-其他技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91x%E7%9A%84%E8%AE%BE%E8%AE%A1dfx"><span class="post-toc-text"> 面向X的设计（DfX）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%94%B9%E8%BF%9B%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 质量改进方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#125-%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F"><span class="post-toc-text"> 12.5 控制质量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 控制质量-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F-itto"><span class="post-toc-text"> 控制质量-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 控制质量-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E6%B5%8B%E9%87%8F%E7%BB%93%E6%9E%9C"><span class="post-toc-text"> 质量控制测量结果</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%A0%B8%E5%AE%9E%E7%9A%84%E5%8F%AF%E4%BA%A4%E4%BB%98%E6%88%90%E6%9E%9C"><span class="post-toc-text"> 核实的可交付成果</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%A0%B8%E6%9F%A5%E8%A1%A8"><span class="post-toc-text"> 核查表</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E5%9B%BE"><span class="post-toc-text"> 控制图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%B8%83%E7%A7%8D%E5%9F%BA%E6%9C%AC%E8%B4%A8%E9%87%8F%E5%B7%A5%E5%85%B7"><span class="post-toc-text"> 七种基本质量工具</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%92%8C%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7"><span class="post-toc-text"> 质量管理和控制工具</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B8%95%E7%B4%AF%E6%89%98%E5%9B%BE"><span class="post-toc-text"> 帕累托图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BF%87%E7%A8%8B%E5%86%B3%E7%AD%96%E7%A8%8B%E5%BA%8F%E5%9B%BEpdpc"><span class="post-toc-text"> 过程决策程序图（PDPC）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%B3%E8%81%94%E5%9B%BE"><span class="post-toc-text"> 关联图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BC%98%E5%85%88%E7%9F%A9%E9%98%B5"><span class="post-toc-text"> 优先矩阵</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#126-%E6%9C%AC%E7%AB%A0%E7%BB%83%E4%B9%A0"><span class="post-toc-text"> 12.6 本章练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E9%80%89%E6%8B%A9%E9%A2%98"><span class="post-toc-text"> 1.选择题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2%E5%88%A4%E6%96%AD%E9%A2%98"><span class="post-toc-text"> 2.判断题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3%E6%80%9D%E8%80%83%E9%A2%98"><span class="post-toc-text"> 3.思考题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4%E6%A1%88%E4%BE%8B%E9%A2%98"><span class="post-toc-text"> 4.案例题</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="第12章-项目质量管理"><a class="markdownIt-Anchor" href="#第12章-项目质量管理"></a> 第12章-项目质量管理</h2>
+<p><mark>引言</mark></p>
+<p>项目质量管理包括把组织的质量政策应用于规划、管理、控制项目和产品质量要求，以<font color=Red>满足</font>干系人<font color=Red>目标</font>的各个过程。</p>
+<p>项目质量管理以执行组织的名义支持过程的持续改进活动。</p>
+<p>项目质量管理需要兼顾项目管理与项目可交付成果两个方面，它适用于所有项目，无论项目的可付成果具有何种特性。</p>
+<p>质量的测量方法和技术则需专门针对项目所产生的可交付成果类型而定，无论什么项目，若未达到质量要求，都会给某个或全部项目干系人带来严重的负面后果。</p>
+<h3 id="121-管理基础"><a class="markdownIt-Anchor" href="#121-管理基础"></a> 12.1 管理基础</h3>
+<h4 id="1211-质量与项目质量"><a class="markdownIt-Anchor" href="#1211-质量与项目质量"></a> 12.1.1 质量与项目质量</h4>
+<h5 id="质量"><a class="markdownIt-Anchor" href="#质量"></a> 质量</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>反映实体满足主体明确和隐含需求的能力的特性总和–ISO</p>
+</li>
+<li class="lvl-2">
+<p><mark>一组固有特性满足要求的程度</mark>–GB/T19000-2008</p>
+</li>
+<li class="lvl-2">
+<p>质量≠等级</p>
+</li>
+<li class="lvl-2">
+<p>高等级不意味着高质量。</p>
+</li>
+<li class="lvl-2">
+<p><mark>低等级不一定是问题：低质量一定是问题</mark></p>
+</li>
+<li class="lvl-2">
+<p>预防胜于检查。</p>
+</li>
+<li class="lvl-2">
+<p>预防错误的成本通常<mark>远低于</mark>在检查或使用中发现并纠正错误的成本。</p>
+</li>
+</ul>
+<h5 id="项目质量"><a class="markdownIt-Anchor" href="#项目质量"></a> 项目质量</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>从项目作为一次性的活动来看，项目质量体现在由WBS反映出的项目范围内所有的阶段、子项目、项目工作单元的质量构成，即项目的<mark>工作质量</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>从项目作为一项最终产品来看，项目质量体现在其性能或者使用价值上，即项目的<mark>产品质量</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>项目的质量是顺应顾客的要求进行的，不同的顾客有着不同的质量要求，其意图已反映在项目合同中。因此，<mark>项目合同</mark>通常是进行项目质量管理的<mark>主要依据</mark>。</p>
+</li>
+</ul>
+<h4 id="1212-质量管理"><a class="markdownIt-Anchor" href="#1212-质量管理"></a> 12.1.2 质量管理</h4>
+<h5 id="质量管理"><a class="markdownIt-Anchor" href="#质量管理"></a> 质量管理</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>质量管理是指<mark>确定质量方针</mark>、<mark>目标和职责</mark>，并通过质量体系中的<mark>质量规划、质量保证、质量控制</mark>以及<mark>质量改进</mark>来使其实现所有管理职能的全部活动。</p>
+</li>
+<li class="lvl-2">
+<p>质量管理是指为了实现质量目标而进行的所有质量性质的活动。</p>
+</li>
+</ul>
+<h5 id="质量方针与质量目标"><a class="markdownIt-Anchor" href="#质量方针与质量目标"></a> 质量方针与质量目标</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>质量方针</mark>是指“由组织的最高管理者正式发布的该组织<mark>总的质量宗旨和方向</mark>”。它体现了该组织（项目）的质量意识和质量追求，是组织内部的行为准则，也体现了顾客的期望和对顾客做出的承诺。质量方针是总方针的一个组成部分，<mark>由最高管理者批准</mark>。</p>
+</li>
+<li class="lvl-2">
+<p><mark>质量目标</mark>是指“在质量方面所<mark>追求的目的</mark>”，它是落实质量方针的具体要求，它从属于质量方针，应与利润目标、成本目标、进度目标等相协调。<mark>质量目标必须明确、具体</mark>，尽量用定量化的语言进行描述，保证质量目标容易被沟通和理解。质量目标应<mark>分解落实</mark>到各部门及项目的全体成员，以便与实施、检查和考核。</p>
+</li>
+</ul>
+<h5 id="按有效性递增排列的五种质量管理水平"><a class="markdownIt-Anchor" href="#按有效性递增排列的五种质量管理水平"></a> 按有效性递增排列的五种质量管理水平</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>1．代价最大的方法是让<mark>客户发现缺陷</mark>。这种方法可能会导致召回、商誉受损和返工成本。</p>
+</li>
+<li class="lvl-2">
+<p>2．<mark>控制质量</mark>过程包括先检测和<mark>纠正缺陷</mark>，再将可交付成果发送给客户。该过程会带来相关成本，主要是评估成本和内部失败成本。</p>
+</li>
+<li class="lvl-2">
+<p>3．通过<mark>质量保证</mark>检查并纠正<mark>过程</mark>本身。</p>
+</li>
+<li class="lvl-2">
+<p>4．将质量融入项目和产品的<mark>规划和设计</mark>中。</p>
+</li>
+<li class="lvl-2">
+<p>5．在整个组织内创建一种关注并致力遇实现过程和产品质量的<mark>文化</mark>。</p>
+</li>
+</ul>
+<h4 id="1213-质量管理标准休系"><a class="markdownIt-Anchor" href="#1213-质量管理标准休系"></a> 12.1.3 质量管理标准休系</h4>
+<h5 id="gbt19000系列标准"><a class="markdownIt-Anchor" href="#gbt19000系列标准"></a> GB/T19000系列标准</h5>
+<p>包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>GB/T19000：表述质量管理体系基础知识并规定质量管理体系<mark>术语</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>GB/T19001：规定<mark>质量管理体系</mark>要求，用于组织证实其具有提供满足顾客要求和适用的法规要求的产品的能力，目的在于增进顾客满意。</p>
+</li>
+<li class="lvl-2">
+<p>GB/T19002：质量管理体系GB/T19001<mark>应用指南</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>GB/T19004：该标准的目的是<mark>组织业绩改进</mark>和<mark>顾客及其他于系人满意</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>GB/T19011：提供<mark>审核质量和环境管理</mark>体系指南。</p>
+</li>
+</ul>
+<h5 id="全面质量管理"><a class="markdownIt-Anchor" href="#全面质量管理"></a> <mark>全面质量管理</mark></h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>全面质量管理（TQM）是一种全员、全过程、全组织的品质管理。</p>
+</li>
+<li class="lvl-2">
+<p>全面质量管理有4个核心的特征包括：<br />
+1.全员参加的质量管理<br />
+2.全过程的质量管理。<br />
+3.全面方法的质量管理。<br />
+4.全面结果的质量管理。</p>
+</li>
+</ul>
+<h4 id="1214-管理新实践"><a class="markdownIt-Anchor" href="#1214-管理新实践"></a> 12.1.4 管理新实践</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>客户满意。</p>
+</li>
+<li class="lvl-2">
+<p>持续改进：<mark>休哈特提出并经戴明完善的&quot;计划一实施一检查一行动（PDCA）”循环是质量改进的基础</mark>。全面质量管理（<mark>TQM</mark>）、<mark>六西格玛</mark>和<mark>精益六西格玛</mark>等质量改进举措也可提高项目管理的质最以及最终产品、服务或成果的质量。</p>
+</li>
+<li class="lvl-2">
+<p>管理层的责任。项目的成功需要项目团队全体成员的参与。管理层在其质量职责内，肩负着为项目提供具有足够能力的资源的相应责任。</p>
+</li>
+<li class="lvl-2">
+<p>与供应商的互利合作关系。</p>
+</li>
+</ul>
+<h5 id="pdca"><a class="markdownIt-Anchor" href="#pdca"></a> PDCA</h5>
+<p>PDCA循环是美国质量管理专家休哈特博士首先提出的，由戴明采纳、宣传而获得普及，所以又称戴明环。</p>
+<p>PDCA是英语单词Plan(计划)、Do(执行)、Check(检查)和Act(处理)的第一个字母，PDCA循环就是按照这样的顺序进行质量管理，并且循环不止地进行下去的科学程序。</p>
+<p>1、P (plan) 计划，包括方针和目标的确定，以及活动规划的制定。</p>
+<p>2、D (Do) 执行，根据已知的信息，设计具体的方法、方案和计划布局；再根据设计和布局，进行具体运作，实现计划中的内容。</p>
+<p>3、C (Check) 检查，总结执行计划的结果，分清哪些对了，哪些错了，明确效果，找出问题。</p>
+<p>4、A (Action)改进，对总结检查的结果进行处理，对成功的经验加以肯定，并予以标准化；对于失败的教训也要总结，引起重视。对于没有解决的问题，应提交给下一个PDCA循环中去解决。</p>
+<p>以上四个过程不是运行一次就结束，而是周而复始的进行，一个循环完了，解决一些问题，未解决的问题进入下一个循环，这样阶梯式上升的。</p>
+<p>PDCA循环是全面质量管理所应遵循的科学程序。全面质量管理活动的全部过程，就是质量计划的制订和组织实现的过程，这个过程就是按照PDCA循环，不停顿地周而复始地运转的。</p>
+<p>七种基本质量工具（7QC）<br />
+因果图、流程图、直方图、检查表、散点图、排列图 和控制图</p>
+<h3 id="122-项目质量管理过程"><a class="markdownIt-Anchor" href="#122-项目质量管理过程"></a> 12.2 项目质量管理过程</h3>
+<h4 id="1221-过程概述"><a class="markdownIt-Anchor" href="#1221-过程概述"></a> 12.2.1 过程概述</h4>
+<p>项目质量管理（满足要求）</p>
+<h5 id="规划质量管理"><a class="markdownIt-Anchor" href="#规划质量管理"></a> 规划质量管理</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>质量管理计划</mark>、<mark>质量测量指标</mark>、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据收集、数据分析、决策技术、数据表现、测试与检查的规划、会议</p>
+</li>
+</ul>
+<h5 id="管理质量"><a class="markdownIt-Anchor" href="#管理质量"></a> 管理质量</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>质量报告</mark>、<mark>测试与评估文件</mark>、变更请求、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据收集、数据分析、决策技术、数据表现、<mark>审计</mark>、面向X的设计、问题解决、质量改进方法</p>
+</li>
+</ul>
+<h5 id="控制质量"><a class="markdownIt-Anchor" href="#控制质量"></a> 控制质量</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、<mark>可交付成果</mark>、工作绩效<mark>数据</mark>、批准的变更请求、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>核实的</mark>可交付成果、<mark>质量控制测量结果</mark>、工作绩效<mark>信息</mark>、变更请求、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据收集、数据分析、检查、测试/产品评估、数据表现、会议</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/n1OatVJB8T3reDv.jpg" title="154.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/n1OatVJB8T3reDv.jpg" alt="154.jpg" /></a></p>
+<h4 id="1222-裁剪考虑因素"><a class="markdownIt-Anchor" href="#1222-裁剪考虑因素"></a> 12.2.2 裁剪考虑因素</h4>
+<p>裁剪时应考虑的因素包括：政策合规与审计；标准与法规合规性；持续改进；干系人参与</p>
+<h4 id="1223-敏捷与适应方法"><a class="markdownIt-Anchor" href="#1223-敏捷与适应方法"></a> 12.2.3 敏捷与适应方法</h4>
+<p>为引导变更，敏捷或适应型方法要求多个质量与审核步骤贯穿整个项目，而不是在面临项目结束时才执行。</p>
+<p>首先，循环回顾、定期检查质量过程的效果；其次，寻找问题的根本原因；然后，建议实施新的质量改进方法；</p>
+<p>最后，回顾会议评估试验过程，确定是否可行，是否应继续，做出调整或者直接弃用。</p>
+<h3 id="123-规划质量管理"><a class="markdownIt-Anchor" href="#123-规划质量管理"></a> 12.3 规划质量管理</h3>
+<h4 id="规划质量管理-定义-作用"><a class="markdownIt-Anchor" href="#规划质量管理-定义-作用"></a> 规划质量管理-定义、作用</h4>
+<p>规划质量管理是识别项目及其可交付成果的质量要求、标准，并书面描述项目将如何证明符合质量要求、标准的过程。</p>
+<p>主要作用是为在整个项目期间如何管理和核实质量提供指南和方向。</p>
+<h4 id="规划质量管理-itto"><a class="markdownIt-Anchor" href="#规划质量管理-itto"></a> 规划质量管理-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>质量管理计划</mark>、<mark>质量测量指标</mark>、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据收集、数据分析、决策技术、数据表现、测试与检查的规划、会议</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/DhSyf1ptTiJ976I.png" title="155.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/DhSyf1ptTiJ976I.png" alt="155.png" /></a></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/ReY7jdT46btWOXk.png" title="158.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/ReY7jdT46btWOXk.png" alt="158.png" /></a></p>
+<h5 id="质量管理计划"><a class="markdownIt-Anchor" href="#质量管理计划"></a> 质量管理计划</h5>
+<p>是项目管理计划的组成部分，描述如何实施适用的政策、程序和指南以实现质量目标。<br />
+<mark>计划包括但不限于：</mark><br />
+项目采用的质量标准；<br />
+项目的质量目标；<br />
+质量角色与职责；<br />
+需要质量审查的项目可交付成果和过程；<br />
+为项目规划的质量控制和质量管理活动；<br />
+项目使用的质量工具；<br />
+与项目有关的主要程序。</p>
+<h5 id="质量测量指标"><a class="markdownIt-Anchor" href="#质量测量指标"></a> 质量测量指标</h5>
+<p>专用于描述项目或产品属性，以及控制质量过程将如何验证符合程度。</p>
+<p><mark>指标包括但不限于：</mark><br />
+按时完成的任务的百分比、以CPI测量的成本绩效、故障率、识别的日缺陷数量、每<br />
+月总停机时间、每个代码行的错误、客户满意度分数、测试计划所涵盖的需求的百分比（即测试<br />
+覆盖度）。</p>
+<h5 id="数据分析"><a class="markdownIt-Anchor" href="#数据分析"></a> 数据分析</h5>
+<h6 id="成本效益分析"><a class="markdownIt-Anchor" href="#成本效益分析"></a> 成本效益分析</h6>
+<p>是用来估算备选方案优势和劣势的财务分析工具，以确定可以创造最佳效益的备选方案；<br />
+可帮助项目经理确定规划的质量活动是否有效利用了成本；<br />
+达到质量要求的主要效益包括减少返工、提高生产率、降低成本、提升相关方满意度及提升赢<br />
+利能力；<br />
+对每个质量活动进行成本效益分析，就是要比较其可能成本与预期效益。</p>
+<h6 id="质量成本coq"><a class="markdownIt-Anchor" href="#质量成本coq"></a> 质量成本（COQ）</h6>
+<p>在产品生命周期中为预防不符合要求、为评价产品或服务是否符合要求，以及因未达到要求（返工），而发生的所有成本</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/ix72TO51UBGCvcE.jpg" title="157.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/ix72TO51UBGCvcE.jpg" alt="157.jpg" /></a></p>
+<h5 id="数据表现"><a class="markdownIt-Anchor" href="#数据表现"></a> 数据表现</h5>
+<h6 id="流程图"><a class="markdownIt-Anchor" href="#流程图"></a> 流程图</h6>
+<p>用来显示在一个或多个输入转化成一个或多个输出的过程中，所需要的步骤顺序和可能分支。<br />
+有助于了解和估算一个过程的质量成本。<br />
+<mark>将过程（如工艺过程、检验过程、质量改进过程等）用图的形式表示出来。</mark></p>
+<blockquote>
+<p>示例</p>
+</blockquote>
+<pre class="mermaid">graph TD
+    ss((开始)) -->a
+    a(客户投诉) -->b
+    b_input1[[故障检修指南]] -->b
+    b[故障检修工] -->r1
+    r1{故障定位} --  是  -->c
+    r1{故障定位} --  否  -->b
+    c[更换零件] -->r2
+    r2{测试} --  通过  -->d
+    r2{测试} --  否  -->b
+    d[填写工作单] -->e
+    e[通知客户] -->f
+    f[给维修单客户] -->ff
+    ff((结束))</pre>
+<h6 id="逻辑数据模型"><a class="markdownIt-Anchor" href="#逻辑数据模型"></a> 逻辑数据模型</h6>
+<p>使用统一的语言、图形化的展示来有效组织来源多样的业务数据。<br />
+通过对模型的分析和设计，保证数据生产、传递、加工、存储等过程的质量。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/A7jClfSdTag1tQE.jpg" title="159.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/A7jClfSdTag1tQE.jpg" alt="159.jpg" /></a></p>
+</blockquote>
+<h5 id="测试与检查的规划"><a class="markdownIt-Anchor" href="#测试与检查的规划"></a> 测试与检查的规划</h5>
+<p>在规划阶段，项目经理和项目团队决定如何测试或检查产品、可交付成果或服务，以满足干系人的需求和期望，以及如何满足产品的绩效和可靠性目标</p>
+<p>不同行业有不同的测试与检查，可能包括软件项目的α测试和β测试、建筑项目的强度测试、制造和实地测试的检查，以及工程的无损伤测试。</p>
+<h3 id="124-管理质量"><a class="markdownIt-Anchor" href="#124-管理质量"></a> 12.4 管理质量</h3>
+<h4 id="管理质量-定义-作用"><a class="markdownIt-Anchor" href="#管理质量-定义-作用"></a> 管理质量-定义、作用</h4>
+<p>管理质量是把组织的质量政策用于项目，并将质量管理计划转化为可执行的质量活动的过程。</p>
+<p>主要作用：<br />
+①提高实现质量目标的可能性；<br />
+②识别无效过程和导致质量低劣的原因；<br />
+③使用控制质量过程的数据和结果尚干系人展示项目的总体质量状态。</p>
+<p>管理质量过程需要在整个项目期间开展。</p>
+<h4 id="管理质量-itto"><a class="markdownIt-Anchor" href="#管理质量-itto"></a> 管理质量-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>质量报告</mark>、<mark>测试与评估文件</mark>、变更请求、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据收集、数据分析、决策技术、数据表现、<mark>审计</mark>、面向X的设计、问题解决、质量改进方法</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/30/SXyR8DTOFledusw.jpg" title="160.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/30/SXyR8DTOFledusw.jpg" alt="160.jpg" /></a></p>
+</blockquote>
+<h4 id="管理质量-相关概念"><a class="markdownIt-Anchor" href="#管理质量-相关概念"></a> 管理质量-相关概念</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>管理质量</mark>有时被称为“质量保证”，但“管理质量”的定义比“质量保证”更广，因其可用于非项目工作。</p>
+</li>
+<li class="lvl-2">
+<p>在项目管理中，<mark>质量保证</mark>着眼于项目使用的过程，旨在高效地执行项目过程，包括遵守和满足标准，向干系人保证最终产品可以满足他们的需求、期望和要求。</p>
+</li>
+<li class="lvl-2">
+<p><mark>管理质量包括所有质量保证活动</mark>，还与产品设计和过程改进有关。管理质量的工作属于质量成本框架中的一致性工作。</p>
+</li>
+</ul>
+<hr />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>管理质量过程执行在项目质量管理计划中所定义的一系列有计划、有系统的行动和过程，有助于：<br />
+1.通过执行有关产品特定方面的设计准则，设计出最优的成熟产品；<br />
+2.建立信心，相信通过质量保证工具和技术（如质量审计和故障分析）可以使未来输出在完工时满足特定的需求和期望；<br />
+3.确保使用质量过程并确保其使用能够满足项目的质量目标；<br />
+4.提高过程和活动的效率与效果，获得更好的成果和绩效并提高干系人的满意度。</p>
+</li>
+</ul>
+<hr />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>管理质量是所有人的共同职责，包括项目经理、项目团队、项目发起人、执行组织的管理层，甚至是客户。</p>
+</li>
+<li class="lvl-2">
+<p>参与质量管理工作的程度取决与所在行业和项目管理风格。</p>
+</li>
+<li class="lvl-2">
+<p>在敏捷型项目中，整个项目期间的质量管理由所有团队成员执行；但在传统项目中，质量管理通常是特定团队成员的职责。</p>
+</li>
+</ul>
+<h4 id="管理质量-输出"><a class="markdownIt-Anchor" href="#管理质量-输出"></a> 管理质量-输出</h4>
+<h5 id="质量报告"><a class="markdownIt-Anchor" href="#质量报告"></a> 质量报告</h5>
+<p>质量报告可能是图形、数据或定性文件，其中包含的信息可帮助其他过程和部门采取纠正措施，以实现项目质量期望。质量报告的信息可以包含团队上报的质量管理问题，针对过程、项目和产品的改善建议，纠正措施建议（包括返工、缺陷/漏洞补救、100%检查等），以及在控制质量过程中发现的情况的概述。</p>
+<h5 id="测试与评估文件"><a class="markdownIt-Anchor" href="#测试与评估文件"></a> 测试与评估文件</h5>
+<p>可基于行业需求和组织模板创建测试与评估文件。它们是控制质量过程的输入，用与评估质量目标的实现情况。这些文件可能包括专门的核对单和详尽的需求跟踪矩阵。</p>
+<h4 id="管理质量-技术-数据收集"><a class="markdownIt-Anchor" href="#管理质量-技术-数据收集"></a> 管理质量-技术-数据收集</h4>
+<h5 id="核对单"><a class="markdownIt-Anchor" href="#核对单"></a> 核对单</h5>
+<p>是一种结构化工具，通常具体列出各项内容，用来核实所要求的一系列步骤是否已得到执行。<br />
+质量核对单应该涵盖在范围基准中定义的验收标准。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/cNnhAmDdJkCFgYT.png" title="image-1.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/cNnhAmDdJkCFgYT.png" alt="image-1.png" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/image-1.png) -->
+<h4 id="管理质量-技术-数据表现"><a class="markdownIt-Anchor" href="#管理质量-技术-数据表现"></a> 管理质量-技术-数据表现</h4>
+<h5 id="因果图"><a class="markdownIt-Anchor" href="#因果图"></a> 因果图</h5>
+<p>又称鱼骨图、why-why分析图、石川图。<br />
+将问题陈述的原因分解为离散的分支，有助于识别问题的主要原因或根本原因。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/M9paABxwsNPz7hb.jpg" title="167.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/M9paABxwsNPz7hb.jpg" alt="167.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/167.jpg) -->
+<h5 id="直方图"><a class="markdownIt-Anchor" href="#直方图"></a> 直方图</h5>
+<p>种特殊形式的条形图，用于描述集中趋势、分散程度和统计分布形状。<br />
+不考虑时间对分布内的变化的影响。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/68wzn5E1OhkvVxU.jpg" title="168.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/68wzn5E1OhkvVxU.jpg" alt="168.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/aFBE6dl21GUK7mv.jpg" title="169.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/aFBE6dl21GUK7mv.jpg" alt="169.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/jqv9adLMG2YDuFR.jpg" title="170.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/jqv9adLMG2YDuFR.jpg" alt="170.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/168.jpg) -->
+<!-- ![alt text](/img/xmm/169.jpg) -->
+<!-- ![alt text](/img/xmm/170.jpg) -->
+<h5 id="散点图"><a class="markdownIt-Anchor" href="#散点图"></a> 散点图</h5>
+<p>标有许多坐标点（X,Y），解释因变量Y相对于自变量X的变化。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/ptz6OD5LQk4HiNg.jpg" title="171.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/ptz6OD5LQk4HiNg.jpg" alt="171.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/171.jpg) -->
+<h4 id="管理质量-技术-审计"><a class="markdownIt-Anchor" href="#管理质量-技术-审计"></a> 管理质量-技术-审计</h4>
+<p>审计是用来确定项目活动是否遵循了组织和项目的政策、过程与程序的一种结构化的、且独立的过程。</p>
+<p>质量审计，目标一般包括：<br />
+√ 识别全部正在实施的良好及最佳实践（扬善）<br />
+√ 识别全部违规做法、差距及不足（惩恶）<br />
+√ 分享所在组织和/或行业中类似项目的良好实践（互）<br />
+√ 积极、主动地提供协助，以改进过程的执行，从而帮助团队提高生产效率（助）<br />
+√ 强调每次审计都应对组织经验教训的积累做出贡献（淀）</p>
+<h4 id="管理质量-技术-其他技术"><a class="markdownIt-Anchor" href="#管理质量-技术-其他技术"></a> 管理质量-技术-其他技术</h4>
+<h5 id="面向x的设计dfx"><a class="markdownIt-Anchor" href="#面向x的设计dfx"></a> 面向X的设计（DfX）</h5>
+<p>面向X的设计（DfX）是产品设计期间可采用的一系列技术指南，旨在优化设计的特定方面，可以控制或提高产品最终特性。DX中的X可以是产品开发的不同方面，例如可靠性、调配、装配、制造、成本、服务、可用性、安全性和质量。使用DfX可以降低成本、改进质量、提高绩效和客户满意度。</p>
+<h5 id="质量改进方法"><a class="markdownIt-Anchor" href="#质量改进方法"></a> 质量改进方法</h5>
+<p>质量改进方法。质量改进的开展，可基于质量控制过程的发现和建议、质量审计的发现或管理质量过程的问题解决。计划一实施一检查一行动和六西格玛是最常用于分析和评估改进机会的两种质量改进工具。</p>
+<h3 id="125-控制质量"><a class="markdownIt-Anchor" href="#125-控制质量"></a> 12.5 控制质量</h3>
+<h4 id="控制质量-定义-作用"><a class="markdownIt-Anchor" href="#控制质量-定义-作用"></a> 控制质量-定义、作用</h4>
+<p>控制质量是为了评估绩效，确保项目输出完整、正确直满足客户期望，而监督和记录质量管理活动执行结果的过程。</p>
+<p>主要作用：<br />
+①核实项目可交付成果和工作已经达到主要干系人的质量要求，可供最终验收；<br />
+②确定项目输出是否达到预期目的，这些输出需要满足所有适用标准、要求、法规和规范。</p>
+<p>控制质量过程需要在整个项目期间开展。</p>
+<h4 id="控制质量-itto"><a class="markdownIt-Anchor" href="#控制质量-itto"></a> 控制质量-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、<mark>可交付成果</mark>、工作绩效<mark>数据</mark>、批准的变更请求、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>核实的</mark>可交付成果、<mark>质量控制测量结果</mark>、工作绩效<mark>信息</mark>、变更请求、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据收集、数据分析、检查、测试/产品评估、数据表现、会议</p>
+</li>
+</ul>
+<p>控制质量过程的目的是在用户验收和最终交付之前测量产品或服务的完整性、合规性和适用性。<br />
+本过程通过测量所有步骤、属性和变量，来核实与规划阶段所描述规范的一致性和合规性。<br />
+在整个项目期间应执行质量控制，<mark>用可靠的数据来证明</mark>项目已经达到发起人和/或客户的验收标准。</p>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/EcMdloVsGFkpHJb.jpg" title="174.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/EcMdloVsGFkpHJb.jpg" alt="174.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/174.jpg) -->
+<h4 id="控制质量-相关概念"><a class="markdownIt-Anchor" href="#控制质量-相关概念"></a> 控制质量-相关概念</h4>
+<h5 id="质量控制测量结果"><a class="markdownIt-Anchor" href="#质量控制测量结果"></a> 质量控制测量结果</h5>
+<p>是对质量控制活动结果的书面记录，应以质量管理计划所确定的格式加以记录。</p>
+<h5 id="核实的可交付成果"><a class="markdownIt-Anchor" href="#核实的可交付成果"></a> 核实的可交付成果</h5>
+<p>控制质量过程的一个目的就是确定可交付成果的正确性。开展控制质量过程的结果是核实的可交付成果，后者又是确认范围过程的一项输入，以便正式验收。如果存在任何与可交付成果有关的变更请求或改进事项，可能会执行变更、开展检查并重新核实。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/31gKafovjpx4eb8.jpg" title="175.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/31gKafovjpx4eb8.jpg" alt="175.jpg" /></a></p>
+<!-- ![alt text](/img/xmm/175.jpg) -->
+<h5 id="核查表"><a class="markdownIt-Anchor" href="#核查表"></a> 核查表</h5>
+<p>又称计数表，用于合理排列各种事项，以便有效地收集关于潜在质量问题的有用数据。<br />
+在开展检查以识别缺陷时，用核查表收集属性数据就特别方便，例如关于缺陷数量或后果的数据。</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/buJaOy3Un9rl6Qx.jpg" title="176.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/buJaOy3Un9rl6Qx.jpg" alt="176.jpg" /></a></p>
+<!-- ![alt text](/img/xmm/176.jpg) -->
+<h5 id="控制图"><a class="markdownIt-Anchor" href="#控制图"></a> 控制图</h5>
+<p>用来确定一个过程是否稳定，或者是否具有可预测的绩效。</p>
+<p>失控：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>某个数据点超出控制界限；</p>
+</li>
+<li class="lvl-2">
+<p>连续7个点落在均值上方或下方。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/r8ERiXWvudpC9sG.jpg" title="177.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/r8ERiXWvudpC9sG.jpg" alt="177.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/oIcP7FnAfsGWehj.jpg" title="178.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/oIcP7FnAfsGWehj.jpg" alt="178.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/cmgu7yGHxK6rTFB.jpg" title="179.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/cmgu7yGHxK6rTFB.jpg" alt="179.jpg" /></a></p>
+<!-- ![alt text](/img/xmm/177.jpg) -->
+<!-- ![alt text](/img/xmm/179.jpg) -->
+<!-- ![alt text](/img/xmm/178.jpg) -->
+<h5 id="七种基本质量工具"><a class="markdownIt-Anchor" href="#七种基本质量工具"></a> <mark>七种基本质量工具</mark></h5>
+<p>1.因果图<br />
+2.帕累托图<br />
+3.控制图<br />
+4.直方图<br />
+5.散点图<br />
+6.流程图<br />
+7.检查表</p>
+<h5 id="质量管理和控制工具"><a class="markdownIt-Anchor" href="#质量管理和控制工具"></a> 质量管理和控制工具</h5>
+<p>1.亲和图<br />
+2.过程决策程序图（PDPC）<br />
+3.关联图<br />
+4.树形图<br />
+5.优先矩阵<br />
+6.活动网络图<br />
+7.矩阵图</p>
+<h5 id="帕累托图"><a class="markdownIt-Anchor" href="#帕累托图"></a> 帕累托图</h5>
+<p>帕累托法则（二八原理）：<br />
+80%的问题是20%的原因导致的</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/4uHtL25cSZadYzM.jpg" title="186.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/4uHtL25cSZadYzM.jpg" alt="186.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/kmVJeIUYcEdZtL8.jpg" title="187.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/kmVJeIUYcEdZtL8.jpg" alt="187.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/186.jpg) -->
+<!-- ![alt text](/img/xmm/187.jpg) -->
+<h5 id="过程决策程序图pdpc"><a class="markdownIt-Anchor" href="#过程决策程序图pdpc"></a> 过程决策程序图（PDPC）</h5>
+<p>用于理解一个目标与达成此目标的步骤之间的关系。<br />
+PDPC有助于制定应急计划，因为它能帮助团队预测那些可能破坏目标实现的中间环节。<br />
+事先预测可能发生的障碍，从而设计一系列措施以最大可能引向最终目标。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/uWPbjFhK8kOVYlz.jpg" title="188.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/uWPbjFhK8kOVYlz.jpg" alt="188.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/188.jpg) -->
+<h5 id="关联图"><a class="markdownIt-Anchor" href="#关联图"></a> 关联图</h5>
+<p>有助于在包含相互交叉逻辑关系（可有多达50个相关项）的中等复杂情形中创新性地解决问题。</p>
+<h5 id="优先矩阵"><a class="markdownIt-Anchor" href="#优先矩阵"></a> 优先矩阵</h5>
+<p>用来识别关键事项和合适的备选方案，并通过一系列决策，排列出备选方案的优先顺序。<br />
+先对标准排序和加权，再应用于所有备选方案，计算出数学得分，对备选方案排序。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/haUGYnerdQWz3Tp.jpg" title="189.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/haUGYnerdQWz3Tp.jpg" alt="189.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/189.jpg) -->
+<h3 id="126-本章练习"><a class="markdownIt-Anchor" href="#126-本章练习"></a> 12.6 本章练习</h3>
+<h4 id="1选择题"><a class="markdownIt-Anchor" href="#1选择题"></a> 1.选择题</h4>
+<p>（1）以下质量管理水平有效性最高的是____。<br />
+A.在整个组织内创建一种关注并致力于实现过程和产品质量的文化<br />
+B.将质量融入项目和产品的规划和设计中<br />
+C.通过质量保证检查并纠正过程本身，而不仅仅是特殊缺陷<br />
+D.控制质量过程包括先检测和纠正缺陷，再将可交付成果发送给客户</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（2）“为了评估绩效，确保项目输出完整、正确，并满足客户期望，而监督和记录质量管理<br />
+活动执行结果的过程”是项目质量管理过程中的____。<br />
+A.规划质量管理<br />
+B.管理质量<br />
+C.控制质量<br />
+D.改进质量</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<p>（3）项目有关的质量成本中，属于不一致成本的是____。<br />
+A.预防成本<br />
+B.评估成本<br />
+C.破坏性试验损失成本<br />
+D.外部失败成本</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（4）数据表现技术中，“可以对潜在缺陷成因进行分类，展示最应关注领域”的技术称为____。<br />
+A.因果图<br />
+B.亲和图<br />
+C.直方图<br />
+D.散点图</p>
+<details> <summary>Answer</summary> 参考答案：B </details>
+<hr />
+<p><mark>(5）____不属于“控制质量”过程的输出。</mark><br />
+A.质量控制测量结果<br />
+B.质量报告<br />
+C.工作绩效信息<br />
+D.变更请求</p>
+<details> <summary>Answer</summary> 参考答案：B </details>
+<hr />
+<h4 id="2判断题"><a class="markdownIt-Anchor" href="#2判断题"></a> 2.判断题</h4>
+<p>判断下列表述正误，正确的选√，错误的选×。<br />
+（1）工作质量是指产品的使用价值及其属性，而产品质量则是工作质量的保证。<br />
+（2）为引导变更，敏捷方法要求多个质量与审核步骤贯穿整个项目，而不是在面临项目结束时才执行。<br />
+（3）对管理质量负有责任的岗位与团队，包括项目经理、项目团队、项目发起人、执行组织的管理层，甚至是客户。<br />
+（4）在问卷调查中识别的缺陷相关成本可被视为COQ模型中的内部失败成本，给组织带来的影响会超出成本本身。</p>
+<details> <summary>Answer</summary> 参考答案：（1）×（2）√（3）√（4）×
+</details>
+<h4 id="3思考题"><a class="markdownIt-Anchor" href="#3思考题"></a> 3.思考题</h4>
+<p>根据不同的项目和行业领域，项目团队可能需要具备统计控制过程方面的实用知识，以使评估控制质量的输出中所包含的数据。</p>
+<p>请简述预防和检查、属性抽样和变量抽样、公差和控制界限这些术语的差别。</p>
+<p>参考答案：略</p>
+<h4 id="4案例题"><a class="markdownIt-Anchor" href="#4案例题"></a> 4.案例题</h4>
+<p>阅读下列说明，回答问题1至问题2，将解答填入答题纸的对应栏内。</p>
+<p>【说明】<br />
+某系统集成企业承接了一个环保监测系统项目，为某市的环保局建设水污染自动监测系统。该企业以往的主要业务领域为视频监控及信号分析处理，对自动控制系统也有较强的技术能力，<br />
+但从未在环保领域开发应用。该企业的老李被任命为项目经理。</p>
+<p>该企业已按照ISO/IEC 9001的要求建立了一套质量管理体系，对于项目管理、软件开发等流程均有明确的书面规定。但组织中很多人认为这套管理体系的要求对于项目来说是多余的，条条框框的约束太多，大部分项目经理都在项目结项前才把质量体系要求的文档补齐以便能通过结项审批。组织的质量管理员也习以为常，只要在项目结束前能把文档补齐，就不会干涉项目建设。</p>
+<p>老李组织了技术骨干对客户的需求进行了调研，通过对用户需求分析和整理，项目组直接制订了一个总体的技术方案，然后老李制订了一个较粗糙的项目计划：①对市场上的采集设备进行调研，选择一款进行采购：②利用组织已有的控制软件平台直接进行修改并发：③待设备选定后，将软件与采集设备进行联调实验，实现软件与设备的控制功能：④联调成功后，按技术方案开展了整个项目的实施工作。</p>
+<p>在软件与采集设备的联调过程中，老李请环保局的客户代表来检查工作。客户代表发现由于项目组不了解环保领域的一些参数指标，完成的系统达不到客户方的要求。由于项目从一开始就没有完整的项目文档，老张为了避免再出现重大问题，只好重新进行需求调研。客户方很不满意，既担心项目不能按时上线又担心项目质量无法保证。</p>
+<p>【问题1】<br />
+该企业的质量管理体系可能存在哪些问题？<br />
+【问题2】<br />
+针对以上问题，应如何改进？</p>
+<details> <summary>Answer</summary>
+<p>解答：</p>
+<p>【问题1】<br />
+存在问题：<br />
+（1）质量管理体系的要求不符合公司实际，缺乏指导意义。<br />
+（2）质量管理体系培训不到位。<br />
+（3）质量管理体系没有改进机制。<br />
+（4）质量管理人员没有进行监督。</p>
+<p>【问题2】<br />
+改进建议：<br />
+（1）修改质量体系文件，应由项目经理和技术人员参与，使其符合项目实际管理需要。<br />
+（2）质量体系文件发布后，应要求项目组必须严格执行，设置质量管理人员进行检查和监督。<br />
+在项目实施过程中如发现有不适合的地方应提出改进建议，对质量体系不断完善改进。</p>
+</details>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/PM/'>
+                            PM
+                        </a>
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E6%95%99%E7%A8%8B/'>
+                            信息系统项目管理师教程
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%AB%98%E9%A1%B9/'>
+                            高项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

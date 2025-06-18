@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-02" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java 热门面试题-02
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：12.4k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rabbitmq-%E4%B8%AD%E6%97%A0%E6%B3%95%E8%B7%AF%E7%94%B1%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%9A%E5%8E%BB%E5%88%B0%E5%93%AA%E9%87%8C"><span class="post-toc-text"> RabbitMQ 中无法路由的消息会去到哪里？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%89%E5%B1%82-b-%E6%A0%91%E8%83%BD%E5%AD%98%E5%A4%9A%E5%B0%91%E6%95%B0%E6%8D%AE"><span class="post-toc-text"> MySQL 三层 B+ 树能存多少数据？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-b-%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="post-toc-text"> 1. B+ 树的基本结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%AF%8F%E5%B1%82%E8%8A%82%E7%82%B9%E7%9A%84%E5%AE%B9%E9%87%8F"><span class="post-toc-text"> 2. 计算每层节点的容量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%81%87%E8%AE%BE%E6%9D%A1%E4%BB%B6"><span class="post-toc-text"> 假设条件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%85%E9%83%A8%E8%8A%82%E7%82%B9%E7%9A%84%E5%AE%B9%E9%87%8F"><span class="post-toc-text"> 内部节点的容量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%AE%B9%E9%87%8F"><span class="post-toc-text"> 叶子节点的容量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%B8%89%E5%B1%82-b-%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E8%83%BD%E5%8A%9B"><span class="post-toc-text"> 3. 三层 B+ 树的存储能力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="post-toc-text"> 4. 影响因素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 5. 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kafka%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8A%9B%E5%BC%83-zookeeper"><span class="post-toc-text"> Kafka为什么要抛弃 Zookeeper？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%A6%E7%BB%86%E6%8F%8F%E8%BF%B0%E4%B8%80%E6%9D%A1-sql-%E8%AF%AD%E5%8F%A5%E5%9C%A8-mysql-%E4%B8%AD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 详细描述一条 SQL 语句在 MySQL 中的执行过程。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kafka-%E4%B8%AD-zookeeper-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> Kafka 中 Zookeeper 的作用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%BA%8B%E5%8A%A1%E7%9A%84"><span class="post-toc-text"> MySQL 是如何实现事务的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BA%8B%E5%8A%A1%E6%97%A5%E5%BF%97"><span class="post-toc-text"> 1. 事务日志</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%94%81%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 2. 锁机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%A4%9A%E7%89%88%E6%9C%AC%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6mvcc"><span class="post-toc-text"> 3. 多版本并发控制（MVCC）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="post-toc-text"> 4. 事务隔离级别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A42pc"><span class="post-toc-text"> 5. 两阶段提交（2PC）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E6%A3%80%E6%9F%A5%E7%82%B9checkpoint"><span class="post-toc-text"> 6. 检查点（Checkpoint）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E5%B4%A9%E6%BA%83%E6%81%A2%E5%A4%8D"><span class="post-toc-text"> 7. 崩溃恢复</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-java-8-%E7%A7%BB%E9%99%A4%E4%BA%86%E6%B0%B8%E4%B9%85%E4%BB%A3permgen%E5%B9%B6%E5%BC%95%E5%85%A5%E4%BA%86%E5%85%83%E7%A9%BA%E9%97%B4metaspace"><span class="post-toc-text"> 为什么 Java 8 移除了永久代（PermGen）并引入了元空间（Metaspace）？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%94%B9%E8%BF%9B"><span class="post-toc-text"> 1. 内存管理改进</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="post-toc-text"> 2. 性能提升</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%AE%80%E5%8C%96%E8%B0%83%E4%BC%98"><span class="post-toc-text"> 3. 简化调优</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%B8%8E-jrockit-%E9%9B%86%E6%88%90"><span class="post-toc-text"> 4. 与 JRockit 集成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E5%85%83%E7%A9%BA%E9%97%B4%E7%9A%84%E7%81%B5%E6%B4%BB%E6%80%A7"><span class="post-toc-text"> 5. 元空间的灵活性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-kafka-%E4%B8%AD%E5%85%B3%E4%BA%8E%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text"> 说一下 Kafka 中关于事务消息的实现？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%BA%8B%E5%8A%A1%E7%9A%84%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> MySQL 事务的二阶段提交是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5voting-phase"><span class="post-toc-text"> 1. 准备阶段（Voting Phase）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%8F%90%E4%BA%A4%E9%98%B6%E6%AE%B5completion-phase"><span class="post-toc-text"> 2. 提交阶段（Completion Phase）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text"> 注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-rocketmq-%E4%B8%AD%E5%85%B3%E4%BA%8E%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text"> 说一下 RocketMQ 中关于事务消息的实现？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E6%B5%81%E7%A8%8B"><span class="post-toc-text"> 1. 事务消息流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6"><span class="post-toc-text"> 2. 事务消息的关键组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E7%8A%B6%E6%80%81"><span class="post-toc-text"> 3. 事务消息的状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BA%8B%E5%8A%A1%E7%8A%B6%E6%80%81%E5%9B%9E%E6%9F%A5%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 4. 事务状态回查机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E5%AD%98%E5%82%A8"><span class="post-toc-text"> 5. 事务消息的存储</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="post-toc-text"> 6. 事务消息的可靠性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="post-toc-text"> 示例代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E9%95%BF%E4%BA%8B%E5%8A%A1%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="post-toc-text"> MySQL 中长事务可能会导致哪些问题？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rocketmq-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9%E4%BD%A0%E8%BF%98%E4%BA%86%E8%A7%A3%E8%BF%87%E5%88%AB%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="post-toc-text"> RocketMQ 的事务消息有什么缺点？你还了解过别的事务消息实现吗？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rocketmq%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="post-toc-text"> RocketMQ事务消息的缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF%E5%AE%9E%E7%8E%B0"><span class="post-toc-text"> 其他事务消息实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E7%9A%84-mvcc-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> MySQL 中的 MVCC 是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mvcc-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="post-toc-text"> MVCC 的基本思想</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mvcc-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="post-toc-text"> MVCC 的工作原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mvcc-%E7%9A%84%E4%BC%98%E7%82%B9"><span class="post-toc-text"> MVCC 的优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mvcc-%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="post-toc-text"> MVCC 的缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="post-toc-text"> 为什么需要消息队列？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="post-toc-text"> MySQL 中的事务隔离级别有哪些？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E6%A8%A1%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="post-toc-text"> 说一下消息队列的模型有哪些？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%82%B9%E5%AF%B9%E7%82%B9%E6%A8%A1%E5%9E%8Bpoint-to-point-p2p"><span class="post-toc-text"> 1. 点对点模型（Point-to-Point, P2P）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8Bpublishsubscribe-pubsub"><span class="post-toc-text"> 2. 发布&#x2F;订阅模型（Publish&#x2F;Subscribe, Pub&#x2F;Sub）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-2"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-2"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E6%A8%A1%E5%9E%8Brequestreply"><span class="post-toc-text"> 3. 请求&#x2F;响应模型（Request&#x2F;Reply）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-3"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-3"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%89%87%E5%87%BA%E6%A8%A1%E5%9E%8Bfanout"><span class="post-toc-text"> 4. 扇出模型（Fanout）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-4"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-4"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8Btopic"><span class="post-toc-text"> 5. 主题模型（Topic）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-5"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-5"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8Bdead-letter-queue-dlq"><span class="post-toc-text"> 6. 死信队列模型（Dead Letter Queue, DLQ）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-6"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-6"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8Bpriority-queue"><span class="post-toc-text"> 7. 优先级队列模型（Priority Queue）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-7"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-7"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-7"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8Bdelayed-queue"><span class="post-toc-text"> 8. 延迟队列模型（Delayed Queue）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%B9%E7%82%B9-8"><span class="post-toc-text"> 特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-8"><span class="post-toc-text"> 工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-8"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-8"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E9%BB%98%E8%AE%A4%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E8%BF%99%E4%B8%AA%E7%BA%A7%E5%88%AB"><span class="post-toc-text"> MySQL 默认的事务隔离级别是什么？为什么选择这个级别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9repeatable-read%E4%BD%9C%E4%B8%BA%E9%BB%98%E8%AE%A4%E7%BA%A7%E5%88%AB"><span class="post-toc-text"> 为什么选择REPEATABLE READ作为默认级别？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="post-toc-text"> 注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E4%BA%86%E8%A7%A3%E7%9A%84%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%B4%E8%AF%B4%E4%BB%96%E4%BB%AC%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 谈谈你了解的最常见的几种设计模式，说说他们的应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8Fsingleton-pattern"><span class="post-toc-text"> 1. 单例模式（Singleton Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8Ffactory-pattern"><span class="post-toc-text"> 2. 工厂模式（Factory Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8Fobserver-pattern"><span class="post-toc-text"> 3. 观察者模式（Observer Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8Fstrategy-pattern"><span class="post-toc-text"> 4. 策略模式（Strategy Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8Fdecorator-pattern"><span class="post-toc-text"> 5. 装饰器模式（Decorator Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8Fadapter-pattern"><span class="post-toc-text"> 6. 适配器模式（Adapter Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E9%94%81%E7%B1%BB%E5%9E%8B"><span class="post-toc-text"> MySQL 中有哪些锁类型？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%85%A8%E5%B1%80%E9%94%81"><span class="post-toc-text"> 1. 全局锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="post-toc-text"> 2. 表级锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="post-toc-text"> 3. 行级锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%84%8F%E5%90%91%E9%94%81"><span class="post-toc-text"> 4. 意向锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E8%AE%B0%E5%BD%95%E9%94%81record-lock"><span class="post-toc-text"> 5. 记录锁（Record Lock）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E9%97%B4%E9%9A%99%E9%94%81gap-lock"><span class="post-toc-text"> 6. 间隙锁（Gap Lock）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E4%B8%B4%E9%94%AE%E9%94%81next-key-lock"><span class="post-toc-text"> 7. 临键锁（Next-Key Lock）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E8%87%AA%E5%A2%9E%E9%94%81auto-increment-lock"><span class="post-toc-text"> 8. 自增锁（Auto-Increment Lock）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-%E5%85%83%E6%95%B0%E6%8D%AE%E9%94%81metadata-lock-mdl"><span class="post-toc-text"> 9. 元数据锁（Metadata Lock, MDL）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-%E6%AD%BB%E9%94%81"><span class="post-toc-text"> 10. 死锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 什么是策略模式？一般用在什么场景？</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><!-- 
+RabbitMQ 中无法路由的消息会去到哪里？
+MySQL 三层 B+ 树能存多少数据？
+Kafka为什么要抛弃 Zookeeper？
+详细描述一条 SQL 语句在 MySQL 中的执行过程。
+Kafka 中 Zookeeper 的作用？
+MySQL 是如何实现事务的？
+为什么 Java 8 移除了永久代（PermGen）并引入了元空间（Metaspace）？
+说一下 Kafka 中关于事务消息的实现？
+MySQL 事务的二阶段提交是什么？
+说一下 RocketMQ 中关于事务消息的实现？
+MySQL 中长事务可能会导致哪些问题？
+RocketMQ 的事务消息有什么缺点？你还了解过别的事务消息实现吗？
+MySQL 中的 MVCC 是什么？
+为什么需要消息队列？
+MySQL 中的事务隔离级别有哪些？
+说一下消息队列的模型有哪些？
+MySQL 默认的事务隔离级别是什么？为什么选择这个级别？
+谈谈你了解的最常见的几种设计模式，说说他们的应用场景
+MySQL 中有哪些锁类型？
+什么是策略模式？一般用在什么场景？
+-->
+<h2 id="rabbitmq-中无法路由的消息会去到哪里"><a class="markdownIt-Anchor" href="#rabbitmq-中无法路由的消息会去到哪里"></a> RabbitMQ 中无法路由的消息会去到哪里？</h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在RabbitMQ中，无法路由的消息会有不同的处理方式，具体取决于交换器（Exchange）的类型和配置：</span><br><span class="line"></span><br><span class="line">默认交换器（Default Exchange）：</span><br><span class="line">如果消息发送到默认交换器（直接交换器，且路由键为队列名称），而队列不存在，消息将会被丢弃。</span><br><span class="line"></span><br><span class="line">直接交换器（Direct Exchange）：</span><br><span class="line">如果消息的路由键与任何绑定到交换器的队列不匹配，消息将会被丢弃。</span><br><span class="line"></span><br><span class="line">扇形交换器（Fanout Exchange）：</span><br><span class="line">扇形交换器会忽略路由键，将消息发送到所有绑定到它的队列。因此，不存在无法路由的消息。</span><br><span class="line"></span><br><span class="line">主题交换器（Topic Exchange）：</span><br><span class="line">如果消息的路由键与任何绑定到交换器的队列的绑定键不匹配，消息将会被丢弃。</span><br><span class="line"></span><br><span class="line">头交换器（Headers Exchange）：</span><br><span class="line">头交换器根据消息的头信息进行路由。如果消息的头信息与任何绑定到交换器的队列的参数不匹配，消息将会被丢弃。</span><br><span class="line"></span><br><span class="line">备用交换器（Alternate Exchange）：</span><br><span class="line">可以配置一个备用交换器，当消息无法路由到任何队列时，RabbitMQ会将消息发送到备用交换器。备用交换器可以是任何类型的交换器，包括直接、扇形、主题或头交换器。</span><br><span class="line"></span><br><span class="line">消息返回（Message Return）：</span><br><span class="line">如果在发布消息时设置了mandatory标志或immediate标志（immediate标志在RabbitMQ 3.0及以后版本中已弃用），并且消息无法路由到任何队列，RabbitMQ会将消息返回给发送者。发送者可以通过监听返回的消息来处理这些无法路由的消息。</span><br><span class="line"></span><br><span class="line">死信队列（Dead Letter Queue）：</span><br><span class="line">可以配置队列将无法路由的消息、过期消息或被拒绝的消息发送到死信队列。这需要提前设置队列的死信</span><br></pre></td></tr></table></figure>
+<h2 id="mysql-三层-b-树能存多少数据"><a class="markdownIt-Anchor" href="#mysql-三层-b-树能存多少数据"></a> MySQL 三层 B+ 树能存多少数据？</h2>
+<p>在 MySQL 中，B+ 树是 InnoDB 存储引擎用于组织索引和数据的主要数据结构。B+ 树的存储能力取决于树的层数、节点大小以及每个节点能够存储的键值和指针数量。以下详细分析 <strong>三层 B+ 树</strong> 能够存储多少数据。</p>
+<hr />
+<h3 id="1-b-树的基本结构"><a class="markdownIt-Anchor" href="#1-b-树的基本结构"></a> 1. B+ 树的基本结构</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>根节点</strong>：树的顶层节点。</p>
+</li>
+<li class="lvl-2">
+<p><strong>内部节点</strong>：存储键值和指向子节点的指针。</p>
+</li>
+<li class="lvl-2">
+<p><strong>叶子节点</strong>：存储键值和实际数据（或指向数据的指针）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>节点大小</strong>：InnoDB 中，默认的页大小是 <strong>16KB</strong>。</p>
+</li>
+</ul>
+<hr />
+<h3 id="2-计算每层节点的容量"><a class="markdownIt-Anchor" href="#2-计算每层节点的容量"></a> 2. <strong>计算每层节点的容量</strong></h3>
+<h4 id="假设条件"><a class="markdownIt-Anchor" href="#假设条件"></a> <strong>假设条件</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个节点的大小为 <strong>16KB</strong>。</p>
+</li>
+<li class="lvl-2">
+<p>主键是 <strong>8 字节</strong> 的 BIGINT 类型。</p>
+</li>
+<li class="lvl-2">
+<p>每个指针（指向子节点或数据）占用 <strong>6 字节</strong>（InnoDB 的默认值）。</p>
+</li>
+<li class="lvl-2">
+<p>叶子节点存储的是实际数据行，假设每行数据平均占用 <strong>1KB</strong>。</p>
+</li>
+</ul>
+<h4 id="内部节点的容量"><a class="markdownIt-Anchor" href="#内部节点的容量"></a> <strong>内部节点的容量</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个内部节点存储键值和指针。</p>
+</li>
+<li class="lvl-2">
+<p>每个键值对占用 <code>8 字节（键值） + 6 字节（指针） = 14 字节</code>。</p>
+</li>
+<li class="lvl-2">
+<p>节点容量 = 节点大小 / 每个键值对大小 = <code>16KB / 14B ≈ 1170</code> 个键值对。</p>
+</li>
+<li class="lvl-2">
+<p>因此，每个内部节点可以指向 <strong>1170 个子节点</strong>。</p>
+</li>
+</ul>
+<h4 id="叶子节点的容量"><a class="markdownIt-Anchor" href="#叶子节点的容量"></a> <strong>叶子节点的容量</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个叶子节点存储键值和数据行。</p>
+</li>
+<li class="lvl-2">
+<p>每行数据占用 <code>8 字节（键值） + 1KB（数据） = 1032 字节</code>。</p>
+</li>
+<li class="lvl-2">
+<p>节点容量 = 节点大小 / 每行数据大小 = <code>16KB / 1032B ≈ 15</code> 行数据。</p>
+</li>
+</ul>
+<hr />
+<h3 id="3-三层-b-树的存储能力"><a class="markdownIt-Anchor" href="#3-三层-b-树的存储能力"></a> 3. <strong>三层 B+ 树的存储能力</strong></h3>
+<p>三层 B+ 树的结构如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>根节点</strong>：1 个节点，指向 1170 个内部节点。</p>
+</li>
+<li class="lvl-3">
+<p><strong>内部节点</strong>：1170 个节点，每个节点指向 1170 个叶子节点。</p>
+</li>
+<li class="lvl-3">
+<p><strong>叶子节点</strong>：<code>1170 * 1170 = 1,368,900</code> 个节点，每个节点存储 15 行数据。</p>
+</li>
+</ol>
+<p>因此，三层 B+ 树的总存储能力为：</p>
+<p><code>叶子节点数量 * 每节点行数 = 1,368,900 * 15 ≈ 20,533,500 行数据</code></p>
+<hr />
+<h3 id="4-影响因素"><a class="markdownIt-Anchor" href="#4-影响因素"></a> 4. <strong>影响因素</strong></h3>
+<p>上述计算是一个理论值，实际存储能力可能受到以下因素影响：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>键值大小</strong>：如果主键不是 BIGINT，而是更大的数据类型（如 UUID），每节点存储的键值数量会减少。</p>
+</li>
+<li class="lvl-2">
+<p><strong>数据行大小</strong>：如果数据行大小超过 1KB，每节点存储的行数会减少。</p>
+</li>
+<li class="lvl-2">
+<p><strong>填充因子</strong>：节点可能不会完全填满，实际存储量可能略低于理论值。</p>
+</li>
+<li class="lvl-2">
+<p><strong>索引类型</strong>：如果是二级索引，叶子节点存储的是主键值而非数据行，存储能力会更高。</p>
+</li>
+</ul>
+<hr />
+<h3 id="5-总结"><a class="markdownIt-Anchor" href="#5-总结"></a> 5. <strong>总结</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在默认配置下（16KB 页大小、8 字节主键、1KB 数据行），<strong>三层 B+ 树</strong> 可以存储约 <strong>2000 万行数据</strong>。</p>
+</li>
+<li class="lvl-2">
+<p>如果数据行更小或键值更小，存储能力会进一步增加。</p>
+</li>
+<li class="lvl-2">
+<p>如果需要存储更多数据，B+ 树会通过增加层数来扩展容量。例如，四层 B+ 树可以存储约 <code>1170 * 1170 * 1170 * 15 ≈ 240 亿行数据</code>。</p>
+</li>
+</ul>
+<p>通过合理设计表结构和索引，可以充分利用 B+ 树的高效存储和查询能力。</p>
+<h2 id="kafka为什么要抛弃-zookeeper"><a class="markdownIt-Anchor" href="#kafka为什么要抛弃-zookeeper"></a> Kafka为什么要抛弃 Zookeeper？</h2>
+<p>Kafka 抛弃 Zookeeper 的原因主要有以下几点：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>简化架构</strong>：Zookeeper 是一个复杂的分布式协调服务，引入它会增加系统的复杂性和维护成本。Kafka 采用了更简单的设计，没有 Zookeeper 的复杂性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>提高性能</strong>：Kafka 不需要 Zookeeper 来进行集群管理和协调，这可以显著提高系统的性能。</p>
+</li>
+<li class="lvl-3">
+<p><strong>更好的扩展性</strong>：Kafka 集群可以通过增加节点来扩展，而不需要像 Zookeeper 那样进行复杂的配置和管理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>更好的安全性</strong>：Kafka 集群可以通过配置来控制访问权限，而不需要像 Zookeeper 那样进行复杂的权限管理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>更好的可维护性</strong>：Kafka 集群的管理和维护更加简单，不需要像 Zookeeper 那样进行复杂的配置和管理。<br />
+综上所述，Kafka 抛弃 Zookeeper 的原因是为了简化架构、提高性能、更好的扩展性、更好的安全性和更好的可维护性。</p>
+</li>
+</ol>
+<h2 id="详细描述一条-sql-语句在-mysql-中的执行过程"><a class="markdownIt-Anchor" href="#详细描述一条-sql-语句在-mysql-中的执行过程"></a> 详细描述一条 SQL 语句在 MySQL 中的执行过程。</h2>
+<p>一条 SQL 语句在 MySQL 中的执行过程可以分为以下几个步骤：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>客户端发送 SQL 语句</strong>：客户端通过网络连接到 MySQL 服务器，并发送 SQL 语句。</p>
+</li>
+<li class="lvl-3">
+<p><strong>服务器接收 SQL 语句</strong>：MySQL 服务器接收到客户端发送的 SQL 语句。</p>
+</li>
+<li class="lvl-3">
+<p><strong>查询优化器选择执行计划</strong>：MySQL 查询优化器根据 SQL 语句和表结构，选择一个最优的执行计划。</p>
+</li>
+<li class="lvl-3">
+<p><strong>执行引擎执行 SQL 语句</strong>：MySQL 执行引擎根据查询优化器选择的执行计划，执行 SQL 语句。 执行引擎会从存储引擎中读取数据，并进行计算和处理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>存储引擎返回结果</strong>：存储引擎将执行结果返回给执行引擎。</p>
+</li>
+<li class="lvl-3">
+<p><strong>执行引擎返回结果给客户端</strong>：执行引擎将结果返回给客户端。</p>
+</li>
+<li class="lvl-3">
+<p><strong>客户端接收结果</strong>：客户端接收到执行引擎返回的结果。</p>
+</li>
+<li class="lvl-3">
+<p><strong>客户端处理结果</strong>：客户端根据需要处理结果，例如显示结果、保存结果等。</p>
+</li>
+</ol>
+<h2 id="kafka-中-zookeeper-的作用"><a class="markdownIt-Anchor" href="#kafka-中-zookeeper-的作用"></a> Kafka 中 Zookeeper 的作用？</h2>
+<p>Kafka 中 Zookeeper 的作用主要有以下几点：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>集群管理</strong>：Zookeeper 用于管理 Kafka 集群的元数据信息，例如集群的节点信息、分区信息、消费者信息等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>领导者选举</strong>：Zookeeper 用于选举 Kafka 集群中的领导者节点，领导者节点负责处理客户端的请求。</p>
+</li>
+<li class="lvl-3">
+<p><strong>数据同步</strong>：Zookeeper 用于同步 Kafka 集群中的数据，确保数据的一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>配置管理</strong>：Zookeeper 用于管理 Kafka 集群的配置信息，例如主题的配置信息、消费者的配置信息等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>监控和报警</strong>：Zookeeper 用于监控 Kafka 集群的状态，例如集群的健康状态、节点的状态等。</p>
+</li>
+</ol>
+<p>综上所述，Kafka 中 Zookeeper 的作用是用于管理 Kafka 集群的元数据信息、领导者选举、数据同步、配置管理和监控和报警。</p>
+<h2 id="mysql-是如何实现事务的"><a class="markdownIt-Anchor" href="#mysql-是如何实现事务的"></a> MySQL 是如何实现事务的？</h2>
+<p>MySQL 通过多种机制实现事务，确保其满足 ACID 特性（原子性、一致性、隔离性、持久性）。以下是 MySQL 实现事务的主要机制：</p>
+<h3 id="1-事务日志"><a class="markdownIt-Anchor" href="#1-事务日志"></a> 1. 事务日志</h3>
+<p>MySQL 使用事务日志（包括重做日志和回滚日志）来支持事务的原子性和持久性。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>重做日志（Redo Log）</strong>：记录所有修改操作，用于在崩溃后恢复未写入数据文件的事务。</p>
+</li>
+<li class="lvl-2">
+<p><strong>回滚日志（Undo Log）</strong>：记录事务修改前的数据，用于回滚事务或实现 MVCC。</p>
+</li>
+</ul>
+<h3 id="2-锁机制"><a class="markdownIt-Anchor" href="#2-锁机制"></a> 2. 锁机制</h3>
+<p>MySQL 通过锁机制保证事务的隔离性，防止并发事务间的数据冲突。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>共享锁（Shared Lock）</strong>：允许多个事务同时读取同一数据。</p>
+</li>
+<li class="lvl-2">
+<p><strong>排他锁（Exclusive Lock）</strong>：确保只有一个事务能修改数据，其他事务无法读取或修改。</p>
+</li>
+</ul>
+<h3 id="3-多版本并发控制mvcc"><a class="markdownIt-Anchor" href="#3-多版本并发控制mvcc"></a> 3. 多版本并发控制（MVCC）</h3>
+<p>InnoDB 存储引擎使用 MVCC 提高并发性能，允许非阻塞读取。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>版本链</strong>：每行数据有多个版本，事务通过版本链访问适当的数据版本。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Read View</strong>：事务开始时创建 Read View，决定哪些数据版本可见。</p>
+</li>
+</ul>
+<h3 id="4-事务隔离级别"><a class="markdownIt-Anchor" href="#4-事务隔离级别"></a> 4. 事务隔离级别</h3>
+<p>MySQL 支持不同的事务隔离级别，控制事务间的可见性：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>READ UNCOMMITTED</strong>：最低级别，允许读取未提交的数据。</p>
+</li>
+<li class="lvl-2">
+<p><strong>READ COMMITTED</strong>：只能读取已提交的数据。</p>
+</li>
+<li class="lvl-2">
+<p><strong>REPEATABLE READ</strong>（默认）：确保事务内多次读取结果一致。</p>
+</li>
+<li class="lvl-2">
+<p><strong>SERIALIZABLE</strong>：最高级别，完全隔离，事务串行执行。</p>
+</li>
+</ul>
+<h3 id="5-两阶段提交2pc"><a class="markdownIt-Anchor" href="#5-两阶段提交2pc"></a> 5. 两阶段提交（2PC）</h3>
+<p>InnoDB 使用两阶段提交确保分布式事务的原子性：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>准备阶段</strong>：协调者询问参与者是否可以提交。</p>
+</li>
+<li class="lvl-2">
+<p><strong>提交阶段</strong>：协调者根据参与者反馈决定提交或回滚。</p>
+</li>
+</ul>
+<h3 id="6-检查点checkpoint"><a class="markdownIt-Anchor" href="#6-检查点checkpoint"></a> 6. 检查点（Checkpoint）</h3>
+<p>InnoDB 定期创建检查点，将脏页写入磁盘，减少崩溃恢复时间。</p>
+<h3 id="7-崩溃恢复"><a class="markdownIt-Anchor" href="#7-崩溃恢复"></a> 7. 崩溃恢复</h3>
+<p>MySQL 在启动时通过重做日志和回滚日志进行崩溃恢复，确保数据一致性。</p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>MySQL 通过事务日志、锁机制、MVCC、隔离级别、两阶段提交、检查点和崩溃恢复等机制，确保事务的 ACID 特性，保障数据的一致性和可靠性。</p>
+<h2 id="为什么-java-8-移除了永久代permgen并引入了元空间metaspace"><a class="markdownIt-Anchor" href="#为什么-java-8-移除了永久代permgen并引入了元空间metaspace"></a> 为什么 Java 8 移除了永久代（PermGen）并引入了元空间（Metaspace）？</h2>
+<p>Java 8 移除永久代（PermGen）并引入元空间（Metaspace）的主要原因包括以下几点：</p>
+<h3 id="1-内存管理改进"><a class="markdownIt-Anchor" href="#1-内存管理改进"></a> 1. <strong>内存管理改进</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>永久代问题</strong>：永久代大小固定，容易导致 <code>OutOfMemoryError</code>，且调优困难。</p>
+</li>
+<li class="lvl-2">
+<p><strong>元空间优势</strong>：元空间使用本地内存，默认无上限，减少了内存溢出的风险，且能动态调整大小。</p>
+</li>
+</ul>
+<h3 id="2-性能提升"><a class="markdownIt-Anchor" href="#2-性能提升"></a> 2. <strong>性能提升</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>永久代瓶颈</strong>：永久代的垃圾回收效率低，影响性能。</p>
+</li>
+<li class="lvl-2">
+<p><strong>元空间优化</strong>：元空间由 Java 虚拟机自动管理，垃圾回收效率更高，提升了性能。</p>
+</li>
+</ul>
+<h3 id="3-简化调优"><a class="markdownIt-Anchor" href="#3-简化调优"></a> 3. <strong>简化调优</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>永久代调优复杂</strong>：需要手动设置永久代大小，调优复杂。</p>
+</li>
+<li class="lvl-2">
+<p><strong>元空间简化</strong>：元空间自动管理，减少了调优需求，简化了配置。</p>
+</li>
+</ul>
+<h3 id="4-与-jrockit-集成"><a class="markdownIt-Anchor" href="#4-与-jrockit-集成"></a> 4. <strong>与 JRockit 集成</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>统一内存模型</strong>：JRockit 使用元空间，Java 8 引入元空间是为了与 JRockit 的内存模型保持一致，便于 HotSpot 和 JRockit 的整合。</p>
+</li>
+</ul>
+<h3 id="5-元空间的灵活性"><a class="markdownIt-Anchor" href="#5-元空间的灵活性"></a> 5. <strong>元空间的灵活性</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>动态扩展</strong>：元空间能根据应用需求动态扩展，适应不同应用场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>类元数据管理</strong>：元空间更高效地管理类元数据，提升了类加载和卸载的效率。</p>
+</li>
+</ul>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<p>Java 8 移除永久代并引入元空间，主要是为了改进内存管理、提升性能、简化调优、统一内存模型，并提高灵活性。这些改进减少了内存溢出风险，提升了垃圾回收效率，简化了配置，使 Java 应用更稳定和高效。</p>
+<h2 id="说一下-kafka-中关于事务消息的实现"><a class="markdownIt-Anchor" href="#说一下-kafka-中关于事务消息的实现"></a> 说一下 Kafka 中关于事务消息的实现？</h2>
+<p>Kafka中的事务消息实现是为了支持在分布式系统中进行精确一次处理（exactly-once processing）的语义。Kafka从0.11版本开始引入了事务性消息的特性。以下是Kafka中关于事务消息实现的关键点：</p>
+<ol>
+<li class="lvl-3">
+<p>事务性ID<br />
+事务性ID：生产者在启动事务时必须提供一个唯一的事务性ID。这个ID用于标识事务性的消息，以便Kafka可以跟踪和处理这些消息。</p>
+</li>
+<li class="lvl-3">
+<p>事务的开始和结束<br />
+beginTransaction：生产者调用这个API来开始一个新的事务。<br />
+commitTransaction：生产者调用这个API来提交事务，确保所有在事务中的消息被原子性地发送到Kafka。<br />
+abortTransaction：生产者调用这个API来中止事务，所有在事务中的消息将被丢弃。</p>
+</li>
+<li class="lvl-3">
+<p>事务性消息的发送<br />
+发送消息：在事务中，生产者发送的消息会被标记为事务性消息。这些消息会在事务提交后一起可见。<br />
+有序性：事务性消息保证在分区内的有序性，即同一个事务内的消息会按照发送的顺序被存储和消费。</p>
+</li>
+<li class="lvl-3">
+<p>事务协调器<br />
+事务协调器：Kafka集群中的某个Broker会扮演事务协调器的角色，负责管理事务的状态（如开始、提交、中止）。</p>
+</li>
+<li class="lvl-3">
+<p>消费者端的支持<br />
+隔离级别：消费者可以设置隔离级别来决定如何消费事务性消息。Kafka提供了两种隔离级别：<br />
+read_uncommitted：消费者可以读取所有消息，包括未提交的事务性消息。<br />
+read_committed：消费者只能读取已提交的事务性消息。</p>
+</li>
+<li class="lvl-3">
+<p>持久性保证<br />
+持久性：事务性消息在提交后会被持久化到Kafka的日志中，确保即使生产者失败，消息也不会丢失。</p>
+</li>
+<li class="lvl-3">
+<p>事务性消息的恢复<br />
+恢复机制：如果生产者在发送事务性消息时失败，可以在恢复后重新开始事务，继续发送消息。</p>
+</li>
+<li class="lvl-3">
+<p>与非事务性消息的交互<br />
+混合使用：Kafka允许事务性消息和非事务性消息混合使用，但需要谨慎设计，以避免潜在的一致性问题。</p>
+</li>
+<li class="lvl-3">
+<p>配置要求<br />
+配置要求：为了使用事务性消息，需要在Kafka集群和客户端进行特定的配置，例如启用idempotence和设置transactional.id等。</p>
+</li>
+<li class="lvl-4">
+<p>使用场景<br />
+使用场景：事务性消息适用于需要精确一次处理语义的场景，如分布式数据库的同步、复杂的事件处理等。</p>
+</li>
+</ol>
+<p>Kafka的事务性消息实现为分布式系统提供了强有力的一致性保证，但也会带来一定的性能开销。因此，在使用事务性消息时，需要根据具体的应用场景和需求进行权衡。</p>
+<h2 id="mysql-事务的二阶段提交是什么"><a class="markdownIt-Anchor" href="#mysql-事务的二阶段提交是什么"></a> MySQL 事务的二阶段提交是什么？</h2>
+<p>MySQL中的二阶段提交（Two-Phase Commit，2PC）是一种用于保证分布式系统中多个事务协调一致提交的协议。在分布式数据库系统中，当涉及多个数据库节点（例如，主从复制、多主复制或分布式数据库）时，二阶段提交确保所有节点要么全部提交事务，要么全部回滚事务，以保持数据的一致性。</p>
+<p>二阶段提交分为两个主要阶段：</p>
+<h3 id="1-准备阶段voting-phase"><a class="markdownIt-Anchor" href="#1-准备阶段voting-phase"></a> 1. 准备阶段（Voting Phase）</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>协调者（Coordinator）：通常是发起事务的节点，负责协调其他参与者。</p>
+</li>
+<li class="lvl-2">
+<p>参与者（Participants）：参与事务的各个数据库节点。</p>
+</li>
+</ul>
+<p>过程如下：<br />
+协调者向所有参与者发送事务提交请求。<br />
+每个参与者执行事务操作，并将结果写入本地日志，但不真正提交。<br />
+每个参与者将自己的执行结果（同意提交或拒绝提交）发送给协调者。</p>
+<h3 id="2-提交阶段completion-phase"><a class="markdownIt-Anchor" href="#2-提交阶段completion-phase"></a> 2. 提交阶段（Completion Phase）</h3>
+<p>根据准备阶段的结果，协调者决定是否提交事务：<br />
+如果所有参与者都同意提交，协调者向所有参与者发送提交命令。<br />
+如果任何一个参与者拒绝提交，协调者向所有参与者发送回滚命令。<br />
+参与者根据协调者的命令执行相应的操作：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>提交：参与者正式提交事务，释放资源。</p>
+</li>
+<li class="lvl-2">
+<p>回滚：参与者回滚事务，撤销之前的操作，释放资源。</p>
+</li>
+</ul>
+<h3 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一致性：二阶段提交确保了分布式系统中事务的一致性。</p>
+</li>
+<li class="lvl-2">
+<p>阻塞：如果在提交阶段协调者崩溃，参与者可能会一直等待协调者的命令，导致资源被长时间锁定。</p>
+</li>
+<li class="lvl-2">
+<p>复杂性：二阶段提交增加了系统的复杂性，需要更多的网络通信和协调。</p>
+</li>
+</ul>
+<p>在MySQL中，二阶段提交通常用于分布式事务处理，例如在使用XA事务时。XA事务是一种支持多资源（如多个数据库）的事务模型，符合X/Open CAE规范。</p>
+<p>通过二阶段提交，MySQL能够确保在分布式环境中事务的原子性和一致性，即使面对网络分区、节点故障等复杂情况。</p>
+<h2 id="说一下-rocketmq-中关于事务消息的实现"><a class="markdownIt-Anchor" href="#说一下-rocketmq-中关于事务消息的实现"></a> 说一下 RocketMQ 中关于事务消息的实现？</h2>
+<p>RocketMQ 的事务消息机制确保消息发送与本地事务的原子性，适用于分布式事务场景。以下是其实现的核心步骤和机制：</p>
+<h3 id="1-事务消息流程"><a class="markdownIt-Anchor" href="#1-事务消息流程"></a> 1. <strong>事务消息流程</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>发送半消息（Half Message）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">生产者发送半消息到 RocketMQ，该消息对消费者不可见。</li>
+<li class="lvl-5">半消息存储在 <code>RMQ_SYS_TRANS_HALF_TOPIC</code> 主题中。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>执行本地事务</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">生产者执行本地事务，并根据结果决定提交或回滚消息。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>提交或回滚消息</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">若本地事务成功，生产者提交消息，消息对消费者可见。</li>
+<li class="lvl-5">若本地事务失败，生产者回滚消息，消息被删除。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>事务状态回查</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">若生产者未提交或回滚消息，RocketMQ 会回查事务状态，确保消息最终状态一致。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-事务消息的关键组件"><a class="markdownIt-Anchor" href="#2-事务消息的关键组件"></a> 2. <strong>事务消息的关键组件</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>TransactionListener</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">生产者实现该接口，定义本地事务执行和状态回查逻辑。</li>
+<li class="lvl-4"><code>executeLocalTransaction</code>：执行本地事务并返回状态。</li>
+<li class="lvl-4"><code>checkLocalTransaction</code>：回查本地事务状态。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>TransactionMQProducer</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于发送事务消息的生产者类，配置 <code>TransactionListener</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-事务消息的状态"><a class="markdownIt-Anchor" href="#3-事务消息的状态"></a> 3. <strong>事务消息的状态</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>COMMIT_MESSAGE</strong>：提交消息，对消费者可见。</p>
+</li>
+<li class="lvl-2">
+<p><strong>ROLLBACK_MESSAGE</strong>：回滚消息，删除消息。</p>
+</li>
+<li class="lvl-2">
+<p><strong>UNKNOW</strong>：未知状态，触发事务状态回查。</p>
+</li>
+</ul>
+<h3 id="4-事务状态回查机制"><a class="markdownIt-Anchor" href="#4-事务状态回查机制"></a> 4. <strong>事务状态回查机制</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>回查触发条件</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">生产者未提交或回滚消息。</li>
+<li class="lvl-4">消息处于 <code>UNKNOW</code> 状态超过指定时间。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>回查流程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">RocketMQ 向生产者发送回查请求。</li>
+<li class="lvl-4">生产者通过 <code>checkLocalTransaction</code> 方法返回事务状态。</li>
+<li class="lvl-4">RocketMQ 根据状态提交或回滚消息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-事务消息的存储"><a class="markdownIt-Anchor" href="#5-事务消息的存储"></a> 5. <strong>事务消息的存储</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>半消息存储</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">半消息存储在 <code>RMQ_SYS_TRANS_HALF_TOPIC</code> 主题中，对消费者不可见。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>消息提交后存储</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">提交后，消息从 <code>RMQ_SYS_TRANS_HALF_TOPIC</code> 移动到原始主题，对消费者可见。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-事务消息的可靠性"><a class="markdownIt-Anchor" href="#6-事务消息的可靠性"></a> 6. <strong>事务消息的可靠性</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>消息重试</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">若提交或回滚失败，RocketMQ 会重试，确保消息最终状态一致。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>事务状态回查</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">通过回查机制，确保未确认消息的最终状态一致。</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例代码"><a class="markdownIt-Anchor" href="#示例代码"></a> 示例代码</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建事务生产者</span></span><br><span class="line"><span class="type">TransactionMQProducer</span> <span class="variable">producer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TransactionMQProducer</span>(<span class="string">&quot;transaction_producer_group&quot;</span>);</span><br><span class="line">producer.setNamesrvAddr(<span class="string">&quot;localhost:9876&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置事务监听器</span></span><br><span class="line">producer.setTransactionListener(<span class="keyword">new</span> <span class="title class_">TransactionListener</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LocalTransactionState <span class="title function_">executeLocalTransaction</span><span class="params">(Message msg, Object arg)</span> &#123;</span><br><span class="line">        <span class="comment">// 执行本地事务</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">success</span> <span class="operator">=</span> executeLocalTransaction();</span><br><span class="line">        <span class="keyword">return</span> success ? LocalTransactionState.COMMIT_MESSAGE : LocalTransactionState.ROLLBACK_MESSAGE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LocalTransactionState <span class="title function_">checkLocalTransaction</span><span class="params">(MessageExt msg)</span> &#123;</span><br><span class="line">        <span class="comment">// 检查本地事务状态</span></span><br><span class="line">        <span class="keyword">return</span> checkLocalTransactionStatus();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动生产者</span></span><br><span class="line">producer.start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送事务消息</span></span><br><span class="line"><span class="type">Message</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>(<span class="string">&quot;topic&quot;</span>, <span class="string">&quot;tag&quot;</span>, <span class="string">&quot;key&quot;</span>, <span class="string">&quot;body&quot;</span>.getBytes());</span><br><span class="line"><span class="type">TransactionSendResult</span> <span class="variable">sendResult</span> <span class="operator">=</span> producer.sendMessageInTransaction(msg, <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<p>RocketMQ 的事务消息通过半消息、本地事务执行、事务状态提交/回滚和事务状态回查等机制，确保消息发送与本地事务的原子性，适用于分布式事务场景。</p>
+<h2 id="mysql-中长事务可能会导致哪些问题"><a class="markdownIt-Anchor" href="#mysql-中长事务可能会导致哪些问题"></a> MySQL 中长事务可能会导致哪些问题？</h2>
+<p>MySQL中的长事务可能会导致以下几个问题：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>锁竞争</strong>：长事务会长时间占用数据库资源，导致锁竞争加剧，从而影响数据库的并发性能。其他事务可能需要等待长事务释放锁，这会导致事务的响应时间变长。</p>
+</li>
+<li class="lvl-3">
+<p><strong>数据不一致</strong>：长事务期间，其他事务可能无法读取到最新的数据，导致数据不一致。例如，在长事务中，其他事务可能无法看到长事务已经提交的数据变更。</p>
+</li>
+<li class="lvl-3">
+<p><strong>死锁</strong>：长事务增加了死锁的可能性。当多个事务相互锁定对方需要的资源时，可能会导致死锁。MySQL会尝试自动检测并解决死锁，但长事务会使得死锁检测和处理变得更加复杂。</p>
+</li>
+<li class="lvl-3">
+<p><strong>资源消耗</strong>：长事务会长时间占用数据库资源，如内存和磁盘空间。这可能导致数据库资源不足，影响其他事务的执行。</p>
+</li>
+<li class="lvl-3">
+<p><strong>主从复制延迟</strong>：在主从复制环境中，长事务可能会导致主从复制延迟。因为长事务在主库上执行的时间较长，从库需要等待主库的事务提交后才能应用这些变更，从而导致复制延迟。</p>
+</li>
+<li class="lvl-3">
+<p><strong>恢复问题</strong>：在数据库崩溃或需要恢复的情况下，长事务可能会导致恢复过程变长。因为数据库需要回滚或重放长事务中的所有操作，这可能会消耗大量时间和资源。</p>
+</li>
+<li class="lvl-3">
+<p><strong>事务日志增长</strong>：长事务会导致事务日志（binlog）快速增长，这可能会消耗大量磁盘空间，并增加备份和恢复的复杂性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>锁定范围扩大</strong>：长事务可能会锁定更多的数据行，这可能会导致锁定范围扩大，从而影响数据库的并发性能。</p>
+</li>
+</ol>
+<p>为了避免这些问题，建议将长事务拆分为多个短事务，减少事务的执行时间和锁定范围，提高数据库的并发性能和稳定性。</p>
+<h2 id="rocketmq-的事务消息有什么缺点你还了解过别的事务消息实现吗"><a class="markdownIt-Anchor" href="#rocketmq-的事务消息有什么缺点你还了解过别的事务消息实现吗"></a> RocketMQ 的事务消息有什么缺点？你还了解过别的事务消息实现吗？</h2>
+<p>RocketMQ的事务消息虽然提供了很好的分布式事务支持，但也存在一些缺点：</p>
+<h3 id="rocketmq事务消息的缺点"><a class="markdownIt-Anchor" href="#rocketmq事务消息的缺点"></a> RocketMQ事务消息的缺点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>复杂性</strong>：事务消息的实现相对复杂，需要生产者、MQ Server和消费者三者之间的紧密配合，增加了开发和维护的难度。</p>
+</li>
+<li class="lvl-3">
+<p><strong>性能开销</strong>：事务消息需要在消息发送和消费过程中进行额外的状态管理和检查，这会带来一定的性能开销。</p>
+</li>
+<li class="lvl-3">
+<p><strong>消息延迟</strong>：由于事务消息需要等待生产者二次确认，这可能会导致消息的投递延迟，不适合对实时性要求极高的场景。</p>
+</li>
+<li class="lvl-3">
+<p><strong>回查机制</strong>：当事务状态未知时，需要通过回查机制来确定消息的最终状态，这可能会增加系统的负担。</p>
+</li>
+<li class="lvl-3">
+<p><strong>依赖生产者</strong>：事务消息的最终提交依赖于生产者的状态，如果生产者出现故障，可能会影响消息的最终一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>资源占用</strong>：半消息和回查机制可能会导致MQ Server占用更多的存储资源。</p>
+</li>
+</ol>
+<h3 id="其他事务消息实现"><a class="markdownIt-Anchor" href="#其他事务消息实现"></a> 其他事务消息实现</h3>
+<p>除了RocketMQ，还有其他消息队列系统也提供了事务消息的支持，例如：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>Kafka</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Kafka的事务消息支持是通过0.11.0版本引入的，它允许生产者在多个分区和主题上发送消息作为一个原子单元。</li>
+<li class="lvl-5">Kafka使用事务ID来标识事务，并保证事务中的消息要么全部成功提交，要么全部失败。</li>
+<li class="lvl-5">缺点包括对客户端的依赖较强，需要客户端支持事务API，且事务管理较为复杂。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>RabbitMQ</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">RabbitMQ通过AMQP协议支持事务，允许将多个操作组合成一个事务。</li>
+<li class="lvl-5">生产者可以发送一系列消息并最终提交或回滚这些消息。</li>
+<li class="lvl-5">缺点包括事务处理会影响性能，且RabbitMQ的事务模型较为简单，不支持分布式事务。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>ActiveMQ</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">ActiveMQ支持JMS规范中的事务消息，允许在JMS Session中创建事务并提交或回滚。</li>
+<li class="lvl-5">支持XA协议，可以与数据库等其他资源一起参与分布式事务。</li>
+<li class="lvl-5">缺点包括配置和管理的复杂性，以及性能上的开销。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>AWS SQS</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">AWS SQS支持事务消息通过其_FIFO队列_实现，可以保证消息的严格顺序和至少一次传递。</li>
+<li class="lvl-5">支持消息分组，可以将相关的消息作为一个单元处理。</li>
+<li class="lvl-5">缺点包括有限的灵活性，以及依赖于AWS生态系统。</li>
+</ul>
+</li>
+</ol>
+<p>每种事务消息实现都有其优缺点，选择哪种实现取决于具体的应用场景和需求。在一些场景下，可能需要结合多种技术来实现复杂的事务需求。</p>
+<h2 id="mysql-中的-mvcc-是什么"><a class="markdownIt-Anchor" href="#mysql-中的-mvcc-是什么"></a> MySQL 中的 MVCC 是什么？</h2>
+<p><strong>MVCC</strong> 是 <strong>Multi-Version Concurrency Control</strong> 的缩写，即多版本并发控制。它是 MySQL 中 InnoDB 存储引擎实现的一种重要的并发控制机制，用于提高数据库的并发性能。</p>
+<h3 id="mvcc-的基本思想"><a class="markdownIt-Anchor" href="#mvcc-的基本思想"></a> MVCC 的基本思想</h3>
+<p>MVCC 允许数据库中的每一行数据存在多个版本，每个事务在读取数据时都可以看到该数据的一个一致版本，而不是最新的版本。这样，不同的事务可以在同一时间读取同一数据的不同版本，而不会相互干扰。</p>
+<h3 id="mvcc-的工作原理"><a class="markdownIt-Anchor" href="#mvcc-的工作原理"></a> MVCC 的工作原理</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>隐藏列</strong>：InnoDB 为每行数据添加了两个隐藏列，分别记录该行数据的创建版本号和删除版本号。</p>
+</li>
+<li class="lvl-3">
+<p><strong>版本号</strong>：每个事务在开始时都会被分配一个唯一的事务ID（Transaction ID），作为该事务的版本号。</p>
+</li>
+<li class="lvl-3">
+<p><strong>读取数据</strong>：当事务读取数据时，会根据以下规则选择合适的版本：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果数据的创建版本号小于等于当前事务的版本号，且删除版本号大于当前事务的版本号，则该版本对当前事务可见。</li>
+<li class="lvl-5">否则，选择其他版本或返回空。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>写入数据</strong>：当事务修改数据时，实际上会创建一个新的数据版本，而不是直接覆盖原数据。新版本的创建版本号设置为当前事务的版本号，删除版本号设置为无限大。</p>
+</li>
+<li class="lvl-3">
+<p><strong>删除数据</strong>：当事务删除数据时，实际上不会立即删除数据，而是将数据的删除版本号设置为当前事务的版本号。</p>
+</li>
+</ol>
+<h3 id="mvcc-的优点"><a class="markdownIt-Anchor" href="#mvcc-的优点"></a> MVCC 的优点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>提高并发性能</strong>：通过允许不同事务读取同一数据的不同版本，减少了锁的竞争，提高了数据库的并发性能。</p>
+</li>
+<li class="lvl-3">
+<p><strong>实现一致性读</strong>：保证了每个事务在读取数据时都能看到该数据的一个一致版本，避免了脏读、不可重复读和幻读等问题。</p>
+</li>
+<li class="lvl-3">
+<p><strong>简化事务回滚</strong>：由于每个事务的修改都创建了一个新的数据版本，事务回滚只需要删除新创建的版本即可。</p>
+</li>
+</ol>
+<h3 id="mvcc-的缺点"><a class="markdownIt-Anchor" href="#mvcc-的缺点"></a> MVCC 的缺点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>空间开销</strong>：由于存储了多个数据版本，可能会增加数据库的存储空间开销。</p>
+</li>
+<li class="lvl-3">
+<p><strong>清理过期版本</strong>：需要定期清理不再需要的旧版本数据，以避免无限增长。</p>
+</li>
+</ol>
+<p>MVCC 是 MySQL InnoDB 存储引擎的一个重要特性，通过它实现了高效、可靠的并发控制，是现代关系型数据库系统中广泛采用的一种技术。</p>
+<h2 id="为什么需要消息队列"><a class="markdownIt-Anchor" href="#为什么需要消息队列"></a> 为什么需要消息队列？</h2>
+<p>消息队列（Message Queue）是一种在分布式系统中用于异步通信的技术，它允许系统中的不同组件或服务通过消息进行解耦和通信。以下是为什么需要消息队列的几个主要原因：</p>
+<ol>
+<li class="lvl-3">
+<p>解耦<br />
+<strong>降低系统复杂性</strong>：通过消息队列，系统组件之间不需要直接通信，减少了组件之间的依赖关系，使得系统更易于开发和维护。<br />
+<strong>独立部署</strong>：组件可以独立部署和升级，而不影响其他组件。</p>
+</li>
+<li class="lvl-3">
+<p>异步处理<br />
+<strong>提高响应性</strong>：通过将耗时的任务异步处理，可以快速响应客户端请求，提高用户体验。<br />
+<strong>平衡负载</strong>：消息队列可以缓冲突发流量，避免系统过载。</p>
+</li>
+<li class="lvl-3">
+<p>削峰<br />
+<strong>处理峰值流量</strong>：消息队列可以存储大量的消息，当系统面临峰值流量时，可以逐步处理，避免系统崩溃。<br />
+<strong>保护下游系统</strong>：通过控制消息的消费速度，可以保护下游系统不受突发流量冲击。</p>
+</li>
+<li class="lvl-3">
+<p>可靠性<br />
+<strong>消息持久化</strong>：消息队列通常支持消息的持久化存储，即使消费者暂时不可用，消息也不会丢失。<br />
+<strong>重试机制</strong>：支持消息的重试机制，确保消息最终被处理。</p>
+</li>
+<li class="lvl-3">
+<p>扩展性<br />
+<strong>水平扩展</strong>：可以通过增加更多的消费者来处理消息，实现系统的水平扩展。<br />
+<strong>灵活的路由</strong>：支持复杂的消息路由策略，可以根据需要将消息发送到不同的消费者。</p>
+</li>
+<li class="lvl-3">
+<p>顺序保证<br />
+<strong>有序处理</strong>：某些消息队列可以保证消息的有序处理，这对于某些业务场景是非常重要的。</p>
+</li>
+<li class="lvl-3">
+<p>分布式事务<br />
+<strong>事务消息</strong>：支持事务消息，可以在分布式系统中实现跨多个服务和数据库的事务一致性。</p>
+</li>
+<li class="lvl-3">
+<p>实时性<br />
+<strong>实时处理</strong>：消息队列可以支持实时消息处理，适用于实时性要求高的应用。</p>
+</li>
+<li class="lvl-3">
+<p>多语言多平台<br />
+<strong>语言无关</strong>：消息队列通常支持多种编程语言和平台，方便不同技术栈的集成。</p>
+</li>
+<li class="lvl-4">
+<p>监控和日志<br />
+<strong>易于监控</strong>：消息队列通常提供丰富的监控指标，方便系统监控和日志收集。</p>
+</li>
+</ol>
+<p>总之，消息队列在分布式系统中扮演着重要的角色，它通过提供异步、解耦、削峰、可靠性和扩展性等特性，帮助构建更加稳定、高效和可维护的系统。常见的消息队列系统包括RabbitMQ、Kafka、ActiveMQ、RocketMQ等。</p>
+<h2 id="mysql-中的事务隔离级别有哪些"><a class="markdownIt-Anchor" href="#mysql-中的事务隔离级别有哪些"></a> MySQL 中的事务隔离级别有哪些？</h2>
+<p>MySQL 中的事务隔离级别有以下几种：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>读未提交（Read Uncommitted）</strong>：最低的隔离级别，允许读取未提交的数据。这意味着一个事务可以读取到另一个事务未提交的数据，可能会导致脏读、不可重复读和幻读。</p>
+</li>
+<li class="lvl-3">
+<p><strong>读已提交（Read Committed）</strong>：允许读取已提交的数据，但是不允许读取未提交的数据。这意味着一个事务只能读取到另一个事务已提交的数据，避免了脏读，但是可能会导致不可重复读和幻读。</p>
+</li>
+<li class="lvl-3">
+<p><strong>可重复读（Repeatable Read）</strong>：允许读取已提交的数据，并且在整个事务期间都不会发生数据变化。这意味着一个事务在整个事务期间都只能读取到相同的数据，避免了不可重复读，但是可能会导致幻读。</p>
+</li>
+<li class="lvl-3">
+<p><strong>串行化（Serializable）</strong>：最高的隔离级别，强制所有的事务串行执行，避免了脏读、不可重复读和幻读。但是这种隔离级别会导致并发性能下降，因为事务之间需要排队执行。</p>
+</li>
+</ol>
+<p>在实际应用中，通常会根据业务需求选择合适的事务隔离级别。一般来说，读已提交和可重复读是比较常用的隔离级别，它们可以避免脏读和不可重复读，但是可能会导致幻读。而串行化隔离级别可以避免所有的问题，但是并发性能会下降。</p>
+<h2 id="说一下消息队列的模型有哪些"><a class="markdownIt-Anchor" href="#说一下消息队列的模型有哪些"></a> 说一下消息队列的模型有哪些？</h2>
+<p>消息队列（Message Queue）是一种用于在分布式系统中传递消息的中间件技术。它通过解耦生产者和消费者，实现异步通信、流量削峰、系统解耦等功能。消息队列的模型主要有以下几种：</p>
+<hr />
+<h3 id="1-点对点模型point-to-point-p2p"><a class="markdownIt-Anchor" href="#1-点对点模型point-to-point-p2p"></a> 1. <strong>点对点模型（Point-to-Point, P2P）</strong></h3>
+<h4 id="特点"><a class="markdownIt-Anchor" href="#特点"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>消息由一个生产者发送到一个特定的队列，并由一个消费者消费。</p>
+</li>
+<li class="lvl-2">
+<p>每条消息只能被一个消费者处理。</p>
+</li>
+<li class="lvl-2">
+<p>消息被消费后，会从队列中移除。</p>
+</li>
+</ul>
+<h4 id="工作流程"><a class="markdownIt-Anchor" href="#工作流程"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者将消息发送到队列。</p>
+</li>
+<li class="lvl-3">
+<p>消费者从队列中获取消息并处理。</p>
+</li>
+<li class="lvl-3">
+<p>消息被消费后，队列中不再保留。</p>
+</li>
+</ol>
+<h4 id="适用场景"><a class="markdownIt-Anchor" href="#适用场景"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>任务分发：如订单处理、日志收集等。</p>
+</li>
+<li class="lvl-2">
+<p>确保消息只被一个消费者处理。</p>
+</li>
+</ul>
+<h4 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>ActiveMQ</strong>、<strong>RabbitMQ</strong>（使用简单队列时）支持点对点模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="2-发布订阅模型publishsubscribe-pubsub"><a class="markdownIt-Anchor" href="#2-发布订阅模型publishsubscribe-pubsub"></a> 2. <strong>发布/订阅模型（Publish/Subscribe, Pub/Sub）</strong></h3>
+<h4 id="特点-2"><a class="markdownIt-Anchor" href="#特点-2"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>消息由一个生产者发送到一个主题（Topic），并由多个消费者订阅。</p>
+</li>
+<li class="lvl-2">
+<p>每条消息会被所有订阅该主题的消费者接收。</p>
+</li>
+<li class="lvl-2">
+<p>消息通常不会被持久化存储（除非配置了持久化订阅）。</p>
+</li>
+</ul>
+<h4 id="工作流程-2"><a class="markdownIt-Anchor" href="#工作流程-2"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者将消息发布到主题。</p>
+</li>
+<li class="lvl-3">
+<p>所有订阅该主题的消费者都会收到消息。</p>
+</li>
+<li class="lvl-3">
+<p>每个消费者独立处理消息。</p>
+</li>
+</ol>
+<h4 id="适用场景-2"><a class="markdownIt-Anchor" href="#适用场景-2"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>广播通知：如新闻推送、系统事件通知等。</p>
+</li>
+<li class="lvl-2">
+<p>需要将消息分发给多个消费者的场景。</p>
+</li>
+</ul>
+<h4 id="示例-2"><a class="markdownIt-Anchor" href="#示例-2"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Kafka</strong>、<strong>RabbitMQ</strong>（使用交换机时）、<strong>Redis Pub/Sub</strong> 支持发布/订阅模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="3-请求响应模型requestreply"><a class="markdownIt-Anchor" href="#3-请求响应模型requestreply"></a> 3. <strong>请求/响应模型（Request/Reply）</strong></h3>
+<h4 id="特点-3"><a class="markdownIt-Anchor" href="#特点-3"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>生产者发送请求消息，并等待消费者返回响应消息。</p>
+</li>
+<li class="lvl-2">
+<p>通常用于同步通信场景。</p>
+</li>
+</ul>
+<h4 id="工作流程-3"><a class="markdownIt-Anchor" href="#工作流程-3"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者发送请求消息到队列。</p>
+</li>
+<li class="lvl-3">
+<p>消费者从队列中获取请求消息并处理。</p>
+</li>
+<li class="lvl-3">
+<p>消费者将响应消息发送到生产者指定的响应队列。</p>
+</li>
+<li class="lvl-3">
+<p>生产者从响应队列中获取响应消息。</p>
+</li>
+</ol>
+<h4 id="适用场景-3"><a class="markdownIt-Anchor" href="#适用场景-3"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要同步响应的场景：如 RPC（远程过程调用）。</p>
+</li>
+</ul>
+<h4 id="示例-3"><a class="markdownIt-Anchor" href="#示例-3"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong> 支持请求/响应模型（通过 <code>reply-to</code> 队列实现）。</p>
+</li>
+</ul>
+<hr />
+<h3 id="4-扇出模型fanout"><a class="markdownIt-Anchor" href="#4-扇出模型fanout"></a> 4. <strong>扇出模型（Fanout）</strong></h3>
+<h4 id="特点-4"><a class="markdownIt-Anchor" href="#特点-4"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>消息由一个生产者发送到交换机，并由所有绑定到该交换机的队列接收。</p>
+</li>
+<li class="lvl-2">
+<p>类似于发布/订阅模型，但通常用于消息队列内部的路由机制。</p>
+</li>
+</ul>
+<h4 id="工作流程-4"><a class="markdownIt-Anchor" href="#工作流程-4"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者将消息发送到交换机。</p>
+</li>
+<li class="lvl-3">
+<p>交换机将消息广播到所有绑定的队列。</p>
+</li>
+<li class="lvl-3">
+<p>每个队列的消费者独立处理消息。</p>
+</li>
+</ol>
+<h4 id="适用场景-4"><a class="markdownIt-Anchor" href="#适用场景-4"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要将消息广播到多个队列的场景。</p>
+</li>
+</ul>
+<h4 id="示例-4"><a class="markdownIt-Anchor" href="#示例-4"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong> 的 Fanout 交换机支持扇出模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="5-主题模型topic"><a class="markdownIt-Anchor" href="#5-主题模型topic"></a> 5. <strong>主题模型（Topic）</strong></h3>
+<h4 id="特点-5"><a class="markdownIt-Anchor" href="#特点-5"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>消息由一个生产者发送到交换机，并根据路由键（Routing Key）匹配规则分发给符合条件的队列。</p>
+</li>
+<li class="lvl-2">
+<p>支持灵活的消息路由。</p>
+</li>
+</ul>
+<h4 id="工作流程-5"><a class="markdownIt-Anchor" href="#工作流程-5"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者将消息发送到交换机，并指定路由键。</p>
+</li>
+<li class="lvl-3">
+<p>交换机根据路由键和绑定规则将消息路由到符合条件的队列。</p>
+</li>
+<li class="lvl-3">
+<p>消费者从队列中获取消息并处理。</p>
+</li>
+</ol>
+<h4 id="适用场景-5"><a class="markdownIt-Anchor" href="#适用场景-5"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要根据消息内容进行动态路由的场景。</p>
+</li>
+</ul>
+<h4 id="示例-5"><a class="markdownIt-Anchor" href="#示例-5"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong> 的 Topic 交换机支持主题模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="6-死信队列模型dead-letter-queue-dlq"><a class="markdownIt-Anchor" href="#6-死信队列模型dead-letter-queue-dlq"></a> 6. <strong>死信队列模型（Dead Letter Queue, DLQ）</strong></h3>
+<h4 id="特点-6"><a class="markdownIt-Anchor" href="#特点-6"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用于处理无法被正常消费的消息（如消息过期、被拒绝等）。</p>
+</li>
+<li class="lvl-2">
+<p>死信消息会被重新路由到死信队列。</p>
+</li>
+</ul>
+<h4 id="工作流程-6"><a class="markdownIt-Anchor" href="#工作流程-6"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>消息在队列中无法被正常消费（如 TTL 过期、被拒绝等）。</p>
+</li>
+<li class="lvl-3">
+<p>消息被标记为死信，并重新路由到死信队列。</p>
+</li>
+<li class="lvl-3">
+<p>死信队列的消费者处理这些消息。</p>
+</li>
+</ol>
+<h4 id="适用场景-6"><a class="markdownIt-Anchor" href="#适用场景-6"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>处理异常消息：如消息重试、错误日志记录等。</p>
+</li>
+</ul>
+<h4 id="示例-6"><a class="markdownIt-Anchor" href="#示例-6"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong>、<strong>Kafka</strong> 支持死信队列模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="7-优先级队列模型priority-queue"><a class="markdownIt-Anchor" href="#7-优先级队列模型priority-queue"></a> 7. <strong>优先级队列模型（Priority Queue）</strong></h3>
+<h4 id="特点-7"><a class="markdownIt-Anchor" href="#特点-7"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>队列中的消息根据优先级排序，高优先级的消息会被优先消费。</p>
+</li>
+</ul>
+<h4 id="工作流程-7"><a class="markdownIt-Anchor" href="#工作流程-7"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者发送消息时指定优先级。</p>
+</li>
+<li class="lvl-3">
+<p>队列根据消息优先级排序。</p>
+</li>
+<li class="lvl-3">
+<p>消费者优先消费高优先级的消息。</p>
+</li>
+</ol>
+<h4 id="适用场景-7"><a class="markdownIt-Anchor" href="#适用场景-7"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要优先处理某些重要消息的场景。</p>
+</li>
+</ul>
+<h4 id="示例-7"><a class="markdownIt-Anchor" href="#示例-7"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong> 支持优先级队列模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="8-延迟队列模型delayed-queue"><a class="markdownIt-Anchor" href="#8-延迟队列模型delayed-queue"></a> 8. <strong>延迟队列模型（Delayed Queue）</strong></h3>
+<h4 id="特点-8"><a class="markdownIt-Anchor" href="#特点-8"></a> <strong>特点</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>消息在发送后不会立即被消费，而是延迟一段时间后再被消费。</p>
+</li>
+</ul>
+<h4 id="工作流程-8"><a class="markdownIt-Anchor" href="#工作流程-8"></a> <strong>工作流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>生产者发送消息，并指定延迟时间。</p>
+</li>
+<li class="lvl-3">
+<p>消息在延迟时间内不可见。</p>
+</li>
+<li class="lvl-3">
+<p>延迟时间到达后，消息被消费者消费。</p>
+</li>
+</ol>
+<h4 id="适用场景-8"><a class="markdownIt-Anchor" href="#适用场景-8"></a> <strong>适用场景</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>定时任务：如订单超时取消、延迟通知等。</p>
+</li>
+</ul>
+<h4 id="示例-8"><a class="markdownIt-Anchor" href="#示例-8"></a> <strong>示例</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>RabbitMQ</strong>（通过插件）、<strong>RocketMQ</strong> 支持延迟队列模型。</p>
+</li>
+</ul>
+<hr />
+<h3 id="总结-4"><a class="markdownIt-Anchor" href="#总结-4"></a> 总结</h3>
+<p>消息队列的模型主要包括：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>点对点模型</strong>：一对一通信。</p>
+</li>
+<li class="lvl-3">
+<p><strong>发布/订阅模型</strong>：一对多通信。</p>
+</li>
+<li class="lvl-3">
+<p><strong>请求/响应模型</strong>：同步通信。</p>
+</li>
+<li class="lvl-3">
+<p><strong>扇出模型</strong>：消息广播。</p>
+</li>
+<li class="lvl-3">
+<p><strong>主题模型</strong>：动态路由。</p>
+</li>
+<li class="lvl-3">
+<p><strong>死信队列模型</strong>：处理异常消息。</p>
+</li>
+<li class="lvl-3">
+<p><strong>优先级队列模型</strong>：优先处理重要消息。</p>
+</li>
+<li class="lvl-3">
+<p><strong>延迟队列模型</strong>：延迟消费消息。</p>
+</li>
+</ol>
+<p>不同的消息队列模型适用于不同的业务场景，选择合适的模型可以提高系统的效率和可靠性。</p>
+<h2 id="mysql-默认的事务隔离级别是什么为什么选择这个级别"><a class="markdownIt-Anchor" href="#mysql-默认的事务隔离级别是什么为什么选择这个级别"></a> MySQL 默认的事务隔离级别是什么？为什么选择这个级别？</h2>
+<p>MySQL默认的事务隔离级别是<strong>REPEATABLE READ（可重复读）</strong>。</p>
+<h3 id="为什么选择repeatable-read作为默认级别"><a class="markdownIt-Anchor" href="#为什么选择repeatable-read作为默认级别"></a> 为什么选择REPEATABLE READ作为默认级别？</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>平衡性能与一致性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>性能</strong>：REPEATABLE READ级别在性能上相对较高，因为它不需要像SERIALIZABLE级别那样对数据进行严格的锁定。</li>
+<li class="lvl-5"><strong>一致性</strong>：与READ COMMITTED级别相比，REPEATABLE READ提供了更强的一致性保证，避免了脏读现象。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>避免脏读</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在REPEATABLE READ级别下，一个事务在读取某一数据时，总能看到该数据在该事务开始时的状态，即使其他事务已经对该数据进行了修改并提交，也不会影响当前事务的读取结果。这避免了脏读问题。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>幻读的解决方案</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">虽然REPEATABLE READ级别下仍然可能存在幻读问题（即在一个事务中多次执行相同的查询，结果集可能不同，因为其他事务插入了新的行），但MySQL通过使用Next-Key Locking（一种行锁和间隙锁的组合）来解决这个问题，从而在某种程度上避免了幻读。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>历史原因</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">MySQL早期就选择了REPEATABLE READ作为默认隔离级别，并且许多现有的应用程序都是基于这个隔离级别开发的。保持这个默认设置有助于保持向后兼容性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>适用性广泛</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">对于许多常见的应用程序来说，REPEATABLE READ级别提供的一致性保证已经足够，而不需要更高级别的隔离（如SERIALIZABLE）带来的性能开销。</li>
+</ul>
+</li>
+</ol>
+<h3 id="注意事项-2"><a class="markdownIt-Anchor" href="#注意事项-2"></a> 注意事项</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>虽然REPEATABLE READ是默认级别，但根据具体的应用场景和需求，开发者可以手动调整事务的隔离级别。</p>
+</li>
+<li class="lvl-2">
+<p>在某些高并发或对一致性要求极高的场景下，可能需要考虑使用SERIALIZABLE级别，尽管这会带来更大的性能开销。</p>
+</li>
+</ul>
+<p>总之，MySQL选择REPEATABLE READ作为默认事务隔离级别是基于性能、一致性、历史原因和广泛适用性等多方面的考虑。</p>
+<h2 id="谈谈你了解的最常见的几种设计模式说说他们的应用场景"><a class="markdownIt-Anchor" href="#谈谈你了解的最常见的几种设计模式说说他们的应用场景"></a> 谈谈你了解的最常见的几种设计模式，说说他们的应用场景</h2>
+<p>设计模式是解决常见软件设计问题的经验总结，以下是几种常见的设计模式及其应用场景：</p>
+<h3 id="1-单例模式singleton-pattern"><a class="markdownIt-Anchor" href="#1-单例模式singleton-pattern"></a> 1. <strong>单例模式（Singleton Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：确保一个类只有一个实例，并提供全局访问点。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">配置管理类。</li>
+<li class="lvl-4">数据库连接池。</li>
+<li class="lvl-4">日志记录器。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-工厂模式factory-pattern"><a class="markdownIt-Anchor" href="#2-工厂模式factory-pattern"></a> 2. <strong>工厂模式（Factory Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：定义一个创建对象的接口，但由子类决定实例化哪个类。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要创建复杂对象。</li>
+<li class="lvl-4">需要解耦对象的创建和使用。</li>
+<li class="lvl-4">需要扩展系统时，添加新产品。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">use</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteProduct</span> <span class="keyword">implements</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">use</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Using ConcreteProduct&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Factory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Product <span class="title function_">createProduct</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConcreteProduct</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-观察者模式observer-pattern"><a class="markdownIt-Anchor" href="#3-观察者模式observer-pattern"></a> 3. <strong>观察者模式（Observer Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：定义对象间的一对多依赖关系，当一个对象状态改变时，所有依赖它的对象都会收到通知并自动更新。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">事件处理系统。</li>
+<li class="lvl-4">消息队列系统。</li>
+<li class="lvl-4">GUI 框架中的事件监听。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attach</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyAllObservers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer observer : observers) &#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Subject subject;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">extends</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteObserver</span><span class="params">(Subject subject)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.subject = subject;</span><br><span class="line">        <span class="built_in">this</span>.subject.attach(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Received update in ConcreteObserver&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-策略模式strategy-pattern"><a class="markdownIt-Anchor" href="#4-策略模式strategy-pattern"></a> 4. <strong>策略模式（Strategy Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：定义一系列算法，将每个算法封装起来，并使它们可以互换。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要动态切换算法。</li>
+<li class="lvl-4">有多个相似的类，仅在行为上有所不同。</li>
+<li class="lvl-4">需要避免使用多重条件判断。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">doOperation</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OperationAdd</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">doOperation</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Context</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">executeStrategy</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> strategy.doOperation(num1, num2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-装饰器模式decorator-pattern"><a class="markdownIt-Anchor" href="#5-装饰器模式decorator-pattern"></a> 5. <strong>装饰器模式（Decorator Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：动态地给一个对象添加一些额外的职责，就增加功能来说，装饰器模式比生成子类更为灵活。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要动态扩展对象功能。</li>
+<li class="lvl-4">不能或不适合使用子类扩展功能。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Component</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">operation</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteComponent</span> <span class="keyword">implements</span> <span class="title class_">Component</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">operation</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ConcreteComponent operation&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Decorator</span> <span class="keyword">implements</span> <span class="title class_">Component</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Component component;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Decorator</span><span class="params">(Component component)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.component = component;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">operation</span><span class="params">()</span> &#123;</span><br><span class="line">        component.operation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteDecorator</span> <span class="keyword">extends</span> <span class="title class_">Decorator</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteDecorator</span><span class="params">(Component component)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(component);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">operation</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.operation();</span><br><span class="line">        addedBehavior();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">addedBehavior</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Added behavior in ConcreteDecorator&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-适配器模式adapter-pattern"><a class="markdownIt-Anchor" href="#6-适配器模式adapter-pattern"></a> 6. <strong>适配器模式（Adapter Pattern）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：将一个类的接口转换成客户希望的另一个接口，使原本由于接口不兼容而不能一起工作的类可以一起工作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要使用现有类，但其接口不符合需求。</li>
+<li class="lvl-4">需要创建一个可复用的类，与不相关或不可预见的类协同工作。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">specificRequest</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Specific request in Adaptee&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Adapter</span> <span class="keyword">implements</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Adapter</span><span class="params">(Adaptee adaptee)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">request</span><span class="params">()</span> &#123;</span><br><span class="line">        adaptee.specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="总结-5"><a class="markdownIt-Anchor" href="#总结-5"></a> 总结</h3>
+<p>设计模式是解决常见软件设计问题的有效工具。单例模式用于控制实例数量，工厂模式用于解耦对象创建，观察者模式用于实现事件通知，策略模式用于动态切换算法，装饰器模式用于动态扩展功能，适配器模式用于接口兼容。理解并应用这些模式可以提高代码的可维护性和可扩展性。</p>
+<h2 id="mysql-中有哪些锁类型"><a class="markdownIt-Anchor" href="#mysql-中有哪些锁类型"></a> MySQL 中有哪些锁类型？</h2>
+<p>MySQL 中的锁机制用于管理并发访问，确保数据一致性。以下是 MySQL 中常见的锁类型及其应用场景：</p>
+<h3 id="1-全局锁"><a class="markdownIt-Anchor" href="#1-全局锁"></a> 1. <strong>全局锁</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定整个数据库实例，通常用于备份操作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>命令</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH TABLES <span class="keyword">WITH</span> READ LOCK;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">数据库备份。</li>
+<li class="lvl-4">确保备份期间数据一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-表级锁"><a class="markdownIt-Anchor" href="#2-表级锁"></a> 2. <strong>表级锁</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定整张表，分为读锁和写锁。</p>
+</li>
+<li class="lvl-2">
+<p><strong>类型</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>表共享读锁（Table Read Lock）</strong>：允许多个会话同时读取，但禁止写入。</li>
+<li class="lvl-4"><strong>表独占写锁（Table Write Lock）</strong>：禁止其他会话读取或写入。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>命令</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLES table_name READ;  <span class="comment">-- 读锁</span></span><br><span class="line">LOCK TABLES table_name WRITE; <span class="comment">-- 写锁</span></span><br><span class="line">UNLOCK TABLES;                <span class="comment">-- 解锁</span></span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">批量数据操作。</li>
+<li class="lvl-4">需要锁定整张表以确保一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-行级锁"><a class="markdownIt-Anchor" href="#3-行级锁"></a> 3. <strong>行级锁</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定表中的单行或多行，提供更细粒度的并发控制。</p>
+</li>
+<li class="lvl-2">
+<p><strong>类型</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>共享锁（S Lock）</strong>：允许多个事务同时读取，但禁止写入。</li>
+<li class="lvl-4"><strong>排他锁（X Lock）</strong>：禁止其他事务读取或写入。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">高并发事务处理。</li>
+<li class="lvl-4">需要精确控制数据访问。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-意向锁"><a class="markdownIt-Anchor" href="#4-意向锁"></a> 4. <strong>意向锁</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：表级锁，表示事务打算在表中的某些行上加锁。</p>
+</li>
+<li class="lvl-2">
+<p><strong>类型</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>意向共享锁（IS Lock）</strong>：事务打算在某些行上加共享锁。</li>
+<li class="lvl-4"><strong>意向排他锁（IX Lock）</strong>：事务打算在某些行上加排他锁。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">提高锁冲突检测效率。</li>
+<li class="lvl-4">协调表级锁和行级锁。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-记录锁record-lock"><a class="markdownIt-Anchor" href="#5-记录锁record-lock"></a> 5. <strong>记录锁（Record Lock）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定索引记录，确保事务在读取或修改记录时不被干扰。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">防止其他事务修改或删除当前事务正在操作的记录。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-间隙锁gap-lock"><a class="markdownIt-Anchor" href="#6-间隙锁gap-lock"></a> 6. <strong>间隙锁（Gap Lock）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定索引记录之间的间隙，防止其他事务在间隙中插入新记录。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">防止幻读。</li>
+<li class="lvl-4">确保范围查询的一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-临键锁next-key-lock"><a class="markdownIt-Anchor" href="#7-临键锁next-key-lock"></a> 7. <strong>临键锁（Next-Key Lock）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：记录锁和间隙锁的组合，锁定索引记录及其前面的间隙。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">防止幻读。</li>
+<li class="lvl-4">确保范围查询的一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-自增锁auto-increment-lock"><a class="markdownIt-Anchor" href="#8-自增锁auto-increment-lock"></a> 8. <strong>自增锁（Auto-Increment Lock）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：在插入自增列时锁定自增值，确保自增值的唯一性。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">插入自增列时保证自增值的唯一性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-元数据锁metadata-lock-mdl"><a class="markdownIt-Anchor" href="#9-元数据锁metadata-lock-mdl"></a> 9. <strong>元数据锁（Metadata Lock, MDL）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：锁定表结构，防止在表结构变更时被访问。</p>
+</li>
+<li class="lvl-2">
+<p><strong>应用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">表结构变更（如 <code>ALTER TABLE</code>）时防止并发访问。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-死锁"><a class="markdownIt-Anchor" href="#10-死锁"></a> 10. <strong>死锁</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：多个事务相互等待对方释放锁，导致无法继续执行。</p>
+</li>
+<li class="lvl-2">
+<p><strong>检测与处理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">MySQL 会自动检测死锁并回滚其中一个事务。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-6"><a class="markdownIt-Anchor" href="#总结-6"></a> 总结</h3>
+<p>MySQL 提供了多种锁机制来管理并发访问，包括全局锁、表级锁、行级锁、意向锁、记录锁、间隙锁、临键锁、自增锁和元数据锁。每种锁类型适用于不同的场景，合理使用这些锁可以确保数据的一致性和并发性能。</p>
+<h2 id="什么是策略模式一般用在什么场景"><a class="markdownIt-Anchor" href="#什么是策略模式一般用在什么场景"></a> 什么是策略模式？一般用在什么场景？</h2>
+<p>**策略模式（Strategy Pattern）**是一种行为设计模式，它允许在运行时根据需要选择算法的行为。策略模式定义了一系列算法，将每个算法封装起来，并使它们可以互相替换。策略模式将算法的使用与算法的实现分离开来，使用组合而非继承的手段，让算法的变更独立于使用算法的客户端。</p>
+<p><strong>策略模式的主要角色</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>策略接口（Strategy）</strong>：定义了一系列算法的公共接口。</p>
+</li>
+<li class="lvl-3">
+<p><strong>具体策略类（Concrete Strategy）</strong>：实现了策略接口，封装了具体的算法或行为。</p>
+</li>
+<li class="lvl-3">
+<p><strong>上下文类（Context）</strong>：维护一个对策略对象的引用，定义了接口让客户端可以设置或改变策略。</p>
+</li>
+</ol>
+<p><strong>策略模式的应用场景</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>多种算法或行为</strong>：当存在多种算法或行为，且需要根据不同情况选择合适的算法时。</p>
+</li>
+<li class="lvl-3">
+<p><strong>算法使用频繁</strong>：算法使用频繁，且希望算法可以独立于使用它的客户端进行修改和扩展时。</p>
+</li>
+<li class="lvl-3">
+<p><strong>避免条件语句</strong>：希望避免使用大量的条件语句来选择合适的算法时。</p>
+</li>
+<li class="lvl-3">
+<p><strong>算法变更有需求</strong>：算法的变更独立于使用算法的客户端，且客户端不需要知道具体算法的实现细节时。</p>
+</li>
+</ol>
+<p><strong>具体例子</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>支付方式</strong>：电子商务系统中，根据用户选择的不同支付方式（如支付宝、微信支付、信用卡等），使用不同的支付算法。</p>
+</li>
+<li class="lvl-2">
+<p><strong>排序算法</strong>：根据数据的特点和需求，选择不同的排序算法（如快速排序、归并排序、堆排序等）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>促销策略</strong>：根据不同的促销活动，应用不同的折扣算法。</p>
+</li>
+<li class="lvl-2">
+<p><strong>路由选择</strong>：网络通信中，根据网络状况选择不同的路由算法。</p>
+</li>
+</ul>
+<p>策略模式通过将算法封装成独立的类，使得算法的变更不会影响到使用算法的客户端，从而提高了代码的灵活性和可维护性。同时，它也符合开闭原则，易于扩展新的算法。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-02-08</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-04" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java 热门面试题-04
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：13k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#springboot-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="post-toc-text"> SpringBoot 是如何实现自动配置的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 1. 自动配置的核心机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="post-toc-text"> 2. 自动配置的实现步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%90%AF%E5%8A%A8%E7%B1%BB%E4%B8%8E-springbootapplication-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 1) 启动类与 @SpringBootApplication 注解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-enableautoconfiguration-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 2) @EnableAutoConfiguration 的作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-springfactories-%E6%96%87%E4%BB%B6"><span class="post-toc-text"> 3) spring.factories 文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-%E6%9D%A1%E4%BB%B6%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="post-toc-text"> 4) 条件化配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="post-toc-text"> 5) 自动配置的执行流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE"><span class="post-toc-text"> 3. 自定义自动配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="post-toc-text"> 1) 创建自定义配置类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="post-toc-text"> 2) 注册自动配置类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E5%8C%96%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 3) 使用条件化注解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E8%B0%83%E8%AF%95"><span class="post-toc-text"> 4. 自动配置的调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 5. 自动配置的常见场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-mysql-%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6%E5%AE%83%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="post-toc-text"> 什么是 MySQL 的主从同步机制？它是如何实现的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="post-toc-text"> 主从同步的基本原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="post-toc-text"> 主从同步的实现步骤：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="post-toc-text"> 主从同步的模式：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text"> 注意事项：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-redisson-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%8E%9F%E7%90%86"><span class="post-toc-text"> 说说 Redisson 分布式锁的原理?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redisson-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="post-toc-text"> Redisson 分布式锁的核心原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%8A%A0%E9%94%81%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 1. 加锁机制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E9%94%81%E7%BB%AD%E6%9C%9F%E6%9C%BA%E5%88%B6watchdog"><span class="post-toc-text"> 2. 锁续期机制（Watchdog）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E8%A7%A3%E9%94%81%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 3. 解锁机制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81"><span class="post-toc-text"> 4. 可重入锁</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redisson-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-text"> Redisson 分布式锁的特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9"><span class="post-toc-text"> 优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="post-toc-text"> 缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redisson-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> Redisson 分布式锁的使用示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="post-toc-text"> 1. 引入依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E9%85%8D%E7%BD%AE-redisson-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="post-toc-text"> 2. 配置 Redisson 客户端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="post-toc-text"> 3. 使用分布式锁</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3-spring-boot-%E4%B8%AD%E7%9A%84-starter"><span class="post-toc-text"> 如何理解 Spring Boot 中的 starter？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#starter%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="post-toc-text"> Starter的基本结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8starter"><span class="post-toc-text"> 如何使用Starter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#starter%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="post-toc-text"> Starter的工作原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#starter%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="post-toc-text"> Starter的优势</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84spring-boot-starter"><span class="post-toc-text"> 常见的Spring Boot Starter</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-redis-%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E6%8E%92%E8%A1%8C%E6%A6%9C"><span class="post-toc-text"> 如何使用 Redis 快速实现排行榜？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E6%8E%92%E8%A1%8C%E6%A6%9C"><span class="post-toc-text"> 1. 设计排行榜</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%88%86%E6%95%B0"><span class="post-toc-text"> 2. 添加分数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%8E%B7%E5%8F%96%E6%8E%92%E8%A1%8C%E6%A6%9C"><span class="post-toc-text"> 3. 获取排行榜</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E6%8E%92%E5%90%8D"><span class="post-toc-text"> 4. 获取用户排名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E5%88%86%E6%95%B0%E5%A2%9E%E5%8A%A0%E6%88%96%E5%87%8F%E5%B0%91"><span class="post-toc-text"> 5. 分数增加或减少</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="post-toc-text"> 6. 删除用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E8%8E%B7%E5%8F%96%E5%88%86%E6%95%B0%E8%8C%83%E5%9B%B4%E7%9A%84%E7%94%A8%E6%88%B7"><span class="post-toc-text"> 7. 获取分数范围的用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E8%80%83%E8%99%91"><span class="post-toc-text"> 实际应用中的考虑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81python"><span class="post-toc-text"> 示例代码（Python）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7"><span class="post-toc-text"> Redis 中如何保证缓存与数据库的数据一致性？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 1. 缓存失效策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 2. 更新策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%AF%BB%E5%86%99%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 3. 读写策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="post-toc-text"> 4. 分布式锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E7%9B%91%E5%90%AC%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%98%E6%9B%B4"><span class="post-toc-text"> 5. 监听数据库变更</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E5%AE%9A%E6%9C%9F%E6%A0%A1%E5%AF%B9"><span class="post-toc-text"> 6. 定期校对</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E4%B8%9A%E5%8A%A1%E5%B1%82%E4%BF%9D%E8%AF%81"><span class="post-toc-text"> 7. 业务层保证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E7%BC%93%E5%AD%98%E5%B7%A5%E5%85%B7%E5%92%8C%E6%A1%86%E6%9E%B6"><span class="post-toc-text"> 8. 缓存工具和框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81python-2"><span class="post-toc-text"> 示例代码（Python）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-tcp-%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="post-toc-text"> 说说 TCP 的三次握手？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-syn%E5%8F%91%E9%80%81"><span class="post-toc-text"> 1. SYN发送</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-synack%E5%9B%9E%E5%BA%94"><span class="post-toc-text"> 2. SYN+ACK回应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-ack%E7%A1%AE%E8%AE%A4"><span class="post-toc-text"> 3. ACK确认</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="post-toc-text"> 为什么是三次握手？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E4%BC%98%E7%82%B9"><span class="post-toc-text"> 三次握手的优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%E8%AF%B4-netty-%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 简单说说 Netty 的零拷贝机制？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="post-toc-text"> 什么是配置中心？有哪些常见的配置中心？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="post-toc-text"> 核心功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="post-toc-text"> 常见配置中心</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9%E4%BE%9D%E6%8D%AE"><span class="post-toc-text"> 选择依据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-tcp-%E7%9A%84%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="post-toc-text"> 说说 TCP 的四次挥手？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 四次挥手过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E"><span class="post-toc-text"> 状态说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="post-toc-text"> 为什么需要四次挥手？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#netty-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85%E9%97%AE%E9%A2%98%E7%9A%84"><span class="post-toc-text"> Netty 是如何解决粘包和拆包问题的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BD%BF%E7%94%A8%E5%AE%9A%E9%95%BF%E8%A7%A3%E7%A0%81%E5%99%A8fixedlengthframedecoder"><span class="post-toc-text"> 1. 使用定长解码器（FixedLengthFrameDecoder）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%88%86%E9%9A%94%E7%AC%A6%E8%A7%A3%E7%A0%81%E5%99%A8delimiterbasedframedecoder"><span class="post-toc-text"> 2. 使用分隔符解码器（DelimiterBasedFrameDecoder）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8%E9%95%BF%E5%BA%A6%E5%AD%97%E6%AE%B5%E8%A7%A3%E7%A0%81%E5%99%A8lengthfieldbasedframedecoder"><span class="post-toc-text"> 3. 使用长度字段解码器（LengthFieldBasedFrameDecoder）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BD%BF%E7%94%A8%E8%A1%8C%E8%A7%A3%E7%A0%81%E5%99%A8linebasedframedecoder"><span class="post-toc-text"> 4. 使用行解码器（LineBasedFrameDecoder）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E7%A0%81%E5%99%A8"><span class="post-toc-text"> 5. 自定义解码器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-main-%E6%96%B9%E6%B3%95%E5%90%AF%E5%8A%A8-web-%E9%A1%B9%E7%9B%AE%E7%9A%84"><span class="post-toc-text"> Spring Boot 是如何通过 main 方法启动 web 项目的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-springapplication-%E7%B1%BB"><span class="post-toc-text"> 1. SpringApplication 类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-springbootapplication-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 2. @SpringBootApplication 注解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-main-%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 3. main 方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-springapplicationrun-%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 4. SpringApplication.run() 方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E5%86%85%E5%B5%8C-web-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-text"> 5. 内嵌 Web 服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE"><span class="post-toc-text"> 6. 自动配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%A1%88"><span class="post-toc-text"> 什么情况下需要使用分布式事务，有哪些方案？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%BF%AB"><span class="post-toc-text"> Redis 为什么这么快？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-redis-%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="post-toc-text"> 如何使用 Redis 快速实现布隆过滤器？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%A1%AE%E5%AE%9A%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8F%82%E6%95%B0"><span class="post-toc-text"> 1. 确定布隆过滤器的参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="post-toc-text"> 2. 初始化布隆过滤器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="post-toc-text"> 3. 添加元素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%A3%80%E6%9F%A5%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="post-toc-text"> 4. 检查元素是否存在</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E9%80%89%E6%8B%A9%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="post-toc-text"> 5. 选择哈希函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="post-toc-text"> 注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8redis%E6%A8%A1%E5%9D%97"><span class="post-toc-text"> 使用Redis模块</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-java-%E4%B8%AD-hashmap-%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E6%98%AF-075"><span class="post-toc-text"> 为什么 Java 中 HashMap 的默认负载因子是 0.75？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-mysql-%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%BB%B6%E8%BF%9F"><span class="post-toc-text"> 如何处理 MySQL 的主从同步延迟？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#netty-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-jdk-nio-%E4%B8%AD%E7%9A%84%E7%A9%BA%E8%BD%AE%E8%AF%A2-bug"><span class="post-toc-text"> Netty 如何解决 JDK NIO 中的空轮询 Bug？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java-%E4%B8%AD-hashmap-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84"><span class="post-toc-text"> Java 中 HashMap 的扩容机制是怎样的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-10"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-redis-%E8%AE%BE%E8%AE%A1%E4%B8%BA%E5%8D%95%E7%BA%BF%E7%A8%8B60-%E7%89%88%E6%9C%AC%E4%B8%BA%E4%BD%95%E5%BC%95%E5%85%A5%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="post-toc-text"> 为什么 Redis 设计为单线程？6.0 版本为何引入多线程？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis-%E8%AE%BE%E8%AE%A1%E4%B8%BA%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="post-toc-text"> Redis 设计为单线程的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis-60-%E5%BC%95%E5%85%A5%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="post-toc-text"> Redis 6.0 引入多线程的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-11"><span class="post-toc-text"> 总结</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><!-- 
+SpringBoot 是如何实现自动配置的？
+什么是 MySQL 的主从同步机制？它是如何实现的？
+说说 Redisson 分布式锁的原理?
+如何理解 Spring Boot 中的 starter？
+如何使用 Redis 快速实现排行榜？
+Redis 中如何保证缓存与数据库的数据一致性？
+说说 TCP 的三次握手？
+简单说说 Netty 的零拷贝机制？
+什么是配置中心？有哪些常见的配置中心？
+说说 TCP 的四次挥手？
+Netty 是如何解决粘包和拆包问题的？
+Spring Boot 是如何通过 main 方法启动 web 项目的？
+什么情况下需要使用分布式事务，有哪些方案？
+Redis 为什么这么快？
+如何使用 Redis 快速实现布隆过滤器？
+为什么 Java 中 HashMap 的默认负载因子是 0.75？
+如何处理 MySQL 的主从同步延迟？
+Netty 如何解决 JDK NIO 中的空轮询 Bug？
+Java 中 HashMap 的扩容机制是怎样的？
+为什么 Redis 设计为单线程？6.0 版本为何引入多线程？
+
+-->
+<h2 id="springboot-是如何实现自动配置的"><a class="markdownIt-Anchor" href="#springboot-是如何实现自动配置的"></a> SpringBoot 是如何实现自动配置的？</h2>
+<p>Spring Boot 的自动配置是其核心特性之一，它通过约定大于配置的方式，极大地简化了 Spring 应用的开发。Spring Boot 的自动配置机制基于条件化配置（Conditional Configuration），通过扫描类路径、配置文件等信息，自动配置应用程序所需的 Bean 和组件。</p>
+<p>以下是 Spring Boot 实现自动配置的详细原理和流程：</p>
+<hr />
+<h3 id="1-自动配置的核心机制"><a class="markdownIt-Anchor" href="#1-自动配置的核心机制"></a> 1. <strong>自动配置的核心机制</strong></h3>
+<p>Spring Boot 的自动配置依赖于以下几个核心组件：</p>
+<ol>
+<li class="lvl-3">
+<p><strong><code>@EnableAutoConfiguration</code> 注解</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">这是自动配置的入口注解，通常由 <code>@SpringBootApplication</code> 注解组合引入。</li>
+<li class="lvl-5">它会触发 Spring Boot 的自动配置机制。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong><code>spring.factories</code> 文件</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在 <code>META-INF/spring.factories</code> 文件中，定义了需要自动加载的配置类。</li>
+<li class="lvl-5">Spring Boot 会扫描这些配置类，并根据条件决定是否加载它们。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>条件化配置（<code>@Conditional</code> 注解）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring Boot 使用条件化配置来决定是否创建某个 Bean。</li>
+<li class="lvl-5">常见的条件注解包括 <code>@ConditionalOnClass</code>、<code>@ConditionalOnMissingBean</code>、<code>@ConditionalOnProperty</code> 等。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="2-自动配置的实现步骤"><a class="markdownIt-Anchor" href="#2-自动配置的实现步骤"></a> 2. <strong>自动配置的实现步骤</strong></h3>
+<h4 id="1-启动类与-springbootapplication-注解"><a class="markdownIt-Anchor" href="#1-启动类与-springbootapplication-注解"></a> 1) <strong>启动类与 <code>@SpringBootApplication</code> 注解</strong></h4>
+<p>Spring Boot 应用的启动类通常使用 <code>@SpringBootApplication</code> 注解，它是一个组合注解，包含以下三个核心注解：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>@SpringBootConfiguration</code>：标识这是一个 Spring Boot 配置类。</p>
+</li>
+<li class="lvl-2">
+<p><code>@ComponentScan</code>：扫描当前包及其子包中的组件（如 <code>@Component</code>、<code>@Service</code> 等）。</p>
+</li>
+<li class="lvl-2">
+<p><code>@EnableAutoConfiguration</code>：启用自动配置。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(MyApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-enableautoconfiguration-的作用"><a class="markdownIt-Anchor" href="#2-enableautoconfiguration-的作用"></a> 2) <strong><code>@EnableAutoConfiguration</code> 的作用</strong></h4>
+<p><code>@EnableAutoConfiguration</code> 注解会触发 Spring Boot 的自动配置机制。它会加载 <code>META-INF/spring.factories</code> 文件中定义的自动配置类。</p>
+<h4 id="3-springfactories-文件"><a class="markdownIt-Anchor" href="#3-springfactories-文件"></a> 3) <strong><code>spring.factories</code> 文件</strong></h4>
+<p>在 Spring Boot 的自动配置模块（如 <code>spring-boot-autoconfigure</code>）中，<code>META-INF/spring.factories</code> 文件定义了需要自动加载的配置类。例如：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">org.springframework.boot.autoconfigure.EnableAutoConfiguration</span>=<span class="string">\</span></span><br><span class="line"><span class="string">org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration,\</span></span><br><span class="line"><span class="string">org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,\</span></span><br><span class="line"><span class="string">org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-条件化配置"><a class="markdownIt-Anchor" href="#4-条件化配置"></a> 4) <strong>条件化配置</strong></h4>
+<p>自动配置类通常使用条件化注解来决定是否生效。例如：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>@ConditionalOnClass</code>：当类路径中存在指定类时生效。</p>
+</li>
+<li class="lvl-2">
+<p><code>@ConditionalOnMissingBean</code>：当容器中不存在指定 Bean 时生效。</p>
+</li>
+<li class="lvl-2">
+<p><code>@ConditionalOnProperty</code>：当配置文件中存在指定属性时生效。</p>
+</li>
+</ul>
+<p>以下是一个自动配置类的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(DataSource.class)</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty(name = &quot;spring.datasource.url&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataSourceAutoConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HikariDataSource</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-自动配置的执行流程"><a class="markdownIt-Anchor" href="#5-自动配置的执行流程"></a> 5) <strong>自动配置的执行流程</strong></h4>
+<ol>
+<li class="lvl-3">
+<p>Spring Boot 启动时，会扫描 <code>META-INF/spring.factories</code> 文件，加载所有自动配置类。</p>
+</li>
+<li class="lvl-3">
+<p>根据条件化注解（如 <code>@ConditionalOnClass</code>、<code>@ConditionalOnMissingBean</code> 等），判断是否创建对应的 Bean。</p>
+</li>
+<li class="lvl-3">
+<p>如果条件满足，则创建 Bean 并将其注册到 Spring 容器中。</p>
+</li>
+</ol>
+<hr />
+<h3 id="3-自定义自动配置"><a class="markdownIt-Anchor" href="#3-自定义自动配置"></a> 3. <strong>自定义自动配置</strong></h3>
+<p>如果需要自定义自动配置，可以按照以下步骤实现：</p>
+<h4 id="1-创建自定义配置类"><a class="markdownIt-Anchor" href="#1-创建自定义配置类"></a> 1) <strong>创建自定义配置类</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(MyService.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyServiceAutoConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> MyService <span class="title function_">myService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MyService</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-注册自动配置类"><a class="markdownIt-Anchor" href="#2-注册自动配置类"></a> 2) <strong>注册自动配置类</strong></h4>
+<p>在 <code>META-INF/spring.factories</code> 文件中注册自定义配置类：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">org.springframework.boot.autoconfigure.EnableAutoConfiguration</span>=<span class="string">\</span></span><br><span class="line"><span class="string">com.example.MyServiceAutoConfiguration</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-使用条件化注解"><a class="markdownIt-Anchor" href="#3-使用条件化注解"></a> 3) <strong>使用条件化注解</strong></h4>
+<p>通过条件化注解控制自定义配置类的生效条件。</p>
+<hr />
+<h3 id="4-自动配置的调试"><a class="markdownIt-Anchor" href="#4-自动配置的调试"></a> 4. <strong>自动配置的调试</strong></h3>
+<p>可以通过启用调试日志来查看自动配置的详细信息：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># application.properties</span></span><br><span class="line"><span class="attr">debug</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<p>启用后，Spring Boot 会输出自动配置的决策过程，显示哪些配置类被加载，哪些被忽略。</p>
+<hr />
+<h3 id="5-自动配置的常见场景"><a class="markdownIt-Anchor" href="#5-自动配置的常见场景"></a> 5. <strong>自动配置的常见场景</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>Web 应用</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">自动配置 <code>DispatcherServlet</code>、<code>ViewResolver</code> 等。</li>
+<li class="lvl-5">自动配置静态资源处理。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>数据访问</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">自动配置 <code>DataSource</code>、<code>JdbcTemplate</code> 等。</li>
+<li class="lvl-5">自动配置事务管理器。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>安全</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">自动配置 Spring Security。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>缓存</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">自动配置缓存管理器（如 Redis、EhCache）。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>Spring Boot 的自动配置机制通过以下方式实现：</p>
+<ol>
+<li class="lvl-3">
+<p>使用 <code>@EnableAutoConfiguration</code> 注解触发自动配置。</p>
+</li>
+<li class="lvl-3">
+<p>通过 <code>META-INF/spring.factories</code> 文件加载自动配置类。</p>
+</li>
+<li class="lvl-3">
+<p>使用条件化注解（如 <code>@ConditionalOnClass</code>、<code>@ConditionalOnMissingBean</code>）控制配置类的生效条件。</p>
+</li>
+</ol>
+<p>通过自动配置，Spring Boot 极大地简化了 Spring 应用的开发，开发者只需关注业务逻辑，而无需手动配置大量的 Bean 和组件。</p>
+<h2 id="什么是-mysql-的主从同步机制它是如何实现的"><a class="markdownIt-Anchor" href="#什么是-mysql-的主从同步机制它是如何实现的"></a> 什么是 MySQL 的主从同步机制？它是如何实现的？</h2>
+<p>MySQL的主从同步机制（也称为复制机制）是一种用于数据备份、读写分离和负载均衡的技术。它允许将一个MySQL数据库服务器（主服务器）的数据实时复制到一个或多个其他MySQL数据库服务器（从服务器）。这样，所有的写操作都在主服务器上执行，而读操作可以在从服务器上执行，从而提高整体性能和可用性。</p>
+<h3 id="主从同步的基本原理"><a class="markdownIt-Anchor" href="#主从同步的基本原理"></a> 主从同步的基本原理：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>二进制日志（Binary Log）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">主服务器上的所有更改（如INSERT、UPDATE、DELETE等操作）都会被记录到二进制日志中。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>日志复制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">从服务器会连接到主服务器，并读取主服务器的二进制日志。</li>
+<li class="lvl-5">从服务器将读取到的日志内容存储到自己的中继日志（Relay Log）中。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>日志应用</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">从服务器会依次执行中继日志中的SQL语句，从而实现数据的同步。</li>
+</ul>
+</li>
+</ol>
+<h3 id="主从同步的实现步骤"><a class="markdownIt-Anchor" href="#主从同步的实现步骤"></a> 主从同步的实现步骤：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>配置主服务器</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">开启二进制日志功能。</li>
+<li class="lvl-5">设置一个唯一的服务器ID。</li>
+<li class="lvl-5">指定允许从服务器连接的IP地址和用户。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>配置从服务器</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">设置一个唯一的服务器ID。</li>
+<li class="lvl-5">指定主服务器的IP地址、端口、用户和密码。</li>
+<li class="lvl-5">启动从服务器的复制线程。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>建立连接</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">从服务器会尝试连接到主服务器。</li>
+<li class="lvl-5">连接成功后，从服务器会读取主服务器的二进制日志。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>数据同步</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">从服务器将主服务器的二进制日志内容存储到自己的中继日志中。</li>
+<li class="lvl-5">从服务器执行中继日志中的SQL语句，实现数据同步。</li>
+</ul>
+</li>
+</ol>
+<h3 id="主从同步的模式"><a class="markdownIt-Anchor" href="#主从同步的模式"></a> 主从同步的模式：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>异步复制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">主服务器执行完写操作后，不需要等待从服务器同步完成即可返回结果。</li>
+<li class="lvl-5">这种方式可能出现主从数据不一致的情况，但性能较高。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>半同步复制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">主服务器执行完写操作后，需要等待至少一个从服务器同步完成才能返回结果。</li>
+<li class="lvl-5">这种方式在保证数据一致性和性能之间做了一个折中。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>全同步复制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">主服务器执行完写操作后，需要等待所有从服务器同步完成才能返回结果。</li>
+<li class="lvl-5">这种方式数据一致性最高，但性能相对较低。</li>
+</ul>
+</li>
+</ol>
+<h3 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项：</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>主从同步不支持主主复制，即不能有两个主服务器同时接受写操作。</p>
+</li>
+<li class="lvl-2">
+<p>主从同步可能出现延迟，特别是在高负载情况下。</p>
+</li>
+<li class="lvl-2">
+<p>需要定期监控主从同步的状态，以确保数据的一致性。</p>
+</li>
+</ul>
+<p>通过主从同步机制，MySQL可以实现数据的高可用性、备份和读写分离，从而提高数据库系统的整体性能和可靠性。</p>
+<h2 id="说说-redisson-分布式锁的原理"><a class="markdownIt-Anchor" href="#说说-redisson-分布式锁的原理"></a> 说说 Redisson 分布式锁的原理?</h2>
+<p>Redisson 是一个基于 Redis 的 Java 客户端，提供了丰富的分布式数据结构和服务，其中分布式锁是 Redisson 的核心功能之一。Redisson 的分布式锁实现基于 Redis 的原子操作和 Lua 脚本，确保了高并发场景下的线程安全和可靠性。</p>
+<hr />
+<h3 id="redisson-分布式锁的核心原理"><a class="markdownIt-Anchor" href="#redisson-分布式锁的核心原理"></a> Redisson 分布式锁的核心原理</h3>
+<h4 id="1-加锁机制"><a class="markdownIt-Anchor" href="#1-加锁机制"></a> 1. <strong>加锁机制</strong></h4>
+<p>Redisson 的分布式锁通过 Redis 的 <code>SET</code> 命令实现加锁，具体步骤如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>生成唯一锁标识</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">每个线程在加锁时会生成一个唯一的 UUID 作为锁的标识（即 <code>lockValue</code>），用于区分不同线程的锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>加锁命令</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>使用 Redis 的 <code>SET</code> 命令尝试设置一个键值对，键为锁的名称，值为锁的标识。</p>
+</li>
+<li class="lvl-5">
+<p>通过 <code>NX</code>（不存在时才设置）和 <code>PX</code>（设置过期时间）选项，确保加锁的原子性。</p>
+</li>
+<li class="lvl-5">
+<p>示例命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET lock_name lockValue NX PX 30000</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul class="lvl-4">
+<li class="lvl-7">
+<p><code>lock_name</code> 是锁的名称。</p>
+</li>
+<li class="lvl-7">
+<p><code>lockValue</code> 是锁的唯一标识。</p>
+</li>
+<li class="lvl-7">
+<p><code>NX</code> 表示只有键不存在时才设置。</p>
+</li>
+<li class="lvl-7">
+<p><code>PX 30000</code> 表示锁的过期时间为 30 秒。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>加锁成功</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果 <code>SET</code> 命令返回成功，表示当前线程成功获取锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>加锁失败</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果 <code>SET</code> 命令返回失败（键已存在），表示锁已被其他线程持有，当前线程需要等待或重试。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="2-锁续期机制watchdog"><a class="markdownIt-Anchor" href="#2-锁续期机制watchdog"></a> 2. <strong>锁续期机制（Watchdog）</strong></h4>
+<p>为了防止锁在业务逻辑执行期间过期，Redisson 提供了锁续期机制（Watchdog）：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>后台线程定时续期</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Redisson 启动一个后台线程，定期检查锁是否仍然被当前线程持有。</li>
+<li class="lvl-5">如果是，则延长锁的过期时间（默认续期时间为 30 秒）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>续期命令</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用 Lua 脚本执行续期操作，确保原子性。</li>
+<li class="lvl-5">示例 Lua 脚本：</li>
+</ul>
+ <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&quot;get&quot;</span>, KEYS[<span class="number">1</span>]) == ARGV[<span class="number">1</span>] <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> redis.call(<span class="string">&quot;pexpire&quot;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>])</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul class="lvl-2">
+<li class="lvl-7">
+<p><code>KEYS[1]</code> 是锁的名称。</p>
+</li>
+<li class="lvl-7">
+<p><code>ARGV[1]</code> 是锁的唯一标识。</p>
+</li>
+<li class="lvl-7">
+<p><code>ARGV[2]</code> 是续期时间。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="3-解锁机制"><a class="markdownIt-Anchor" href="#3-解锁机制"></a> 3. <strong>解锁机制</strong></h4>
+<p>解锁时，Redisson 会确保只有持有锁的线程才能释放锁：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>检查锁的持有者</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>使用 Lua 脚本检查锁的唯一标识是否与当前线程的标识一致。</p>
+</li>
+<li class="lvl-5">
+<p>示例 Lua 脚本：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&quot;get&quot;</span>, KEYS[<span class="number">1</span>]) == ARGV[<span class="number">1</span>] <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> redis.call(<span class="string">&quot;del&quot;</span>, KEYS[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul class="lvl-4">
+<li class="lvl-7">
+<p><code>KEYS[1]</code> 是锁的名称。</p>
+</li>
+<li class="lvl-7">
+<p><code>ARGV[1]</code> 是锁的唯一标识。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>删除锁</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果锁的唯一标识匹配，则删除锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>取消续期任务</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">解锁时，Redisson 会取消对应的 Watchdog 续期任务。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="4-可重入锁"><a class="markdownIt-Anchor" href="#4-可重入锁"></a> 4. <strong>可重入锁</strong></h4>
+<p>Redisson 的分布式锁支持可重入，即同一个线程可以多次获取同一把锁：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>重入计数</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用 Redis 的 Hash 结构存储锁的重入次数。</li>
+<li class="lvl-5">键为锁的名称，字段为线程的唯一标识，值为重入次数。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>加锁时更新重入次数</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果锁已存在且持有者是当前线程，则重入次数加 1。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>解锁时减少重入次数</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">解锁时，重入次数减 1，直到重入次数为 0 时才删除锁。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="redisson-分布式锁的特点"><a class="markdownIt-Anchor" href="#redisson-分布式锁的特点"></a> Redisson 分布式锁的特点</h3>
+<h4 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点</h4>
+<ol>
+<li class="lvl-3">
+<p><strong>高可用性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">基于 Redis，支持集群模式，具备高可用性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>可重入</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">支持同一个线程多次获取同一把锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>自动续期</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">通过 Watchdog 机制防止锁过期。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>公平锁支持</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">提供公平锁实现，避免线程饥饿问题。</li>
+</ul>
+</li>
+</ol>
+<h4 id="缺点"><a class="markdownIt-Anchor" href="#缺点"></a> 缺点</h4>
+<ol>
+<li class="lvl-3">
+<p><strong>依赖 Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果 Redis 出现故障，分布式锁将不可用。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>性能开销</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">加锁、解锁和续期操作需要与 Redis 交互，可能带来一定的性能开销。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="redisson-分布式锁的使用示例"><a class="markdownIt-Anchor" href="#redisson-分布式锁的使用示例"></a> Redisson 分布式锁的使用示例</h3>
+<h4 id="1-引入依赖"><a class="markdownIt-Anchor" href="#1-引入依赖"></a> 1. <strong>引入依赖</strong></h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.redisson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>redisson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.16.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-配置-redisson-客户端"><a class="markdownIt-Anchor" href="#2-配置-redisson-客户端"></a> 2. <strong>配置 Redisson 客户端</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Config</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Config</span>();</span><br><span class="line">config.useSingleServer().setAddress(<span class="string">&quot;redis://127.0.0.1:6379&quot;</span>);</span><br><span class="line"><span class="type">RedissonClient</span> <span class="variable">redisson</span> <span class="operator">=</span> Redisson.create(config);</span><br></pre></td></tr></table></figure>
+<h4 id="3-使用分布式锁"><a class="markdownIt-Anchor" href="#3-使用分布式锁"></a> 3. <strong>使用分布式锁</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RLock</span> <span class="variable">lock</span> <span class="operator">=</span> redisson.getLock(<span class="string">&quot;myLock&quot;</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 尝试加锁，最多等待 10 秒，锁的过期时间为 30 秒</span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">isLocked</span> <span class="operator">=</span> lock.tryLock(<span class="number">10</span>, <span class="number">30</span>, TimeUnit.SECONDS);</span><br><span class="line">    <span class="keyword">if</span> (isLocked) &#123;</span><br><span class="line">        <span class="comment">// 执行业务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 释放锁</span></span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<p>Redisson 的分布式锁通过 Redis 的原子操作和 Lua 脚本实现，具备以下特性：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>加锁</strong>：使用 <code>SET</code> 命令和唯一标识确保原子性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>续期</strong>：通过 Watchdog 机制防止锁过期。</p>
+</li>
+<li class="lvl-3">
+<p><strong>解锁</strong>：使用 Lua 脚本确保只有持有锁的线程才能释放锁。</p>
+</li>
+<li class="lvl-3">
+<p><strong>可重入</strong>：支持同一个线程多次获取同一把锁。</p>
+</li>
+</ol>
+<p>Redisson 的分布式锁在高并发场景下表现优异，是分布式系统中实现资源互斥访问的常用工具。</p>
+<h2 id="如何理解-spring-boot-中的-starter"><a class="markdownIt-Anchor" href="#如何理解-spring-boot-中的-starter"></a> 如何理解 Spring Boot 中的 starter？</h2>
+<p><strong>Spring Boot中的starter可以理解为一种启动器，它包含了Spring Boot框架中所需的所有依赖项和配置，用于简化Spring Boot应用的创建、配置和运行过程</strong>。通过引入相应的starter，开发者可以快速地集成和使用特定的功能，而无需手动添加和配置大量的依赖项。</p>
+<h3 id="starter的基本结构"><a class="markdownIt-Anchor" href="#starter的基本结构"></a> Starter的基本结构</h3>
+<p>一个典型的Spring Boot starter通常包含以下部分：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>依赖管理</strong>：定义了该功能所需的所有依赖项，例如库、框架等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自动配置</strong>：提供了一组默认的配置类，这些配置类会在应用启动时自动配置所需的功能组件。</p>
+</li>
+<li class="lvl-3">
+<p><strong>属性配置</strong>：定义了一组默认的属性值，开发者可以通过修改这些属性来定制功能的行为。</p>
+</li>
+</ol>
+<h3 id="如何使用starter"><a class="markdownIt-Anchor" href="#如何使用starter"></a> 如何使用Starter</h3>
+<p>使用Spring Boot starter非常简单，通常只需要在项目的<code>pom.xml</code>（对于Maven项目）或<code>build.gradle</code>（对于Gradle项目）文件中添加相应的依赖项即可。例如，要使用Spring Boot的Web功能，只需添加以下依赖项：</p>
+<p><strong>Maven示例</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Gradle示例</strong>：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">&#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="starter的工作原理"><a class="markdownIt-Anchor" href="#starter的工作原理"></a> Starter的工作原理</h3>
+<p>当Spring Boot应用启动时，它会自动检测类路径中的所有jar包，寻找并加载包含<code>spring.factories</code>文件的jar包。<code>spring.factories</code>文件中定义了自动配置类和其他相关配置。Spring Boot会自动配置这些类，从而激活相应的功能。</p>
+<h3 id="starter的优势"><a class="markdownIt-Anchor" href="#starter的优势"></a> Starter的优势</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>简化依赖管理</strong>：无需手动添加和管理大量的依赖项。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自动配置</strong>：提供了开箱即用的自动配置，减少了手动配置的工作量。</p>
+</li>
+<li class="lvl-3">
+<p><strong>一致性</strong>：确保了不同项目之间配置的一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>可定制性</strong>：允许开发者通过属性文件轻松定制配置。</p>
+</li>
+<li class="lvl-3">
+<p><strong>快速开发</strong>：加速了Spring Boot应用的创建和开发过程。</p>
+</li>
+</ol>
+<h3 id="常见的spring-boot-starter"><a class="markdownIt-Anchor" href="#常见的spring-boot-starter"></a> 常见的Spring Boot Starter</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>spring-boot-starter-web</code>：用于创建Web应用。</p>
+</li>
+<li class="lvl-2">
+<p><code>spring-boot-starter-data-jpa</code>：用于集成JPA数据访问。</p>
+</li>
+<li class="lvl-2">
+<p><code>spring-boot-starter-security</code>：用于集成Spring Security安全功能。</p>
+</li>
+<li class="lvl-2">
+<p><code>spring-boot-starter-thymeleaf</code>：用于集成Thymeleaf模板引擎。</p>
+</li>
+<li class="lvl-2">
+<p><code>spring-boot-starter-test</code>：用于集成Spring Boot测试功能。</p>
+</li>
+</ul>
+<p>总之，Spring Boot中的starter是一种非常强大和实用的工具，它极大地简化了Spring Boot应用的创建、配置和开发过程。</p>
+<h2 id="如何使用-redis-快速实现排行榜"><a class="markdownIt-Anchor" href="#如何使用-redis-快速实现排行榜"></a> 如何使用 Redis 快速实现排行榜？</h2>
+<p>使用Redis实现排行榜主要利用了Redis的有序集合（Sorted Set）数据结构。有序集合不仅存储了唯一用户ID，还关联了一个分数（score），这个分数可以用来表示排名、得分、点赞数等。Redis的有序集合支持快速插入、删除和根据分数范围查询元素，非常适合实现排行榜功能。<br />
+以下是使用Redis实现排行榜的基本步骤：</p>
+<h3 id="1-设计排行榜"><a class="markdownIt-Anchor" href="#1-设计排行榜"></a> 1. 设计排行榜</h3>
+<p>首先，你需要确定排行榜的键名（key），例如 <code>leaderboard</code>。然后，确定如何给用户打分，比如根据游戏得分、点赞数、活跃度等。</p>
+<h3 id="2-添加分数"><a class="markdownIt-Anchor" href="#2-添加分数"></a> 2. 添加分数</h3>
+<p>使用 <code>ZADD</code> 命令添加用户和他们的分数到排行榜中。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZADD leaderboard 100 user1</span><br><span class="line">ZADD leaderboard 200 user2</span><br><span class="line">ZADD leaderboard 150 user3</span><br></pre></td></tr></table></figure>
+<p>这里，<code>100</code>、<code>200</code> 和 <code>150</code> 是用户 <code>user1</code>、<code>user2</code> 和 <code>user3</code> 的分数。</p>
+<h3 id="3-获取排行榜"><a class="markdownIt-Anchor" href="#3-获取排行榜"></a> 3. 获取排行榜</h3>
+<p>使用 <code>ZREVRANGE</code> 命令可以获取分数从高到低的用户列表，例如获取前10名用户：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREVRANGE leaderboard 0 9</span><br></pre></td></tr></table></figure>
+<p>这将返回排行榜上前10名的用户ID。</p>
+<h3 id="4-获取用户排名"><a class="markdownIt-Anchor" href="#4-获取用户排名"></a> 4. 获取用户排名</h3>
+<p>使用 <code>ZREVRANK</code> 命令可以获取特定用户的排名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREVRANK leaderboard user1</span><br></pre></td></tr></table></figure>
+<p>这将返回 <code>user1</code> 在排行榜上的排名。</p>
+<h3 id="5-分数增加或减少"><a class="markdownIt-Anchor" href="#5-分数增加或减少"></a> 5. 分数增加或减少</h3>
+<p>如果需要增加或减少用户的分数，可以使用 <code>ZINCRBY</code> 命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZINCRBY leaderboard 50 user1</span><br></pre></td></tr></table></figure>
+<p>这将会把 <code>user1</code> 的分数增加 <code>50</code>。</p>
+<h3 id="6-删除用户"><a class="markdownIt-Anchor" href="#6-删除用户"></a> 6. 删除用户</h3>
+<p>如果需要从排行榜中删除用户，可以使用 <code>ZREM</code> 命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREM leaderboard user1</span><br></pre></td></tr></table></figure>
+<p>这将会把 <code>user1</code> 从排行榜中移除。</p>
+<h3 id="7-获取分数范围的用户"><a class="markdownIt-Anchor" href="#7-获取分数范围的用户"></a> 7. 获取分数范围的用户</h3>
+<p>如果需要获取分数在特定范围内的用户，可以使用 <code>ZREVRANGEBYSCORE</code> 命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREVRANGEBYSCORE leaderboard 200 100</span><br></pre></td></tr></table></figure>
+<p>这将返回分数在 <code>200</code> 到 <code>100</code> 之间的用户列表。</p>
+<h3 id="实际应用中的考虑"><a class="markdownIt-Anchor" href="#实际应用中的考虑"></a> 实际应用中的考虑</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>性能</strong>：Redis的有序集合操作非常快速，适合实时排行榜。</p>
+</li>
+<li class="lvl-2">
+<p><strong>持久性</strong>：根据需要配置Redis的持久性策略，以确保排行榜数据不会丢失。</p>
+</li>
+<li class="lvl-2">
+<p><strong>分布式</strong>：如果应用是分布式的，考虑使用Redis集群来保证高可用性和扩展性。</p>
+</li>
+<li class="lvl-2">
+<p><strong>缓存</strong>：对于读多写少的场景，可以考虑设置缓存来减少对Redis的访问频率。</p>
+</li>
+</ul>
+<h3 id="示例代码python"><a class="markdownIt-Anchor" href="#示例代码python"></a> 示例代码（Python）</h3>
+<p>以下是一个使用Python和redis-py库实现排行榜的简单示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="comment"># 连接到Redis</span></span><br><span class="line">r = redis.Redis(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">6379</span>, db=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 添加分数</span></span><br><span class="line">r.zadd(<span class="string">&#x27;leaderboard&#x27;</span>, &#123;<span class="string">&#x27;user1&#x27;</span>: <span class="number">100</span>, <span class="string">&#x27;user2&#x27;</span>: <span class="number">200</span>, <span class="string">&#x27;user3&#x27;</span>: <span class="number">150</span>&#125;)</span><br><span class="line"><span class="comment"># 获取排行榜前10名</span></span><br><span class="line">top_users = r.zrevrange(<span class="string">&#x27;leaderboard&#x27;</span>, <span class="number">0</span>, <span class="number">9</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Top 10 users:&quot;</span>, top_users)</span><br><span class="line"><span class="comment"># 获取用户排名</span></span><br><span class="line">user_rank = r.zrevrank(<span class="string">&#x27;leaderboard&#x27;</span>, <span class="string">&#x27;user1&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;User1 rank:&quot;</span>, user_rank)</span><br><span class="line"><span class="comment"># 增加用户分数</span></span><br><span class="line">r.zincrby(<span class="string">&#x27;leaderboard&#x27;</span>, <span class="number">50</span>, <span class="string">&#x27;user1&#x27;</span>)</span><br><span class="line"><span class="comment"># 删除用户</span></span><br><span class="line">r.zrem(<span class="string">&#x27;leaderboard&#x27;</span>, <span class="string">&#x27;user1&#x27;</span>)</span><br><span class="line"><span class="comment"># 获取分数范围的用户</span></span><br><span class="line">users_in_range = r.zrevrangebyscore(<span class="string">&#x27;leaderboard&#x27;</span>, <span class="number">200</span>, <span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Users with score between 200 and 100:&quot;</span>, users_in_range)</span><br></pre></td></tr></table></figure>
+<p>通过以上步骤和代码示例，你可以快速使用Redis实现一个高效的排行榜系统。</p>
+<h2 id="redis-中如何保证缓存与数据库的数据一致性"><a class="markdownIt-Anchor" href="#redis-中如何保证缓存与数据库的数据一致性"></a> Redis 中如何保证缓存与数据库的数据一致性？</h2>
+<p>在Redis中保证缓存与数据库的数据一致性是一个常见且重要的挑战。以下是一些策略和最佳实践，可以帮助你实现这一目标：</p>
+<h3 id="1-缓存失效策略"><a class="markdownIt-Anchor" href="#1-缓存失效策略"></a> 1. 缓存失效策略</h3>
+<p><strong>缓存穿透</strong>：查询不存在的数据，导致请求直接打到数据库。解决方案包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用布隆过滤器预先判断数据是否存在。</p>
+</li>
+<li class="lvl-2">
+<p>缓存空对象，但需设置较短的过期时间。</p>
+</li>
+</ul>
+<p><strong>缓存雪崩</strong>：大量缓存同时失效，导致数据库压力骤增。解决方案包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设置不同的过期时间，避免缓存同时失效。</p>
+</li>
+<li class="lvl-2">
+<p>使用持久化机制，如RDB或AOF，保证数据不丢失。</p>
+</li>
+</ul>
+<p><strong>缓存击穿</strong>：热点数据在失效瞬间，大量请求打到数据库。解决方案包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用互斥锁或分布式锁，保证只有一个请求去更新缓存。</p>
+</li>
+<li class="lvl-2">
+<p>设置热点数据永不过期，通过后台任务更新。</p>
+</li>
+</ul>
+<h3 id="2-更新策略"><a class="markdownIt-Anchor" href="#2-更新策略"></a> 2. 更新策略</h3>
+<p><strong>同步双写</strong>：在更新数据库的同时更新缓存。这种方式简单，但容易导致数据不一致，因为网络延迟或系统故障可能导致两者更新不同步。<br />
+<strong>异步更新</strong>：更新数据库后，通过消息队列等异步方式更新缓存。这种方式可以减轻数据库压力，但需要处理消息的可靠性和顺序性。<br />
+<strong>延迟双删</strong>：更新数据库后，先删除缓存，再延迟一段时间后再次删除缓存。这种方式可以减少缓存不一致的时间窗口。</p>
+<h3 id="3-读写策略"><a class="markdownIt-Anchor" href="#3-读写策略"></a> 3. 读写策略</h3>
+<p><strong>读操作</strong>：先读缓存，如果缓存命中则返回，否则读数据库并更新缓存。<br />
+<strong>写操作</strong>：根据具体业务选择合适的更新策略，如同步双写、异步更新或延迟双删。</p>
+<h3 id="4-分布式锁"><a class="markdownIt-Anchor" href="#4-分布式锁"></a> 4. 分布式锁</h3>
+<p>使用分布式锁（如Redisson实现的分布式锁）确保在更新数据时，只有一个实例能够操作，从而避免并发导致的数据不一致。</p>
+<h3 id="5-监听数据库变更"><a class="markdownIt-Anchor" href="#5-监听数据库变更"></a> 5. 监听数据库变更</h3>
+<p>使用数据库的发布/订阅功能（如MySQL的binlog）监听数据变更，然后同步到缓存。这种方式可以实现较为实时的一致性，但实现复杂度较高。</p>
+<h3 id="6-定期校对"><a class="markdownIt-Anchor" href="#6-定期校对"></a> 6. 定期校对</h3>
+<p>通过定时任务定期校对缓存和数据库的数据，发现不一致时进行修正。</p>
+<h3 id="7-业务层保证"><a class="markdownIt-Anchor" href="#7-业务层保证"></a> 7. 业务层保证</h3>
+<p>在业务层实现缓存与数据库的一致性逻辑，例如：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用事务保证数据库操作的原子性。</p>
+</li>
+<li class="lvl-2">
+<p>在业务逻辑中处理缓存更新和失效。</p>
+</li>
+</ul>
+<h3 id="8-缓存工具和框架"><a class="markdownIt-Anchor" href="#8-缓存工具和框架"></a> 8. 缓存工具和框架</h3>
+<p>使用成熟的缓存工具和框架，如Spring Cache、Redisson等，它们通常提供了一致性保证的机制。</p>
+<h3 id="示例代码python-2"><a class="markdownIt-Anchor" href="#示例代码python-2"></a> 示例代码（Python）</h3>
+<p>以下是一个简单的示例，展示如何在更新数据库后同步更新缓存：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">import</span> your_database_module  <span class="comment"># 假设的数据库模块</span></span><br><span class="line">r = redis.Redis(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">6379</span>, db=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_user_from_db</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="comment"># 从数据库获取用户信息</span></span><br><span class="line">    <span class="keyword">return</span> your_database_module.get_user(user_id)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update_user_in_db</span>(<span class="params">user_id, new_data</span>):</span><br><span class="line">    <span class="comment"># 更新数据库中的用户信息</span></span><br><span class="line">    your_database_module.update_user(user_id, new_data)</span><br><span class="line">    <span class="comment"># 同步更新缓存</span></span><br><span class="line">    r.<span class="built_in">set</span>(<span class="string">f&#x27;user:<span class="subst">&#123;user_id&#125;</span>&#x27;</span>, new_data)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_user</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="comment"># 先尝试从缓存获取</span></span><br><span class="line">    user_data = r.get(<span class="string">f&#x27;user:<span class="subst">&#123;user_id&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> user_data <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 缓存未命中，从数据库获取并更新缓存</span></span><br><span class="line">        user_data = get_user_from_db(user_id)</span><br><span class="line">        r.<span class="built_in">set</span>(<span class="string">f&#x27;user:<span class="subst">&#123;user_id&#125;</span>&#x27;</span>, user_data)</span><br><span class="line">    <span class="keyword">return</span> user_data</span><br><span class="line"><span class="comment"># 更新用户信息</span></span><br><span class="line">update_user_in_db(<span class="number">1</span>, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line"><span class="comment"># 获取用户信息</span></span><br><span class="line">user_info = get_user(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(user_info)</span><br></pre></td></tr></table></figure>
+<p>在实际应用中，需要根据具体的业务场景和需求选择合适的策略，并考虑实现的复杂度和系统性能。</p>
+<h2 id="说说-tcp-的三次握手"><a class="markdownIt-Anchor" href="#说说-tcp-的三次握手"></a> 说说 TCP 的三次握手？</h2>
+<p>TCP（传输控制协议）的三次握手是建立TCP连接的一个标准过程，用于在两个TCP端点之间建立可靠的连接。这个过程确保了双方都准备好进行数据传输，并且交换了一些必要的连接参数。三次握手的过程如下：</p>
+<h3 id="1-syn发送"><a class="markdownIt-Anchor" href="#1-syn发送"></a> 1. SYN发送</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>客户端</strong>发送一个SYN（同步序列编号）报文到<strong>服务器</strong>，并进入SYN_SENT状态，等待服务器确认。</p>
+</li>
+<li class="lvl-2">
+<p>在这个报文中，客户端会随机选择一个初始序列号（ISN），并将SYN标志位设置为1。</p>
+</li>
+</ul>
+<h3 id="2-synack回应"><a class="markdownIt-Anchor" href="#2-synack回应"></a> 2. SYN+ACK回应</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>服务器</strong>收到客户端的SYN报文后，会发送一个SYN+ACK报文作为应答，并将SYN和ACK标志位都设置为1。</p>
+</li>
+<li class="lvl-2">
+<p>服务器也会为自己选择一个初始序列号。</p>
+</li>
+<li class="lvl-2">
+<p>服务器会在ACK字段中确认客户端的ISN+1，表示已经收到了客户端的SYN报文。</p>
+</li>
+<li class="lvl-2">
+<p>服务器进入SYN_RCVD状态。</p>
+</li>
+</ul>
+<h3 id="3-ack确认"><a class="markdownIt-Anchor" href="#3-ack确认"></a> 3. ACK确认</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>客户端</strong>收到服务器的SYN+ACK报文后，会向服务器发送一个ACK报文，确认服务器的SYN。</p>
+</li>
+<li class="lvl-2">
+<p>客户端在ACK字段中确认服务器的ISN+1。</p>
+</li>
+<li class="lvl-2">
+<p>客户端进入ESTABLISHED状态，表示连接已经建立。</p>
+</li>
+<li class="lvl-2">
+<p>服务器收到客户端的ACK报文后，也进入ESTABLISHED状态。</p>
+</li>
+</ul>
+<h3 id="为什么是三次握手"><a class="markdownIt-Anchor" href="#为什么是三次握手"></a> 为什么是三次握手？</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>三次握手</strong>是为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</p>
+</li>
+<li class="lvl-2">
+<p>在第一次握手时，客户端发送SYN报文，但这个报文可能会在网络中滞留，在某个时间点突然又到达了服务器，这时如果只有两次握手，服务器会认为这是一个新的连接请求，从而错误地建立连接。</p>
+</li>
+<li class="lvl-2">
+<p>通过三次握手，可以确保双方都收到了对方的SYN和ACK报文，从而确认连接的可靠性。</p>
+</li>
+</ul>
+<h3 id="三次握手的优点"><a class="markdownIt-Anchor" href="#三次握手的优点"></a> 三次握手的优点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>确保连接的可靠性</strong>：通过三次握手，双方可以确认彼此的接收和发送能力正常。</p>
+</li>
+<li class="lvl-2">
+<p><strong>同步序列号</strong>：交换初始序列号，以便于后续的数据传输中能够对数据包进行排序和确认。</p>
+</li>
+<li class="lvl-2">
+<p><strong>防止旧连接的干扰</strong>：避免由于网络延迟导致的旧连接请求影响新的连接。</p>
+</li>
+</ul>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>假设客户端的初始序列号是X，服务器的初始序列号是Y，三次握手的过程可以表示为：</p>
+<ol>
+<li class="lvl-3">
+<p>客户端 -&gt; 服务器：SYN, ISN=X</p>
+</li>
+<li class="lvl-3">
+<p>服务器 -&gt; 客户端：SYN+ACK, ISN=Y, ACK=X+1</p>
+</li>
+<li class="lvl-3">
+<p>客户端 -&gt; 服务器：ACK, ACK=Y+1</p>
+</li>
+</ol>
+<p>完成三次握手后，客户端和服务器都进入了ESTABLISHED状态，可以开始传输数据了。<br />
+TCP的三次握手是网络通信中的基本概念，理解这个过程对于网络编程和故障排除非常重要。</p>
+<h2 id="简单说说-netty-的零拷贝机制"><a class="markdownIt-Anchor" href="#简单说说-netty-的零拷贝机制"></a> 简单说说 Netty 的零拷贝机制？</h2>
+<p>Netty的零拷贝机制是一种优化数据传输性能的技术，它减少了数据在用户空间和内核空间之间的拷贝次数，从而提高了数据处理的效率。在Netty中，零拷贝主要体现在以下几个方面：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>Buffer聚合</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty使用了一种称为ByteBuf的数据结构，它支持复合缓冲区（Composite Buffer），可以将多个ByteBuf合并为一个逻辑上的ByteBuf，而不需要进行数据拷贝。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>文件传输</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在文件传输时，Netty可以利用操作系统提供的文件映射（如mmap）或发送文件（如sendfile）功能，直接将文件的内容传输到网络套接字，而不需要将文件内容读取到用户空间。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>内存映射文件</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty可以使用内存映射文件的方式，将文件内容映射到内存中，这样在进行文件读取或写入时，可以直接在内存中操作，避免了数据的拷贝。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Direct Buffer</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty支持使用直接缓冲区（Direct Buffer），这种缓冲区在Java堆外分配，可以直接被操作系统访问，减少了在Java堆和原生内存之间拷贝数据的需要。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>消息重用</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty允许重用已经分配的ByteBuf，避免了为每个消息都分配新的缓冲区，从而减少了内存的分配和回收开销。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>池化技术</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty提供了缓冲区池化技术，可以重用缓冲区，减少了缓冲区的创建和销毁次数，从而提高了性能。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>序列化/反序列化优化</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Netty支持多种序列化/反序列化方式，包括一些高效的零拷贝序列化框架，如Protobuf、Marshalling等，这些框架可以在序列化和反序列化过程中减少数据的拷贝。</li>
+</ul>
+</li>
+</ol>
+<p>通过这些零拷贝技术，Netty能够显著提高网络应用程序的性能，尤其是在高并发、大数据量的场景下。零拷贝机制是Netty成为高性能网络框架的重要原因之一。</p>
+<h2 id="什么是配置中心有哪些常见的配置中心"><a class="markdownIt-Anchor" href="#什么是配置中心有哪些常见的配置中心"></a> 什么是配置中心？有哪些常见的配置中心？</h2>
+<p>配置中心是一种用于集中管理和动态更新应用程序配置的工具，旨在简化配置管理、提高灵活性和可维护性。</p>
+<h3 id="核心功能"><a class="markdownIt-Anchor" href="#核心功能"></a> 核心功能</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>集中管理</strong>：所有配置信息存储在中心服务器，便于统一管理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>动态更新</strong>：支持运行时动态调整配置，无需重启应用。</p>
+</li>
+<li class="lvl-3">
+<p><strong>环境隔离</strong>：支持不同环境（如开发、测试、生产）的配置隔离。</p>
+</li>
+<li class="lvl-3">
+<p><strong>版本控制</strong>：记录配置变更历史，便于回滚和审计。</p>
+</li>
+<li class="lvl-3">
+<p><strong>权限管理</strong>：提供细粒度的权限控制，确保配置安全。</p>
+</li>
+</ol>
+<h3 id="常见配置中心"><a class="markdownIt-Anchor" href="#常见配置中心"></a> 常见配置中心</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>Spring Cloud Config</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：与Spring Cloud生态集成，支持Git、SVN等版本控制系统。</li>
+<li class="lvl-5"><strong>适用场景</strong>：Spring Cloud微服务架构。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Apollo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：携程开源的配置中心，支持配置实时更新、灰度发布、权限管理等。</li>
+<li class="lvl-5"><strong>适用场景</strong>：大型分布式系统。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Nacos</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：阿里巴巴开源，集服务发现、配置管理于一体，支持动态配置更新。</li>
+<li class="lvl-5"><strong>适用场景</strong>：微服务架构。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Consul</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：HashiCorp开源，提供配置管理和服务发现，支持多数据中心。</li>
+<li class="lvl-5"><strong>适用场景</strong>：分布式系统。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Zookeeper</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：Apache开源，提供分布式协调服务，支持配置管理。</li>
+<li class="lvl-5"><strong>适用场景</strong>：分布式系统。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Etcd</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：CoreOS开源，高可用的键值存储，支持配置管理和服务发现。</li>
+<li class="lvl-5"><strong>适用场景</strong>：Kubernetes等容器化环境。</li>
+</ul>
+</li>
+</ol>
+<h3 id="选择依据"><a class="markdownIt-Anchor" href="#选择依据"></a> 选择依据</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>功能需求</strong>：如是否需要实时更新、灰度发布等。</p>
+</li>
+<li class="lvl-2">
+<p><strong>集成难度</strong>：与现有系统的兼容性。</p>
+</li>
+<li class="lvl-2">
+<p><strong>社区支持</strong>：开源项目的活跃度和社区资源。</p>
+</li>
+<li class="lvl-2">
+<p><strong>性能要求</strong>：高并发、低延迟等需求。</p>
+</li>
+</ul>
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<p>配置中心是现代分布式系统中不可或缺的工具，常见的如Spring Cloud Config、Apollo、Nacos等各有特点，选择时需根据具体需求进行评估。</p>
+<h2 id="说说-tcp-的四次挥手"><a class="markdownIt-Anchor" href="#说说-tcp-的四次挥手"></a> 说说 TCP 的四次挥手？</h2>
+<p>TCP 的四次挥手是 TCP 连接终止时的过程，确保双方都能正确关闭连接。以下是详细步骤：</p>
+<h3 id="四次挥手过程"><a class="markdownIt-Anchor" href="#四次挥手过程"></a> 四次挥手过程</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>第一次挥手（FIN from Client）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">客户端发送 <code>FIN</code> 报文，表示不再发送数据，但仍可接收数据。</li>
+<li class="lvl-5">客户端进入 <code>FIN_WAIT_1</code> 状态。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>第二次挥手（ACK from Server）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">服务器收到 <code>FIN</code> 后，发送 <code>ACK</code> 确认。</li>
+<li class="lvl-5">服务器进入 <code>CLOSE_WAIT</code> 状态，客户端进入 <code>FIN_WAIT_2</code> 状态。</li>
+<li class="lvl-5">服务器可能继续发送未完成的数据。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>第三次挥手（FIN from Server）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">服务器完成数据发送后，发送 <code>FIN</code> 报文，表示准备关闭连接。</li>
+<li class="lvl-5">服务器进入 <code>LAST_ACK</code> 状态。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>第四次挥手（ACK from Client）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">客户端收到 <code>FIN</code> 后，发送 <code>ACK</code> 确认。</li>
+<li class="lvl-5">客户端进入 <code>TIME_WAIT</code> 状态，等待 2MSL 后关闭连接。</li>
+<li class="lvl-5">服务器收到 <code>ACK</code> 后关闭连接。</li>
+</ul>
+</li>
+</ol>
+<h3 id="状态说明"><a class="markdownIt-Anchor" href="#状态说明"></a> 状态说明</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>FIN_WAIT_1</strong>：客户端等待服务器的 <code>ACK</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>FIN_WAIT_2</strong>：客户端等待服务器的 <code>FIN</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>CLOSE_WAIT</strong>：服务器等待关闭连接。</p>
+</li>
+<li class="lvl-2">
+<p><strong>LAST_ACK</strong>：服务器等待客户端的 <code>ACK</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>TIME_WAIT</strong>：客户端等待 2MSL 以确保服务器收到 <code>ACK</code>。</p>
+</li>
+</ul>
+<h3 id="为什么需要四次挥手"><a class="markdownIt-Anchor" href="#为什么需要四次挥手"></a> 为什么需要四次挥手？</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>双向关闭</strong>：TCP 是全双工协议，双方需独立关闭各自的连接。</p>
+</li>
+<li class="lvl-2">
+<p><strong>确保数据完整</strong>：服务器可能在收到 <code>FIN</code> 后仍有数据要发送，需等待数据发送完毕再关闭。</p>
+</li>
+</ul>
+<h3 id="总结-4"><a class="markdownIt-Anchor" href="#总结-4"></a> 总结</h3>
+<p>四次挥手确保 TCP 连接可靠关闭，防止数据丢失或错误。理解这一过程对网络编程和调试至关重要。</p>
+<h2 id="netty-是如何解决粘包和拆包问题的"><a class="markdownIt-Anchor" href="#netty-是如何解决粘包和拆包问题的"></a> Netty 是如何解决粘包和拆包问题的？</h2>
+<p>Netty 通过多种方式解决 TCP 粘包和拆包问题，以下是主要方法：</p>
+<h3 id="1-使用定长解码器fixedlengthframedecoder"><a class="markdownIt-Anchor" href="#1-使用定长解码器fixedlengthframedecoder"></a> 1. <strong>使用定长解码器（FixedLengthFrameDecoder）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>原理</strong>：每个数据包长度固定，按固定长度拆分。</p>
+</li>
+<li class="lvl-5">
+<p><strong>适用场景</strong>：数据包长度固定的场景。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipeline.addLast(<span class="keyword">new</span> <span class="title class_">FixedLengthFrameDecoder</span>(<span class="number">10</span>)); <span class="comment">// 每个数据包长度为10字节</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-使用分隔符解码器delimiterbasedframedecoder"><a class="markdownIt-Anchor" href="#2-使用分隔符解码器delimiterbasedframedecoder"></a> 2. <strong>使用分隔符解码器（DelimiterBasedFrameDecoder）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>原理</strong>：按指定分隔符（如换行符）拆分数据包。</p>
+</li>
+<li class="lvl-5">
+<p><strong>适用场景</strong>：数据包有明确分隔符的场景。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ByteBuf</span> <span class="variable">delimiter</span> <span class="operator">=</span> Unpooled.copiedBuffer(<span class="string">&quot;\n&quot;</span>.getBytes());</span><br><span class="line">pipeline.addLast(<span class="keyword">new</span> <span class="title class_">DelimiterBasedFrameDecoder</span>(<span class="number">1024</span>, delimiter));</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用长度字段解码器lengthfieldbasedframedecoder"><a class="markdownIt-Anchor" href="#3-使用长度字段解码器lengthfieldbasedframedecoder"></a> 3. <strong>使用长度字段解码器（LengthFieldBasedFrameDecoder）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>原理</strong>：数据包头部包含长度字段，根据长度字段拆分。</p>
+</li>
+<li class="lvl-5">
+<p><strong>适用场景</strong>：数据包长度不固定但头部包含长度信息的场景。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipeline.addLast(<span class="keyword">new</span> <span class="title class_">LengthFieldBasedFrameDecoder</span>(<span class="number">1024</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="4-使用行解码器linebasedframedecoder"><a class="markdownIt-Anchor" href="#4-使用行解码器linebasedframedecoder"></a> 4. <strong>使用行解码器（LineBasedFrameDecoder）</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>原理</strong>：按换行符拆分数据包。</p>
+</li>
+<li class="lvl-5">
+<p><strong>适用场景</strong>：文本协议（如HTTP）等以换行符分隔的场景。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipeline.addLast(<span class="keyword">new</span> <span class="title class_">LineBasedFrameDecoder</span>(<span class="number">1024</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="5-自定义解码器"><a class="markdownIt-Anchor" href="#5-自定义解码器"></a> 5. <strong>自定义解码器</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>原理</strong>：根据业务需求实现自定义解码逻辑。</p>
+</li>
+<li class="lvl-5">
+<p><strong>适用场景</strong>：复杂协议或特殊需求的场景。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDecoder</span> <span class="keyword">extends</span> <span class="title class_">ByteToMessageDecoder</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in, List&lt;Object&gt; out)</span> &#123;</span><br><span class="line">        <span class="comment">// 自定义解码逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">pipeline.addLast(<span class="keyword">new</span> <span class="title class_">MyDecoder</span>());</span><br></pre></td></tr></table></figure>
+<h3 id="总结-5"><a class="markdownIt-Anchor" href="#总结-5"></a> 总结</h3>
+<p>Netty 提供了多种解码器解决粘包和拆包问题，开发者可根据协议特点选择合适的解码器或自定义解码逻辑。</p>
+<h2 id="spring-boot-是如何通过-main-方法启动-web-项目的"><a class="markdownIt-Anchor" href="#spring-boot-是如何通过-main-方法启动-web-项目的"></a> Spring Boot 是如何通过 main 方法启动 web 项目的？</h2>
+<p>Spring Boot 通过 <code>main</code> 方法启动 Web 项目的核心机制如下：</p>
+<h3 id="1-springapplication-类"><a class="markdownIt-Anchor" href="#1-springapplication-类"></a> 1. <strong>SpringApplication 类</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：<code>SpringApplication</code> 是启动 Spring Boot 应用的核心类，负责初始化应用上下文并启动应用。</p>
+</li>
+</ul>
+<h3 id="2-springbootapplication-注解"><a class="markdownIt-Anchor" href="#2-springbootapplication-注解"></a> 2. <strong>@SpringBootApplication 注解</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：这是一个组合注解，包含：</p>
+<ul class="lvl-2">
+<li class="lvl-7"><code>@SpringBootConfiguration</code>：标识为配置类。</li>
+<li class="lvl-7"><code>@EnableAutoConfiguration</code>：启用自动配置。</li>
+<li class="lvl-7"><code>@ComponentScan</code>：自动扫描组件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-main-方法"><a class="markdownIt-Anchor" href="#3-main-方法"></a> 3. <strong>main 方法</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：作为应用入口，调用 <code>SpringApplication.run()</code> 启动应用。</p>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(MyApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-springapplicationrun-方法"><a class="markdownIt-Anchor" href="#4-springapplicationrun-方法"></a> 4. <strong>SpringApplication.run() 方法</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：执行以下步骤：</p>
+<ol>
+<li class="lvl-8"><strong>创建应用上下文</strong>：根据类路径决定是 <code>AnnotationConfigServletWebServerApplicationContext</code> 还是 <code>AnnotationConfigReactiveWebServerApplicationContext</code>。</li>
+<li class="lvl-8"><strong>加载配置</strong>：读取 <code>application.properties</code> 或 <code>application.yml</code> 配置。</li>
+<li class="lvl-8"><strong>启动内嵌 Web 服务器</strong>：如 Tomcat、Jetty 或 Undertow。</li>
+<li class="lvl-8"><strong>刷新应用上下文</strong>：加载所有 Spring Bean 并完成依赖注入。</li>
+<li class="lvl-8"><strong>启动完成</strong>：触发 <code>ApplicationRunner</code> 或 <code>CommandLineRunner</code> Bean。</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-内嵌-web-服务器"><a class="markdownIt-Anchor" href="#5-内嵌-web-服务器"></a> 5. <strong>内嵌 Web 服务器</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：Spring Boot 默认使用 Tomcat 作为内嵌服务器，自动配置并启动。</p>
+</li>
+</ul>
+<h3 id="6-自动配置"><a class="markdownIt-Anchor" href="#6-自动配置"></a> 6. <strong>自动配置</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>作用</strong>：根据类路径依赖自动配置应用，如 Servlet Web 应用或 Reactive Web 应用。</p>
+</li>
+</ul>
+<h3 id="总结-6"><a class="markdownIt-Anchor" href="#总结-6"></a> 总结</h3>
+<p>Spring Boot 通过 <code>main</code> 方法启动 Web 项目的流程如下：</p>
+<ol>
+<li class="lvl-3">
+<p>使用 <code>@SpringBootApplication</code> 注解标记主类。</p>
+</li>
+<li class="lvl-3">
+<p>在 <code>main</code> 方法中调用 <code>SpringApplication.run()</code>。</p>
+</li>
+<li class="lvl-3">
+<p><code>SpringApplication</code> 初始化应用上下文并启动内嵌 Web 服务器。</p>
+</li>
+<li class="lvl-3">
+<p>自动配置机制根据依赖配置应用。</p>
+</li>
+<li class="lvl-3">
+<p>应用启动后，处理请求。</p>
+</li>
+</ol>
+<p>这种设计简化了传统 Spring 应用的配置和部署，提升了开发效率。</p>
+<h2 id="什么情况下需要使用分布式事务有哪些方案"><a class="markdownIt-Anchor" href="#什么情况下需要使用分布式事务有哪些方案"></a> 什么情况下需要使用分布式事务，有哪些方案？</h2>
+<p><strong>需要使用分布式事务的情况：</strong></p>
+<p>在分布式系统中，当多个服务或数据库节点参与一个业务操作，且这个操作需要保证数据的一致性时，就需要使用分布式事务。具体场景包括：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>跨数据库操作</strong>：业务操作涉及多个数据库，需要保证多个数据库中的数据一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>跨服务调用</strong>：业务流程涉及多个服务，每个服务可能有自己的数据库，需要保证服务间数据的一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>微服务架构</strong>：在微服务架构中，每个服务都是独立的，当业务流程跨越多个服务时，需要分布式事务来保证一致性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>高可用性需求</strong>：系统需要高可用性，通过分布式部署来保证，此时可能需要分布式事务来处理跨节点的数据一致性问题。</p>
+</li>
+<li class="lvl-3">
+<p><strong>水平扩展</strong>：为了应对高并发，系统可能进行水平扩展，多个节点同时处理数据，需要分布式事务来保证一致性。</p>
+</li>
+</ol>
+<p><strong>分布式事务的解决方案：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>两阶段提交（2PC）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">强一致性协议。</li>
+<li class="lvl-5">参与者将事务决策发送给协调者，协调者再统一发送决策给所有参与者。</li>
+<li class="lvl-5">缺点：性能开销大，存在单点故障和阻塞问题。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>三阶段提交（3PC）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">2PC的改进版，引入了预提交阶段。</li>
+<li class="lvl-5">减少了阻塞问题，但依然存在性能开销和复杂性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>基于消息的最终一致性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用消息队列（如Apache Kafka、RabbitMQ）实现最终一致性。</li>
+<li class="lvl-5">事务发起方发送消息到消息队列，相关服务订阅消息并处理。</li>
+<li class="lvl-5">优点：系统解耦，高可用性；缺点：实现复杂，可能存在数据不一致的窗口期。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>补偿事务（TCC）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Try-Confirm-Cancel模式。</li>
+<li class="lvl-5">分阶段执行事务，每个阶段都可以回滚。</li>
+<li class="lvl-5">适用于长事务场景，但实现复杂。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>SAGA模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">将长事务拆分为多个本地事务，每个本地事务都有相应的补偿事务。</li>
+<li class="lvl-5">通过顺序执行这些事务来保证最终一致性。</li>
+<li class="lvl-5">适用于复杂业务流程，但事务回滚复杂。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>分布式锁</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">通过分布式锁来保证多个节点在操作共享资源时的互斥性。</li>
+<li class="lvl-5">简单易实现，但可能导致死锁和性能问题。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>基于时间戳的解决方案</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用时间戳来保证事务的顺序执行。</li>
+<li class="lvl-5">实现简单，但需要处理时钟同步问题。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>分布式事务框架</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如Apache Seata、Atomikos等，提供了分布式事务的统一管理和协调。</li>
+<li class="lvl-5">提供了多种事务模式支持，简化了分布式事务的实现。</li>
+</ul>
+</li>
+</ol>
+<p>选择分布式事务的解决方案时，需要根据具体的业务需求、系统架构、性能要求等因素进行综合考虑。</p>
+<h2 id="redis-为什么这么快"><a class="markdownIt-Anchor" href="#redis-为什么这么快"></a> Redis 为什么这么快？</h2>
+<p>Redis之所以非常快，主要有以下几个原因：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>数据结构简单</strong>：Redis使用简单的数据结构，如字符串、哈希表、列表、集合、有序集合等，这些数据结构的操作时间复杂度都很低，通常在O(1)到O(log n)之间。</p>
+</li>
+<li class="lvl-3">
+<p><strong>内存存储</strong>：Redis将数据存储在内存中，相比磁盘存储，内存的读写速度要快得多，因此能够显著提高数据访问速度。</p>
+</li>
+<li class="lvl-3">
+<p><strong>单线程模型</strong>：Redis使用单线程模型来处理客户端请求，避免了多线程编程中的复杂性和线程安全问题，减少了上下文切换的开销。</p>
+</li>
+<li class="lvl-3">
+<p><strong>高效的网络通信</strong>：Redis使用自定义的协议进行网络通信，减少了网络传输的数据量，并且优化了网络数据的解析速度。</p>
+</li>
+<li class="lvl-3">
+<p><strong>I/O多路复用</strong>：Redis使用I/O多路复用技术，如epoll、kqueue等，实现了非阻塞I/O，可以同时处理多个网络连接，提高了I/O效率。</p>
+</li>
+<li class="lvl-3">
+<p><strong>持久化机制</strong>：Redis提供了RDB和AOF两种持久化机制，可以在不影响性能的情况下将数据保存到磁盘，保证了数据的持久性。</p>
+</li>
+<li class="lvl-3">
+<p><strong>优化算法</strong>：Redis在实现各种数据结构时，使用了多种优化算法，如哈希表的冲突解决、跳表等，提高了数据操作的效率。</p>
+</li>
+<li class="lvl-3">
+<p><strong>避免锁竞争</strong>：由于Redis是单线程的，因此在处理请求时不需要加锁，避免了锁竞争带来的性能损耗。</p>
+</li>
+<li class="lvl-3">
+<p><strong>批量操作</strong>：Redis支持批量操作，如mget、mset等，可以一次性处理多个键，减少了网络往返次数，提高了效率。</p>
+</li>
+<li class="lvl-4">
+<p><strong>管道技术</strong>：Redis支持管道技术，允许客户端发送多个命令而无需等待每个命令的响应，从而减少了网络延迟。</p>
+</li>
+<li class="lvl-4">
+<p><strong>Lua脚本</strong>：Redis支持Lua脚本，可以将多个操作合并为一个原子操作执行，减少了网络往返次数和命令解析的开销。</p>
+</li>
+</ol>
+<p>这些设计特点使得Redis在处理大量数据和高并发请求时表现出色，成为了一个非常快速且高效的内存数据库。</p>
+<h2 id="如何使用-redis-快速实现布隆过滤器"><a class="markdownIt-Anchor" href="#如何使用-redis-快速实现布隆过滤器"></a> 如何使用 Redis 快速实现布隆过滤器？</h2>
+<p>布隆过滤器（Bloom Filter）是一种空间效率极高的概率型数据结构，用于测试一个元素是否是一个集合的成员。它可能会返回假阳性（即错误地判断元素在集合中），但不会返回假阴性（即不会错误地判断元素不在集合中）。<br />
+在Redis中，可以使用Redis的位图（bitmap）功能来实现布隆过滤器。以下是一个简单的步骤指南：</p>
+<h3 id="1-确定布隆过滤器的参数"><a class="markdownIt-Anchor" href="#1-确定布隆过滤器的参数"></a> 1. 确定布隆过滤器的参数</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>预计元素数量</strong>（n）：你预计要插入布隆过滤器的元素数量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>可接受的假阳性率</strong>（p）：你能够接受的假阳性概率。<br />
+根据这两个参数，你可以计算出所需位数组的大小（m）和哈希函数的数量（k）。这些参数可以使用在线布隆过滤器计算器或特定的公式来计算。</p>
+</li>
+</ul>
+<h3 id="2-初始化布隆过滤器"><a class="markdownIt-Anchor" href="#2-初始化布隆过滤器"></a> 2. 初始化布隆过滤器</h3>
+<p>在Redis中，你可以使用一个字符串键来表示布隆过滤器的位数组。初始化时，将这个键对应的值设置为一个足够大的位数组。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETBIT bloom_filter_key m-1 0</span><br></pre></td></tr></table></figure>
+<p>这条命令初始化了一个长度为m的位数组，所有位都设置为0。</p>
+<h3 id="3-添加元素"><a class="markdownIt-Anchor" href="#3-添加元素"></a> 3. 添加元素</h3>
+<p>要添加一个元素到布隆过滤器，你需要使用k个不同的哈希函数来计算元素的哈希值，然后将位数组中对应的位设置为1。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i in 1 to k:</span><br><span class="line">    hash_value = hash_function_i(element)</span><br><span class="line">    SETBIT bloom_filter_key hash_value 1</span><br></pre></td></tr></table></figure>
+<p>这里<code>hash_function_i</code>表示第i个哈希函数。</p>
+<h3 id="4-检查元素是否存在"><a class="markdownIt-Anchor" href="#4-检查元素是否存在"></a> 4. 检查元素是否存在</h3>
+<p>要检查一个元素是否可能在布隆过滤器中，同样使用k个哈希函数计算哈希值，然后检查位数组中对应的位是否都为1。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in 1 to k:</span><br><span class="line">    hash_value = hash_function_i(element)</span><br><span class="line">    if GETBIT bloom_filter_key hash_value == 0:</span><br><span class="line">        return &quot;Element is definitely not in the set&quot;</span><br><span class="line">return &quot;Element might be in the set&quot;</span><br></pre></td></tr></table></figure>
+<p>如果所有对应的位都是1，那么元素可能存在于集合中；如果任何一个位是0，那么元素肯定不在集合中。</p>
+<h3 id="5-选择哈希函数"><a class="markdownIt-Anchor" href="#5-选择哈希函数"></a> 5. 选择哈希函数</h3>
+<p>选择合适的哈希函数对于布隆过滤器的性能至关重要。通常，你会选择一些分布均匀、计算速度快的哈希函数。</p>
+<h3 id="注意事项-2"><a class="markdownIt-Anchor" href="#注意事项-2"></a> 注意事项</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>布隆过滤器是不可恢复的，一旦添加了元素，就不能从过滤器中移除。</p>
+</li>
+<li class="lvl-2">
+<p>布隆过滤器的位数组大小和哈希函数数量需要根据实际使用场景进行调优。</p>
+</li>
+</ul>
+<h3 id="使用redis模块"><a class="markdownIt-Anchor" href="#使用redis模块"></a> 使用Redis模块</h3>
+<p>除了手动实现布隆过滤器，你还可以使用Redis的布隆过滤器模块，如RedisBloom。这个模块提供了原生的布隆过滤器支持，使得实现变得更加简单。<br />
+首先，你需要加载RedisBloom模块：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MODULE LOAD /path/to/redisbloom.so</span><br></pre></td></tr></table></figure>
+<p>然后，你可以使用模块提供的命令来操作布隆过滤器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BF.ADD bloom_filter_key element</span><br><span class="line">BF.EXISTS bloom_filter_key element</span><br></pre></td></tr></table></figure>
+<p>这些命令分别用于添加元素和检查元素是否存在。<br />
+通过以上步骤，你可以在Redis中快速实现布隆过滤器，用于高效地测试元素是否可能存在于一个大规模集合中。</p>
+<h2 id="为什么-java-中-hashmap-的默认负载因子是-075"><a class="markdownIt-Anchor" href="#为什么-java-中-hashmap-的默认负载因子是-075"></a> 为什么 Java 中 HashMap 的默认负载因子是 0.75？</h2>
+<p>Java 中 <code>HashMap</code> 的默认负载因子为 0.75，是经过权衡空间和时间效率后的结果。以下是具体原因：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>负载因子的定义</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>负载因子</strong> = 元素数量 / 容量</li>
+<li class="lvl-5">当负载因子超过设定值时，<code>HashMap</code> 会扩容，通常是当前容量的两倍。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>选择 0.75 的原因</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>空间与时间的平衡</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>较低负载因子</strong>（如 0.5）：减少哈希冲突，但增加内存使用。</li>
+<li class="lvl-7"><strong>较高负载因子</strong>（如 0.9）：节省内存，但增加哈希冲突，降低性能。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>0.75 的折衷</strong>：在减少哈希冲突和节省内存之间取得平衡。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>哈希冲突的影响</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>冲突增加</strong>：导致链表或红黑树变长，查找效率下降。</li>
+<li class="lvl-5"><strong>0.75 的优势</strong>：在大多数情况下，能有效控制冲突，保持较高性能。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>数学与统计依据</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>泊松分布</strong>：Java 8 使用泊松分布计算哈希冲突概率，0.75 能在冲突概率和内存使用间取得平衡。</li>
+<li class="lvl-5"><strong>经验值</strong>：0.75 是经过大量测试和实际应用验证的经验值。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>扩容机制</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>扩容开销</strong>：扩容涉及重新哈希和元素迁移，0.75 能减少扩容频率，降低开销。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-7"><a class="markdownIt-Anchor" href="#总结-7"></a> 总结</h3>
+<p><code>HashMap</code> 的默认负载因子 0.75 是在空间和时间效率之间权衡的结果，旨在减少哈希冲突、节省内存并降低扩容频率。这个值经过数学验证和实际应用测试，适合大多数场景。</p>
+<h2 id="如何处理-mysql-的主从同步延迟"><a class="markdownIt-Anchor" href="#如何处理-mysql-的主从同步延迟"></a> 如何处理 MySQL 的主从同步延迟？</h2>
+<p>处理 MySQL 主从同步延迟的常见方法包括：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>优化主库写入性能</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>批量写入</strong>：减少单次事务的写入次数。</li>
+<li class="lvl-5"><strong>索引优化</strong>：避免不必要的索引，提升写入速度。</li>
+<li class="lvl-5"><strong>异步提交</strong>：适当使用异步提交减少主库写入压力。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>提升从库同步性能</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>并行复制</strong>：启用并行复制（如 MySQL 5.7+ 的 <code>slave_parallel_workers</code>）。</li>
+<li class="lvl-5"><strong>硬件升级</strong>：提升从库的 CPU、内存和磁盘性能。</li>
+<li class="lvl-5"><strong>优化查询</strong>：减少从库上的复杂查询，降低负载。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>调整同步参数</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>增大 <code>sync_binlog</code></strong>：提高主库的 <code>sync_binlog</code> 值，减少磁盘 I/O。</li>
+<li class="lvl-5"><strong>调整 <code>innodb_flush_log_at_trx_commit</code></strong>：设置为 2，减少日志刷新频率。</li>
+<li class="lvl-5"><strong>增大 <code>relay_log_space_limit</code></strong>：增加中继日志空间，避免日志写满。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用半同步复制</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>半同步复制</strong>：确保至少一个从库接收到日志后再提交事务，减少延迟。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>读写分离</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>读操作分流</strong>：将读请求分发到多个从库，减轻主库压力。</li>
+<li class="lvl-5"><strong>延迟敏感操作</strong>：将延迟敏感的操作定向到主库。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>监控与报警</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>实时监控</strong>：使用工具监控主从延迟，及时发现并处理问题。</li>
+<li class="lvl-5"><strong>设置报警</strong>：延迟超过阈值时触发报警，快速响应。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>分库分表</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>数据分片</strong>：通过分库分表减少单库压力，降低同步延迟。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用 GTID</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>全局事务标识符（GTID）</strong>：简化故障恢复和主从切换，减少延迟。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>定期维护</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>优化表结构</strong>：定期优化表结构和索引。</li>
+<li class="lvl-5"><strong>清理旧数据</strong>：定期清理不再需要的数据，减少同步负担。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-8"><a class="markdownIt-Anchor" href="#总结-8"></a> 总结</h3>
+<p>处理 MySQL 主从同步延迟需要从主库写入、从库同步、参数调整、架构优化等多方面入手。通过综合运用这些方法，可以有效减少延迟，提升系统性能。</p>
+<h2 id="netty-如何解决-jdk-nio-中的空轮询-bug"><a class="markdownIt-Anchor" href="#netty-如何解决-jdk-nio-中的空轮询-bug"></a> Netty 如何解决 JDK NIO 中的空轮询 Bug？</h2>
+<p>Netty 通过自定义的 <code>Selector</code> 实现和事件循环机制来解决 JDK NIO 中的空轮询 Bug。以下是具体方法：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>JDK NIO 空轮询 Bug 描述</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>问题</strong>：在某些情况下，<code>Selector.select()</code> 会立即返回，即使没有就绪的事件，导致 CPU 占用率飙升。</li>
+<li class="lvl-5"><strong>影响</strong>：高 CPU 使用率，系统性能下降。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Netty 的解决方案</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p><strong>自定义 Selector</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>实现</strong>：Netty 使用自定义的 <code>SelectedSelectionKeySet</code> 替换 JDK 的 <code>Selector</code> 实现，避免空轮询。</li>
+<li class="lvl-6"><strong>优化</strong>：通过优化事件选择逻辑，减少不必要的轮询。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>事件循环机制</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>NioEventLoop</strong>：Netty 的 <code>NioEventLoop</code> 负责处理 I/O 事件和任务调度。</li>
+<li class="lvl-6"><strong>空轮询检测</strong>：在 <code>NioEventLoop</code> 中检测空轮询，超过阈值时重建 <code>Selector</code>。</li>
+</ul>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">selectCnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">long</span> <span class="variable">currentTimeNanos</span> <span class="operator">=</span> System.nanoTime();</span><br><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="type">long</span> <span class="variable">timeoutMillis</span> <span class="operator">=</span> (selectDeadLineNanos - currentTimeNanos + <span class="number">500000L</span>) / <span class="number">1000000L</span>;</span><br><span class="line">    <span class="keyword">if</span> (timeoutMillis &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (selectCnt == <span class="number">0</span>) &#123;</span><br><span class="line">            selector.selectNow();</span><br><span class="line">            selectCnt = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">selectedKeys</span> <span class="operator">=</span> selector.select(timeoutMillis);</span><br><span class="line">    selectCnt++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (selectedKeys != <span class="number">0</span> || oldWakenUp || wakenUp.get() || hasTasks() || hasScheduledTasks()) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (SELECTOR_AUTO_REBUILD_THRESHOLD &gt; <span class="number">0</span> &amp;&amp; selectCnt &gt;= SELECTOR_AUTO_REBUILD_THRESHOLD) &#123;</span><br><span class="line">        selector = selectRebuildSelector(selectCnt);</span><br><span class="line">        selectCnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    currentTimeNanos = System.nanoTime();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p><strong>Selector 重建</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>重建条件</strong>：当空轮询次数超过阈值（默认 512 次），Netty 会重建 <code>Selector</code>。</li>
+<li class="lvl-6"><strong>重建步骤</strong>：</li>
+</ul>
+<ol>
+<li class="lvl-8">创建新的 <code>Selector</code>。</li>
+<li class="lvl-8">将旧的 <code>SelectionKey</code> 注册到新的 <code>Selector</code>。</li>
+<li class="lvl-8">关闭旧的 <code>Selector</code>。</li>
+</ol>
+</li>
+</ul>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Selector <span class="title function_">selectRebuildSelector</span><span class="params">(<span class="type">int</span> selectCnt)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">Selector</span> <span class="variable">newSelector</span> <span class="operator">=</span> Selector.open();</span><br><span class="line">    <span class="keyword">for</span> (SelectionKey key: selector.keys()) &#123;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">a</span> <span class="operator">=</span> key.attachment();</span><br><span class="line">        <span class="type">int</span> <span class="variable">interestOps</span> <span class="operator">=</span> key.interestOps();</span><br><span class="line">        key.cancel();</span><br><span class="line">        <span class="type">SelectionKey</span> <span class="variable">newKey</span> <span class="operator">=</span> key.channel().register(newSelector, interestOps, a);</span><br><span class="line">        <span class="keyword">if</span> (a <span class="keyword">instanceof</span> AbstractNioChannel) &#123;</span><br><span class="line">            ((AbstractNioChannel) a).selectionKey = newKey;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    selector.close();</span><br><span class="line">    <span class="keyword">return</span> newSelector;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结-9"><a class="markdownIt-Anchor" href="#总结-9"></a> <strong>总结</strong></h3>
+<p>Netty 通过自定义 <code>Selector</code> 实现、事件循环机制和 <code>Selector</code> 重建策略，有效解决了 JDK NIO 中的空轮询 Bug。这些优化确保了 Netty 在高并发场景下的稳定性和高性能。</p>
+<h2 id="java-中-hashmap-的扩容机制是怎样的"><a class="markdownIt-Anchor" href="#java-中-hashmap-的扩容机制是怎样的"></a> Java 中 HashMap 的扩容机制是怎样的？</h2>
+<p>Java 中 <code>HashMap</code> 的扩容机制是为了在元素数量增加时保持性能，避免过多的哈希冲突。以下是扩容机制的详细说明：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>初始容量和负载因子</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>初始容量</strong>：默认 16，可在创建时指定。</li>
+<li class="lvl-5"><strong>负载因子</strong>：默认 0.75，表示当元素数量达到容量的 75% 时触发扩容。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>扩容条件</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>触发条件</strong>：当元素数量超过 <code>容量 * 负载因子</code> 时，<code>HashMap</code> 会扩容。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>扩容过程</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>新容量</strong>：通常为当前容量的两倍。</li>
+<li class="lvl-5"><strong>重新哈希</strong>：所有元素重新计算哈希值并分配到新桶中。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Node&lt;K,V&gt;[] resize() &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] oldTab = table;</span><br><span class="line">    <span class="type">int</span> <span class="variable">oldCap</span> <span class="operator">=</span> (oldTab == <span class="literal">null</span>) ? <span class="number">0</span> : oldTab.length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">oldThr</span> <span class="operator">=</span> threshold;</span><br><span class="line">    <span class="type">int</span> newCap, newThr = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (oldCap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">            threshold = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">return</span> oldTab;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;</span><br><span class="line">                 oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</span><br><span class="line">            newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// 双倍扩容</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (oldThr &gt; <span class="number">0</span>) <span class="comment">// 初始容量设为阈值</span></span><br><span class="line">        newCap = oldThr;</span><br><span class="line">    <span class="keyword">else</span> &#123;               <span class="comment">// 使用默认值</span></span><br><span class="line">        newCap = DEFAULT_INITIAL_CAPACITY;</span><br><span class="line">        newThr = (<span class="type">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (newThr == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="type">float</span> <span class="variable">ft</span> <span class="operator">=</span> (<span class="type">float</span>)newCap * loadFactor;</span><br><span class="line">        newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="type">float</span>)MAXIMUM_CAPACITY ?</span><br><span class="line">                  (<span class="type">int</span>)ft : Integer.MAX_VALUE);</span><br><span class="line">    &#125;</span><br><span class="line">    threshold = newThr;</span><br><span class="line">    <span class="meta">@SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)</span></span><br><span class="line">    Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="keyword">new</span> <span class="title class_">Node</span>[newCap];</span><br><span class="line">    table = newTab;</span><br><span class="line">    <span class="keyword">if</span> (oldTab != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">            Node&lt;K,V&gt; e;</span><br><span class="line">            <span class="keyword">if</span> ((e = oldTab[j]) != <span class="literal">null</span>) &#123;</span><br><span class="line">                oldTab[j] = <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">if</span> (e.next == <span class="literal">null</span>)</span><br><span class="line">                    newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                    ((TreeNode&lt;K,V&gt;)e).split(<span class="built_in">this</span>, newTab, j, oldCap);</span><br><span class="line">                <span class="keyword">else</span> &#123; <span class="comment">// 保持顺序</span></span><br><span class="line">                    Node&lt;K,V&gt; loHead = <span class="literal">null</span>, loTail = <span class="literal">null</span>;</span><br><span class="line">                    Node&lt;K,V&gt; hiHead = <span class="literal">null</span>, hiTail = <span class="literal">null</span>;</span><br><span class="line">                    Node&lt;K,V&gt; next;</span><br><span class="line">                    <span class="keyword">do</span> &#123;</span><br><span class="line">                        next = e.next;</span><br><span class="line">                        <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (loTail == <span class="literal">null</span>)</span><br><span class="line">                                loHead = e;</span><br><span class="line">                            <span class="keyword">else</span></span><br><span class="line">                                loTail.next = e;</span><br><span class="line">                            loTail = e;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">if</span> (hiTail == <span class="literal">null</span>)</span><br><span class="line">                                hiHead = e;</span><br><span class="line">                            <span class="keyword">else</span></span><br><span class="line">                                hiTail.next = e;</span><br><span class="line">                            hiTail = e;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">while</span> ((e = next) != <span class="literal">null</span>);</span><br><span class="line">                    <span class="keyword">if</span> (loTail != <span class="literal">null</span>)</span><br><span class="line">                        loTail.next = <span class="literal">null</span>;</span><br><span class="line">                    newTab[j] = loHead;</span><br><span class="line">                    <span class="keyword">if</span> (hiTail != <span class="literal">null</span>)</span><br><span class="line">                        hiTail.next = <span class="literal">null</span>;</span><br><span class="line">                    newTab[j + oldCap] = hiHead;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newTab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>重新哈希</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>计算新位置</strong>：通过 <code>e.hash &amp; (newCap - 1)</code> 计算元素在新表中的位置。</li>
+<li class="lvl-5"><strong>链表拆分</strong>：如果链表长度超过 8，转换为红黑树。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>性能影响</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>时间复杂度</strong>：扩容操作的时间复杂度为 O(n)，因为需要重新哈希所有元素。</li>
+<li class="lvl-5"><strong>优化</strong>：Java 8 引入了红黑树，减少链表过长时的查找时间。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-10"><a class="markdownIt-Anchor" href="#总结-10"></a> 总结</h3>
+<p><code>HashMap</code> 的扩容机制在元素数量超过 <code>容量 * 负载因子</code> 时触发，新容量通常为当前容量的两倍，并重新哈希所有元素。这一机制有效减少了哈希冲突，提升了性能。</p>
+<h2 id="为什么-redis-设计为单线程60-版本为何引入多线程"><a class="markdownIt-Anchor" href="#为什么-redis-设计为单线程60-版本为何引入多线程"></a> 为什么 Redis 设计为单线程？6.0 版本为何引入多线程？</h2>
+<p>Redis 设计为单线程的主要原因是为了简化实现、提高性能和避免并发问题。但随着需求的变化，Redis 6.0 引入了多线程以进一步提升性能。以下是详细原因：</p>
+<h3 id="redis-设计为单线程的原因"><a class="markdownIt-Anchor" href="#redis-设计为单线程的原因"></a> Redis 设计为单线程的原因</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>简化实现</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>避免锁竞争</strong>：单线程模型无需处理复杂的锁机制，减少了潜在的死锁和竞态条件。</li>
+<li class="lvl-5"><strong>代码简洁</strong>：单线程模型使代码更易维护和调试。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>高性能</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>内存操作</strong>：Redis 主要操作内存，单线程已能高效处理。</li>
+<li class="lvl-5"><strong>I/O 多路复用</strong>：通过 I/O 多路复用技术（如 <code>epoll</code>、<code>kqueue</code>），单线程能高效处理大量并发连接。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>原子性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>命令原子性</strong>：单线程确保每个命令的原子性，无需额外同步机制。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>低延迟</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>无上下文切换</strong>：单线程避免了多线程上下文切换的开销，降低了延迟。</li>
+</ul>
+</li>
+</ol>
+<h3 id="redis-60-引入多线程的原因"><a class="markdownIt-Anchor" href="#redis-60-引入多线程的原因"></a> Redis 6.0 引入多线程的原因</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>提升网络 I/O 性能</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>多线程处理网络 I/O</strong>：Redis 6.0 引入多线程处理网络 I/O，提升高并发下的性能。</li>
+<li class="lvl-5"><strong>主线程处理命令</strong>：命令执行仍由主线程处理，保持原子性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>应对高并发需求</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>现代多核 CPU</strong>：随着多核 CPU 的普及，多线程能更好地利用硬件资源。</li>
+<li class="lvl-5"><strong>高并发场景</strong>：在高并发场景下，多线程能显著提升吞吐量。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>保持核心优势</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>命令执行单线程</strong>：命令执行仍为单线程，避免并发问题。</li>
+<li class="lvl-5"><strong>网络 I/O 多线程</strong>：网络 I/O 多线程化，提升性能。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-11"><a class="markdownIt-Anchor" href="#总结-11"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>单线程设计</strong>：简化实现、提高性能、确保原子性和低延迟。</p>
+</li>
+<li class="lvl-2">
+<p><strong>多线程引入</strong>：Redis 6.0 通过多线程处理网络 I/O 提升性能，同时保持命令执行的单线程特性，以应对高并发需求并充分利用多核 CPU。</p>
+</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-02-08</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

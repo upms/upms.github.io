@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Markdown文本高亮（==）" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Markdown文本高亮（==）
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：386</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown%E6%96%87%E6%9C%AC%E9%AB%98%E4%BA%AE"><span class="post-toc-text"> Markdown文本高亮（&#x3D;&#x3D;）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-1markmark"><span class="post-toc-text"> 方式 1：&lt;mark&gt;...&lt;&#x2F;mark&gt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-2"><span class="post-toc-text"> 方式 2：&#x3D;&#x3D;...&#x3D;&#x3D;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F-3font-colorredfont"><span class="post-toc-text"> 方式 3：&lt;font color&#x3D;Red&gt;...&lt;&#x2F;font&gt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A9-hexo-%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E7%AD%89%E5%8F%B7%E9%AB%98%E4%BA%AE%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 让 Hexo 博客支持等号高亮的方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A9%E5%90%84%E7%A7%8D%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%AF%E6%8C%81%E7%AD%89%E5%8F%B7%E9%AB%98%E4%BA%AE%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 让各种本地编辑器支持等号高亮的方法</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="markdown文本高亮"><a class="markdownIt-Anchor" href="#markdown文本高亮"></a> Markdown文本高亮（==）</h2>
+<p>目的：Hexo 引入文本高亮（==）的支持</p>
+<h3 id="方式-1markmark"><a class="markdownIt-Anchor" href="#方式-1markmark"></a> 方式 1：<code>&lt;mark&gt;...&lt;/mark&gt;</code></h3>
+<p>源码:<br />
+<code>&lt;mark&gt;用 mark 标签让文字高亮&lt;/mark&gt;</code></p>
+<p>效果:<br />
+<mark>用 mark 标签让文字高亮</mark></p>
+<p><code>也可以在 &lt;mark&gt; 标签中添加参数 style=&quot;background-color: #FFFF00&quot; 指定背景高亮的颜色。</code></p>
+<h3 id="方式-2"><a class="markdownIt-Anchor" href="#方式-2"></a> 方式 2：<code>==...==</code></h3>
+<p>源码:<br />
+<code>==用两个等号（MarkDown 语法）让文字高亮==</code></p>
+<p>效果:<br />
+<mark>用两个等号（MarkDown 语法）让文字高亮</mark></p>
+<p><code>在文字两边分别加两个等号（==...==）。有些编辑器支持这种 MarkDown 语法，会把文字两侧的等号渲染成 &lt;mark&gt;...&lt;/mark&gt; 标签。</code></p>
+<p>但是，很遗憾 Hexo 默认情况不支持。</p>
+<h3 id="方式-3font-colorredfont"><a class="markdownIt-Anchor" href="#方式-3font-colorredfont"></a> 方式 3：<code>&lt;font color=Red&gt;...&lt;/font&gt;</code></h3>
+<p>源码:<br />
+<code>&lt;font color=Red&gt;用 font（HTML 语法）设置字体颜色&lt;/font&gt;</code></p>
+<p>效果:<br />
+<font color=Red>用 font（HTML 语法）设置字体颜色</font></p>
+<h3 id="让-hexo-博客支持等号高亮的方法"><a class="markdownIt-Anchor" href="#让-hexo-博客支持等号高亮的方法"></a> 让 Hexo 博客支持等号高亮的方法</h3>
+<p>首先，给 Hexo 更换渲染器，把渲染器换成 hexo-renderer-markdown-it-plus，并且安装两个依赖 markdown-it 和 markdown-it-mark。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install markdown-it --save</span><br><span class="line">npm install markdown-it-mark --save</span><br></pre></td></tr></table></figure>
+<p>然后，修改博客目录里的 _config.yml 文件，添加以下内容：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">markdown:</span><br><span class="line">  plugins:</span><br><span class="line">    - &quot;markdown-it&quot;</span><br><span class="line">    - &quot;markdown-it-mark&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="让各种本地编辑器支持等号高亮的方法"><a class="markdownIt-Anchor" href="#让各种本地编辑器支持等号高亮的方法"></a> 让各种本地编辑器支持等号高亮的方法</h3>
+<p>(1) VSCode：VSCode 默认是不支持等号高亮的。需要安装插件 Markdown Preview Enhanced 或 Markdown Extended，并用它取代 VSCode 默认的预览就可以了。</p>
+<p>文章参考：<a target="_blank" rel="noopener" href="https://blog.kukmoon.com/3eacfb91/">https://blog.kukmoon.com/3eacfb91/</a></p>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-03-19</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/markdown/'>
+                            markdown
+                        </a>
+                    
+                        <a href='/tags/hexo/'>
+                            hexo
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

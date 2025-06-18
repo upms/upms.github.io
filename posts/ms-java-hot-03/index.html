@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-03" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java 热门面试题-03
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：13.1k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> MySQL 的乐观锁和悲观锁是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E6%82%B2%E8%A7%82%E9%94%81"><span class="post-toc-text"> 1. 悲观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="post-toc-text"> 实现方式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 适用场景：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9"><span class="post-toc-text"> 优点：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="post-toc-text"> 缺点：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%B9%90%E8%A7%82%E9%94%81"><span class="post-toc-text"> 2. 乐观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F-2"><span class="post-toc-text"> 实现方式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="post-toc-text"> 适用场景：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="post-toc-text"> 优点：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="post-toc-text"> 缺点：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-mysql-%E9%BB%98%E8%AE%A4%E4%BC%9A%E5%8A%A0%E9%94%81%E5%90%97"><span class="post-toc-text"> 3. MySQL 默认会加锁吗？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 4. 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 什么是责任链模式？一般用在什么场景？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8Fchain-of-responsibility-pattern"><span class="post-toc-text"> 责任链模式（Chain of Responsibility Pattern）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="post-toc-text"> 核心思想</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java-%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> Java 实现示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%AE%9A%E4%B9%89%E5%A4%84%E7%90%86%E8%80%85%E6%8E%A5%E5%8F%A3"><span class="post-toc-text"> 1. 定义处理者接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E5%85%B7%E4%BD%93%E5%A4%84%E7%90%86%E8%80%85"><span class="post-toc-text"> 2. 实现具体处理者</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="post-toc-text"> 3. 客户端代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="post-toc-text"> 输出结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-text"> 责任链模式的特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 典型应用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E5%A6%82%E6%9E%9C%E5%8F%91%E7%94%9F%E6%AD%BB%E9%94%81%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="post-toc-text"> MySQL 中如果发生死锁应该如何解决？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E6%A3%80%E6%B5%8B%E6%AD%BB%E9%94%81"><span class="post-toc-text"> 1. 检测死锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%AD%BB%E9%94%81%E6%97%A5%E5%BF%97"><span class="post-toc-text"> 查看死锁日志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-show-engine-innodb-status"><span class="post-toc-text"> 使用 SHOW ENGINE INNODB STATUS</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%88%86%E6%9E%90%E6%AD%BB%E9%94%81%E5%8E%9F%E5%9B%A0"><span class="post-toc-text"> 2. 分析死锁原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%A7%A3%E5%86%B3%E6%AD%BB%E9%94%81%E7%9A%84%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 3. 解决死锁的常见方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E4%BC%98%E5%8C%96%E4%BA%8B%E5%8A%A1%E8%AE%BE%E8%AE%A1"><span class="post-toc-text"> 1) 优化事务设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 2) 重试机制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 3) 使用索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-%E9%99%8D%E4%BD%8E%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="post-toc-text"> 4) 降低隔离级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-%E6%8B%86%E5%88%86%E5%A4%A7%E4%BA%8B%E5%8A%A1"><span class="post-toc-text"> 5) 拆分大事务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-%E4%BD%BF%E7%94%A8%E9%94%81%E8%B6%85%E6%97%B6"><span class="post-toc-text"> 6) 使用锁超时</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E9%A2%84%E9%98%B2%E6%AD%BB%E9%94%81%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="post-toc-text"> 4. 预防死锁的最佳实践</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E7%A4%BA%E4%BE%8B%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90%E4%B8%8E%E8%A7%A3%E5%86%B3"><span class="post-toc-text"> 5. 示例：死锁分析与解决</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 解决方法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 什么是模板方法模式？一般用在什么场景？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-2"><span class="post-toc-text"> 核心思想</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84"><span class="post-toc-text"> 结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="post-toc-text"> 适用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="post-toc-text"> 示例代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%AE%9A%E4%B9%89%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="post-toc-text"> 1. 定义抽象类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E5%85%B7%E4%BD%93%E7%B1%BB"><span class="post-toc-text"> 2. 实现具体类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81-2"><span class="post-toc-text"> 3. 客户端代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C-2"><span class="post-toc-text"> 输出结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-text"> 模板方法模式的特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="post-toc-text"> 典型应用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD-count-count1-%E5%92%8C-count%E5%AD%97%E6%AE%B5%E5%90%8D-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> MySQL 中 count(*)、count(1) 和 count(字段名) 有什么区别？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 什么是观察者模式？一般用在什么场景？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C-sql-%E8%B0%83%E4%BC%98"><span class="post-toc-text"> MySQL 中如何进行 SQL 调优？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 1. 分析慢查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E7%94%A8%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="post-toc-text"> 启用慢查询日志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="post-toc-text"> 分析慢查询日志</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BD%BF%E7%94%A8-explain-%E5%88%86%E6%9E%90%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 2. 使用 EXPLAIN 分析查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-explain"><span class="post-toc-text"> 使用 EXPLAIN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E8%A7%A3%E8%AF%BB"><span class="post-toc-text"> 关键字段解读</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%BC%98%E5%8C%96-sql-%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 3. 优化 SQL 查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E9%81%BF%E5%85%8D-select"><span class="post-toc-text"> 1) **避免 &#96;SELECT ***</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 2) 使用索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%BC%98%E5%8C%96-join-%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 3) 优化 JOIN 查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-%E9%81%BF%E5%85%8D%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 4) 避免子查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-%E5%88%86%E9%A1%B5%E4%BC%98%E5%8C%96"><span class="post-toc-text"> 5) 分页优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96"><span class="post-toc-text"> 4. 索引优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%90%88%E9%80%82%E7%9A%84%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 1) 创建合适的索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E9%81%BF%E5%85%8D%E8%BF%87%E5%A4%9A%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 2) 避免过多索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 3) 使用覆盖索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E4%BC%98%E5%8C%96%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="post-toc-text"> 5. 优化表结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post-toc-text"> 1) 选择合适的数据类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E8%A7%84%E8%8C%83%E5%8C%96%E4%B8%8E%E5%8F%8D%E8%A7%84%E8%8C%83%E5%8C%96"><span class="post-toc-text"> 2) 规范化与反规范化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="post-toc-text"> 3) 分区表</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E8%B0%83%E6%95%B4-mysql-%E9%85%8D%E7%BD%AE"><span class="post-toc-text"> 6. 调整 MySQL 配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E7%BC%93%E5%86%B2%E6%B1%A0%E5%A4%A7%E5%B0%8F"><span class="post-toc-text"> 1) 缓冲池大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E8%BF%9E%E6%8E%A5%E6%95%B0"><span class="post-toc-text"> 2) 连接数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98"><span class="post-toc-text"> 3) 查询缓存</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E4%BD%BF%E7%94%A8%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="post-toc-text"> 7. 使用性能分析工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E5%AE%9A%E6%9C%9F%E7%BB%B4%E6%8A%A4"><span class="post-toc-text"> 8. 定期维护</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 什么是代理模式？一般用在什么场景？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-spring-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 说说 Spring 启动过程？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> Redis 集群的实现原理是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-mysql-%E7%9A%84-explain-%E8%AF%AD%E5%8F%A5%E8%BF%9B%E8%A1%8C%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90"><span class="post-toc-text"> 如何使用 MySQL 的 EXPLAIN 语句进行查询分析？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="post-toc-text"> 1. 基本使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E7%90%86%E8%A7%A3explain%E7%9A%84%E8%BE%93%E5%87%BA"><span class="post-toc-text"> 2. 理解EXPLAIN的输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%88%86%E6%9E%90%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 3. 分析查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BC%98%E5%8C%96%E6%9F%A5%E8%AF%A2"><span class="post-toc-text"> 4. 优化查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E4%BD%BF%E7%94%A8extended%E5%92%8Cpartitions"><span class="post-toc-text"> 5. 使用EXTENDED和PARTITIONS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%A0%E4%BA%86%E8%A7%A3%E7%9A%84-spring-%E9%83%BD%E7%94%A8%E5%88%B0%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="post-toc-text"> 你了解的 Spring 都用到哪些设计模式？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E9%9B%86%E7%BE%A4%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%84%91%E8%A3%82%E9%97%AE%E9%A2%98%E5%90%97"><span class="post-toc-text"> Redis 集群会出现脑裂问题吗？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B7%E6%8F%8F%E8%BF%B0%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="post-toc-text"> 请描述简单工厂模式的工作原理。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA"><span class="post-toc-text"> Spring 有哪几种事务传播行为?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="post-toc-text"> Redis 中如何实现分布式锁？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text"> MySQL 中如何解决深度分页的问题？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 1. 使用索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BD%BF%E7%94%A8%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="post-toc-text"> 2. 使用覆盖索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="post-toc-text"> 3. 子查询优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BD%BF%E7%94%A8limit-with-offset"><span class="post-toc-text"> 4. 使用LIMIT with OFFSET</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E5%AF%BB%E6%89%BE%E5%90%88%E9%80%82%E7%9A%84%E5%88%86%E9%A1%B5%E8%B5%B7%E7%82%B9"><span class="post-toc-text"> 5. 寻找合适的分页起点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E4%BD%BF%E7%94%A8%E9%94%AE%E5%80%BC%E5%AD%98%E5%82%A8"><span class="post-toc-text"> 6. 使用键值存储</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="post-toc-text"> 7. 分区表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E7%BC%93%E5%AD%98"><span class="post-toc-text"> 8. 缓存</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-%E4%BD%BF%E7%94%A8%E6%B8%B8%E6%A0%87"><span class="post-toc-text"> 9. 使用游标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-%E5%BA%94%E7%94%A8%E5%B1%82%E5%88%86%E9%A1%B5"><span class="post-toc-text"> 10. 应用层分页</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BD%BF%E7%94%A8limit-with-offset%E7%9A%84%E4%BC%98%E5%8C%96"><span class="post-toc-text"> 示例：使用LIMIT with OFFSET的优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-springboot-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="post-toc-text"> 说说 Springboot 的启动流程？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E6%97%B6%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="post-toc-text"> Redis 实现分布式锁时可能遇到的问题有哪些？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 工厂模式和抽象工厂模式有什么区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8Ffactory-pattern"><span class="post-toc-text"> 工厂模式（Factory Pattern）：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8Fabstract-factory-pattern"><span class="post-toc-text"> 抽象工厂模式（Abstract Factory Pattern）：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 主要区别：</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><!-- 
+MySQL 的乐观锁和悲观锁是什么？
+什么是责任链模式？一般用在什么场景？
+MySQL 中如果发生死锁应该如何解决？
+什么是模板方法模式？一般用在什么场景？
+MySQL 中 count(*)、count(1) 和 count(字段名) 有什么区别？
+什么是观察者模式？一般用在什么场景？
+MySQL 中如何进行 SQL 调优？
+什么是代理模式？一般用在什么场景？
+说说 Spring 启动过程？
+Redis 集群的实现原理是什么？
+如何使用 MySQL 的 EXPLAIN 语句进行查询分析？
+你了解的 Spring 都用到哪些设计模式？
+Redis 集群会出现脑裂问题吗？
+请描述简单工厂模式的工作原理。
+Spring 有哪几种事务传播行为?
+Redis 中如何实现分布式锁？
+MySQL 中如何解决深度分页的问题？
+说说 Springboot 的启动流程？
+Redis 实现分布式锁时可能遇到的问题有哪些？
+工厂模式和抽象工厂模式有什么区别？
+
+-->
+<h2 id="mysql-的乐观锁和悲观锁是什么"><a class="markdownIt-Anchor" href="#mysql-的乐观锁和悲观锁是什么"></a> MySQL 的乐观锁和悲观锁是什么？</h2>
+<p>MySQL 中的 <strong>乐观锁</strong> 和 <strong>悲观锁</strong> 是两种不同的并发控制机制，用于处理多个事务同时访问同一数据时可能引发的冲突。它们的核心区别在于对并发冲突的处理方式。</p>
+<hr />
+<h3 id="1-悲观锁"><a class="markdownIt-Anchor" href="#1-悲观锁"></a> 1. <strong>悲观锁</strong></h3>
+<p>悲观锁假设事务在操作数据时很可能会发生冲突，因此在访问数据时直接加锁，确保其他事务无法修改数据，直到当前事务完成。</p>
+<h4 id="实现方式"><a class="markdownIt-Anchor" href="#实现方式"></a> 实现方式：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在 MySQL 中，悲观锁通过 <code>SELECT ... FOR UPDATE</code> 或 <code>SELECT ... LOCK IN SHARE MODE</code> 实现。</p>
+<ul class="lvl-2">
+<li class="lvl-4"><code>SELECT ... FOR UPDATE</code>：对选中的行加排他锁，其他事务无法读取或修改。</li>
+<li class="lvl-4"><code>SELECT ... LOCK IN SHARE MODE</code>：对选中的行加共享锁，其他事务可以读取但不能修改。</li>
+</ul>
+</li>
+</ul>
+<h4 id="适用场景"><a class="markdownIt-Anchor" href="#适用场景"></a> 适用场景：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>冲突频繁的环境。</p>
+</li>
+<li class="lvl-2">
+<p>需要确保数据一致性的场景。</p>
+</li>
+</ul>
+<h4 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>保证数据一致性，避免脏读和不可重复读。</p>
+</li>
+</ul>
+<h4 id="缺点"><a class="markdownIt-Anchor" href="#缺点"></a> 缺点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>加锁可能导致性能下降，尤其是在高并发场景下。</p>
+</li>
+</ul>
+<hr />
+<h3 id="2-乐观锁"><a class="markdownIt-Anchor" href="#2-乐观锁"></a> 2. <strong>乐观锁</strong></h3>
+<p>乐观锁假设事务在操作数据时不太可能发生冲突，因此不加锁，只在提交时检查数据是否被其他事务修改过。</p>
+<h4 id="实现方式-2"><a class="markdownIt-Anchor" href="#实现方式-2"></a> 实现方式：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在 MySQL 中，乐观锁通常通过 <strong>版本号</strong> 或 <strong>时间戳</strong> 实现。</p>
+<ul class="lvl-2">
+<li class="lvl-4">在表中增加一个版本号字段（如 <code>version</code>）。</li>
+<li class="lvl-4">事务读取数据时记录版本号，提交时检查版本号是否变化。
+<ul class="lvl-4">
+<li class="lvl-6">如果版本号未变，提交更新并递增版本号。</li>
+<li class="lvl-6">如果版本号已变，回滚事务并提示冲突。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="适用场景-2"><a class="markdownIt-Anchor" href="#适用场景-2"></a> 适用场景：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>冲突较少的场景。</p>
+</li>
+<li class="lvl-2">
+<p>需要高并发性能的场景。</p>
+</li>
+</ul>
+<h4 id="优点-2"><a class="markdownIt-Anchor" href="#优点-2"></a> 优点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>不加锁，提升并发性能。</p>
+</li>
+<li class="lvl-2">
+<p>减少死锁风险。</p>
+</li>
+</ul>
+<h4 id="缺点-2"><a class="markdownIt-Anchor" href="#缺点-2"></a> 缺点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>提交时可能因冲突导致失败，需重试。</p>
+</li>
+</ul>
+<hr />
+<h3 id="3-mysql-默认会加锁吗"><a class="markdownIt-Anchor" href="#3-mysql-默认会加锁吗"></a> 3. <strong>MySQL 默认会加锁吗？</strong></h3>
+<p>MySQL 的默认行为取决于事务的隔离级别和操作类型：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>默认隔离级别</strong>：MySQL 的默认隔离级别是 <strong>REPEATABLE READ</strong>。</p>
+<ul class="lvl-2">
+<li class="lvl-4">在这个级别下，MySQL 会对读取的数据加锁（如共享锁或排他锁），以确保事务的一致性。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>SELECT 语句</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">普通的 <code>SELECT</code> 语句默认不会加锁（除非显式使用 <code>FOR UPDATE</code> 或 <code>LOCK IN SHARE MODE</code>）。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>写操作（INSERT/UPDATE/DELETE）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">MySQL 会自动对涉及的行加排他锁，以确保数据的一致性。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="4-总结"><a class="markdownIt-Anchor" href="#4-总结"></a> 4. <strong>总结</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>悲观锁</strong>：适合冲突频繁的场景，通过加锁确保一致性，但可能影响性能。</p>
+</li>
+<li class="lvl-2">
+<p><strong>乐观锁</strong>：适合冲突较少的场景，不加锁提升性能，但提交时可能因冲突失败。</p>
+</li>
+<li class="lvl-2">
+<p><strong>默认加锁行为</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">普通 <code>SELECT</code> 不会加锁。</li>
+<li class="lvl-4">写操作（INSERT/UPDATE/DELETE）会自动加锁。</li>
+<li class="lvl-4">显式加锁需要使用 <code>FOR UPDATE</code> 或 <code>LOCK IN SHARE MODE</code>。</li>
+</ul>
+</li>
+</ul>
+<p>根据具体场景选择合适的锁机制，可以有效平衡性能和数据一致性。</p>
+<h2 id="什么是责任链模式一般用在什么场景"><a class="markdownIt-Anchor" href="#什么是责任链模式一般用在什么场景"></a> 什么是责任链模式？一般用在什么场景？</h2>
+<h3 id="责任链模式chain-of-responsibility-pattern"><a class="markdownIt-Anchor" href="#责任链模式chain-of-responsibility-pattern"></a> 责任链模式（Chain of Responsibility Pattern）</h3>
+<p>责任链模式是一种行为设计模式，允许多个对象有机会处理请求，从而避免请求的发送者与接收者之间的耦合。请求会沿着处理链传递，直到某个对象处理它为止。</p>
+<hr />
+<h3 id="核心思想"><a class="markdownIt-Anchor" href="#核心思想"></a> 核心思想</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>解耦请求发送者和处理者</strong>：请求的发送者不需要知道具体由哪个对象处理请求。</p>
+</li>
+<li class="lvl-3">
+<p><strong>动态组合处理链</strong>：可以在运行时动态调整处理链的顺序或增减处理者。</p>
+</li>
+</ol>
+<hr />
+<h3 id="适用场景-3"><a class="markdownIt-Anchor" href="#适用场景-3"></a> 适用场景</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>多级请求处理</strong>：例如审批流程、日志级别处理等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>动态指定处理者</strong>：例如中间件管道、过滤器链等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>避免请求发送者与处理者直接耦合</strong>：例如事件处理、异常处理等。</p>
+</li>
+</ol>
+<hr />
+<h3 id="java-实现示例"><a class="markdownIt-Anchor" href="#java-实现示例"></a> Java 实现示例</h3>
+<p>以下是一个简单的 Java 示例，模拟一个多级审批流程：</p>
+<h4 id="1-定义处理者接口"><a class="markdownIt-Anchor" href="#1-定义处理者接口"></a> 1. 定义处理者接口</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Handler</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Handler nextHandler; <span class="comment">// 下一个处理者</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNextHandler</span><span class="params">(Handler nextHandler)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.nextHandler = nextHandler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> request)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-实现具体处理者"><a class="markdownIt-Anchor" href="#2-实现具体处理者"></a> 2. 实现具体处理者</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 具体处理者：经理</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Manager</span> <span class="keyword">extends</span> <span class="title class_">Handler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (request &lt;= <span class="number">1000</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Manager approves the request: &quot;</span> + request);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nextHandler != <span class="literal">null</span>) &#123;</span><br><span class="line">            nextHandler.handleRequest(request); <span class="comment">// 传递给下一个处理者</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体处理者：总监</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Director</span> <span class="keyword">extends</span> <span class="title class_">Handler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (request &gt; <span class="number">1000</span> &amp;&amp; request &lt;= <span class="number">5000</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Director approves the request: &quot;</span> + request);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nextHandler != <span class="literal">null</span>) &#123;</span><br><span class="line">            nextHandler.handleRequest(request); <span class="comment">// 传递给下一个处理者</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体处理者：CEO</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CEO</span> <span class="keyword">extends</span> <span class="title class_">Handler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (request &gt; <span class="number">5000</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;CEO approves the request: &quot;</span> + request);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nextHandler != <span class="literal">null</span>) &#123;</span><br><span class="line">            nextHandler.handleRequest(request); <span class="comment">// 传递给下一个处理者</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-客户端代码"><a class="markdownIt-Anchor" href="#3-客户端代码"></a> 3. 客户端代码</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建处理链</span></span><br><span class="line">        <span class="type">Handler</span> <span class="variable">manager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Manager</span>();</span><br><span class="line">        <span class="type">Handler</span> <span class="variable">director</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Director</span>();</span><br><span class="line">        <span class="type">Handler</span> <span class="variable">ceo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CEO</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置责任链的顺序</span></span><br><span class="line">        manager.setNextHandler(director);</span><br><span class="line">        director.setNextHandler(ceo);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 发送请求</span></span><br><span class="line">        manager.handleRequest(<span class="number">500</span>);   <span class="comment">// Manager 处理</span></span><br><span class="line">        manager.handleRequest(<span class="number">2000</span>);  <span class="comment">// Director 处理</span></span><br><span class="line">        manager.handleRequest(<span class="number">6000</span>);  <span class="comment">// CEO 处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="输出结果"><a class="markdownIt-Anchor" href="#输出结果"></a> 输出结果</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Manager approves the request: 500</span><br><span class="line">Director approves the request: 2000</span><br><span class="line">CEO approves the request: 6000</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="责任链模式的特点"><a class="markdownIt-Anchor" href="#责任链模式的特点"></a> 责任链模式的特点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>优点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">解耦请求发送者和处理者。</li>
+<li class="lvl-5">可以动态调整处理链。</li>
+<li class="lvl-5">符合开闭原则，易于扩展新的处理者。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>缺点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">请求可能未被处理（如果链中没有合适的处理者）。</li>
+<li class="lvl-5">长链可能导致性能问题。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="典型应用场景"><a class="markdownIt-Anchor" href="#典型应用场景"></a> 典型应用场景</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>审批流程</strong>：例如请假审批、报销审批等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>日志处理</strong>：不同级别的日志由不同的处理者处理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>过滤器链</strong>：例如 Web 框架中的中间件处理。</p>
+</li>
+<li class="lvl-3">
+<p><strong>异常处理</strong>：例如 Java 中的异常捕获机制。</p>
+</li>
+</ol>
+<p>通过责任链模式，可以灵活地处理复杂的业务逻辑，同时保持代码的可维护性和扩展性。</p>
+<h2 id="mysql-中如果发生死锁应该如何解决"><a class="markdownIt-Anchor" href="#mysql-中如果发生死锁应该如何解决"></a> MySQL 中如果发生死锁应该如何解决？</h2>
+<p>在 MySQL 中，死锁是指两个或多个事务相互等待对方释放锁，导致它们都无法继续执行的情况。MySQL 会自动检测死锁并选择一个事务作为牺牲者（通常是影响较小的事务），回滚该事务以解除死锁。尽管如此，开发人员仍需关注死锁问题，以减少其对系统性能的影响。</p>
+<p>以下是解决 MySQL 死锁问题的步骤和方法：</p>
+<hr />
+<h3 id="1-检测死锁"><a class="markdownIt-Anchor" href="#1-检测死锁"></a> 1. <strong>检测死锁</strong></h3>
+<p>MySQL 会自动检测死锁并记录相关信息。可以通过以下方式查看死锁信息：</p>
+<h4 id="查看死锁日志"><a class="markdownIt-Anchor" href="#查看死锁日志"></a> 查看死锁日志</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>启用死锁日志记录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> innodb_print_all_deadlocks <span class="operator">=</span> <span class="keyword">ON</span>;</span><br></pre></td></tr></table></figure>
+<p>这会将死锁信息记录到 MySQL 错误日志中。</p>
+</li>
+<li class="lvl-2">
+<p>查看错误日志：<br />
+死锁信息会记录在 MySQL 的错误日志文件中，路径可以通过以下命令查看：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;log_error&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="使用-show-engine-innodb-status"><a class="markdownIt-Anchor" href="#使用-show-engine-innodb-status"></a> 使用 <code>SHOW ENGINE INNODB STATUS</code></h4>
+<p>执行以下命令可以查看 InnoDB 引擎的状态信息，其中包括最近的死锁信息：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> ENGINE INNODB STATUS;</span><br></pre></td></tr></table></figure>
+<p>在输出中查找 <code>LATEST DETECTED DEADLOCK</code> 部分，了解死锁的详细信息。</p>
+<hr />
+<h3 id="2-分析死锁原因"><a class="markdownIt-Anchor" href="#2-分析死锁原因"></a> 2. <strong>分析死锁原因</strong></h3>
+<p>通过死锁日志或 <code>SHOW ENGINE INNODB STATUS</code> 的输出，分析死锁的原因。通常需要关注以下几点：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>涉及的事务和 SQL 语句。</p>
+</li>
+<li class="lvl-2">
+<p>锁的类型（行锁、表锁等）。</p>
+</li>
+<li class="lvl-2">
+<p>事务等待的资源。</p>
+</li>
+</ul>
+<hr />
+<h3 id="3-解决死锁的常见方法"><a class="markdownIt-Anchor" href="#3-解决死锁的常见方法"></a> 3. <strong>解决死锁的常见方法</strong></h3>
+<h4 id="1-优化事务设计"><a class="markdownIt-Anchor" href="#1-优化事务设计"></a> 1) <strong>优化事务设计</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>减少事务大小</strong>：尽量让事务短小，减少锁的持有时间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>按固定顺序访问资源</strong>：确保所有事务以相同的顺序访问表和行，避免交叉等待。</p>
+</li>
+<li class="lvl-2">
+<p><strong>避免长事务</strong>：长事务会长时间持有锁，增加死锁的概率。</p>
+</li>
+</ul>
+<h4 id="2-重试机制"><a class="markdownIt-Anchor" href="#2-重试机制"></a> 2) <strong>重试机制</strong></h4>
+<p>在应用程序中实现重试逻辑。如果事务因死锁失败，可以捕获死锁异常并重试事务。</p>
+<h4 id="3-使用索引"><a class="markdownIt-Anchor" href="#3-使用索引"></a> 3) <strong>使用索引</strong></h4>
+<p>确保查询条件中的字段有合适的索引，避免全表扫描，减少锁冲突。</p>
+<h4 id="4-降低隔离级别"><a class="markdownIt-Anchor" href="#4-降低隔离级别"></a> 4) <strong>降低隔离级别</strong></h4>
+<p>将事务隔离级别从 <code>SERIALIZABLE</code> 或 <code>REPEATABLE READ</code> 降低到 <code>READ COMMITTED</code>，减少锁的竞争。</p>
+<h4 id="5-拆分大事务"><a class="markdownIt-Anchor" href="#5-拆分大事务"></a> 5) <strong>拆分大事务</strong></h4>
+<p>将大事务拆分为多个小事务，减少锁的持有时间。</p>
+<h4 id="6-使用锁超时"><a class="markdownIt-Anchor" href="#6-使用锁超时"></a> 6) <strong>使用锁超时</strong></h4>
+<p>设置锁等待超时时间，避免事务长时间等待：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> innodb_lock_wait_timeout <span class="operator">=</span> <span class="number">50</span>; <span class="comment">-- 设置锁等待超时时间为 50 秒</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="4-预防死锁的最佳实践"><a class="markdownIt-Anchor" href="#4-预防死锁的最佳实践"></a> 4. <strong>预防死锁的最佳实践</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>按固定顺序访问资源</strong>：确保所有事务以相同的顺序访问表和行。</p>
+</li>
+<li class="lvl-3">
+<p><strong>避免用户交互</strong>：在事务中避免用户交互操作，减少事务的持有时间。</p>
+</li>
+<li class="lvl-3">
+<p><strong>合理设计索引</strong>：确保查询能够高效地使用索引，减少锁冲突。</p>
+</li>
+<li class="lvl-3">
+<p><strong>监控和优化</strong>：定期监控死锁日志，分析并优化高并发的 SQL 语句。</p>
+</li>
+</ol>
+<hr />
+<h3 id="5-示例死锁分析与解决"><a class="markdownIt-Anchor" href="#5-示例死锁分析与解决"></a> 5. <strong>示例：死锁分析与解决</strong></h3>
+<p>假设有两个事务：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>事务 A：先更新表 <code>users</code>，再更新表 <code>orders</code>。</p>
+</li>
+<li class="lvl-2">
+<p>事务 B：先更新表 <code>orders</code>，再更新表 <code>users</code>。</p>
+</li>
+</ul>
+<p>这种情况下，事务 A 和事务 B 可能会相互等待，导致死锁。</p>
+<h4 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法"></a> 解决方法：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确保所有事务按相同的顺序访问表，例如先更新 <code>users</code>，再更新 <code>orders</code>。</p>
+</li>
+</ul>
+<hr />
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>MySQL 中的死锁是并发操作中常见的问题，但可以通过以下方式解决和预防：</p>
+<ol>
+<li class="lvl-3">
+<p>分析死锁日志，找出根本原因。</p>
+</li>
+<li class="lvl-3">
+<p>优化事务设计，减少锁冲突。</p>
+</li>
+<li class="lvl-3">
+<p>实现重试机制，处理死锁异常。</p>
+</li>
+<li class="lvl-3">
+<p>遵循最佳实践，如按固定顺序访问资源、合理设计索引等。</p>
+</li>
+</ol>
+<p>通过这些方法，可以有效减少死锁的发生，提升系统的稳定性和性能。</p>
+<h2 id="什么是模板方法模式一般用在什么场景"><a class="markdownIt-Anchor" href="#什么是模板方法模式一般用在什么场景"></a> 什么是模板方法模式？一般用在什么场景？</h2>
+<p>模板方法模式（Template Method Pattern）</p>
+<p>模板方法模式是一种行为设计模式，它定义了一个算法的框架，并允许子类在不改变算法结构的情况下重写算法的某些步骤。模板方法模式通过将算法的通用部分放在父类中，而将可变部分留给子类实现，从而实现代码复用和扩展。</p>
+<hr />
+<h3 id="核心思想-2"><a class="markdownIt-Anchor" href="#核心思想-2"></a> 核心思想</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>定义算法骨架</strong>：在父类中定义一个模板方法，包含算法的步骤。</p>
+</li>
+<li class="lvl-3">
+<p><strong>子类实现具体步骤</strong>：子类可以重写某些步骤，但不改变算法的整体结构。</p>
+</li>
+</ol>
+<hr />
+<h3 id="结构"><a class="markdownIt-Anchor" href="#结构"></a> 结构</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>抽象类（Abstract Class）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">定义模板方法，包含算法的步骤。</li>
+<li class="lvl-5">提供一些默认实现，子类可以选择重写。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>具体类（Concrete Class）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">实现抽象类中的抽象方法，完成算法的具体步骤。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="适用场景-4"><a class="markdownIt-Anchor" href="#适用场景-4"></a> 适用场景</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>算法的整体结构固定，但某些步骤可变</strong>：例如数据处理流程、工作流引擎等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>代码复用</strong>：多个子类共享相同的算法结构，但某些步骤需要定制。</p>
+</li>
+<li class="lvl-3">
+<p><strong>扩展性</strong>：允许子类扩展算法的某些步骤，而不改变算法的整体结构。</p>
+</li>
+</ol>
+<hr />
+<h3 id="示例代码"><a class="markdownIt-Anchor" href="#示例代码"></a> 示例代码</h3>
+<p>以下是一个简单的 Java 示例，模拟一个数据处理流程：</p>
+<h4 id="1-定义抽象类"><a class="markdownIt-Anchor" href="#1-定义抽象类"></a> 1. 定义抽象类</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="comment">// 模板方法，定义算法的骨架</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">()</span> &#123;</span><br><span class="line">        readData();</span><br><span class="line">        processData();</span><br><span class="line">        saveData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 具体步骤，子类可以选择重写</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Reading data from default source...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法，子类必须实现</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 具体步骤，子类可以选择重写</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">saveData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Saving data to default destination...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-实现具体类"><a class="markdownIt-Anchor" href="#2-实现具体类"></a> 2. 实现具体类</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 具体类：文件数据处理</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FileDataProcessor</span> <span class="keyword">extends</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Reading data from file...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Processing file data...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">saveData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Saving data to database...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体类：数据库数据处理</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DatabaseDataProcessor</span> <span class="keyword">extends</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Reading data from database...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Processing database data...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-客户端代码-2"><a class="markdownIt-Anchor" href="#3-客户端代码-2"></a> 3. 客户端代码</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 处理文件数据</span></span><br><span class="line">        <span class="type">DataProcessor</span> <span class="variable">fileProcessor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileDataProcessor</span>();</span><br><span class="line">        fileProcessor.process();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;-------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理数据库数据</span></span><br><span class="line">        <span class="type">DataProcessor</span> <span class="variable">dbProcessor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatabaseDataProcessor</span>();</span><br><span class="line">        dbProcessor.process();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="输出结果-2"><a class="markdownIt-Anchor" href="#输出结果-2"></a> 输出结果</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Reading data from file...</span><br><span class="line">Processing file data...</span><br><span class="line">Saving data to database...</span><br><span class="line">-------------------</span><br><span class="line">Reading data from database...</span><br><span class="line">Processing database data...</span><br><span class="line">Saving data to default destination...</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="模板方法模式的特点"><a class="markdownIt-Anchor" href="#模板方法模式的特点"></a> 模板方法模式的特点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>优点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">代码复用：将通用逻辑放在父类中，减少重复代码。</li>
+<li class="lvl-5">扩展性：子类可以扩展算法的某些步骤，而不改变整体结构。</li>
+<li class="lvl-5">符合开闭原则：对扩展开放，对修改关闭。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>缺点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">可能导致类的数量增加。</li>
+<li class="lvl-5">父类和子类之间的耦合度较高。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="典型应用场景-2"><a class="markdownIt-Anchor" href="#典型应用场景-2"></a> 典型应用场景</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>框架设计</strong>：例如 Spring 框架中的 JdbcTemplate，定义了数据库操作的通用流程。</p>
+</li>
+<li class="lvl-3">
+<p><strong>工作流引擎</strong>：例如审批流程、任务调度等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>数据处理流程</strong>：例如 ETL（Extract, Transform, Load）工具。</p>
+</li>
+<li class="lvl-3">
+<p><strong>测试框架</strong>：例如单元测试中的测试用例模板。</p>
+</li>
+</ol>
+<hr />
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<p>模板方法模式通过定义算法的骨架，并将可变部分留给子类实现，实现了代码复用和扩展性。它适用于算法的整体结构固定，但某些步骤需要定制的场景，例如框架设计、工作流引擎等。通过合理使用模板方法模式，可以提高代码的可维护性和可扩展性。</p>
+<h2 id="mysql-中-count-count1-和-count字段名-有什么区别"><a class="markdownIt-Anchor" href="#mysql-中-count-count1-和-count字段名-有什么区别"></a> MySQL 中 count(*)、count(1) 和 count(字段名) 有什么区别？</h2>
+<p>在 MySQL 中，<code>count(*)</code>、<code>count(1)</code> 和 <code>count(字段名)</code> 有以下区别：</p>
+<ol>
+<li class="lvl-3">
+<p><code>count(*)</code>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">统计结果中包含所有列，包括空值和重复值。</li>
+<li class="lvl-5">统计结果中不包含 <code>NULL</code> 值。</li>
+<li class="lvl-5">统计结果中包含重复值。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><code>count(1)</code>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">统计结果中包含所有列，包括空值和重复值。</li>
+<li class="lvl-5">统计结果中不包含 <code>NULL</code> 值。</li>
+<li class="lvl-5">统计结果中包含重复值。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><code>count(字段名)</code>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">统计结果中只包含指定的字段，不包含空值和重复值。</li>
+<li class="lvl-5">统计结果中不包含 <code>NULL</code> 值。</li>
+<li class="lvl-5">统计结果中不包含重复值。<br />
+因此，<code>count(*)</code> 和 <code>count(1)</code> 的结果是相同的，而 <code>count(字段名)</code> 的结果是统计指定字段的非空、非重复值的数量。</li>
+</ul>
+</li>
+</ol>
+<h2 id="什么是观察者模式一般用在什么场景"><a class="markdownIt-Anchor" href="#什么是观察者模式一般用在什么场景"></a> 什么是观察者模式？一般用在什么场景？</h2>
+<p>观察者模式是一种行为型设计模式，它定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象，当主题对象发生变化时，它的所有依赖者（观察者）都会收到通知并自动更新。<br />
+观察者模式一般用在以下场景：</p>
+<ol>
+<li class="lvl-3">
+<p>事件驱动系统：当一个事件发生时，需要通知多个对象进行处理。</p>
+</li>
+<li class="lvl-3">
+<p>消息队列：当一个消息被发送到消息队列时，需要通知多个消费者进行处理。</p>
+</li>
+<li class="lvl-3">
+<p>发布-订阅系统：当一个主题对象发生变化时，需要通知多个订阅者进行处理。</p>
+</li>
+<li class="lvl-3">
+<p>数据绑定：当一个数据模型发生变化时，需要通知多个视图进行更新。</p>
+</li>
+</ol>
+<h2 id="mysql-中如何进行-sql-调优"><a class="markdownIt-Anchor" href="#mysql-中如何进行-sql-调优"></a> MySQL 中如何进行 SQL 调优？</h2>
+<p>MySQL 的 SQL 调优是提升数据库性能的关键步骤。通过优化 SQL 查询、索引设计、配置参数等，可以显著提高查询效率和系统性能。以下是 MySQL SQL 调优的详细步骤和方法：</p>
+<hr />
+<h3 id="1-分析慢查询"><a class="markdownIt-Anchor" href="#1-分析慢查询"></a> 1. <strong>分析慢查询</strong></h3>
+<p>慢查询是性能瓶颈的主要来源。通过分析慢查询日志，可以找到需要优化的 SQL 语句。</p>
+<h4 id="启用慢查询日志"><a class="markdownIt-Anchor" href="#启用慢查询日志"></a> 启用慢查询日志</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看慢查询日志是否开启</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;slow_query_log&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 开启慢查询日志</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> slow_query_log <span class="operator">=</span> <span class="string">&#x27;ON&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 设置慢查询阈值（单位：秒）</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> long_query_time <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看慢查询日志文件路径</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;slow_query_log_file&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="分析慢查询日志"><a class="markdownIt-Anchor" href="#分析慢查询日志"></a> 分析慢查询日志</h4>
+<p>使用工具（如 <code>mysqldumpslow</code> 或 <code>pt-query-digest</code>）分析慢查询日志，找出执行时间最长的 SQL 语句。</p>
+<hr />
+<h3 id="2-使用-explain-分析查询"><a class="markdownIt-Anchor" href="#2-使用-explain-分析查询"></a> 2. <strong>使用 <code>EXPLAIN</code> 分析查询</strong></h3>
+<p><code>EXPLAIN</code> 是 MySQL 提供的用于分析 SQL 查询执行计划的工具。通过 <code>EXPLAIN</code> 可以了解查询的执行方式，找到潜在的性能问题。</p>
+<h4 id="使用-explain"><a class="markdownIt-Anchor" href="#使用-explain"></a> 使用 <code>EXPLAIN</code></h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="关键字段解读"><a class="markdownIt-Anchor" href="#关键字段解读"></a> 关键字段解读</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>type</strong>：访问类型（如 <code>ALL</code> 表示全表扫描，<code>index</code> 表示索引扫描）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>key</strong>：使用的索引。</p>
+</li>
+<li class="lvl-2">
+<p><strong>rows</strong>：扫描的行数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Extra</strong>：额外信息（如 <code>Using filesort</code> 表示使用了文件排序，<code>Using temporary</code> 表示使用了临时表）。</p>
+</li>
+</ul>
+<hr />
+<h3 id="3-优化-sql-查询"><a class="markdownIt-Anchor" href="#3-优化-sql-查询"></a> 3. <strong>优化 SQL 查询</strong></h3>
+<h4 id="1-避免-select"><a class="markdownIt-Anchor" href="#1-避免-select"></a> 1) **避免 `SELECT ***</h4>
+<p>只选择需要的字段，减少数据传输量。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> id, name <span class="keyword">FROM</span> users;</span><br></pre></td></tr></table></figure>
+<h4 id="2-使用索引"><a class="markdownIt-Anchor" href="#2-使用索引"></a> 2) <strong>使用索引</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确保查询条件中的字段有索引。</p>
+</li>
+<li class="lvl-2">
+<p>避免在索引列上使用函数或表达式。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(created_at) <span class="operator">=</span> <span class="number">2023</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> created_at <span class="operator">&gt;=</span> <span class="string">&#x27;2023-01-01&#x27;</span> <span class="keyword">AND</span> created_at <span class="operator">&lt;</span> <span class="string">&#x27;2024-01-01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="3-优化-join-查询"><a class="markdownIt-Anchor" href="#3-优化-join-查询"></a> 3) <strong>优化 <code>JOIN</code> 查询</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确保 <code>JOIN</code> 字段有索引。</p>
+</li>
+<li class="lvl-2">
+<p>使用小表驱动大表（小表放在 <code>JOIN</code> 的左侧）。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> large_table <span class="keyword">JOIN</span> small_table <span class="keyword">ON</span> large_table.id <span class="operator">=</span> small_table.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> small_table <span class="keyword">JOIN</span> large_table <span class="keyword">ON</span> small_table.id <span class="operator">=</span> large_table.id;</span><br></pre></td></tr></table></figure>
+<h4 id="4-避免子查询"><a class="markdownIt-Anchor" href="#4-避免子查询"></a> 4) <strong>避免子查询</strong></h4>
+<p>尽量将子查询改写为 <code>JOIN</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> user_id <span class="keyword">FROM</span> orders);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> users.<span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">JOIN</span> orders <span class="keyword">ON</span> users.id <span class="operator">=</span> orders.user_id;</span><br></pre></td></tr></table></figure>
+<h4 id="5-分页优化"><a class="markdownIt-Anchor" href="#5-分页优化"></a> 5) <strong>分页优化</strong></h4>
+<p>对于大数据量的分页查询，避免使用 <code>LIMIT offset, size</code>，改用基于游标的分页。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users LIMIT <span class="number">1000000</span>, <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 推荐</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> <span class="number">1000000</span> LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="4-索引优化"><a class="markdownIt-Anchor" href="#4-索引优化"></a> 4. <strong>索引优化</strong></h3>
+<h4 id="1-创建合适的索引"><a class="markdownIt-Anchor" href="#1-创建合适的索引"></a> 1) <strong>创建合适的索引</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>为查询条件中的字段创建索引。</p>
+</li>
+<li class="lvl-2">
+<p>使用复合索引时，遵循最左前缀原则。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_age <span class="keyword">ON</span> users(age);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_name_age <span class="keyword">ON</span> users(name, age);</span><br></pre></td></tr></table></figure>
+<h4 id="2-避免过多索引"><a class="markdownIt-Anchor" href="#2-避免过多索引"></a> 2) <strong>避免过多索引</strong></h4>
+<p>过多的索引会增加写操作的开销。定期检查并删除未使用的索引。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX idx_unused <span class="keyword">ON</span> users;</span><br></pre></td></tr></table></figure>
+<h4 id="3-使用覆盖索引"><a class="markdownIt-Anchor" href="#3-使用覆盖索引"></a> 3) <strong>使用覆盖索引</strong></h4>
+<p>如果查询的所有字段都在索引中，可以直接使用索引返回数据，避免回表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_covering <span class="keyword">ON</span> users(id, name, age);</span><br><span class="line"><span class="keyword">SELECT</span> id, name, age <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="5-优化表结构"><a class="markdownIt-Anchor" href="#5-优化表结构"></a> 5. <strong>优化表结构</strong></h3>
+<h4 id="1-选择合适的数据类型"><a class="markdownIt-Anchor" href="#1-选择合适的数据类型"></a> 1) <strong>选择合适的数据类型</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用最小的数据类型（如 <code>INT</code> 代替 <code>BIGINT</code>）。</p>
+</li>
+<li class="lvl-2">
+<p>避免使用 <code>NULL</code>，尽量设置默认值。</p>
+</li>
+</ul>
+<h4 id="2-规范化与反规范化"><a class="markdownIt-Anchor" href="#2-规范化与反规范化"></a> 2) <strong>规范化与反规范化</strong></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>规范化：减少数据冗余，提高数据一致性。</p>
+</li>
+<li class="lvl-2">
+<p>反规范化：通过冗余数据减少 <code>JOIN</code> 操作，提升查询性能。</p>
+</li>
+</ul>
+<h4 id="3-分区表"><a class="markdownIt-Anchor" href="#3-分区表"></a> 3) <strong>分区表</strong></h4>
+<p>对于大表，可以使用分区表来提升查询性能。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> logs (</span><br><span class="line">    id <span class="type">INT</span>,</span><br><span class="line">    log_date <span class="type">DATE</span></span><br><span class="line">) <span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (<span class="keyword">YEAR</span>(log_date)) (</span><br><span class="line">    <span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> LESS THAN (<span class="number">2020</span>),</span><br><span class="line">    <span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> LESS THAN (<span class="number">2021</span>),</span><br><span class="line">    <span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> LESS THAN (<span class="number">2022</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="6-调整-mysql-配置"><a class="markdownIt-Anchor" href="#6-调整-mysql-配置"></a> 6. <strong>调整 MySQL 配置</strong></h3>
+<h4 id="1-缓冲池大小"><a class="markdownIt-Anchor" href="#1-缓冲池大小"></a> 1) <strong>缓冲池大小</strong></h4>
+<p>调整 <code>innodb_buffer_pool_size</code>，使其足够大以容纳常用数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> innodb_buffer_pool_size <span class="operator">=</span> <span class="number">1</span>G;</span><br></pre></td></tr></table></figure>
+<h4 id="2-连接数"><a class="markdownIt-Anchor" href="#2-连接数"></a> 2) <strong>连接数</strong></h4>
+<p>调整 <code>max_connections</code>，避免连接数不足。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> max_connections <span class="operator">=</span> <span class="number">500</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="3-查询缓存"><a class="markdownIt-Anchor" href="#3-查询缓存"></a> 3) <strong>查询缓存</strong></h4>
+<p>在 MySQL 8.0 之前，可以启用查询缓存（但 MySQL 8.0 已移除查询缓存）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> query_cache_size <span class="operator">=</span> <span class="number">64</span>M;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="7-使用性能分析工具"><a class="markdownIt-Anchor" href="#7-使用性能分析工具"></a> 7. <strong>使用性能分析工具</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MySQL Workbench</strong>：提供可视化的性能分析工具。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Percona Toolkit</strong>：包含多种性能分析工具（如 <code>pt-query-digest</code>）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Performance Schema</strong>：监控 MySQL 的性能指标。</p>
+</li>
+</ul>
+<hr />
+<h3 id="8-定期维护"><a class="markdownIt-Anchor" href="#8-定期维护"></a> 8. <strong>定期维护</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>优化表</strong>：使用 <code>OPTIMIZE TABLE</code> 回收碎片空间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>分析表</strong>：使用 <code>ANALYZE TABLE</code> 更新表的统计信息。</p>
+</li>
+<li class="lvl-2">
+<p><strong>重建索引</strong>：定期重建索引以保持索引效率。</p>
+</li>
+</ul>
+<hr />
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<p>MySQL SQL 调优的核心步骤包括：</p>
+<ol>
+<li class="lvl-3">
+<p>分析慢查询，找出性能瓶颈。</p>
+</li>
+<li class="lvl-3">
+<p>使用 <code>EXPLAIN</code> 分析查询执行计划。</p>
+</li>
+<li class="lvl-3">
+<p>优化 SQL 查询，避免低效操作。</p>
+</li>
+<li class="lvl-3">
+<p>创建合适的索引，避免过多索引。</p>
+</li>
+<li class="lvl-3">
+<p>优化表结构，选择合适的数据类型。</p>
+</li>
+<li class="lvl-3">
+<p>调整 MySQL 配置参数，提升系统性能。</p>
+</li>
+<li class="lvl-3">
+<p>使用性能分析工具，定期维护数据库。</p>
+</li>
+</ol>
+<p>通过以上方法，可以显著提升 MySQL 的性能和稳定性。</p>
+<h2 id="什么是代理模式一般用在什么场景"><a class="markdownIt-Anchor" href="#什么是代理模式一般用在什么场景"></a> 什么是代理模式？一般用在什么场景？</h2>
+<p>代理模式（Proxy Pattern）是一种结构型设计模式，它为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个客户不想或者不能直接引用另一个对象，这时可以通过代理对象来间接访问。</p>
+<p><strong>代理模式的主要角色：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>Subject（抽象主题角色）</strong>：定义了RealSubject和Proxy的共用接口，这样就在任何使用RealSubject的地方都可以使用Proxy。</p>
+</li>
+<li class="lvl-3">
+<p><strong>RealSubject（真实主题角色）</strong>：定义了代理角色所代表的真实对象。</p>
+</li>
+<li class="lvl-3">
+<p><strong>Proxy（代理主题角色）</strong>：保存一个引用使得代理可以访问真实主题，并提供一个与真实主题相同的接口，这样代理就可以用来代替真实主题。</p>
+</li>
+</ol>
+<p><strong>代理模式的应用场景：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>远程代理</strong>：为一个对象在不同的地址空间提供局部代表，这样可以隐藏一个对象存在于不同地址空间的事实。</p>
+</li>
+<li class="lvl-3">
+<p><strong>虚拟代理</strong>：根据需要创建开销很大的对象，通过它来存放实例化需要很长时间的真实对象。</p>
+</li>
+<li class="lvl-3">
+<p><strong>安全代理</strong>：用于控制对真实对象的访问权限。</p>
+</li>
+<li class="lvl-3">
+<p><strong>智能代理</strong>：在访问对象时执行一些附加操作，比如计算真实对象的引用次数，当对象没有被引用时释放它。</p>
+</li>
+</ol>
+<p><strong>代理模式的好处：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>解耦</strong>：代理对象可以隐藏真实对象的实现细节，降低系统的耦合度。</p>
+</li>
+<li class="lvl-2">
+<p><strong>增强功能</strong>：代理对象可以在不修改真实对象的基础上，增加额外的功能，比如权限控制、日志记录等。</p>
+</li>
+<li class="lvl-2">
+<p><strong>延迟加载</strong>：虚拟代理可以实现延迟加载，避免在对象初始化时就加载资源或进行复杂计算。</p>
+</li>
+</ul>
+<p><strong>代理模式的缺点：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>性能开销</strong>：由于引入了代理层，可能会增加系统的复杂性和性能开销。</p>
+</li>
+<li class="lvl-2">
+<p><strong>调试难度</strong>：由于代理层对请求进行了拦截和处理，可能会增加调试的难度。</p>
+</li>
+</ul>
+<p>代理模式在Java等面向对象编程语言中非常常见，例如在Spring框架中的AOP（面向切面编程）就大量使用了代理模式。在中国，代理模式也被广泛应用于各种软件开发场景中，以符合软件工程规范和提升软件质量。</p>
+<h2 id="说说-spring-启动过程"><a class="markdownIt-Anchor" href="#说说-spring-启动过程"></a> 说说 Spring 启动过程？</h2>
+<p>Spring框架的启动过程是一个复杂但高度结构化的过程，它涉及多个阶段和组件的协同工作。以下是Spring启动过程的一个高层次的概述：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>创建Spring容器</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">通常通过调用<code>ClassPathXmlApplicationContext</code>、<code>FileSystemXmlApplicationContext</code>或<code>AnnotationConfigApplicationContext</code>等类的构造函数来创建Spring容器。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>配置加载</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器会加载配置文件（如XML文件或Java配置类），这些配置文件定义了Bean的配置信息。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>解析配置</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器解析配置文件，将配置信息转换为内部的Bean定义对象（<code>BeanDefinition</code>）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Bean定义注册</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">解析后的Bean定义被注册到Spring容器的Bean定义注册表中（<code>BeanDefinitionRegistry</code>）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>BeanFactory后处理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器会调用<code>BeanFactoryPostProcessor</code>接口的实现，允许在Bean定义加载完成后对Bean定义进行修改。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Bean实例化</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器根据Bean定义创建Bean实例。这个过程可以是懒加载的，也可以是立即加载的。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>依赖注入</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器为Bean实例注入依赖。这些依赖可以是属性值、对象引用或其他资源。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Bean初始化</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器调用Bean的初始化方法。这些方法可以是自定义的初始化方法，也可以是实现了<code>InitializingBean</code>接口的Bean的<code>afterPropertiesSet</code>方法。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>BeanPostProcessor处理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring容器会调用<code>BeanPostProcessor</code>接口的实现，允许在Bean初始化前后对Bean进行自定义处理。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>ApplicationContextAware回调</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">如果Bean实现了<code>ApplicationContextAware</code>接口，Spring容器会调用<code>setApplicationContext</code>方法，将ApplicationContext实例注入到Bean中。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>事件发布</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring容器发布容器刷新完成的事件，如<code>ContextRefreshedEvent</code>。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>启动完成</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring容器启动完成，应用程序可以开始使用容器中的Bean。</li>
+</ul>
+</li>
+</ol>
+<p>在整个启动过程中，Spring还会进行一些其他的操作，比如处理自动装配、解析AOP配置、注册事务管理器等。<br />
+Spring的启动过程是高度可配置和可扩展的，开发者可以通过实现特定的接口或使用注解来定制启动过程中的行为。这种设计使得Spring框架非常灵活，能够适应各种不同的应用场景。</p>
+<h2 id="redis-集群的实现原理是什么"><a class="markdownIt-Anchor" href="#redis-集群的实现原理是什么"></a> Redis 集群的实现原理是什么？</h2>
+<p>Redis集群是一种分布式存储解决方案，它允许数据跨多个Redis节点分布，以提高性能、可扩展性和容错能力。Redis集群的实现原理主要包括以下几个方面：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>数据分片（Sharding）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Redis集群使用哈希槽（Hash Slots）来实现数据分片。共有16384个哈希槽，每个键通过CRC16校验后对16384取模来决定放置哪个哈希槽。</li>
+<li class="lvl-5">集群中的每个节点负责一部分哈希槽，这样数据就可以均匀分布在多个节点上。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>主从复制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">每个哈希槽都有一个主节点和多个从节点。主节点负责处理客户端的读写请求，从节点复制主节点的数据，提供数据冗余和故障转移支持。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>集群节点通信</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">集群节点之间通过TCP协议进行通信，使用Gossip协议来交换信息，如节点状态、哈希槽映射等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>故障转移</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">当主节点发生故障时，集群会自动进行故障转移，将一个从节点提升为新的主节点，并通知集群中的其他节点更新哈希槽映射。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>客户端路由</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Redis集群客户端负责将请求路由到正确的节点。客户端会缓存哈希槽到节点的映射信息，当请求到来时，客户端计算键对应的哈希槽，并将请求发送到负责该哈希槽的节点。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>重定向机制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果客户端发送请求到错误的节点，该节点会返回一个重定向错误，指示正确的节点。客户端随后会重新发送请求到正确的节点。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>集群状态监控</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">集群中的节点会定期交换状态信息，以监控集群的健康状况。如果发现节点故障，会触发故障转移流程。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>分布式锁和事务</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Redis集群支持分布式锁和事务，但实现上比单机版复杂，需要考虑多个节点之间的协调。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>数据迁移和重新分片</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">集群支持在线数据迁移和重新分片，可以在不中断服务的情况下添加或移除节点，以及调整哈希槽的分布。</li>
+</ul>
+</li>
+</ol>
+<p>Redis集群通过这些机制实现了高可用、高性能和可扩展的分布式存储系统。然而，集群模式也有一些限制，比如不支持多键操作（如事务中的多个键不在同一个节点上），以及集群配置和管理相对复杂。尽管如此，Redis集群仍然是许多需要高性能和可扩展性应用的理想选择。</p>
+<h2 id="如何使用-mysql-的-explain-语句进行查询分析"><a class="markdownIt-Anchor" href="#如何使用-mysql-的-explain-语句进行查询分析"></a> 如何使用 MySQL 的 EXPLAIN 语句进行查询分析？</h2>
+<p>MySQL的<code>EXPLAIN</code>语句是一种非常强大的工具，用于分析SQL查询的执行计划。通过使用<code>EXPLAIN</code>，你可以了解MySQL是如何执行你的查询的，包括如何进行表连接、使用哪些索引、查询的顺序等。以下是如何使用<code>EXPLAIN</code>进行查询分析的基本步骤：</p>
+<h3 id="1-基本使用"><a class="markdownIt-Anchor" href="#1-基本使用"></a> 1. 基本使用</h3>
+<p>在你想要分析的查询前加上<code>EXPLAIN</code>关键字，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-理解explain的输出"><a class="markdownIt-Anchor" href="#2-理解explain的输出"></a> 2. 理解EXPLAIN的输出</h3>
+<p><code>EXPLAIN</code>会返回一个结果集，其中包含以下列（在MySQL 5.7及更高版本中）：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>id</code>：SELECT查询的标识符。如果有多个查询，每个查询都有一个唯一的id。</p>
+</li>
+<li class="lvl-2">
+<p><code>select_type</code>：查询的类型，例如SIMPLE（简单查询）、PRIMARY（主查询）、SUBQUERY（子查询）等。</p>
+</li>
+<li class="lvl-2">
+<p><code>table</code>：显示这一行数据是关于哪张表的。</p>
+</li>
+<li class="lvl-2">
+<p><code>type</code>：连接类型，显示如何连接表。从好到差的类型依次是：system、const、eq_ref、ref、fulltext、ref_or_null、index_merge、unique_subquery、index_subquery、range、index、ALL。</p>
+</li>
+<li class="lvl-2">
+<p><code>possible_keys</code>：可能使用的索引。</p>
+</li>
+<li class="lvl-2">
+<p><code>key</code>：实际使用的索引。</p>
+</li>
+<li class="lvl-2">
+<p><code>key_len</code>：使用的索引的长度。</p>
+</li>
+<li class="lvl-2">
+<p><code>ref</code>：显示索引的哪一列被使用了。</p>
+</li>
+<li class="lvl-2">
+<p><code>rows</code>：估计要扫描的行数。</p>
+</li>
+<li class="lvl-2">
+<p><code>Extra</code>：包含MySQL解析查询的额外信息。</p>
+</li>
+</ul>
+<h3 id="3-分析查询"><a class="markdownIt-Anchor" href="#3-分析查询"></a> 3. 分析查询</h3>
+<p>根据<code>EXPLAIN</code>的输出，你可以分析查询的效率：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>检查<code>type</code>列</strong>：如果看到<code>ALL</code>，说明进行了全表扫描，这通常不是高效的。</p>
+</li>
+<li class="lvl-2">
+<p><strong>查看<code>key</code>列</strong>：确认是否使用了索引。如果没有使用索引，查询可能不够高效。</p>
+</li>
+<li class="lvl-2">
+<p><strong>分析<code>rows</code>列</strong>：行数越少，查询通常越高效。</p>
+</li>
+<li class="lvl-2">
+<p><strong>检查<code>Extra</code>列</strong>：这里可能会显示一些重要的信息，如“Using index”（使用索引）、“Using where”（使用WHERE子句）、“Using temporary”（使用临时表）等。</p>
+</li>
+</ul>
+<h3 id="4-优化查询"><a class="markdownIt-Anchor" href="#4-优化查询"></a> 4. 优化查询</h3>
+<p>根据<code>EXPLAIN</code>的分析结果，你可以对查询进行优化：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>添加或修改索引</strong>：如果查询没有使用索引，考虑添加索引。</p>
+</li>
+<li class="lvl-2">
+<p><strong>重写查询</strong>：有时，重写查询可以提高效率，例如改变连接的顺序或使用不同的查询结构。</p>
+</li>
+<li class="lvl-2">
+<p><strong>调整数据库配置</strong>：在某些情况下，调整数据库配置参数可以提高查询性能。</p>
+</li>
+</ul>
+<h3 id="5-使用extended和partitions"><a class="markdownIt-Anchor" href="#5-使用extended和partitions"></a> 5. 使用EXTENDED和PARTITIONS</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>EXTENDED</strong>：使用<code>EXPLAIN EXTENDED</code>可以获取更多关于查询执行计划的信息。</p>
+</li>
+<li class="lvl-2">
+<p><strong>PARTITIONS</strong>：如果使用分区表，可以使用<code>EXPLAIN PARTITIONS</code>来查看查询如何与表分区交互。</p>
+</li>
+</ul>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>假设有以下查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders o <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.id <span class="keyword">WHERE</span> c.name <span class="operator">=</span> <span class="string">&#x27;John Doe&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>分析输出时，你会关注：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>是否使用了索引来连接<code>orders</code>和<code>customers</code>表。</p>
+</li>
+<li class="lvl-2">
+<p><code>type</code>列显示的连接类型。</p>
+</li>
+<li class="lvl-2">
+<p><code>rows</code>列估计的扫描行数。</p>
+</li>
+<li class="lvl-2">
+<p><code>Extra</code>列中的额外信息。</p>
+</li>
+</ul>
+<p>通过这些信息，你可以判断查询是否高效，并据此进行优化。</p>
+<p>记住，<code>EXPLAIN</code>只是提供了一个执行计划的估计，实际的执行情况可能会因为数据的实际分布和MySQL的运行时优化而有所不同。因此，优化查询后，最好通过实际执行来验证性能改进。</p>
+<h2 id="你了解的-spring-都用到哪些设计模式"><a class="markdownIt-Anchor" href="#你了解的-spring-都用到哪些设计模式"></a> 你了解的 Spring 都用到哪些设计模式？</h2>
+<p>Spring框架是一个广泛使用的Java企业级应用开发框架，它内部使用了多种设计模式来简化开发、提高灵活性和可扩展性。以下是一些在Spring中常用的设计模式：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>控制反转（IoC）模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring的核心机制之一，通过依赖注入（DI）实现控制反转，使得对象之间的依赖关系由Spring容器来管理。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>工厂模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring使用工厂模式来创建和管理bean实例，例如<code>BeanFactory</code>和<code>ApplicationContext</code>。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>代理模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在Spring AOP（面向切面编程）中，使用代理模式来创建代理对象，以便在执行目标方法前后添加额外的逻辑。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>单例模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring默认将bean定义为单例，确保在整个应用中只有一个实例。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>模板方法模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring中的<code>JdbcTemplate</code>、<code>HibernateTemplate</code>等都是模板方法模式的实现，提供了一种通用的处理流程，允许用户通过回调接口定制特定步骤。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>观察者模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring事件发布-订阅机制实现了观察者模式，例如<code>ApplicationEvent</code>和<code>ApplicationListener</code>。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>策略模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring在多种场景下使用了策略模式，例如<code>RoutingDataSource</code>用于动态数据源切换。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>适配器模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring MVC中的<code>HandlerAdapter</code>接口就是适配器模式的实现，用于适配不同的控制器类型。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>装饰器模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring中的<code>TransactionAwareDataSourceProxy</code>使用了装饰器模式，为数据源添加了事务感知功能。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>门面模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring的<code>JdbcDaoSupport</code>和<code>HibernateDaoSupport</code>等类提供了门面模式，简化了数据访问层的实现。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>建造者模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring的<code>BeanDefinitionBuilder</code>用于构建<code>BeanDefinition</code>对象，是建造者模式的应用。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>责任链模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring Security中的安全过滤链使用了责任链模式，每个过滤器处理特定的安全任务。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>组合模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring中的<code>CompositeEntity</code>用于处理一组相关的对象，可以看作是组合模式的应用。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>享元模式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">在Spring中，享元模式可以用于缓存共享对象，以减少内存使用。</li>
+</ul>
+</li>
+</ol>
+<p>这些设计模式在Spring中的使用，使得Spring框架非常灵活、可扩展，并且能够支持各种复杂的企业级应用需求。了解这些设计模式有助于更好地理解和使用Spring框架。</p>
+<h2 id="redis-集群会出现脑裂问题吗"><a class="markdownIt-Anchor" href="#redis-集群会出现脑裂问题吗"></a> Redis 集群会出现脑裂问题吗？</h2>
+<p><strong>Redis集群是可能出现脑裂问题的</strong>。</p>
+<p>脑裂问题通常发生在分布式系统中，当集群中的节点因为网络故障或其他原因导致通信中断时，可能会分裂成多个子集群，每个子集群都认为自己是完整的集群，这就导致了脑裂现象。</p>
+<p>在Redis集群中，脑裂可能会导致以下问题：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>数据丢失</strong>：不同的子集群可能会独立地接受写操作，当网络恢复后，这些写操作可能会发生冲突，导致数据丢失或覆盖。</p>
+</li>
+<li class="lvl-3">
+<p><strong>数据不一致</strong>：脑裂期间，不同的客户端可能会连接到不同的子集群，导致读取到的数据不一致。</p>
+</li>
+<li class="lvl-3">
+<p><strong>集群分裂</strong>：脑裂可能导致集群永久分裂，除非手动干预。</p>
+</li>
+</ol>
+<p>为了减少脑裂带来的影响，Redis集群采取了一些措施：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>集群节点配置</strong>：Redis集群要求至少有三个主节点，并且每个主节点至少有一个从节点，这样即使发生脑裂，也至少有一个主节点能够继续提供服务。</p>
+</li>
+<li class="lvl-2">
+<p><strong>从节点延迟</strong>：从节点会延迟复制主节点的数据，以减少脑裂期间的数据冲突。</p>
+</li>
+<li class="lvl-2">
+<p><strong>集群状态监测</strong>：Redis集群会定期进行心跳检测，以发现并处理脑裂问题。</p>
+</li>
+<li class="lvl-2">
+<p><strong>手动干预</strong>：在发生脑裂时，可能需要手动介入，例如通过重启节点或重新配置集群来解决。</p>
+</li>
+</ul>
+<p>尽管Redis集群采取了这些措施，但仍然不能完全避免脑裂问题。因此，在设计基于Redis集群的应用时，需要考虑到脑裂的可能性，并采取相应的策略来保证数据的一致性和可靠性。</p>
+<p>以上信息仅供参考，如有需要，建议咨询Redis官方文档或相关专家。</p>
+<h2 id="请描述简单工厂模式的工作原理"><a class="markdownIt-Anchor" href="#请描述简单工厂模式的工作原理"></a> 请描述简单工厂模式的工作原理。</h2>
+<p>简单工厂模式（Simple Factory Pattern）是一种创建型设计模式，它根据传入的参数决定创建哪种类型的对象，而无需客户端知道具体创建对象的细节。简单工厂模式的工作原理可以概括为以下几个步骤：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>定义产品接口</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">首先，定义一个产品接口（或抽象类），它声明了所有具体产品必须实现的操作。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>创建具体产品类</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">根据产品接口，创建多个具体产品类，这些类实现了产品接口中定义的方法。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>创建工厂类</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">创建一个工厂类，它包含一个静态方法（通常是工厂方法），用于根据传入的参数创建并返回具体产品对象的实例。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>客户端使用工厂类</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">客户端不需要直接创建具体产品对象，而是调用工厂类的静态方法，传入相应的参数，由工厂方法负责创建并返回具体产品对象。</li>
+</ul>
+</li>
+</ol>
+<p>简单工厂模式的工作流程如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>客户端请求</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">客户端向工厂类发出创建产品的请求，并传入相应的参数。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>工厂方法决策</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">工厂类中的静态方法根据传入的参数判断应该创建哪种具体产品。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>创建产品</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">工厂方法创建具体产品类的实例。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>返回产品</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">工厂方法将创建好的具体产品对象返回给客户端。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>客户端使用产品</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">客户端接收工厂返回的产品对象，并使用它进行后续操作。</li>
+</ul>
+</li>
+</ol>
+<p>简单工厂模式的优点包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>解耦</strong>：将客户端与具体产品类的实现细节解耦，客户端只需要知道工厂类和产品接口。</p>
+</li>
+<li class="lvl-2">
+<p><strong>易于扩展</strong>：增加新的产品类时，只需要修改工厂类，而不需要修改客户端代码。</p>
+</li>
+<li class="lvl-2">
+<p><strong>简化对象创建</strong>：客户端不需要了解具体产品的创建过程，简化了对象创建的逻辑。</p>
+</li>
+</ul>
+<p>然而，简单工厂模式也有一些缺点：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>工厂类职责过重</strong>：工厂类需要处理所有产品的创建逻辑，当产品种类较多时，工厂类可能会变得复杂。</p>
+</li>
+<li class="lvl-2">
+<p><strong>不易于扩展新产品</strong>：增加新产品时需要修改工厂类，违反了开闭原则（对扩展开放，对修改关闭）。</p>
+</li>
+</ul>
+<p>简单工厂模式适用于产品种类较少，且产品创建逻辑不复杂的情况。当产品种类增多或创建逻辑复杂时，可以考虑使用工厂方法模式或抽象工厂模式。</p>
+<h2 id="spring-有哪几种事务传播行为"><a class="markdownIt-Anchor" href="#spring-有哪几种事务传播行为"></a> Spring 有哪几种事务传播行为?</h2>
+<p>在Spring框架中，事务传播行为（Propagation Behavior）定义了若干事务应该如何嵌套和传播。Spring定义了以下七种事务传播行为：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>PROPAGATION_REQUIRED</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_SUPPORTS</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_MANDATORY</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用当前的事务，如果当前没有事务，就抛出异常。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_REQUIRES_NEW</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">新建事务，如果当前存在事务，把当前事务挂起。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_NOT_SUPPORTED</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_NEVER</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>PROPAGATION_NESTED</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
+</ul>
+</li>
+</ol>
+<p>这些事务传播行为可以满足不同的业务需求，确保事务的完整性和一致性。在Spring中，可以通过在方法上使用<code>@Transactional</code>注解来指定事务的传播行为，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">someMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 方法实现</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择合适的事务传播行为对于确保应用程序的数据一致性和避免潜在的事务问题非常重要。不同的传播行为适用于不同的场景，开发者需要根据具体的业务逻辑和需求来选择合适的事务传播行为。</p>
+<h2 id="redis-中如何实现分布式锁"><a class="markdownIt-Anchor" href="#redis-中如何实现分布式锁"></a> Redis 中如何实现分布式锁？</h2>
+<p>在Redis中实现分布式锁的Java示例通常涉及使用<code>SET</code>命令的<code>NX</code>和<code>EX</code>选项来确保原子性地设置键和过期时间。以下是一个使用Java和Jedis（一个流行的Redis客户端）实现的分布式锁的示例：<br />
+首先，你需要在项目中添加Jedis依赖。如果你使用Maven，可以在<code>pom.xml</code>中添加以下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后，你可以创建一个分布式锁的类，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.params.SetParams;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisDistributedLock</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Jedis jedis;</span><br><span class="line">    <span class="keyword">private</span> String lockKey;</span><br><span class="line">    <span class="keyword">private</span> String lockValue;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> expireTime; <span class="comment">// 锁的超时时间，单位为秒</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RedisDistributedLock</span><span class="params">(Jedis jedis, String lockKey, <span class="type">int</span> expireTime)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.jedis = jedis;</span><br><span class="line">        <span class="built_in">this</span>.lockKey = lockKey;</span><br><span class="line">        <span class="built_in">this</span>.expireTime = expireTime;</span><br><span class="line">        <span class="built_in">this</span>.lockValue = UUID.randomUUID().toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取锁</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否获取成功</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">acquireLock</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">SetParams</span> <span class="variable">params</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SetParams</span>().nx().ex(expireTime);</span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> jedis.set(lockKey, lockValue, params);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>.equals(result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放锁</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">releaseLock</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 使用Lua脚本确保释放锁的原子性</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">script</span> <span class="operator">=</span> </span><br><span class="line">            <span class="string">&quot;if redis.call(&#x27;get&#x27;, KEYS[1]) == ARGV[1] then &quot;</span> +</span><br><span class="line">            <span class="string">&quot;return redis.call(&#x27;del&#x27;, KEYS[1]) &quot;</span> +</span><br><span class="line">            <span class="string">&quot;else &quot;</span> +</span><br><span class="line">            <span class="string">&quot;return 0 &quot;</span> +</span><br><span class="line">            <span class="string">&quot;end&quot;</span>;</span><br><span class="line">        jedis.eval(script, <span class="number">1</span>, lockKey, lockValue);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Getter和Setter省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个类中，我们定义了<code>acquireLock</code>方法来尝试获取锁，以及<code>releaseLock</code>方法来释放锁。我们使用Lua脚本确保只有持有锁的客户端才能释放锁，这是为了防止因为锁过期而导致的误释放问题。</p>
+<p>以下是如何使用这个分布式锁的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DistributedLockExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;localhost&quot;</span>, <span class="number">6379</span>);</span><br><span class="line">        <span class="type">RedisDistributedLock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RedisDistributedLock</span>(jedis, <span class="string">&quot;myLock&quot;</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (lock.acquireLock()) &#123;</span><br><span class="line">                <span class="comment">// 获取锁成功，执行业务操作</span></span><br><span class="line">                System.out.println(<span class="string">&quot;Lock acquired, executing critical section&quot;</span>);</span><br><span class="line">                <span class="comment">// ... 执行一些需要同步的操作</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 获取锁失败，可以等待重试或者直接返回</span></span><br><span class="line">                System.out.println(<span class="string">&quot;Lock acquisition failed&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 释放锁</span></span><br><span class="line">            lock.releaseLock();</span><br><span class="line">        &#125;</span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，我们创建了一个<code>RedisDistributedLock</code>实例，尝试获取锁，并在获取成功后执行一些业务操作。无论操作是否成功，我们都在<code>finally</code>块中释放锁，以确保锁不会被无限期地持有。</p>
+<p>请注意，这个示例是基于单机Redis的。在分布式环境中，为了提高锁的可靠性，你可能需要使用Redlock算法，该算法在多个Redis实例上实现分布式锁。但是，Redlock算法的实现更为复杂，需要更多的代码来处理多个实例之间的协调。</p>
+<h2 id="mysql-中如何解决深度分页的问题"><a class="markdownIt-Anchor" href="#mysql-中如何解决深度分页的问题"></a> MySQL 中如何解决深度分页的问题？</h2>
+<p>在MySQL中，深度分页（即访问远离第一页的数据）可能会导致性能问题，因为数据库需要扫描大量的行来找到起始点。以下是一些解决深度分页问题的方法：</p>
+<h3 id="1-使用索引"><a class="markdownIt-Anchor" href="#1-使用索引"></a> 1. 使用索引</h3>
+<p>确保用于分页的列上有索引，这样可以加快定位分页起始点的速度。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_column <span class="keyword">ON</span> table_name(column_name);</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用覆盖索引"><a class="markdownIt-Anchor" href="#2-使用覆盖索引"></a> 2. 使用覆盖索引</h3>
+<p>如果查询只需要返回索引中的列，可以使用覆盖索引来避免回表查询，从而提高效率。</p>
+<h3 id="3-子查询优化"><a class="markdownIt-Anchor" href="#3-子查询优化"></a> 3. 子查询优化</h3>
+<p>使用子查询来先确定分页的起始点，然后再进行主查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> (</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="operator">*</span>, <span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name) <span class="keyword">AS</span> row_num</span><br><span class="line">  <span class="keyword">FROM</span> table_name</span><br><span class="line">) <span class="keyword">AS</span> subquery</span><br><span class="line"><span class="keyword">WHERE</span> subquery.row_num <span class="keyword">BETWEEN</span> <span class="keyword">start</span> <span class="keyword">AND</span> <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="4-使用limit-with-offset"><a class="markdownIt-Anchor" href="#4-使用limit-with-offset"></a> 4. 使用<code>LIMIT</code> with <code>OFFSET</code></h3>
+<p>这是最常见的分页方法，但对于深度分页来说效率不高。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name LIMIT page_size <span class="keyword">OFFSET</span> offset_value;</span><br></pre></td></tr></table></figure>
+<h3 id="5-寻找合适的分页起点"><a class="markdownIt-Anchor" href="#5-寻找合适的分页起点"></a> 5. 寻找合适的分页起点</h3>
+<p>而不是使用<code>OFFSET</code>来跳过前面的所有行，可以记录上一页的最后一个元素的位置，并从那里开始查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="operator">&gt;</span> last_value_of_previous_page</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name</span><br><span class="line">LIMIT page_size;</span><br></pre></td></tr></table></figure>
+<h3 id="6-使用键值存储"><a class="markdownIt-Anchor" href="#6-使用键值存储"></a> 6. 使用键值存储</h3>
+<p>对于非常大的数据集，可以考虑使用键值存储来存储分页信息，从而避免数据库的深度分页查询。</p>
+<h3 id="7-分区表"><a class="markdownIt-Anchor" href="#7-分区表"></a> 7. 分区表</h3>
+<p>如果数据量非常大，可以考虑对表进行分区，这样可以在较小的数据集上执行分页查询。</p>
+<h3 id="8-缓存"><a class="markdownIt-Anchor" href="#8-缓存"></a> 8. 缓存</h3>
+<p>对于不经常变化的数据，可以使用缓存来存储分页结果，从而减少数据库的查询压力。</p>
+<h3 id="9-使用游标"><a class="markdownIt-Anchor" href="#9-使用游标"></a> 9. 使用游标</h3>
+<p>对于一些复杂的分页需求，可以使用游标来逐行处理数据，但这种方法通常不推荐用于大规模数据分页。</p>
+<h3 id="10-应用层分页"><a class="markdownIt-Anchor" href="#10-应用层分页"></a> 10. 应用层分页</h3>
+<p>在应用层进行分页处理，例如使用搜索引擎（如Elasticsearch）来进行数据分页，然后将结果存储在数据库中。</p>
+<h3 id="示例使用limit-with-offset的优化"><a class="markdownIt-Anchor" href="#示例使用limit-with-offset的优化"></a> 示例：使用<code>LIMIT</code> with <code>OFFSET</code>的优化</h3>
+<p>假设我们有一个很大的表<code>articles</code>，我们想要分页查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> articles <span class="keyword">ORDER</span> <span class="keyword">BY</span> id LIMIT <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">100000</span>;</span><br></pre></td></tr></table></figure>
+<p>这个查询会导致MySQL扫描100010行数据。为了优化这个查询，我们可以记录上一页最后一个文章的ID，然后从那里开始查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> articles</span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">&gt;</span> last_article_id_from_previous_page</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>这样，MySQL只需要扫描10行数据。<br />
+选择哪种方法取决于具体的使用场景和数据量。在实际应用中，可能需要结合多种方法来达到最佳的性能。</p>
+<h2 id="说说-springboot-的启动流程"><a class="markdownIt-Anchor" href="#说说-springboot-的启动流程"></a> 说说 Springboot 的启动流程？</h2>
+<p>Spring Boot的启动流程是一个高度封装和自动化的过程，它简化了基于Spring的应用开发。以下是Spring Boot启动流程的主要步骤：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>创建SpringApplication实例</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">当运行<code>SpringApplication.run()</code>方法时，首先会创建一个<code>SpringApplication</code>实例。</li>
+<li class="lvl-5">这个实例会设置一些默认属性，如资源加载器、主要源等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>推断应用类型</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring Boot会根据类路径上的内容推断应用类型，例如是Web应用还是非Web应用。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>设置初始化器</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring Boot会查找并注册<code>ApplicationContextInitializer</code>实现，这些初始化器可以在应用上下文创建之前对其进行定制。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>设置监听器</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">同样，Spring Boot会查找并注册<code>ApplicationListener</code>实现，这些监听器可以监听应用启动过程中的事件。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>推断主类</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring Boot会推断出主类，通常是调用<code>run()</code>方法的类。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>运行应用</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><code>SpringApplication</code>会调用<code>run()</code>方法，这个方法会执行以下步骤：</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>创建应用上下文</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">根据应用类型，Spring Boot会创建相应类型的<code>ApplicationContext</code>（例如，对于Web应用，会创建<code>AnnotationConfigServletWebServerApplicationContext</code>）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>准备应用上下文</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">Spring Boot会调用之前注册的<code>ApplicationContextInitializer</code>来准备应用上下文。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>刷新应用上下文</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">这是启动流程中的关键步骤，Spring Boot会加载配置文件，扫描注解，创建并初始化Bean，以及发布相应的事件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>加载源</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Spring Boot会加载主类以及其他配置类，将它们作为Bean定义的源。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>调用 CommandLineRunner 和 ApplicationRunner</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">在应用上下文刷新完成后，Spring Boot会查找并调用<code>CommandLineRunner</code>和<code>ApplicationRunner</code>接口的实现，这些实现可以在应用完全启动后执行一些代码。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>启动完成</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">最后，Spring Boot会发布一个<code>ApplicationReadyEvent</code>事件，表示应用已经准备好接收请求。</li>
+</ul>
+</li>
+</ol>
+<p>整个启动流程中，Spring Boot利用了大量的默认配置和约定优于配置的原则，使得开发者可以专注于业务逻辑而不是配置。此外，Spring Boot的启动流程也是可定制的，开发者可以通过实现相关的接口或使用配置文件来改变默认行为。</p>
+<h2 id="redis-实现分布式锁时可能遇到的问题有哪些"><a class="markdownIt-Anchor" href="#redis-实现分布式锁时可能遇到的问题有哪些"></a> Redis 实现分布式锁时可能遇到的问题有哪些？</h2>
+<p>在使用Redis实现分布式锁时，可能会遇到以下问题：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>锁互斥问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">分布式锁的基本要求是互斥，即同一时间只能有一个客户端持有锁。如果实现不当，可能导致多个客户端同时获得锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>死锁问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果一个客户端在持有锁的情况下崩溃或网络故障，未能释放锁，其他客户端将无法获取锁，导致死锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>锁超时问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">锁超时设置过长可能导致资源长时间被占用，而设置过短则可能在业务处理完成前锁被释放。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>锁续命问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果业务处理时间较长，需要考虑锁的续命机制，以防止锁在业务处理完成前过期。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>锁误释放问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">错误地释放了其他客户端持有的锁，可能导致多个客户端同时操作共享资源。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>锁可重入问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果需要支持可重入锁，即同一个线程可以多次获取同一把锁，需要特殊处理。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>集群环境下的锁同步问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在Redis集群环境下，需要确保锁的状态在所有节点之间同步。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>网络分区问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">网络分区可能导致部分客户端无法访问Redis，从而无法获取或释放锁。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>性能问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">频繁的锁竞争可能导致Redis性能下降，需要优化锁的实现以提高性能。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>锁饥饿问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">如果锁的分配策略不公平，可能导致某些客户端长时间无法获取锁。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>锁监控和日志记录</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">缺乏有效的锁监控和日志记录机制，可能导致问题难以排查。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>Redis单点故障问题</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">如果Redis服务器出现单点故障，整个分布式锁系统将失效。</li>
+</ul>
+</li>
+</ol>
+<p>为了解决这些问题，可以采取以下措施：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用Redis的<code>SETNX</code>、<code>EXPIRE</code>和<code>Lua</code>脚本等命令确保锁的原子性操作。</p>
+</li>
+<li class="lvl-2">
+<p>设置合理的锁超时时间，并实现锁续命机制。</p>
+</li>
+<li class="lvl-2">
+<p>使用Redisson等成熟的分布式锁实现，它们已经解决了大部分上述问题。</p>
+</li>
+<li class="lvl-2">
+<p>在集群环境下使用Redlock算法来保证锁的一致性。</p>
+</li>
+<li class="lvl-2">
+<p>实现锁监控和日志记录功能，以便问题排查。</p>
+</li>
+<li class="lvl-2">
+<p>考虑使用Redis哨兵或集群来提高系统的可用性。</p>
+</li>
+</ul>
+<p>总之，实现一个健壮的分布式锁需要考虑多方面的因素，并采取相应的措施来保证锁的可靠性和性能。</p>
+<h2 id="工厂模式和抽象工厂模式有什么区别"><a class="markdownIt-Anchor" href="#工厂模式和抽象工厂模式有什么区别"></a> 工厂模式和抽象工厂模式有什么区别？</h2>
+<p>工厂模式（Factory Pattern）和抽象工厂模式（Abstract Factory Pattern）都是创建型设计模式，它们都用于封装对象的创建过程，但两者在目的、结构和使用场景上有所区别：</p>
+<h3 id="工厂模式factory-pattern"><a class="markdownIt-Anchor" href="#工厂模式factory-pattern"></a> 工厂模式（Factory Pattern）：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>目的</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">工厂模式主要用于创建单一类型的对象，通过工厂类来封装对象的创建逻辑，使客户端与对象的创建过程解耦。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>结构</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">工厂模式通常包含一个工厂类，该类负责创建具体的产品对象。</li>
+<li class="lvl-5">工厂类有一个创建方法，根据输入参数决定创建哪种具体产品。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">当一个类无法预期需要创建哪种对象时。</li>
+<li class="lvl-5">当一个类希望其子类指定所创建的对象时。</li>
+<li class="lvl-5">当类将创建对象的职责委托给多个帮助子类中的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化时。</li>
+</ul>
+</li>
+</ol>
+<h3 id="抽象工厂模式abstract-factory-pattern"><a class="markdownIt-Anchor" href="#抽象工厂模式abstract-factory-pattern"></a> 抽象工厂模式（Abstract Factory Pattern）：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>目的</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">抽象工厂模式用于创建相关或依赖对象的家族，而不需要明确指定具体类。</li>
+<li class="lvl-5">它提供了一种方式，用于封装一组具有共同主题的单独工厂，而不需要指定具体的产品类。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>结构</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">抽象工厂模式包含多个工厂类，每个工厂类负责创建一组相关或依赖的对象。</li>
+<li class="lvl-5">抽象工厂定义了一组创建方法，每个方法对应一种产品。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">一个系统要独立于它的产品的创建、组合和表示时。</li>
+<li class="lvl-5">一个系统由多个产品系列中的一个来配置时。</li>
+<li class="lvl-5">当你强调一系列相关的产品对象的设计以便进行联合使用时。</li>
+<li class="lvl-5">当你提供一个产品类库，而只想显示它们的接口，而不是实现时。</li>
+</ul>
+</li>
+</ol>
+<h3 id="主要区别"><a class="markdownIt-Anchor" href="#主要区别"></a> 主要区别：</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>产品类型</strong>：工厂模式关注单一类型产品的创建，而抽象工厂模式关注多个相关产品族的创建。</p>
+</li>
+<li class="lvl-2">
+<p><strong>抽象级别</strong>：工厂模式的具体工厂类负责创建具体产品，而抽象工厂模式中的抽象工厂定义了创建产品的接口，具体工厂实现这些接口来创建具体产品。</p>
+</li>
+<li class="lvl-2">
+<p><strong>扩展性</strong>：工厂模式易于添加新的产品，而抽象工厂模式易于添加新的产品族。</p>
+</li>
+<li class="lvl-2">
+<p><strong>复杂度</strong>：抽象工厂模式通常比工厂模式更复杂，因为它涉及到多个产品族和多个工厂类。</p>
+</li>
+</ul>
+<p>在实际应用中，选择使用工厂模式还是抽象工厂模式，取决于系统的需求和对产品创建过程的抽象程度。如果只需要创建单一类型的对象，工厂模式可能更合适；如果需要创建多个相关类型的对象，抽象工厂模式可能更合适。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-02-08</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

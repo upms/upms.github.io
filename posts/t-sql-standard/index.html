@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="MySQL数据库设计开发规范" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    MySQL数据库设计开发规范
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5.5k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83"><span class="post-toc-text"> MySQL数据库设计开发规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%A7%84%E8%8C%83%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E7%9A%84"><span class="post-toc-text"> 1. 规范背景与目的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-%E8%A7%84%E8%8C%83sql%E4%B8%8A%E7%BA%BF%E7%9A%84%E6%97%B6%E9%97%B4"><span class="post-toc-text"> 1.1 规范SQL上线的时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-sql%E4%B8%8A%E7%BA%BF%E6%A8%A1%E6%9D%BF"><span class="post-toc-text"> 1.2 SQL上线模板</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="post-toc-text"> 1.3 常见问题及解决办法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="post-toc-text"> 2. 数据库设计规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#21-%E5%BA%93%E5%90%8D"><span class="post-toc-text"> 2.1 库名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#22-%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="post-toc-text"> 2.2 表结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#23-%E5%88%97%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BC%98%E5%8C%96"><span class="post-toc-text"> 2.3 列数据类型优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#24-%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1"><span class="post-toc-text"> 2.4 索引设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#25-%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8-%E5%88%86%E5%8C%BA%E8%A1%A8%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E6%B0%B4%E5%B9%B3%E6%8B%86%E5%88%86%E6%88%96%E6%A8%AA%E5%90%91%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8tidb"><span class="post-toc-text"> 2.5 分库分表、分区表【如果需要水平拆分或横向扩展，建议直接使用TIDB】</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#26-%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="post-toc-text"> 2.6 字符集</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#27-%E7%A8%8B%E5%BA%8F%E5%B1%82dao%E8%AE%BE%E8%AE%A1%E5%BB%BA%E8%AE%AE"><span class="post-toc-text"> 2.7 程序层DAO设计建议</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#28-%E5%BF%85%E9%9C%80%E5%AD%97%E6%AE%B5"><span class="post-toc-text"> 2.8 必需字段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#29-%E4%B8%80%E4%B8%AA%E8%A7%84%E8%8C%83%E7%9A%84%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 2.9 一个规范的建表语句示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-sql%E7%BC%96%E5%86%99%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83"><span class="post-toc-text"> 3. SQL编写(开发规范)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#31-dml%E8%AF%AD%E5%8F%A5"><span class="post-toc-text"> 3.1 DML语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#32-%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5"><span class="post-toc-text"> 3.2 多表连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#33-%E4%BA%8B%E5%8A%A1"><span class="post-toc-text"> 3.3 事务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#34-%E6%8E%92%E5%BA%8F%E5%92%8C%E5%88%86%E7%BB%84"><span class="post-toc-text"> 3.4 排序和分组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#35-%E7%BA%BF%E4%B8%8A%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E7%9A%84sql%E8%AF%AD%E5%8F%A5"><span class="post-toc-text"> 3.5 线上禁止使用的SQL语句</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="mysql数据库设计开发规范"><a class="markdownIt-Anchor" href="#mysql数据库设计开发规范"></a> MySQL数据库设计开发规范</h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">目录</span><br><span class="line">1. 规范背景与目的</span><br><span class="line">1.1 规范SQL上线的时间</span><br><span class="line">1.2 SQL上线模板</span><br><span class="line">1.3 常见问题及解决办法</span><br><span class="line">2. 数据库设计规范</span><br><span class="line">2.1 库名</span><br><span class="line">2.2 表结构</span><br><span class="line">2.3 列数据类型优化</span><br><span class="line">2.4 索引设计</span><br><span class="line">2.5 分库分表、分区表</span><br><span class="line">2.6 字符集</span><br><span class="line">2.7 程序DAO层设计建议</span><br><span class="line">2.8 必须字段</span><br><span class="line">2.9 一个规范的建表语句示例</span><br><span class="line">3. SQL编写（开发规范）</span><br><span class="line">3.1 DML语句</span><br><span class="line">3.2 多表连接</span><br><span class="line">3.3 事务</span><br><span class="line">3.4 排序和分组</span><br><span class="line">3.5 线上禁止使用的SQL语句</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="1-规范背景与目的"><a class="markdownIt-Anchor" href="#1-规范背景与目的"></a> 1. 规范背景与目的</h3>
+<p>MySQL数据库与 Oracle、 SQL Server 等数据库相比，有其内核上的优势与劣势。我们在使用MySQL数据库的时候需要遵循一定规范，扬长避短。本规范旨在帮助或指导RD、QA、OP等技术人员做出适合线上业务的数据库设计。在数据库变更和处理流程、数据库表设计、SQL编写等方面予以规范，从而为公司业务系统稳定、健康地运行提供保障。</p>
+<h4 id="11-规范sql上线的时间"><a class="markdownIt-Anchor" href="#11-规范sql上线的时间"></a> 1.1 规范SQL上线的时间</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>从本公司的项目的实际迭代速度出发，约定每周有2次集中SQL上线的操作时间</p>
+</li>
+<li class="lvl-2">
+<p>SQL工单上线执行时间为：每周二、周四晚上20：00点，研发工单提交可以提前1~2天做准备</p>
+</li>
+<li class="lvl-2">
+<p>SQL工单上线时，dba根据不同的业务项目工单，依次顺序执行工单</p>
+</li>
+<li class="lvl-2">
+<p>工单在不同的审批及执行过程中，会进行流转到不同的审批人及执行人</p>
+</li>
+<li class="lvl-2">
+<p>DBA是最后节点审批人，添加审批的备份人</p>
+</li>
+</ul>
+<h4 id="12-sql上线模板"><a class="markdownIt-Anchor" href="#12-sql上线模板"></a> 1.2 SQL上线模板</h4>
+<p>SQL上线模板包括：工单名称，需求链接，所属组，实例，库名，是否备份，以及可执行时间范围，工单上线执行完成后，会增加工单类型，工单状态等信息。</p>
+<h4 id="13-常见问题及解决办法"><a class="markdownIt-Anchor" href="#13-常见问题及解决办法"></a> 1.3 常见问题及解决办法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>1、提交工单后，审批人需在工单提前审批完成，如果超出提交的预期执行时间范围，则需要重新提交工单（解决办法：提交工单时，可以把执行范围选定的大一些，比如，从SQL工单执行的时间点算起，3小时~24小时，或更长均可）</p>
+</li>
+<li class="lvl-2">
+<p>2、提交工单后，goinception自动化审批通过，但是，执行上线sql工单时，报重复记录错误：Execute: Duplicate entry ‘162079826820985-60’ for key ‘XCX_PAY_CONFIG.un_whid_type’.（解决办法：此报错是由于更新记录的2个字段上有唯一索引，更新后和其他字段重复引起，由研发更改sql重新提交工单即可）</p>
+</li>
+<li class="lvl-2">
+<p>3、提交工单后，goinception自动化审批通过，但是，执行上线sql工单时，对于存在主外键约束关系的表进行变更时，会报错执行异常（解决办法：删除主外键约束，删除逻辑操作统一由程序端控制）</p>
+</li>
+<li class="lvl-2">
+<p>4、提交工单后，goinception自动化审批通过，但是，执行上线sql工单时，报错：Execute: critical-load met: Threads_connected=1140, &gt;=1000.（解决办法：修改允许goinception配置的线程连接数即可）</p>
+</li>
+<li class="lvl-2">
+<p>5、提交工单后，goinception自动化审批通过，但是，执行上线sql工单时，报错：Execute: You must be using ROW binlog format. I can switch it for you, provided --switch-to-rbr and that 10.3.0.175:3306 doesn’t have replicas.（解决办法：修改binlog格式为row模式）</p>
+</li>
+</ul>
+<h3 id="2-数据库设计规范"><a class="markdownIt-Anchor" href="#2-数据库设计规范"></a> 2. 数据库设计规范</h3>
+<p>以下所有规范会按照【<mark>高危</mark>】、【<mark>强制</mark>】、【建议】三个级别进行标注，遵守优先级从高到低。</p>
+<p>对于不满足【<mark>高危</mark>】和【<mark>强制</mark>】两个级别的设计，DBA会强制打回要求修改。</p>
+<h4 id="21-库名"><a class="markdownIt-Anchor" href="#21-库名"></a> 2.1 库名</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】库的名称必须控制在32个字符以内，相关模块的表名与表名之间尽量体现join的关系，如user表和user_login表。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】库的名称格式：业务系统名称_子系统名，同一模块使用的表名尽量使用统一前缀。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】一般分库名称命名格式是库通配名_编号，编号从0开始递增，比如wenda_001以时间进行分库的名称格式是“库通配名_时间”</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】创建数据库时必须显式指定字符集，并且字符集只能是utf8mb4。如果需要存储emoji、生僻字等4字节的unicode字符，请使用utf8mb4。创建数据库SQL举例：create database db1 default character set utf8mb4;。</p>
+</li>
+</ul>
+<h4 id="22-表结构"><a class="markdownIt-Anchor" href="#22-表结构"></a> 2.2 表结构</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】表和列的名称必须控制在32个字符以内，表名只能使用字母、数字和下划线，一律小写。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】表名要求模块名强相关，如师资系统采用”sz”作为前缀，渠道系统采用”qd”作为前缀等。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】创建表时必须显式指定字符集为utf8mb4。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】创建表时必须显式指定表存储引擎类型，如无特殊需求，一律为InnoDB。当需要使用除InnoDB/MyISAM/Memory以外的存储引擎时，必须通过DBA审核才能在生产环境中使用。因为Innodb表支持事务、行锁、宕机恢复、MVCC等关系型数据库重要特性，为业界使用最多的MySQL存储引擎。而这是其他大多数存储引擎不具备的，因此首推InnoDB。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】建表必须有comment</p>
+</li>
+<li class="lvl-2">
+<p>【建议】建表时关于主键：(1)强制要求主键为id，类型为int或bigint(分sharding的业务表除外)，且为auto_increment(2)标识表里每一行主体的字段不要设为主键，建议设为其他字段如user_id，order_id等，并建立unique key索引（可参考cdb.teacher表设计）。因为如果设为主键且主键值为随机插入，则会导致innodb内部page分裂和大量随机I/O，性能下降。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】核心表（如用户、资产、渠道、账务、支付等相关的表）必须有行数据的创建时间字段create_time和最后更新时间字段update_time，便于排查问题。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】表中所有字段必须都是NOT NULL属性，业务可以根据需要定义DEFAULT值。因为使用NULL值会存在每一行都会占用额外存储空间、数据迁移容易出错、聚合函数计算结果偏差等问题。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】建议对表里的blob、text等大字段，垂直拆分到其他表里，仅在需要读这些对象的时候才去select。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】反范式设计：把经常需要join查询的字段，在其他表里冗余一份。如user_name属性在user_account，user_login_log等表里冗余一份，减少join查询。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】中间表用于保留中间结果集，名称必须以tmp_开头。备份表用于备份或抓取源表快照，名称必须以bak_开头。中间表和备份表定期清理。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】对于超过100W行的大表进行alter table，必须经过DBA审核，并在业务低峰期执行。因为alter table会产生表锁，期间阻塞对于该表的所有写入，对于业务可能会产生极大影响。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁止使用数据库保留关键字作为字段及表名称。</p>
+</li>
+</ul>
+<h4 id="23-列数据类型优化"><a class="markdownIt-Anchor" href="#23-列数据类型优化"></a> 2.3 列数据类型优化</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【建议】表中的自增列（auto_increment属性），推荐使用bigint类型。因为无符号int存储范围为0~4294967295（大约42亿左右），溢出后会导致报错。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】业务中选择性很少的状态status、类型type等字段推荐使用tinyint或者smallint类型节省存储空间。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】业务中IP地址字段推荐使用int类型，不推荐用char(15)。因为int只占4字节，可以用如下函数相互转换，而char(15)占用至少15字节。一旦表数据行数到了1亿，那么要多用1.1G存储空间。 SQL：select inet_aton(‘192.168.2.12’); select inet_ntoa(3232236044); PHP: ip2long(‘192.168.2.12’); long2ip(3530427185);</p>
+</li>
+<li class="lvl-2">
+<p>【建议】不推荐使用enum，set。 因为它们浪费空间，且枚举值写死了，变更不方便。推荐使用tinyint或smallint。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】不推荐使用blob，text等类型。它们都比较浪费硬盘和内存空间。在加载表数据时，会读取大字段到内存里从而浪费内存空间，影响系统性能。建议和PM、RD沟通，是否真的需要这么大字段。Innodb中当一行记录超过8098字节时，会将该记录中选取最长的一个字段将其768字节放在原始page里，该字段余下内容放在overflow-page里。不幸的是在compact行格式下，原始page和overflow-page都会加载。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】存储金钱，重量，坐标经纬度等的字段，建议用decimal(M,D) ，M是最大位数（精度），范围是1到65。D是小数点右边的位数（小数位）。范围是0到30，并且不能大于M，可不指定，默认值是0。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】文本数据尽量用varchar存储。因为varchar是变长存储，比char更省空间。MySQL server层规定一行所有文本最多存65535字节，因此在utf8字符集下最多存21844个字符，超过会自动转换为mediumtext字段。而text在utf8字符集下最多存21844个字符，mediumtext最多存2<sup>24/3个字符，longtext最多存2</sup>32个字符。一般建议用varchar类型，字符数不要超过2700。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】时间类型统一采用datetime类型，占用8字节，timestamp虽然占用4字节，存在时区风险。更为高阶的方法，选用int来存储时间，使用SQL函数unix_timestamp()和from_unixtime()来进行转换。</p>
+</li>
+</ul>
+<h4 id="24-索引设计"><a class="markdownIt-Anchor" href="#24-索引设计"></a> 2.4 索引设计</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】InnoDB表必须主键为id int/bigint auto_increment,且主键值禁止被更新。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】主键的名称以“pk_”开头，唯一键以“uk_”或“uq_”开头，普通索引以“idx_”开头，一律使用小写格式，以表名/字段的名称或缩写作为后缀。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】InnoDB和MyISAM存储引擎表，索引类型必须为BTREE；MEMORY表可以根据需要选择HASH或者BTREE类型索引。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】单个索引中每个索引记录的长度不能超过4KB（单个列最大索引长度是768byte，组合索引最大长度为3072byte）。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】单个表上的索引个数不能超过7个。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】在建立索引时，多考虑建立联合索引，并把区分度最高的字段放在最前面。如列userid的区分度可由select count(distinct userid)计算出来。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】在多表join的SQL里，保证被驱动表的连接列上有索引，这样join执行效率最高。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】建表或加索引时，保证表里互相不存在冗余索引。对于MySQL来说，如果表里已经存在key(a,b)，则key(a)为冗余索引，需要删除。</p>
+</li>
+</ul>
+<h4 id="25-分库分表-分区表如果需要水平拆分或横向扩展建议直接使用tidb"><a class="markdownIt-Anchor" href="#25-分库分表-分区表如果需要水平拆分或横向扩展建议直接使用tidb"></a> 2.5 分库分表、分区表【如果需要水平拆分或横向扩展，建议直接使用TIDB】</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】分区表的分区字段（partition-key）必须有索引，或者是组合索引的首列。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】单个分区表中的分区（包括子分区）个数不能超过1024。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】上线前RD或者DBA必须指定分区表的创建、清理策略。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】访问分区表的SQL必须包含分区键。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】单个分区文件不超过2G，总大小不超过50G。建议总分区数不超过20个。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】对于分区表执行alter table操作，必须在业务低峰期执行。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】采用分库策略的，库的数量不能超过1024</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】采用分表策略的，表的数量不能超过4096</p>
+</li>
+<li class="lvl-2">
+<p>【建议】单个分表不超过500W行，ibd文件大小不超过2G，这样才能让数据分布式变得性能更佳。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】水平分表尽量用取模方式，日志、报表类数据建议采用日期进行分表。</p>
+</li>
+</ul>
+<h4 id="26-字符集"><a class="markdownIt-Anchor" href="#26-字符集"></a> 2.6 字符集</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】数据库本身库、表、列所有字符集必须保持一致，为utf8mb4。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】前端程序字符集或者环境变量中的字符集，与数据库、表的字符集必须一致，统一为utf8。</p>
+</li>
+</ul>
+<h4 id="27-程序层dao设计建议"><a class="markdownIt-Anchor" href="#27-程序层dao设计建议"></a> 2.7 程序层DAO设计建议</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【建议】新的代码不要用model，推荐使用手动拼SQL+绑定变量传入参数的方式。因为model虽然可以使用面向对象的方式操作db，但是其使用不当很容易造成生成的SQL非常复杂，且model层自己做的强制类型转换性能较差，最终导致数据库性能下降。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】前端程序连接MySQL或者redis，必须要有连接超时和失败重连机制，且失败重试必须有间隔时间。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】前端程序报错里尽量能够提示MySQL或redis原生态的报错信息，便于排查错误。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】对于有连接池的前端程序，必须根据业务需要配置初始、最小、最大连接数，超时时间以及连接回收机制，否则会耗尽数据库连接资源，造成线上事故。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】对于log或history类型的表，随时间增长容易越来越大，因此上线前RD或者DBA必须建立表数据清理或归档方案。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】在应用程序设计阶段，RD必须考虑并规避数据库中主从延迟对于业务的影响。尽量避免从库短时延迟（20秒以内）对业务造成影响，建议强制一致性的读开启事务走主库，或更新后过一段时间再去读从库。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】多个并发业务逻辑访问同一块数据（innodb表）时，会在数据库端产生行锁甚至表锁导致并发下降，因此建议更新类SQL尽量基于主键去更新。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】业务逻辑之间加锁顺序尽量保持一致，否则会导致死锁。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】对于单表读写比大于10:1的数据行或单个列，可以将热点数据放在缓存里（如mecache或redis），加快访问速度，降低MySQL压力。</p>
+</li>
+</ul>
+<h4 id="28-必需字段"><a class="markdownIt-Anchor" href="#28-必需字段"></a> 2.8 必需字段</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】所有表必须包含创建时间字段，字段名 create_time（小写），类型 datetime。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】所有表必须包含更新时间字段，字段名 update_time（小写），类型 datetime。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】所有表必须包含主键。</p>
+</li>
+</ul>
+<h4 id="29-一个规范的建表语句示例"><a class="markdownIt-Anchor" href="#29-一个规范的建表语句示例"></a> 2.9 一个规范的建表语句示例</h4>
+<p>一个较为规范的建表语句为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> web_user (</span><br><span class="line">id <span class="type">bigint</span> unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;主键自增ID&#x27;</span>,</span><br><span class="line">user_id <span class="type">bigint</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">username <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;真实姓名&#x27;</span>,</span><br><span class="line">email <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户邮箱&#x27;</span>,</span><br><span class="line">nickname <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;昵称&#x27;</span>,</span><br><span class="line">avatar <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;头像&#x27;</span>,</span><br><span class="line">birthday <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;生日&#x27;</span>,</span><br><span class="line">sex tinyint(<span class="number">4</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">short_introduce <span class="type">varchar</span>(<span class="number">150</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;一句话介绍自己，最多50个汉字&#x27;</span>,</span><br><span class="line">user_resume <span class="type">varchar</span>(<span class="number">300</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户提交的简历存放地址&#x27;</span>,</span><br><span class="line">user_register_ip <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户注册时的源ip&#x27;</span>,</span><br><span class="line">create_time datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户记录创建的时间&#x27;</span>,</span><br><span class="line">update_time datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户资料修改的时间&#x27;</span>,</span><br><span class="line">user_review_status tinyint <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户资料审核状态，1为通过，2为审核中，3为未通过，4为还未提交审核&#x27;</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY (id),</span><br><span class="line"><span class="keyword">UNIQUE</span> KEY uniq_user_id (user_id),</span><br><span class="line">KEY idx_username(username),</span><br><span class="line">KEY idx_create_time(create_time,user_review_status)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;网站用户基本信息&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-sql编写开发规范"><a class="markdownIt-Anchor" href="#3-sql编写开发规范"></a> 3. SQL编写(开发规范)</h3>
+<h4 id="31-dml语句"><a class="markdownIt-Anchor" href="#31-dml语句"></a> 3.1 DML语句</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】SELECT语句必须指定具体字段名称，禁止写成*。因为select *会将不该读的数据也从MySQL里读出来，造成网卡压力。且表字段一旦更新，但model层没有来得及更新的话，系统会报错。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】insert语句指定具体字段名称，不要写成insert into t1 values(…)，道理同上。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】insert into…values(XX),(XX),(XX)…。这里XX的值不要超过5000个。值过多虽然上线很很快，但会引起主从同步延迟。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】SELECT语句不要使用UNION，推荐使用UNION ALL，并且UNION子句个数限制在5个以内。因为union all不需要去重，节省数据库资源，提高性能。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】in值列表限制在500以内。例如select… where userid in(….500个以内…)，这么做是为了减少底层扫描，减轻数据库压力从而加速查询。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】事务里批量更新数据需要控制数量，进行必要的sleep，做到少量多次。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】事务涉及的表必须全部是innodb表。否则一旦失败不会全部回滚，且易造成主从库同步中断。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】写入和事务发往主库，只读SQL发往从库。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】除静态表或小表（100行以内），DML语句必须有where条件，且使用索引查找。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】生产环境禁止使用hint，如sql_no_cache，force index，ignore key，straight join等。因为hint是用来强制SQL按照某个执行计划来执行，但随着数据量变化我们无法保证自己当初的预判是正确的，因此我们要相信MySQL优化器！</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】where条件里等号左右字段类型必须一致，否则无法利用索引。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】SELECT|UPDATE|DELETE|REPLACE要有WHERE子句，且WHERE子句的条件必需使用索引查找。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】生产数据库中强烈不推荐大表上发生全表扫描，但对于100行以下的静态表可以全表扫描。查询数据量不要超过表行数的25%，否则不会利用索引。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】WHERE 子句中禁止只使用全模糊的LIKE条件进行查找，必须有其他等值或范围查询条件，否则无法利用索引。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】索引列不要使用函数或表达式，否则无法利用索引。如where length(name)='Admin’或where user_id+2=10023。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】减少使用or语句，可将or语句优化为union，然后在各个where条件上建立索引。如where a=1 or b=2优化为where a=1… union …where b=2, key(a),key(b)。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】分页查询，当limit起点较高时，可先用过滤条件进行过滤。如select a,b,c from t1 limit 10000,20;优化为: select a,b,c from t1 where id&gt;10000 limit 20;。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】禁止使用delete进行物理删除，提倡逻辑删除,可添加del_flag字段标识。</p>
+</li>
+</ul>
+<h4 id="32-多表连接"><a class="markdownIt-Anchor" href="#32-多表连接"></a> 3.2 多表连接</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁止跨db的join语句。因为这样可以减少模块间耦合，为数据库拆分奠定坚实基础。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁止在业务的更新类SQL语句中使用join，比如update t1 join t2…。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】不建议使用子查询，建议将子查询SQL拆开结合程序多次查询，或使用join来代替子查询。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】线上环境，多表join不要超过3个表。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】多表连接查询推荐使用别名，且SELECT列表中要用别名引用字段，数据库.表格式，如select a from db1.table1 alias1 where …。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】在多表join中，尽量选取结果集较小的表作为驱动表，来join其他表。</p>
+</li>
+</ul>
+<h4 id="33-事务"><a class="markdownIt-Anchor" href="#33-事务"></a> 3.3 事务</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【建议】事务中INSERT|UPDATE|DELETE|REPLACE语句操作的行数控制在2000以内，以及WHERE子句中IN列表的传参个数控制在500以内。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】批量操作数据时，需要控制事务处理间隔时间，进行必要的sleep，一般建议值5-10秒。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】对于有auto_increment属性字段的表的插入操作，并发需要控制在200以内。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】程序设计必须考虑“数据库事务隔离级别”带来的影响，包括脏读、不可重复读和幻读。线上建议事务隔离级别为repeatable-read。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】事务里包含SQL不超过5个（支付业务除外）。因为过长的事务会导致锁数据较久，MySQL内部缓存、连接消耗过多等雪崩问题。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】事务里更新语句尽量基于主键或unique key，如update … where id=XX; 否则会产生间隙锁，内部扩大锁定范围，导致系统性能下降，产生死锁。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】尽量把一些典型外部调用移出事务，如调用webservice，访问文件存储等，从而避免事务过长。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】对于MySQL主从延迟严格敏感的select语句，请开启事务强制访问主库。</p>
+</li>
+</ul>
+<h4 id="34-排序和分组"><a class="markdownIt-Anchor" href="#34-排序和分组"></a> 3.4 排序和分组</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【建议】减少使用order by，和业务沟通能不排序就不排序，或将排序放到程序端去做。order by、group by、distinct这些语句较为耗费CPU，数据库的CPU资源是极其宝贵的。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】order by、group by、distinct这些SQL尽量利用索引直接检索出排序好的数据。如where a=1 order by b可以利用key(a,b)。</p>
+</li>
+<li class="lvl-2">
+<p>【建议】包含了order by、group by、distinct这些查询的语句，where条件过滤出来的结果集请保持在1000行以内，否则SQL会很慢。</p>
+</li>
+</ul>
+<h4 id="35-线上禁止使用的sql语句"><a class="markdownIt-Anchor" href="#35-线上禁止使用的sql语句"></a> 3.5 线上禁止使用的SQL语句</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【<mark>高危</mark>】禁用update|delete t1 … where a=XX limit XX; 这种带limit的更新语句。因为会导致主从不一致，导致数据错乱。建议加上order by PK。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>高危</mark>】禁止使用关联子查询，如update t1 set … where name in(select name from user where…);效率极其低下。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁用procedure、function、trigger、views、event、外键约束。因为他们消耗数据库资源，降低数据库实例可扩展性。推荐都在程序端实现。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁用insert into …on duplicate key update…在高并发环境下，会造成主从不一致。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁止联表更新语句，如update t1,t2 where <a target="_blank" rel="noopener" href="http://t1.id=t2.id">t1.id=t2.id</a>…。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】禁止truncate、drop操作。</p>
+</li>
+<li class="lvl-2">
+<p>【<mark>强制</mark>】避免使用存储过程、触发器、自定义函数，容易使业务逻辑和DB耦合在一起，会成为分布式方案瓶颈。</p>
+</li>
+</ul>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-05-01</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/mysql/'>
+                            mysql
+                        </a>
+                    
+                        <a href='/tags/%E8%A7%84%E8%8C%83/'>
+                            规范
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

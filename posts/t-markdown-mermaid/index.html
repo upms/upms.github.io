@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Markdown流程图-Mermaid" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Markdown流程图-Mermaid
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#markdown%E6%B5%81%E7%A8%8B%E5%9B%BE-mermaid"><span class="post-toc-text"> Markdown流程图-Mermaid</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81"><span class="post-toc-text"> 1 添加支持</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="post-toc-text"> 2 配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-mermaid%E5%BA%94%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="post-toc-text"> 3 Mermaid应用说明</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h3 id="markdown流程图-mermaid"><a class="markdownIt-Anchor" href="#markdown流程图-mermaid"></a> Markdown流程图-Mermaid</h3>
+<p>目的：Hexo 引入流程图-Mermaid的支持</p>
+<h4 id="1-添加支持"><a class="markdownIt-Anchor" href="#1-添加支持"></a> 1 添加支持</h4>
+<p>Hexo 默认是markdown不支持Mermaid流程图的，需要添加支持，在 hexo 根目录下执行命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-filter-mermaid-diagrams</span><br></pre></td></tr></table></figure>
+<h4 id="2-配置"><a class="markdownIt-Anchor" href="#2-配置"></a> 2 配置</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基础配置<br />
+编辑 hexo 根目录下的 _config.yml，在最后添加如下内容：</p>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># mermaid chart</span><br><span class="line">mermaid: ## mermaid url https://github.com/knsv/mermaid</span><br><span class="line">  enable: true  # default true</span><br><span class="line">  version: &quot;7.1.2&quot; # default v7.1.2</span><br><span class="line">  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span><br><span class="line">    #startOnload: true  // default true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>高级配置（可选）<br />
+以next主题为例，编辑 themes/next/layout/_partials/footer.swig 在最后添加如下内容</p>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.mermaid.enable %&#125;</span><br><span class="line">  &lt;script src=&#x27;https://unpkg.com/mermaid@&#123;&#123; theme.mermaid.version &#125;&#125;/dist/mermaid.min.js&#x27;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;&#123; JSON.stringify(theme.mermaid.options) &#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你的主题下没有footer.swig文件，你需要在你的主题目录下搜索文件名为after-footer.ejs和after_footer.pug的文件，<br />
+根据文件名的不同在其最后添加不同的内容，这点在github上的 hexo-filter-mermaid-diagrams 教程已经明确交代了。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 若是after_footer.pug，在最后添加内容</span><br><span class="line">if theme.mermaid.enable == true</span><br><span class="line">  script(type=&#x27;text/javascript&#x27;, id=&#x27;maid-script&#x27; mermaidoptioins=theme.mermaid.options src=&#x27;https://unpkg.com/mermaid@&#x27;+ theme.mermaid.version + &#x27;/dist/mermaid.min.js&#x27; + &#x27;?v=&#x27; + theme.version)</span><br><span class="line">  script.</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      var options = JSON.parse(document.getElementById(&#x27;maid-script&#x27;).getAttribute(&#x27;mermaidoptioins&#x27;));</span><br><span class="line">      mermaid.initialize(options);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"># 若是after-footer.ejs，在最后添加</span><br><span class="line">&lt;% if (theme.mermaid.enable) &#123; %&gt;</span><br><span class="line">  &lt;script src=&#x27;https://unpkg.com/mermaid@&lt;%= theme.mermaid.version %&gt;/dist/mermaid.min.js&#x27;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;theme: &#x27;forest&#x27;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-mermaid应用说明"><a class="markdownIt-Anchor" href="#3-mermaid应用说明"></a> 3 Mermaid应用说明</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>语法结构<br />
+语法结构如下：A[名称] --&gt; B(名称)<br />
+其中，A、B均代表形状名称， --&gt;表示箭头指向，形状样式用后面的括号来表示，括号里面的内容是形状中要显示的文本内容。其中有以下几种形状：</p>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">括号形式 形状样式</span><br><span class="line">[ ] 矩形框</span><br><span class="line">( ) 圆角矩形框</span><br><span class="line">&#123; &#125; 菱形</span><br><span class="line">(( )) 圆形</span><br><span class="line">如果没有形状边框，可以写成：C[语句] –&gt; |语句| D[语句]或者C[语句] – 语句 –&gt; D[语句]都可以。</span><br><span class="line">相对而言，比 flowchart 更加简洁清晰，Mermaid还支持制作时序图、甘特图等。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>更多详细内容还可以参考网站：<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/">https://mermaid-js.github.io/mermaid/#/</a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>测试<br />
+接下来，先进行测试一下，使用markdown进行编写mermaid语句。如下所示：</p>
+</li>
+</ul>
+<p>源码:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    B((开始)) --&gt;C&#123;判断&#125;</span><br><span class="line">    C --  a=1 --&gt;D[执行语句1]</span><br><span class="line">    C --  a=2  --&gt;E[执行语句2]</span><br><span class="line">    C --  a=3 --&gt;F[执行语句3]</span><br><span class="line">    C -- a=4  --&gt;G[执行语句4]</span><br><span class="line">    D--&gt; AA((结束))</span><br><span class="line">    E--&gt; AA</span><br><span class="line">    F--&gt; AA</span><br><span class="line">   G--&gt; AA      </span><br></pre></td></tr></table></figure>
+<p>写好后，可以在本地启动hexo查看效果如下图</p>
+<p>效果：</p>
+<pre class="mermaid">graph TD
+    B((开始)) -->C{判断}
+    C --  a=1 -->D[执行语句1]
+    C --  a=2  -->E[执行语句2]
+    C --  a=3 -->F[执行语句3]
+    C -- a=4  -->G[执行语句4]
+    D--> AA((结束))
+    E--> AA
+    F--> AA
+   G--> AA</pre>
+<p>其他示例：</p>
+<pre class="mermaid">graph TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]</pre>
+<pre class="mermaid">graph LR
+开始 --> A:1人5天
+A:1人5天 --> 结束
+
+开始 --> B:1人3天
+B:1人3天 --> 结束
+
+开始 --> C:1人2天
+C:1人2天 --> 结束</pre>
+<pre class="mermaid">graph LR
+A:1 --> B:2
+A:1 --> D:5
+B:2 --> C:1
+C:1 --> E:2
+D:5 --> E:2</pre>
+<p>甘特图</p>
+<pre class="mermaid">gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d</pre>
+<p>title 产品计划表</p>
+<pre class="mermaid">gantt
+dateFormat YYYY-MM-DD
+axisFormat %m-%d
+
+section 初期阶段
+明确需求: 2016-03-01, 10d
+
+section 中期阶段
+跟进开发: 2016-03-11, 15d
+
+section 后期阶段
+走查测试: 2016-03-20, 9d</pre>
+<p>文章参考：<br />
+<a target="_blank" rel="noopener" href="https://xianmengfei.gitee.io/2021/03/01/09%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/hexo%E4%BC%98%E5%8C%96%EF%BC%9AMarkdown%E8%AF%AD%E6%B3%95%E5%BC%95%E5%85%A5Flowchart%E3%80%81Mermaid%E5%92%8Csequence%E6%B5%81%E7%A8%8B%E5%9B%BE">https://xianmengfei.gitee.io/2021/03/01/09相关工具/hexo优化：Markdown语法引入Flowchart、Mermaid和sequence流程图</a></p>
+<p>mermaid 官方文档：<a target="_blank" rel="noopener" href="https://mermaid.js.org/intro/">https://mermaid.js.org/intro/</a><br />
+mermaid 中文文档：<a target="_blank" rel="noopener" href="https://mermaid.nodejs.cn/intro/">https://mermaid.nodejs.cn/intro/</a></p>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-03-23</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/markdown/'>
+                            markdown
+                        </a>
+                    
+                        <a href='/tags/hexo/'>
+                            hexo
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

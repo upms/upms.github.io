@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="第9章-项目范围管理" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    第9章-项目范围管理
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：6.1k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC9%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 第9章-项目范围管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#91-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 9.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#911%E4%BA%A7%E5%93%81%E8%8C%83%E5%9B%B4%E5%92%8C%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 9.1.1产品范围和项目范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#912%E7%AE%A1%E7%90%86%E6%96%B0%E5%AE%9E%E8%B7%B5"><span class="post-toc-text"> 9.1.2管理新实践</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#92-%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 9.2 项目范围管理过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#921-%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="post-toc-text"> 9.2.1 过程概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 规划范围管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%94%B6%E9%9B%86%E9%9C%80%E6%B1%82"><span class="post-toc-text"> 收集需求</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 定义范围</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAwbs"><span class="post-toc-text"> 创建WBS</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 确认范围</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 控制范围</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#922-%E8%A3%81%E5%89%AA%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="post-toc-text"> 9.2.2 裁剪考虑因素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#923-%E6%95%8F%E6%8D%B7%E4%B8%8E%E9%80%82%E5%BA%94%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 9.2.3 敏捷与适应方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#93-%E8%A7%84%E5%88%92%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 9.3 规划范围管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 规划范围管理-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86-itto"><span class="post-toc-text"> 规划范围管理-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 范围管理计划</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 需求管理计划</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#94-%E6%94%B6%E9%9B%86%E9%9C%80%E6%B1%82"><span class="post-toc-text"> 9.4 收集需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%94%B6%E9%9B%86%E9%9C%80%E6%B1%82-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 收集需求-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%94%B6%E9%9B%86%E9%9C%80%E6%B1%82-itto"><span class="post-toc-text"> 收集需求-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%94%B6%E9%9B%86%E9%9C%80%E6%B1%82%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E"><span class="post-toc-text"> 收集需求过程中的，工具与技术说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%9C%80%E6%B1%82%E6%96%87%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E7%B1%BB"><span class="post-toc-text"> 需求文件（需求分类）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%9C%80%E6%B1%82%E8%B7%9F%E8%B8%AA%E7%9F%A9%E9%98%B5"><span class="post-toc-text"> 需求跟踪矩阵</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="post-toc-text"> 数据收集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4"><span class="post-toc-text"> 头脑风暴</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%AE%BF%E8%B0%88"><span class="post-toc-text"> 访谈</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E7%84%A6%E7%82%B9%E5%B0%8F%E7%BB%84-focus-group"><span class="post-toc-text"> 焦点小组 FOCUS GROUP</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5"><span class="post-toc-text"> 问卷调查</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%A0%87%E6%9D%86%E5%AF%B9%E7%85%A7"><span class="post-toc-text"> 标杆对照</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%8E%B0"><span class="post-toc-text"> 数据表现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E4%BA%B2%E5%92%8C%E5%9B%BE"><span class="post-toc-text"> 亲和图</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="post-toc-text"> 思维导图</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%9B%A2%E9%98%9F%E6%8A%80%E8%83%BD"><span class="post-toc-text"> 人际关系与团队技能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%90%8D%E4%B9%89%E5%B0%8F%E7%BB%84"><span class="post-toc-text"> 名义小组</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%BC%95%E5%AF%BC"><span class="post-toc-text"> 引导</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E5%9B%BE"><span class="post-toc-text"> 系统交互图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%B3%95"><span class="post-toc-text"> 原型法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#95-%E5%AE%9A%E4%B9%89%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 9.5 定义范围</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E8%8C%83%E5%9B%B4-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 定义范围-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E8%8C%83%E5%9B%B4-itto"><span class="post-toc-text"> 定义范围-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E8%8C%83%E5%9B%B4-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 定义范围-相关概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#96-%E5%88%9B%E5%BB%BAwbs"><span class="post-toc-text"> 9.6 创建WBS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAwbs-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 创建WBS-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAwbs-itto"><span class="post-toc-text"> 创建WBS-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8C%83%E5%9B%B4%E5%9F%BA%E5%87%86"><span class="post-toc-text"> 范围基准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAwbs-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 创建WBS-相关概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#wbs"><span class="post-toc-text"> WBS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#wbs%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E%E8%A7%81%E6%95%99%E7%A8%8B89-95%E9%A1%B5"><span class="post-toc-text"> WBS详细说明，见教程[89-95]页</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#97-%E7%A1%AE%E8%AE%A4%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 9.7 确认范围</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%8C%83%E5%9B%B4-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 确认范围-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%8C%83%E5%9B%B4-itto"><span class="post-toc-text"> 确认范围-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%AA%8C%E6%94%B6%E7%9A%84%E5%8F%AF%E4%BA%A4%E4%BB%98%E6%88%90%E6%9E%9C"><span class="post-toc-text"> 验收的可交付成果</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%8C%83%E5%9B%B4-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 确认范围-相关概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#98-%E6%8E%A7%E5%88%B6%E8%8C%83%E5%9B%B4"><span class="post-toc-text"> 9.8 控制范围</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%8C%83%E5%9B%B4-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 控制范围-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%8C%83%E5%9B%B4-itto"><span class="post-toc-text"> 控制范围-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%8C%83%E5%9B%B4-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 控制范围-相关概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#99-%E6%9C%AC%E7%AB%A0%E7%BB%83%E4%B9%A0"><span class="post-toc-text"> 9.9 本章练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E9%80%89%E6%8B%A9%E9%A2%98"><span class="post-toc-text"> 1.选择题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2%E7%AE%80%E7%AD%94%E9%A2%98"><span class="post-toc-text"> 2.简答题</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="第9章-项目范围管理"><a class="markdownIt-Anchor" href="#第9章-项目范围管理"></a> 第9章-项目范围管理</h2>
+<p><mark>引言</mark></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目范围管理包括确保项目<font color=Red>做且只做</font>所需的全部工作，以成功完成项目。</p>
+</li>
+<li class="lvl-2">
+<p>项目范围管理主要在于定义和控制哪些工作应该包括在项目内，哪些不应该包含在项目内。</p>
+</li>
+</ul>
+<h3 id="91-管理基础"><a class="markdownIt-Anchor" href="#91-管理基础"></a> 9.1 管理基础</h3>
+<h4 id="911产品范围和项目范围"><a class="markdownIt-Anchor" href="#911产品范围和项目范围"></a> 9.1.1产品范围和项目范围</h4>
+<p>产品范围：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>指某项产品、服务或成果所具有的特征和功能。产品范围的完成情况是根据产品需求来衡量的。“需求”是指根据特定协议或其他强制性规范，产品、服务或成果必须具备的条件或能力。</p>
+</li>
+</ul>
+<p>项目范围：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>包括产品范围</mark>，是为交付具有规定特性与功能的产品、服务或成果而<mark>必须完成的工作</mark>。项目范围的完成清况是根据项目管理计划来衡量的。</p>
+</li>
+</ul>
+<h4 id="912管理新实践"><a class="markdownIt-Anchor" href="#912管理新实践"></a> 9.1.2管理新实践</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目范围管理的新趋势和新兴实践更加注重<mark>与商业分析师</mark>一起合作，以便：确定问题并识别商业需要；识别并推荐能够满足需要的可行解决方案；收集、记录并管理干系人需求满足商业和项目目标；推动项目集或项目产品、服务或最终成果成功应用。</p>
+</li>
+<li class="lvl-2">
+<p>商业分析师的职责还应<mark>包括需求管理</mark>相关的活动，项目经理则负责确保这些活动列入项目管理计划，并且在预算内按时完成，同时能够创造价值。</p>
+</li>
+<li class="lvl-2">
+<p>项目经理与商业分析师之间应该是<mark>伙伴式合作关系</mark>。如果项目经理和商业分析师能够理解彼此在促进项目目标实现过程中的角色和职责，项目成功的可能性会更大。</p>
+</li>
+</ul>
+<h3 id="92-项目范围管理过程"><a class="markdownIt-Anchor" href="#92-项目范围管理过程"></a> 9.2 项目范围管理过程</h3>
+<h4 id="921-过程概述"><a class="markdownIt-Anchor" href="#921-过程概述"></a> 9.2.1 过程概述</h4>
+<p>项目范围管理（做且只做）</p>
+<h5 id="规划范围管理"><a class="markdownIt-Anchor" href="#规划范围管理"></a> 规划范围管理</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围管理计划</mark>、<mark>需求管理计划</mark></p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据分析、会议</p>
+</li>
+</ul>
+<h5 id="收集需求"><a class="markdownIt-Anchor" href="#收集需求"></a> 收集需求</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：立项管理文件、项目章程、项目管理计划、项目文件、协议、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>需求文件</mark>、<mark>需求跟踪矩阵</mark></p>
+</li>
+<li class="lvl-2">
+<p>技术：<mark>专家判断、数据收集、数据分析、决策、数据表现、人际关系与团队技能、系统交互图、原型法</mark></p>
+</li>
+</ul>
+<h5 id="定义范围"><a class="markdownIt-Anchor" href="#定义范围"></a> 定义范围</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围说明书</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据分析、决策、人际关系与团队技能、产品分析</p>
+</li>
+</ul>
+<h5 id="创建wbs"><a class="markdownIt-Anchor" href="#创建wbs"></a> 创建WBS</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围基准</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：分解、专家判断</p>
+</li>
+</ul>
+<h5 id="确认范围"><a class="markdownIt-Anchor" href="#确认范围"></a> 确认范围</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效数据、<mark>核实的可交付成果</mark></p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>验收的可交付成果</mark>、变更请求、工作绩效信息、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：检查、决策</p>
+</li>
+</ul>
+<h5 id="控制范围"><a class="markdownIt-Anchor" href="#控制范围"></a> 控制范围</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效数据、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：工作绩效信息、<mark>变更请求</mark>、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据分析</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>输出(Output)</th>
+<th>工具与技术(Tool Technology)</th>
+<th>输入(Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>规划范围管理</td>
+<td><mark>范围管理计划</mark>、<mark>需求管理计划</mark></td>
+<td>专家判断、数据分析、会议</td>
+<td>项目章程、项目管理计划、事业环境因素、组织过程资产</td>
+</tr>
+<tr>
+<td>收集需求</td>
+<td><mark>需求文件</mark>、<mark>需求跟踪矩阵</mark></td>
+<td><mark>专家判断、数据收集、数据分析、决策、数据表现、人际关系与团队技能、系统交互图、原型法</mark></td>
+<td>立项管理文件、项目章程、项目管理计划、项目文件、协议、事业环境因素、组织过程资产</td>
+</tr>
+<tr>
+<td>定义范围</td>
+<td><mark>范围说明书</mark>、项目文件更新</td>
+<td>专家判断、数据分析、决策、人际关系与团队技能、产品分析</td>
+<td>项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</td>
+</tr>
+<tr>
+<td>创建WBS</td>
+<td><mark>范围基准</mark>、项目文件更新</td>
+<td>分解、专家判断</td>
+<td>项目管理计划、项目文件、事业环境因素、组织过程资产</td>
+</tr>
+<tr>
+<td>确认范围</td>
+<td><mark>验收的可交付成果</mark>、变更请求、工作绩效信息、项目文件更新</td>
+<td>检查、决策</td>
+<td>项目管理计划、项目文件、工作绩效数据、<mark>核实的可交付成果</mark></td>
+</tr>
+<tr>
+<td>控制范围</td>
+<td>工作绩效信息、<mark>变更请求</mark>、项目管理计划更新、项目文件更新</td>
+<td>数据分析</td>
+<td>项目管理计划、项目文件、工作绩效数据、组织过程资产</td>
+</tr>
+</tbody>
+</table>
+<h4 id="922-裁剪考虑因素"><a class="markdownIt-Anchor" href="#922-裁剪考虑因素"></a> 9.2.2 裁剪考虑因素</h4>
+<p>裁剪时应考虑的因素包括：知识和需求管理、确认和控制、开发方法、需求的稳定性、治理</p>
+<h4 id="923-敏捷与适应方法"><a class="markdownIt-Anchor" href="#923-敏捷与适应方法"></a> 9.2.3 敏捷与适应方法</h4>
+<p>在许多情况下，不断涌现的需求往往导致真实的业务需求与最初所述的业务需求之间存在差异。因此，敏捷方法有目的地构建和审查原型，并通过多次发布版本来明确需求，范围会在整个项目期间被定义和再定义。</p>
+<p>采用敏捷或适应型生命周期，旨在应对大量变更，需要干系人持续参与项目。每次迭代中，都会重复开展：收集需求、定义范围、创建WBS、确认范围、控制范围。</p>
+<h3 id="93-规划范围管理"><a class="markdownIt-Anchor" href="#93-规划范围管理"></a> 9.3 规划范围管理</h3>
+<h4 id="规划范围管理-定义-作用"><a class="markdownIt-Anchor" href="#规划范围管理-定义-作用"></a> 规划范围管理-定义、作用</h4>
+<p>规划范围管理是为了记录如何定义、确认和控制项目范围及产品范围，而创建范围管理计划的过程。</p>
+<p>主要作用是在整个项目期间对如何管理范围提供指南和方向。</p>
+<p>本过程仅开展一次或仅在项目的预定义点开展。</p>
+<h4 id="规划范围管理-itto"><a class="markdownIt-Anchor" href="#规划范围管理-itto"></a> 规划范围管理-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围管理计划</mark>、<mark>需求管理计划</mark></p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据分析、会议</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/6m1k7CqcOFNKED5.png" title="图9-1规范范围管理过程的数据流向图.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/6m1k7CqcOFNKED5.png" alt="图9-1规范范围管理过程的数据流向图.png" /></a></p>
+</blockquote>
+<h4 id="范围管理计划"><a class="markdownIt-Anchor" href="#范围管理计划"></a> 范围管理计划</h4>
+<blockquote>
+<p>范围管理计划是项目管理计划的组成部分，描述将如何定义、制定、监督、控制和确认项目范围。</p>
+</blockquote>
+<p>范围管理计划用于指导如下过程和相关工作：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>1、制定项目范围说明书；</p>
+</li>
+<li class="lvl-2">
+<p>2、根据详细项目范围说明书创建WBS；</p>
+</li>
+<li class="lvl-2">
+<p>3、确定如何审批和维护范围基准；</p>
+</li>
+<li class="lvl-2">
+<p>4、正式验收已完成的项目可交付成果。</p>
+</li>
+</ul>
+<p>根据项目需要，范围管理计划可以是正式或非正式的，非常详细或高度概括的。</p>
+<h4 id="需求管理计划"><a class="markdownIt-Anchor" href="#需求管理计划"></a> 需求管理计划</h4>
+<p>需求管理计划是项目管理计划的组成部分，描述如何分析、记录和管理需求。</p>
+<p>需求管理计划的主要内容包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>1、如何规划、跟踪和报告各种需求活动；</p>
+</li>
+<li class="lvl-2">
+<p>2、配置管理活动，例如，如何启动变更，如何分析其影响，如何进行追溯、跟踪和报告，以及变更审批权限；</p>
+</li>
+<li class="lvl-2">
+<p>3、需求优先级排序过程；</p>
+</li>
+<li class="lvl-2">
+<p>4、测量指标及使用这些指标的理由；</p>
+</li>
+<li class="lvl-2">
+<p>5、反映哪些需求属性将被列入跟踪矩阵等。</p>
+</li>
+</ul>
+<h3 id="94-收集需求"><a class="markdownIt-Anchor" href="#94-收集需求"></a> 9.4 收集需求</h3>
+<h4 id="收集需求-定义-作用"><a class="markdownIt-Anchor" href="#收集需求-定义-作用"></a> 收集需求-定义、作用</h4>
+<p>收集需求是为实现目标而确定，记录并管理干系人的需要和需求的过程。</p>
+<p>主要作用是为定义产品范围和项目范围奠定基础。</p>
+<p>本过程仅开展一次或仅在项目的预定义点开展。</p>
+<h4 id="收集需求-itto"><a class="markdownIt-Anchor" href="#收集需求-itto"></a> 收集需求-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：立项管理文件、项目章程、项目管理计划、项目文件、协议、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>需求文件</mark>、<mark>需求跟踪矩阵</mark></p>
+</li>
+<li class="lvl-2">
+<p>技术：<mark>专家判断、数据收集、数据分析、决策、数据表现、人际关系与团队技能、系统交互图、原型法</mark></p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/31/uUI5Ddc1O6TJFtq.png" title="图9-2 收集需求过程的数据流向图.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/31/uUI5Ddc1O6TJFtq.png" alt="图9-2 收集需求过程的数据流向图.png" /></a></p>
+</blockquote>
+<h4 id="收集需求过程中的工具与技术说明"><a class="markdownIt-Anchor" href="#收集需求过程中的工具与技术说明"></a> 收集需求过程中的，工具与技术说明</h4>
+<h5 id="需求文件需求分类"><a class="markdownIt-Anchor" href="#需求文件需求分类"></a> 需求文件（需求分类）</h5>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>业务需求</td>
+<td>整个组织的高层级需要</td>
+</tr>
+<tr>
+<td>相关方需求</td>
+<td>相关方或相关方群体的需要</td>
+</tr>
+<tr>
+<td>解决方案需求</td>
+<td>功能需求/非功能需求</td>
+</tr>
+<tr>
+<td>项目需求</td>
+<td>项目需要满足的行动、过程或其他条件</td>
+</tr>
+<tr>
+<td>过渡需求</td>
+<td>从“当前状态”过渡到“将来状态”所需的临时能力</td>
+</tr>
+<tr>
+<td>质量需求</td>
+<td>用于确认项目可交付成果的成功完成或其他项目需求的实现的任何条件或标准</td>
+</tr>
+</tbody>
+</table>
+<h5 id="需求跟踪矩阵"><a class="markdownIt-Anchor" href="#需求跟踪矩阵"></a> 需求跟踪矩阵</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>把产品需求从其来源连接到能满足需求的可交付成果的一种表格</p>
+</li>
+<li class="lvl-2">
+<p>提供了在整个项目生命周期中跟踪需求的一种方法</p>
+</li>
+<li class="lvl-2">
+<p>为管理产品范围变更提供了框架</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/wgDE4qYeySMf9jP.png" title="9-4-1 需求跟踪矩阵.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/wgDE4qYeySMf9jP.png" alt="9-4-1 需求跟踪矩阵.png" /></a></p>
+<h5 id="数据收集"><a class="markdownIt-Anchor" href="#数据收集"></a> 数据收集</h5>
+<h6 id="头脑风暴"><a class="markdownIt-Anchor" href="#头脑风暴"></a> 头脑风暴</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用来产生和收集对项目需求与产品需求的多种创意</p>
+</li>
+<li class="lvl-2">
+<p>庭外判决、自由鸣放、追求数量</p>
+</li>
+</ul>
+<h6 id="访谈"><a class="markdownIt-Anchor" href="#访谈"></a> 访谈</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>向被访者提出预设和即兴的问题，并记录他们的回答</p>
+</li>
+<li class="lvl-2">
+<p>“一对一”谈话（也可“多对多&quot;）</p>
+</li>
+<li class="lvl-2">
+<p>对象：有经验的项目参与者、发起人和其他高管，以及主题专家</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/ZqisUMjkdbFCW45.jpg" title="64.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/ZqisUMjkdbFCW45.jpg" alt="64.jpg" /></a></p>
+<h6 id="焦点小组-focus-group"><a class="markdownIt-Anchor" href="#焦点小组-focus-group"></a> 焦点小组 FOCUS GROUP</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>召集预定的相关方和主题专家，了解他们对所讨论的产品、服务或成果的期望和态度。</p>
+</li>
+<li class="lvl-2">
+<p>由一位受过训练的主持人引导大家进行互动式讨论</p>
+</li>
+<li class="lvl-2">
+<p>焦点小组往往比“一对一”的访谈更热烈</p>
+</li>
+<li class="lvl-2">
+<p>作用：有效的收集用户行为信息。</p>
+</li>
+<li class="lvl-2">
+<p>目的：发现什么是用户的真正需求。</p>
+</li>
+<li class="lvl-2">
+<p>注意：应有其他方式同时进行收集，不可成为唯一判断方法。</p>
+</li>
+</ul>
+<h6 id="问卷调查"><a class="markdownIt-Anchor" href="#问卷调查"></a> 问卷调查</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>设计一系列书面问题，向众多受访者快速收集信息</p>
+</li>
+<li class="lvl-2">
+<p>非常适用于以下情况：受众多样化，需要快速完成调查，受访者地理位置分散，并且适合开展统计分析。</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/CQkRN2hrGeUcFPJ.jpg" title="68.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/CQkRN2hrGeUcFPJ.jpg" alt="68.jpg" /></a></p>
+</blockquote>
+<h6 id="标杆对照"><a class="markdownIt-Anchor" href="#标杆对照"></a> 标杆对照</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>将实际或计划的做法与其他可比的做法进行比较，以便识别最佳实践，形成改进意见，并为绩效考核提供依据</p>
+</li>
+<li class="lvl-2">
+<p>所采用的可比做法可以是内部的，也可以是外部的</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/YqXhBANOr2Z9idf.jpg" title="69.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/YqXhBANOr2Z9idf.jpg" alt="69.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/QRd1yT6cpJhYzPj.jpg" title="70.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/QRd1yT6cpJhYzPj.jpg" alt="70.jpg" /></a></p>
+</blockquote>
+<h5 id="数据表现"><a class="markdownIt-Anchor" href="#数据表现"></a> 数据表现</h5>
+<h6 id="亲和图"><a class="markdownIt-Anchor" href="#亲和图"></a> 亲和图</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用来对大量创意进行分组的技术，以便进一步审查和分析。</p>
+</li>
+</ul>
+<h6 id="思维导图"><a class="markdownIt-Anchor" href="#思维导图"></a> 思维导图</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>把从头脑风暴中获得的创意整合成一张图，用以反映创意之间的共性与差异，激发新创意</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/tJIOyATF9obulVm.jpg" title="71.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/tJIOyATF9obulVm.jpg" alt="71.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/RWlOr82N3fPajSK.png" title="73.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/RWlOr82N3fPajSK.png" alt="73.png" /></a></p>
+</blockquote>
+<h5 id="人际关系与团队技能"><a class="markdownIt-Anchor" href="#人际关系与团队技能"></a> 人际关系与团队技能</h5>
+<h6 id="名义小组"><a class="markdownIt-Anchor" href="#名义小组"></a> 名义小组</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用于促进头脑风暴</p>
+</li>
+<li class="lvl-2">
+<p>通过投票排列最有用的创意，以便进一步开展头脑风暴或优先排序</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.向集体提出一个问题或难题。每个人在沉思后写出自己的想法。</span><br><span class="line">2.主持人在活动挂图上记录所有人的想法。</span><br><span class="line">3.集体讨论各个想法，直到全体成员达成一个明确的共识。</span><br><span class="line">4.个人私下投票决出各种想法的优先排序，通常采用5分制，1分最低，5分最高。为减少想法数量、集中关注想法，可进行数轮投票。每轮投票后，都将清点选票，得分最高者被选出。</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/DBHgmkoyh68zZG7.jpg" title="72.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/DBHgmkoyh68zZG7.jpg" alt="72.jpg" /></a></p>
+<h6 id="引导"><a class="markdownIt-Anchor" href="#引导"></a> 引导</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>把主要干系人召集在一起，集中讨论来定义产品需求</p>
+</li>
+<li class="lvl-2">
+<p>快速定义跨职能需求、协调干系人差异</p>
+</li>
+<li class="lvl-2">
+<p>有助于参与者之间建立信任、改进关系、改善沟通、达成一致意见</p>
+</li>
+<li class="lvl-2">
+<p>联合应用设计/开发（JAD）、质量功能展开（QFD）、<mark>用户故事</mark></p>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>作为</mark>一个&lt;角色&gt;，<mark>我想要</mark>&lt;活动&gt;，<mark>以便于</mark>&lt;商业价值&gt;</p>
+</li>
+<li class="lvl-2">
+<p><mark>作为</mark>一个“网站管理员”，<mark>我想要</mark>“统计每天有多少人访问了我的网站”，<mark>以便于</mark>“我的赞助商了解我的网站会给他们带来什么收益。”</p>
+</li>
+</ul>
+<h5 id="系统交互图"><a class="markdownIt-Anchor" href="#系统交互图"></a> 系统交互图</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>是对产品范围的可视化描绘</p>
+</li>
+<li class="lvl-2">
+<p>显示业务系统（过程、设备、计算机系统等）及其与人和其他系统（行动者）之间的交互方式</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/ziBnThOG6C4tPVM.png" title="74.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/ziBnThOG6C4tPVM.png" alt="74.png" /></a></p>
+</blockquote>
+<h5 id="原型法"><a class="markdownIt-Anchor" href="#原型法"></a> 原型法</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>先造出该产品的实用模型，据此征求对需求的早期反馈</p>
+</li>
+<li class="lvl-2">
+<p>原型法支持渐进明细的理念，经历从模型创建、用户体验、反馈收集到原型修改的反复循环过程。</p>
+</li>
+<li class="lvl-2">
+<p>故事板是一种原型技术，通过一系列的图像或图示来展示顺序或导航路径</p>
+</li>
+</ul>
+<blockquote>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/Pdw2kYhNo9E5mJe.jpg" title="75.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/Pdw2kYhNo9E5mJe.jpg" alt="75.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/Me7xGRmEinX3k4Z.jpg" title="76.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/Me7xGRmEinX3k4Z.jpg" alt="76.jpg" /></a></p>
+</blockquote>
+<h3 id="95-定义范围"><a class="markdownIt-Anchor" href="#95-定义范围"></a> 9.5 定义范围</h3>
+<h4 id="定义范围-定义-作用"><a class="markdownIt-Anchor" href="#定义范围-定义-作用"></a> 定义范围-定义、作用</h4>
+<p>定义范围是制定项目和产品详细描述的过程</p>
+<p>主要作用是描述产品、服务或成果的边界和验收标准。</p>
+<p>本过程需要在整个项目期间多次反复开展。</p>
+<h4 id="定义范围-itto"><a class="markdownIt-Anchor" href="#定义范围-itto"></a> 定义范围-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围说明书</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、数据分析、决策、人际关系与团队技能、产品分析</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/J1SPAhZHmYTQvVO.jpg" title="77.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/J1SPAhZHmYTQvVO.jpg" alt="77.jpg" /></a></p>
+</blockquote>
+<h4 id="定义范围-相关概念"><a class="markdownIt-Anchor" href="#定义范围-相关概念"></a> 定义范围-相关概念</h4>
+<p>项目范围说明书。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对项目范围、主要可交付成果、假设条件和制约因素的描述。</p>
+</li>
+<li class="lvl-2">
+<p>记录了整个范围，包括项目和产品范围。包括：产品范围描述；项目的可交付成果；验收标准；项目的除外责任。</p>
+</li>
+</ul>
+<p>产品分析。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可用于定义产品和服务，包括针对产品或服务提问并回答，以描述要交付产品的用途、特征及其他方面。首先获取高层级的需求，然后将其细化到最终产品设计所需的详细程度。</p>
+</li>
+<li class="lvl-2">
+<p>产品分析技术主要包括：产品分解、需求分析、系统分析、系统工程、价值分析、价值工程等。</p>
+</li>
+</ul>
+<h3 id="96-创建wbs"><a class="markdownIt-Anchor" href="#96-创建wbs"></a> 9.6 创建WBS</h3>
+<h4 id="创建wbs-定义-作用"><a class="markdownIt-Anchor" href="#创建wbs-定义-作用"></a> 创建WBS-定义、作用</h4>
+<p>创建工作分解结构（WBS）是把项目可交付成果和项目工作分解成较小、更易于管理的组件的过程。</p>
+<p>主要作用是为所要交付的内容提供架构。</p>
+<p>它仅开展一次或仅在项目的预定义点开展。</p>
+<h4 id="创建wbs-itto"><a class="markdownIt-Anchor" href="#创建wbs-itto"></a> 创建WBS-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>范围基准</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：分解、专家判断</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/4G7WqZ2hVvga9ep.jpg" title="78.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/4G7WqZ2hVvga9ep.jpg" alt="78.jpg" /></a></p>
+</blockquote>
+<h4 id="范围基准"><a class="markdownIt-Anchor" href="#范围基准"></a> 范围基准</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>范围基准：批准的范围说明书、工作分解结构（WBS）和相应的WBS词典。</mark></p>
+</li>
+<li class="lvl-2">
+<p>WBS词典是针对每个WBS组件，详细描述可交付成果、活动和进度信息的文件。</p>
+</li>
+<li class="lvl-2">
+<p>WBS词典包括：账户编码标识、工作描述、假设条件和制约因素、负责的组织、进度里程碑、相关的进度活动、所需资源、成本估算、质量要求、验收标准、技术参考文献、协议信息。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/wZbjON1oy3K9amn.png" title="79.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/wZbjON1oy3K9amn.png" alt="79.png" /></a></p>
+<h4 id="创建wbs-相关概念"><a class="markdownIt-Anchor" href="#创建wbs-相关概念"></a> 创建WBS-相关概念</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要把整个项目工作<mark>分解</mark>为工作包，通常<mark>需要开展如下活动</mark>：<br />
+1、识别和分析可交付成果及相关工作；<br />
+2、确定WBS的结构和编排方法；<br />
+3、<mark>自上而下</mark>逐层细化分解；<br />
+4、为WBS组成部分制定和分配标识编码；<br />
+5、核实可交付成果分解的程度是否恰当。</p>
+</li>
+<li class="lvl-2">
+<p>分解需要<mark>注意</mark>的：<br />
+1、WBS必须是面向可交付成果的。<br />
+2、WBS必须符合项目的范围（100%原则）。<br />
+3、WBS的底层应该支持计划和控制。<br />
+4、WBS中的元素必须有人负责，而且只有一个人负责。<br />
+5、WBS应控制在4~6层。<br />
+6、WBS应包括项目管理工作，也要包括分包出去的工作。<br />
+7、WBS的编制需要所有（主要）项目干系人的参与。<br />
+8、WBS并非是一成不变的。</p>
+</li>
+<li class="lvl-2">
+<p>WBS的结构可以<mark>采用多种形式</mark>：<br />
+1、以<mark>项目生命周期</mark>的各阶段作为分解的第二层，产品和项目可交付成果放在第三层。<br />
+2、以<mark>主要可交付成果</mark>作为分解的第二层。<br />
+3、纳入由项目团队以外的组织开发的各种较低层次组件（如<mark>外包工作</mark>）。随后，作为外包工作的一部分，卖方须制定相应的合同WBS。</p>
+</li>
+</ul>
+<h4 id="wbs"><a class="markdownIt-Anchor" href="#wbs"></a> WBS</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对项目团队为实现项目目标、创建所需可交付成果而需要实施的全部工作范围的层级分解</p>
+</li>
+<li class="lvl-2">
+<p>工作分解结构每向下分解一层，代表着对项目工作更详细的定义</p>
+</li>
+<li class="lvl-2">
+<p>是后续管理工作的主要依据，是项目时间、成本、人力等管理工作基础</p>
+</li>
+<li class="lvl-2">
+<p>形式：树形结构、列表形式</p>
+</li>
+</ul>
+<blockquote>
+<p>示例1：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/OImcHJPZ3EjLxrt.png" title="81.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/OImcHJPZ3EjLxrt.png" alt="81.png" /></a></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>按生命周期分解<br />
+先做啥、再做啥、最后做啥…….</p>
+</li>
+</ul>
+<blockquote>
+<p>示例2：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/8xfaRljrIXCvi43.png" title="80.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/8xfaRljrIXCvi43.png" alt="80.png" /></a></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>按子项目分解<br />
+方方面面都有啥</p>
+</li>
+</ul>
+<blockquote>
+<p>示例3：<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/we5mj4dOvD92Bun.png" title="82.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/we5mj4dOvD92Bun.png" alt="82.png" /></a></p>
+</blockquote>
+<h4 id="wbs详细说明见教程89-95页"><a class="markdownIt-Anchor" href="#wbs详细说明见教程89-95页"></a> WBS详细说明，见教程[89-95]页</h4>
+<p>特别注意：</p>
+<ol>
+<li class="lvl-3">
+<p>WBS的层数，不是越多越好。要做到「因地制宜」</p>
+</li>
+<li class="lvl-3">
+<p>理论≠实践，知识≠能力，这之间，需要不断地<mark>践行+复盘</mark></p>
+</li>
+</ol>
+<h3 id="97-确认范围"><a class="markdownIt-Anchor" href="#97-确认范围"></a> 9.7 确认范围</h3>
+<h4 id="确认范围-定义-作用"><a class="markdownIt-Anchor" href="#确认范围-定义-作用"></a> 确认范围-定义、作用</h4>
+<p>确认范围是正式验收已完成的项目可交付成果的过程</p>
+<p>本过程的主要作用：<br />
+1、使验收过程具有客观性；<br />
+2、通过确认每个可交付成果来提高最终产品、服务或成果获得验收的可能性。</p>
+<p>确认范围过程应根据需要在整个项目期间定期开展。</p>
+<h4 id="确认范围-itto"><a class="markdownIt-Anchor" href="#确认范围-itto"></a> 确认范围-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效数据、<mark>核实的可交付成果</mark></p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>验收的可交付成果</mark>、变更请求、工作绩效信息、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：检查、决策</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/jboUIAGOp7X6nNZ.png" title="83.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/jboUIAGOp7X6nNZ.png" alt="83.png" /></a></p>
+</blockquote>
+<h4 id="验收的可交付成果"><a class="markdownIt-Anchor" href="#验收的可交付成果"></a> 验收的可交付成果</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>由客户或发起人<mark>正式签字批准</mark>的符合验收标准的可交付成果</p>
+</li>
+<li class="lvl-2">
+<p>应该从客户或发起人那里<mark>获得正式文件</mark>，证明干系人对项目可交付成果的正式验收。</p>
+</li>
+</ul>
+<h4 id="确认范围-相关概念"><a class="markdownIt-Anchor" href="#确认范围-相关概念"></a> 确认范围-相关概念</h4>
+<p>确认范围应该贯穿项目的始终。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>确认范围的一般步骤包括</mark>：<br />
+1、确定需要进行范围确认的时间；<br />
+2、识别范围确认需要哪些投入；<br />
+3、确定范围正式被接受的标准和要素；<br />
+4、确定范围确认会议的组织步骤；<br />
+5、组织范围确认会议。</p>
+</li>
+</ul>
+<p>确认范围关注可交付成果的验收，控制质量关注可交付成果的正确性及是否满足质量要求。</p>
+<p><mark>控制质量过程通常先于确认范围过程，但二者也可同时进行。</mark></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要检查的问题：<br />
+1.可交付成果是否是确定的、可确认的<br />
+2.每个可交付成果是否有明确的里程碑<br />
+3.是否有明确的质量标准<br />
+4.审核和承诺是否有清晰的表达<br />
+5.项目范围是否覆盖了完成产品或服务的所有活动<br />
+6.项目范围的风险是否太高，是否能够降低可预见风险对项目的冲击</p>
+</li>
+<li class="lvl-2">
+<p>不同干系人关注点</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>干系人</th>
+<th>关注点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>管理层</td>
+<td>范围对项目的进度、资金和资源的影响</td>
+</tr>
+<tr>
+<td>客户</td>
+<td>产品范围，项目的可交付成果是否足够完成产品或服务</td>
+</tr>
+<tr>
+<td>项目管理人员</td>
+<td>可交付成果是否足够和必须完成，时间、资金和资源是否足够</td>
+</tr>
+<tr>
+<td>项目团队成员</td>
+<td>项目范围中自己参与的元素和负责的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="98-控制范围"><a class="markdownIt-Anchor" href="#98-控制范围"></a> 9.8 控制范围</h3>
+<h4 id="控制范围-定义-作用"><a class="markdownIt-Anchor" href="#控制范围-定义-作用"></a> 控制范围-定义、作用</h4>
+<p>控制范围是监督项目和产品的范围状态，管理范围基准变更的过程</p>
+<p>主要作用是在整个项目期间保持对范围基准的维护。</p>
+<p>本过程需要在整个项目期间开展。</p>
+<h4 id="控制范围-itto"><a class="markdownIt-Anchor" href="#控制范围-itto"></a> 控制范围-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效数据、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：工作绩效信息、<mark>变更请求</mark>、项目管理计划更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据分析</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/UsZNSGLd1HQPFhR.png" title="84.png" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/UsZNSGLd1HQPFhR.png" alt="84.png" /></a></p>
+</blockquote>
+<h4 id="控制范围-相关概念"><a class="markdownIt-Anchor" href="#控制范围-相关概念"></a> 控制范围-相关概念</h4>
+<p>数据分析</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>偏差分析：用于将基准与实际结果进行比较，以确定偏差是否处于临界值区间内或是否有必要采取纠正或预防措施。</p>
+</li>
+<li class="lvl-2">
+<p>趋势分析：旨在审查项目绩效随时间的变化情况，以判断绩效是正在改善还是正在恶化。</p>
+</li>
+</ul>
+<p>蔓延<br />
+一般指未经变更控制的产品或项目范围的扩大；往往由客户导致</p>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/03/20/pUFjECeTxN9kHwn.jpg" title="86.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/03/20/pUFjECeTxN9kHwn.jpg" alt="86.jpg" /></a></p>
+<p>镀金<br />
+团队主动增加的项目范围以外的工作</p>
+<h3 id="99-本章练习"><a class="markdownIt-Anchor" href="#99-本章练习"></a> 9.9 本章练习</h3>
+<h4 id="1选择题"><a class="markdownIt-Anchor" href="#1选择题"></a> 1.选择题</h4>
+<p><mark>（1）在____生命周期中，项目开始时就对项目可交付成果进行定义，对任何范围变化都要进行变更管理。</mark><br />
+A.预测型<br />
+B.适应型<br />
+C.敏捷型<br />
+D.迭代型</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>(2)____不是规划范围管理过程的输入。<br />
+A.项目章程<br />
+B.项目管理计划<br />
+C.质量管理计划<br />
+D.需求管理计划</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p><mark>（3）关于需求的理解，不正确的是____。</mark><br />
+A.让干系人积极参与需求的探索和分解工作，并仔细确定、记录和管理对产品、服务或成果的需求，能直接促进项目成功<br />
+B.为更好地对项目进行了解，收集需求的过程应在整个项目期间定期开展<br />
+C.需求是指根据特定协议或其他强制性规范，产品、服务或成果必须具备的条件或能力<br />
+D.需求包括发起人、客户和其他干系人的已量化且书面记录的需要和期望</p>
+<details> <summary>Answer</summary> 参考答案：B </details>
+<hr />
+<p>（4）数据收集技术中，____将实际或计划的产品、过程和实践，与其他可比组织的实践进行比较，以便识别最佳实践，形成改进意见，并为绩效考核提供依据。<br />
+A.头脑风暴<br />
+B.焦点小组<br />
+C.亲和图<br />
+D.标杆对照</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>(5）____是把产品需求从其来源连接到能满足需求的可交付成果的一种表格。<br />
+A.系统交互图<br />
+B.决策矩阵<br />
+C.需求跟踪矩阵<br />
+D.UC矩阵</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<p>(6）应根据____来编制详细的项目范围说明书。<br />
+①可交付成果<br />
+②假设条件<br />
+③制约因素<br />
+④WBS</p>
+<p>A.①②③<br />
+B.①②④<br />
+C.①③④<br />
+D.②③④</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（7）关于项目范围说明书的理解，不正确的是____。<br />
+A.项目范围说明书可明确指出哪些工作不属于本项目范围<br />
+B.项目范围说明书使项目团队能进行更详细的规划，并为评价变更请求或额外工作是否超过项目边界提供基准<br />
+C.项目范围说明书描述要做和不要做的工作的详细程度，决定着项目管理团队控制整个项目范围的有效程度<br />
+D.项目范围说明书不能代表项目干系人之间就项目范围所达成的共识</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（8）范围基准包括____。<br />
+①经过批准的范围说明书<br />
+②项目章程<br />
+③WBS词典<br />
+④WBS<br />
+⑤项目管理计划</p>
+<p>A.①②③<br />
+B.①②④<br />
+C.①③④<br />
+D.①④③</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<h4 id="2简答题"><a class="markdownIt-Anchor" href="#2简答题"></a> 2.简答题</h4>
+<p>请简述确认范围过程与控制质量过程的不同之处。<br />
+参考答案：略</p>
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/PM/'>
+                            PM
+                        </a>
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E6%95%99%E7%A8%8B/'>
+                            信息系统项目管理师教程
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%AB%98%E9%A1%B9/'>
+                            高项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

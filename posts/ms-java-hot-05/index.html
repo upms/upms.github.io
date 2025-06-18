@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-05" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java 热门面试题-05
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：12.4k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-tcp-%E6%8C%A5%E6%89%8B%E9%9C%80%E8%A6%81%E6%9C%89-time_wait-%E7%8A%B6%E6%80%81"><span class="post-toc-text"> 为什么 TCP 挥手需要有 TIME_WAIT 状态?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#time_wait%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="post-toc-text"> TIME_WAIT状态的影响</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3time_wait%E7%8A%B6%E6%80%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text"> 解决TIME_WAIT状态的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="post-toc-text"> Spring Boot 的核心特性有哪些？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-hashmap-%E5%9C%A8-java-%E4%B8%AD%E6%89%A9%E5%AE%B9%E6%97%B6%E9%87%87%E7%94%A8-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%E5%80%8D"><span class="post-toc-text"> 为什么 HashMap 在 Java 中扩容时采用 2 的 n 次方倍？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text"> 注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%A0%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84-redis-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> 你在项目中使用的 Redis 客户端是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6%E6%98%AF%E4%B8%BA%E4%BA%86%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="post-toc-text"> TCP 超时重传机制是为了解决什么问题？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0-mybatis-%E7%9A%84%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6"><span class="post-toc-text"> 简述 MyBatis 的插件运行原理，以及如何编写一个插件？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8%E5%9C%A8-java-%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> 数组和链表在 Java 中的区别是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="post-toc-text"> Redis 中常见的数据类型有哪些？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tcp-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> TCP 滑动窗口的作用是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-reactor-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 介绍一下 Reactor 线程模型？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E6%95%B0%E5%9C%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%83%BD%E4%BF%AE%E6%94%B9%E5%90%97%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9"><span class="post-toc-text"> Java 线程池核心线程数在运行过程中能修改吗？如何修改？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="post-toc-text"> 修改核心线程数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="post-toc-text"> 注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tcpip-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> TCP&#x2F;IP 四层模型是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-mybatis-%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="post-toc-text"> 说说 MyBatis 的缓存机制？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="post-toc-text"> 一级缓存</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="post-toc-text"> 二级缓存</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BC%93%E5%AD%98%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 缓存的使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="post-toc-text"> 注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-spring-boot"><span class="post-toc-text"> 什么是 Spring Boot？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="post-toc-text"> 主要特点：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 使用场景：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="post-toc-text"> 核心组件：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="post-toc-text"> Java 中如何创建多线程？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%BB%A7%E6%89%BFthread%E7%B1%BB"><span class="post-toc-text"> 1. 继承Thread类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%AE%9E%E7%8E%B0runnable%E6%8E%A5%E5%8F%A3"><span class="post-toc-text"> 2. 实现Runnable接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%BD%BF%E7%94%A8callable%E5%92%8Cfuturejava-5"><span class="post-toc-text"> 3. 使用Callable和Future（Java 5+）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0java-5"><span class="post-toc-text"> 4. 使用线程池（Java 5+）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E4%B8%AD%E8%B7%B3%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> Redis 中跳表的实现原理是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88%E6%97%B6%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86"><span class="post-toc-text"> Redis 性能瓶颈时如何处理？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#osi-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> OSI 七层模型是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4-aqs-%E5%90%A7"><span class="post-toc-text"> 说说 AQS 吧？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie-session-token-%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> Cookie、Session、Token 之间有什么区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 主要区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="post-toc-text"> 总结</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><!-- 
+为什么 TCP 挥手需要有 TIME_WAIT 状态?
+Spring Boot 的核心特性有哪些？
+为什么 HashMap 在 Java 中扩容时采用 2 的 n 次方倍？
+你在项目中使用的 Redis 客户端是什么？
+TCP 超时重传机制是为了解决什么问题？
+简述 MyBatis 的插件运行原理，以及如何编写一个插件？
+数组和链表在 Java 中的区别是什么？
+Redis 中常见的数据类型有哪些？
+TCP 滑动窗口的作用是什么？
+介绍一下 Reactor 线程模型？
+Java 线程池核心线程数在运行过程中能修改吗？如何修改？
+TCP/IP 四层模型是什么？
+说说 MyBatis 的缓存机制？
+什么是 Spring Boot？
+Java 中如何创建多线程？
+Redis 中跳表的实现原理是什么？
+Redis 性能瓶颈时如何处理？
+OSI 七层模型是什么？
+说说 AQS 吧？
+Cookie、Session、Token 之间有什么区别？
+
+-->
+<h2 id="为什么-tcp-挥手需要有-time_wait-状态"><a class="markdownIt-Anchor" href="#为什么-tcp-挥手需要有-time_wait-状态"></a> 为什么 TCP 挥手需要有 TIME_WAIT 状态?</h2>
+<p>TCP连接的TIME_WAIT状态，也称为2MSL（Maximum Segment Lifetime，最大报文段生存时间）等待状态，是TCP挥手（四次挥手）过程中的一个重要状态。它的存在主要有以下几个原因：</p>
+<ol>
+<li class="lvl-3">
+<p>保证TCP连接的可靠终止<br />
+TIME_WAIT状态确保了主动关闭方（通常称为客户端）发送的最后一个ACK报文段能够被被动关闭方（通常称为服务器）正确接收。如果这个ACK丢失，服务器将重新发送FIN报文段，而客户端需要在TIME_WAIT状态下等待足够的时间来接收并响应这个重发的FIN报文段。</p>
+</li>
+<li class="lvl-3">
+<p>防止旧连接的报文段干扰新连接<br />
+TCP连接由四元组（源IP、源端口、目标IP、目标端口）唯一标识。在TIME_WAIT状态下，这个四元组在一段时间内不会被新的连接使用。这可以防止由于网络延迟或路由器缓存等原因，导致旧连接的报文段在新连接建立后仍然到达目的地，从而干扰新连接的正常通信。</p>
+</li>
+<li class="lvl-3">
+<p>允许足够的时间让网络中的报文段过期<br />
+TCP报文段在网络中具有一定的生存时间（TTL），超过这个时间报文段将被丢弃。TIME_WAIT状态持续的时间通常是报文段最大生存时间的两倍（2MSL），这样可以确保所有相关的报文段都已经从网络中消失，不会对后续的连接造成影响。</p>
+</li>
+<li class="lvl-3">
+<p>处理延迟的重复报文段<br />
+在某些情况下，网络可能会延迟或重复发送报文段。TIME_WAIT状态可以处理这些延迟的重复报文段，防止它们被误认为是新连接的一部分。</p>
+</li>
+</ol>
+<h3 id="time_wait状态的影响"><a class="markdownIt-Anchor" href="#time_wait状态的影响"></a> TIME_WAIT状态的影响</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>资源占用</strong>：处于TIME_WAIT状态的连接会占用一定的系统资源，如套接字等。</p>
+</li>
+<li class="lvl-2">
+<p><strong>端口耗尽</strong>：如果短时间内大量连接进入TIME_WAIT状态，可能会导致端口耗尽，影响新连接的建立。</p>
+</li>
+</ul>
+<h3 id="解决time_wait状态的问题"><a class="markdownIt-Anchor" href="#解决time_wait状态的问题"></a> 解决TIME_WAIT状态的问题</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>调整系统参数</strong>：可以通过调整系统的TCP参数来减少TIME_WAIT状态的影响，如增加端口的范围或减少TIME_WAIT的时间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>使用TCP快速打开（TCP Fast Open）</strong>：TCP Fast Open允许在TIME_WAIT状态下快速建立新的连接，减少等待时间。</p>
+</li>
+</ul>
+<p>总之，TIME_WAIT状态是TCP连接管理中的一个重要机制，它保证了TCP连接的可靠性和稳定性，尽管可能会带来一些资源占用和性能问题，但通常是必要的。</p>
+<h2 id="spring-boot-的核心特性有哪些"><a class="markdownIt-Anchor" href="#spring-boot-的核心特性有哪些"></a> Spring Boot 的核心特性有哪些？</h2>
+<p>Spring Boot 的核心特性使其成为快速开发和部署 Spring 应用的理想选择。以下是主要特性：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>自动配置（Auto-configuration）</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>自动配置</strong>：根据类路径依赖自动配置 Spring 应用，减少手动配置。</li>
+<li class="lvl-5"><strong>条件化配置</strong>：通过 <code>@Conditional</code> 注解实现条件化配置，确保只在满足条件时生效。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>起步依赖（Starter Dependencies）</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>预定义依赖</strong>：提供一系列起步依赖，简化依赖管理。</li>
+<li class="lvl-5"><strong>依赖传递</strong>：起步依赖包含常用库及其传递依赖，减少版本冲突。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>嵌入式 Web 服务器</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>内嵌服务器</strong>：支持 Tomcat、Jetty 和 Undertow，无需单独部署。</li>
+<li class="lvl-5"><strong>简化部署</strong>：直接运行 JAR 文件即可启动应用。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Actuator</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>监控和管理</strong>：提供生产级监控和管理功能，如健康检查、指标收集、环境信息等。</li>
+<li class="lvl-5"><strong>端点扩展</strong>：支持自定义端点，满足特定需求。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>外部化配置</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>多种配置源</strong>：支持 <code>application.properties</code>、<code>application.yml</code>、环境变量、命令行参数等。</li>
+<li class="lvl-5"><strong>配置优先级</strong>：提供灵活的配置优先级机制，便于不同环境配置管理。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Spring Boot CLI</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>命令行工具</strong>：通过命令行快速开发和测试 Spring 应用。</li>
+<li class="lvl-5"><strong>Groovy 脚本</strong>：支持使用 Groovy 脚本编写应用，简化开发。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>日志管理</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>默认配置</strong>：提供合理的默认日志配置，支持多种日志框架（如 Logback、Log4j2）。</li>
+<li class="lvl-5"><strong>自定义配置</strong>：支持通过配置文件自定义日志行为。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>测试支持</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>测试工具</strong>：提供丰富的测试工具和注解（如 <code>@SpringBootTest</code>、<code>@WebMvcTest</code>）。</li>
+<li class="lvl-5"><strong>嵌入式数据库</strong>：支持嵌入式数据库（如 H2），简化测试环境配置。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Spring Boot DevTools</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>开发工具</strong>：提供开发时工具，如自动重启、LiveReload 等，提升开发效率。</li>
+<li class="lvl-5"><strong>快速反馈</strong>：代码变更后自动重启应用，快速查看效果。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>Spring Boot Actuator</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>生产就绪功能</strong>：提供健康检查、审计、指标收集等功能，便于生产环境监控和管理。</p>
+</li>
+<li class="lvl-5">
+<p><strong>自定义端点</strong>：支持自定义 Actuator 端点，满足特定需求。</p>
+</li>
+</ul>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>Spring Boot 的核心特性包括自动配置、起步依赖、嵌入式 Web 服务器、Actuator、外部化配置、CLI、日志管理、测试支持、DevTools 和 Actuator。这些特性简化了 Spring 应用的开发、部署和管理，提升了开发效率和应用的可靠性。</p>
+<h2 id="为什么-hashmap-在-java-中扩容时采用-2-的-n-次方倍"><a class="markdownIt-Anchor" href="#为什么-hashmap-在-java-中扩容时采用-2-的-n-次方倍"></a> 为什么 HashMap 在 Java 中扩容时采用 2 的 n 次方倍？</h2>
+<p>在Java中，<code>HashMap</code>扩容时采用2的n次方倍（即每次扩容时容量翻倍）的设计选择是基于多个原因，主要包括提高哈希表的性能和简化哈希冲突的处理。以下是详细解释：</p>
+<ol>
+<li class="lvl-3">
+<p>保持哈希值的分布均匀<br />
+<code>HashMap</code>使用哈希值与数组长度的模运算来确定键值对在数组中的位置。如果数组长度是2的n次方，那么哈希值与数组长度的模运算可以简化为与数组长度的二进制表示中最低非零位进行按位与运算。这种运算非常快速，而且能够保证哈希值在数组中的分布更加均匀，减少哈希冲突的概率。</p>
+</li>
+<li class="lvl-3">
+<p>简化扩容时的重新哈希过程<br />
+当<code>HashMap</code>扩容时，需要将原有的键值对重新插入到新的数组中。由于数组长度翻倍，每个键值对的位置只有两种可能：保持不变或移动到原位置的两倍位置。这种特性使得重新哈希的过程更加高效，因为不需要重新计算所有键值对的位置，只需要判断哈希值与新数组长度的关系即可。</p>
+</li>
+<li class="lvl-3">
+<p>提高哈希表的扩展性<br />
+采用2的n次方倍扩容可以确保哈希表在扩展时保持较好的性能。如果扩容不是翻倍，那么每次扩容后哈希值的分布可能会变得不均匀，导致更多的哈希冲突和性能下降。</p>
+</li>
+<li class="lvl-3">
+<p>兼容性考虑<br />
+Java的<code>HashMap</code>设计初衷就是采用2的n次方倍扩容，这种设计在Java社区中被广泛接受和使用。保持这种设计可以确保向后兼容性，使得现有的代码和库能够继续正常工作。</p>
+</li>
+<li class="lvl-3">
+<p>减少内存碎片<br />
+翻倍扩容可以减少内存碎片，因为每次扩容都是分配一个全新的数组，而不是在原有数组基础上进行扩展。这有助于提高内存的使用效率。</p>
+</li>
+</ol>
+<h3 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>初始容量选择</strong>：在使用<code>HashMap</code>时，建议根据预期元素数量选择合适的初始容量，以减少扩容操作的次数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>负载因子</strong>：<code>HashMap</code>的负载因子（默认为0.75）决定了扩容的时机。选择合适的负载因子可以平衡空间和时间效率。</p>
+</li>
+</ul>
+<p>总之，<code>HashMap</code>在Java中扩容时采用2的n次方倍的设计是基于性能、简化哈希冲突处理、扩展性、兼容性和内存效率等多方面的考虑。这种设计在实际应用中证明是有效和高效的。</p>
+<h2 id="你在项目中使用的-redis-客户端是什么"><a class="markdownIt-Anchor" href="#你在项目中使用的-redis-客户端是什么"></a> 你在项目中使用的 Redis 客户端是什么？</h2>
+<p>在项目中使用的 Redis 客户端通常是 <strong>Jedis</strong> 或 <strong>Lettuce</strong>，两者各有优缺点，具体选择取决于项目需求。</p>
+<ol>
+<li class="lvl-3">
+<p><strong>Jedis</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>阻塞 I/O</strong>：基于阻塞 I/O，适合简单场景。</li>
+<li class="lvl-7"><strong>轻量级</strong>：API 简单易用，适合快速上手。</li>
+<li class="lvl-7"><strong>连接池</strong>：支持连接池，提升性能。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>适用场景</strong>：适合小型项目或对性能要求不高的场景。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;localhost&quot;</span>, <span class="number">6379</span>);</span><br><span class="line">jedis.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> jedis.get(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">jedis.close();</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>Lettuce</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>异步和非阻塞</strong>：基于 Netty，支持异步和非阻塞操作，适合高并发场景。</li>
+<li class="lvl-7"><strong>线程安全</strong>：连接是线程安全的，可在多个线程间共享。</li>
+<li class="lvl-7"><strong>高级功能</strong>：支持响应式编程、集群模式等高级功能。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>适用场景</strong>：适合大型项目或高并发场景。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RedisClient</span> <span class="variable">client</span> <span class="operator">=</span> RedisClient.create(<span class="string">&quot;redis://localhost:6379&quot;</span>);</span><br><span class="line">StatefulRedisConnection&lt;String, String&gt; connection = client.connect();</span><br><span class="line">RedisCommands&lt;String, String&gt; commands = connection.sync();</span><br><span class="line">commands.set(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> commands.get(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">connection.close();</span><br><span class="line">client.shutdown();</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>Redisson</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>分布式对象</strong>：提供分布式对象和服务（如分布式锁、集合等）。</li>
+<li class="lvl-7"><strong>高扩展性</strong>：适合复杂分布式系统。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>适用场景</strong>：需要分布式对象和服务的场景。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Config</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Config</span>();</span><br><span class="line">config.useSingleServer().setAddress(<span class="string">&quot;redis://localhost:6379&quot;</span>);</span><br><span class="line"><span class="type">RedissonClient</span> <span class="variable">client</span> <span class="operator">=</span> Redisson.create(config);</span><br><span class="line">RMap&lt;String, String&gt; map = client.getMap(<span class="string">&quot;myMap&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> map.get(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">client.shutdown();</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>Spring Data Redis</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>抽象层</strong>：提供对 Redis 的高级抽象，简化操作。</li>
+<li class="lvl-7"><strong>集成</strong>：与 Spring 生态无缝集成。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>适用场景</strong>：使用 Spring 框架的项目。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RedisTemplate&lt;String, String&gt; redisTemplate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setKey</span><span class="params">(String key, String value)</span> &#123;</span><br><span class="line">    redisTemplate.opsForValue().set(key, value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getKey</span><span class="params">(String key)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> redisTemplate.opsForValue().get(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Jedis</strong>：适合小型项目或简单场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Lettuce</strong>：适合高并发场景，支持异步和非阻塞操作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Redisson</strong>：适合需要分布式对象和服务的场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Data Redis</strong>：适合使用 Spring 框架的项目。</p>
+</li>
+</ul>
+<p>选择 Redis 客户端时，需根据项目需求和性能要求进行权衡。</p>
+<h2 id="tcp-超时重传机制是为了解决什么问题"><a class="markdownIt-Anchor" href="#tcp-超时重传机制是为了解决什么问题"></a> TCP 超时重传机制是为了解决什么问题？</h2>
+<p>TCP超时重传机制是为了解决网络数据传输中可能出现的丢包、延迟和乱序等问题，确保数据的可靠传输。具体来说，它解决了以下几个主要问题：</p>
+<ol>
+<li class="lvl-3">
+<p>丢包<br />
+在网络传输过程中，数据包可能会因为各种原因（如网络拥塞、设备故障等）而丢失。TCP超时重传机制通过在发送方设置一个定时器，如果在规定的时间内没有收到接收方的确认（ACK）报文，就会认为该数据包丢失，并重新发送该数据包。</p>
+</li>
+<li class="lvl-3">
+<p>延迟<br />
+网络延迟可能导致数据包到达接收方的时间延长，从而使得发送方无法在预期时间内收到确认报文。超时重传机制可以确保在延迟情况下，发送方能够等待足够的时间来接收确认，如果超时则重传数据包。</p>
+</li>
+<li class="lvl-3">
+<p>乱序<br />
+在某些情况下，数据包可能会到达接收方的顺序与发送方的顺序不同，这称为乱序。虽然TCP通过序列号和确认机制来处理乱序问题，但超时重传机制可以作为补充，确保在乱序导致确认报文延迟到达时，发送方能够重传可能丢失的数据包。</p>
+</li>
+<li class="lvl-3">
+<p>确认报文丢失<br />
+即使数据包成功到达接收方，但返回的确认报文可能会在网络中丢失。超时重传机制可以确保在这种情况下，发送方会重新发送数据包，从而触发接收方再次发送确认报文。</p>
+</li>
+<li class="lvl-3">
+<p>提高可靠性<br />
+TCP作为一种可靠的传输协议，其目标是在不可靠的网络环境中提供可靠的数据传输服务。超时重传机制是实现这一目标的关键机制之一，它通过重传丢失或延迟的数据包，提高了整体的数据传输可靠性。</p>
+</li>
+<li class="lvl-3">
+<p>拥塞控制<br />
+超时重传机制也与TCP的拥塞控制机制密切相关。当网络拥塞导致数据包丢失时，超时重传不仅恢复了丢失的数据包，还通常伴随着拥塞窗口的调整，以减少发送方的发送速率，从而缓解网络拥塞。</p>
+</li>
+</ol>
+<p>总之，TCP超时重传机制是确保数据可靠传输的重要手段，它通过处理丢包、延迟、乱序和确认报文丢失等问题，提高了TCP连接的稳定性和数据传输的可靠性。</p>
+<h2 id="简述-mybatis-的插件运行原理以及如何编写一个插件"><a class="markdownIt-Anchor" href="#简述-mybatis-的插件运行原理以及如何编写一个插件"></a> 简述 MyBatis 的插件运行原理，以及如何编写一个插件？</h2>
+<p><strong>MyBatis插件运行原理：</strong></p>
+<p>MyBatis插件是基于Java的动态代理技术实现的。MyBatis使用了一个名为<code>Interceptor</code>的接口，允许用户通过实现这个接口来定义自己的插件。插件可以拦截MyBatis中的四大对象的方法调用，这四大对象是：</p>
+<ol>
+<li class="lvl-3">
+<p><code>Executor</code>：执行器，负责执行SQL语句。</p>
+</li>
+<li class="lvl-3">
+<p><code>StatementHandler</code>：语句处理器，负责处理SQL语句。</p>
+</li>
+<li class="lvl-3">
+<p><code>ParameterHandler</code>：参数处理器，负责设置SQL语句中的参数。</p>
+</li>
+<li class="lvl-3">
+<p><code>ResultSetHandler</code>：结果集处理器，负责处理SQL查询结果。</p>
+</li>
+</ol>
+<p>MyBatis通过动态代理技术，在运行时对这四大对象的方法调用进行拦截，允许插件在方法执行前后添加自定义逻辑。</p>
+<p><strong>插件运行原理简述：</strong></p>
+<ol>
+<li class="lvl-3">
+<p>MyBatis启动时，会读取配置文件中的插件配置。</p>
+</li>
+<li class="lvl-3">
+<p>对于每个配置的插件，MyBatis会使用动态代理技术创建对应的代理对象。</p>
+</li>
+<li class="lvl-3">
+<p>当MyBatis执行SQL操作时，会通过代理对象调用相应的方法。</p>
+</li>
+<li class="lvl-3">
+<p>代理对象会拦截方法调用，执行插件中的逻辑（如修改SQL语句、设置参数等）。</p>
+</li>
+<li class="lvl-3">
+<p>执行完插件逻辑后，代理对象会调用原始对象的方法，完成SQL操作。</p>
+</li>
+</ol>
+<p><strong>如何编写一个MyBatis插件：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>定义插件类</strong>：创建一个类，实现<code>Interceptor</code>接口。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.ibatis.plugin.Interceptor;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.plugin.Invocation;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.plugin.Plugin;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.plugin.Signature;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"><span class="meta">@Intercepts(&#123;</span></span><br><span class="line"><span class="meta">    @Signature(type = Executor.class, method = &quot;update&quot;, args = &#123;MappedStatement.class, Object.class&#125;),</span></span><br><span class="line"><span class="meta">    @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyPlugin</span> <span class="keyword">implements</span> <span class="title class_">Interceptor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Invocation invocation)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="comment">// 插件逻辑</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">returnObject</span> <span class="operator">=</span> invocation.proceed(); <span class="comment">// 执行原方法</span></span><br><span class="line">        <span class="keyword">return</span> returnObject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">plugin</span><span class="params">(Object target)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Plugin.wrap(target, <span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setProperties</span><span class="params">(Properties properties)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置插件属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>配置插件</strong>：在MyBatis的配置文件中配置插件。</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.example.MyPlugin&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;someProperty&quot;</span> <span class="attr">value</span>=<span class="string">&quot;someValue&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>实现插件逻辑</strong>：在<code>intercept</code>方法中实现自定义逻辑，如修改SQL语句、设置参数等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>包装目标对象</strong>：在<code>plugin</code>方法中使用<code>Plugin.wrap</code>方法将目标对象包装成代理对象。</p>
+</li>
+<li class="lvl-3">
+<p><strong>设置插件属性</strong>：在<code>setProperties</code>方法中读取配置文件中设置的插件属性。</p>
+</li>
+</ol>
+<p>通过以上步骤，就可以编写一个自定义的MyBatis插件，用于拦截和扩展MyBatis的行为。</p>
+<h2 id="数组和链表在-java-中的区别是什么"><a class="markdownIt-Anchor" href="#数组和链表在-java-中的区别是什么"></a> 数组和链表在 Java 中的区别是什么？</h2>
+<p>数组和链表在 Java 中的主要区别体现在数据结构、内存分配、操作效率和使用场景等方面。以下是详细对比：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>数据结构</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>数组</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>连续内存</strong>：元素在内存中连续存储。</li>
+<li class="lvl-7"><strong>固定大小</strong>：创建时需指定大小，且不能动态调整。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>链表</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>非连续内存</strong>：元素通过指针连接，内存中非连续存储。</li>
+<li class="lvl-7"><strong>动态大小</strong>：可动态调整大小。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>内存分配</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>数组</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>静态分配</strong>：内存一次性分配，大小固定。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>链表</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>动态分配</strong>：内存按需分配，大小可动态调整。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>操作效率</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>访问元素</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>数组</strong>：O(1)，通过索引直接访问。</li>
+<li class="lvl-7"><strong>链表</strong>：O(n)，需从头节点遍历。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>插入/删除元素</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>数组</strong>：O(n)，需移动后续元素。</li>
+<li class="lvl-7"><strong>链表</strong>：O(1)，只需调整指针（已知节点位置时）。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>查找元素</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>数组</strong>：O(n)，需遍历数组。</li>
+<li class="lvl-7"><strong>链表</strong>：O(n)，需遍历链表。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用场景</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>数组</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>适合场景</strong>：频繁访问元素、元素数量固定。</li>
+<li class="lvl-7"><strong>示例</strong>：存储固定大小的数据集合，如矩阵、缓冲区。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>链表</strong>：
+<ul class="lvl-4">
+<li class="lvl-7"><strong>适合场景</strong>：频繁插入/删除元素、元素数量动态变化。</li>
+<li class="lvl-7"><strong>示例</strong>：实现栈、队列、链表等动态数据结构。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>代码示例</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p><strong>数组</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">array[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// O(1) 访问</span></span><br><span class="line">array[<span class="number">1</span>] = <span class="number">2</span>; <span class="comment">// O(1) 访问</span></span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-5">
+<p><strong>链表</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">list.add(<span class="number">1</span>); <span class="comment">// O(1) 插入</span></span><br><span class="line">list.add(<span class="number">2</span>); <span class="comment">// O(1) 插入</span></span><br><span class="line"><span class="type">int</span> <span class="variable">first</span> <span class="operator">=</span> list.get(<span class="number">0</span>); <span class="comment">// O(n) 访问</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>数组</strong>：适合频繁访问和固定大小的场景，访问速度快，但插入/删除效率低。</p>
+</li>
+<li class="lvl-2">
+<p><strong>链表</strong>：适合频繁插入/删除和动态大小的场景，插入/删除效率高，但访问速度慢。</p>
+</li>
+</ul>
+<p>选择时需根据具体需求权衡。</p>
+<h2 id="redis-中常见的数据类型有哪些"><a class="markdownIt-Anchor" href="#redis-中常见的数据类型有哪些"></a> Redis 中常见的数据类型有哪些？</h2>
+<p>Redis 是一个开源的内存数据结构存储系统，可以用作数据库、缓存和消息代理。它支持多种数据类型，以下是Redis中常见的数据类型：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>字符串（Strings）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">最基本的数据类型，可以存储任何类型的字符串，包括二进制数据。</li>
+<li class="lvl-5">常用于存储简单的键值对，如用户名、密码等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>列表（Lists）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">存储有序的字符串列表，可以添加到列表的头部或尾部。</li>
+<li class="lvl-5">常用于实现消息队列、文章列表等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>集合（Sets）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">存储无序的唯一字符串集合，支持添加、删除和查找操作。</li>
+<li class="lvl-5">常用于存储标签、用户喜好等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>有序集合（Sorted Sets）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">类似于集合，但每个成员都关联一个分数，可以按分数排序。</li>
+<li class="lvl-5">常用于实现排行榜、用户评分等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>哈希表（Hashes）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">存储键值对集合，类似于Java中的HashMap。</li>
+<li class="lvl-5">常用于存储对象属性，如用户信息、商品详情等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>地理空间索引半径查询（Geospatial Index Radius Queries）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">用于存储地理位置信息，支持半径查询等地理空间操作。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>位图（Bitmaps）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">通过位操作来存储和操作位数组，常用于实现布隆过滤器等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>超日志（HyperLogLogs）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">用于估计大量集合的基数，即集合中不同元素的数量。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>流（Streams）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">用于存储和操作连续的数据流，支持时间序列数据等。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>模块化数据类型（Modules）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">通过加载Redis模块，可以扩展新的数据类型。</li>
+</ul>
+</li>
+</ol>
+<p>这些数据类型为Redis提供了强大的功能，使其能够应对各种不同的应用场景。在选择数据类型时，需要根据具体的需求和性能要求来决定。</p>
+<h2 id="tcp-滑动窗口的作用是什么"><a class="markdownIt-Anchor" href="#tcp-滑动窗口的作用是什么"></a> TCP 滑动窗口的作用是什么？</h2>
+<p>TCP 滑动窗口的主要作用是实现流量控制和可靠数据传输，确保数据高效、可靠地传输。以下是其具体作用：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>流量控制</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>防止接收方过载</strong>：通过动态调整窗口大小，控制发送方的发送速率，避免接收方缓冲区溢出。</li>
+<li class="lvl-5"><strong>窗口大小调整</strong>：接收方在确认报文中通告当前可用缓冲区大小，发送方据此调整发送窗口。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>可靠数据传输</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>按序确认</strong>：接收方按序确认数据，确保数据顺序正确。</li>
+<li class="lvl-5"><strong>重传机制</strong>：发送方在未收到确认时会重传数据，确保数据可靠到达。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>提高网络利用率</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>批量发送</strong>：允许发送方在未收到确认前继续发送数据，减少等待时间，提高网络利用率。</li>
+<li class="lvl-5"><strong>自适应调整</strong>：根据网络状况动态调整窗口大小，优化传输效率。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>拥塞控制</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>拥塞窗口</strong>：结合拥塞控制算法（如慢启动、拥塞避免），动态调整发送窗口，避免网络拥塞。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>滑动窗口的工作原理</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>发送窗口</strong>：发送方维护一个窗口，包含已发送未确认和待发送的数据。</li>
+<li class="lvl-5"><strong>接收窗口</strong>：接收方维护一个窗口，指示当前可接收的数据范围。</li>
+<li class="lvl-5"><strong>窗口滑动</strong>：随着数据被确认，窗口向前滑动，允许发送新数据。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">发送方窗口：</span><br><span class="line">[已确认][已发送未确认][待发送][不可发送]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">接收方窗口：</span><br><span class="line">[已接收][可接收][不可接收]</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>滑动窗口的示例</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>发送方</strong>：发送窗口大小为 4，发送数据段 1-4。</li>
+<li class="lvl-5"><strong>接收方</strong>：确认数据段 1-2，窗口向前滑动，发送方继续发送数据段 5-6。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">发送方窗口滑动：</span><br><span class="line">[1-2][3-4][5-6][7-8]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">接收方窗口滑动：</span><br><span class="line">[1-2][3-4][5-6][7-8]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="总结-4"><a class="markdownIt-Anchor" href="#总结-4"></a> 总结</h3>
+<p>TCP 滑动窗口通过流量控制、可靠数据传输、提高网络利用率和拥塞控制，确保数据高效、可靠地传输。其动态调整窗口大小的机制，优化了网络性能和数据传输的可靠性。</p>
+<h2 id="介绍一下-reactor-线程模型"><a class="markdownIt-Anchor" href="#介绍一下-reactor-线程模型"></a> 介绍一下 Reactor 线程模型？</h2>
+<p>Reactor 线程模型是一种事件驱动的设计模式，用于高效处理大量并发请求。其核心思想是将事件分发与事件处理分离，通过有限线程处理大量 I/O 操作。以下是详细介绍：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>核心组件</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>Reactor</strong>：负责监听和分发事件，如 I/O 事件。</li>
+<li class="lvl-5"><strong>Handler</strong>：负责处理具体事件，如读写操作。</li>
+<li class="lvl-5"><strong>Demultiplexer</strong>：多路复用器，用于监听多个事件源（如 <code>select</code>、<code>poll</code>、<code>epoll</code>）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>单 Reactor 单线程模型</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>结构</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">一个 Reactor 线程负责监听和分发事件。</li>
+<li class="lvl-7">所有事件处理在同一线程中完成。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>优点</strong>：简单，无线程切换开销。</li>
+<li class="lvl-5"><strong>缺点</strong>：无法充分利用多核 CPU，性能受限。</li>
+<li class="lvl-5"><strong>适用场景</strong>：低并发、低延迟场景。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-------------------+</span><br><span class="line">|     Reactor       |</span><br><span class="line">| (Event Dispatcher)|</span><br><span class="line">+--------+----------+</span><br><span class="line">         |</span><br><span class="line">         | 事件分发</span><br><span class="line">         v</span><br><span class="line">+--------+----------+</span><br><span class="line">|     Handler       |</span><br><span class="line">| (Event Handler)   |</span><br><span class="line">+-------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>单 Reactor 多线程模型</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>结构</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">一个 Reactor 线程负责监听和分发事件。</li>
+<li class="lvl-7">事件处理由线程池中的多个线程完成。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>优点</strong>：充分利用多核 CPU，提升并发处理能力。</li>
+<li class="lvl-5"><strong>缺点</strong>：Reactor 线程可能成为瓶颈。</li>
+<li class="lvl-5"><strong>适用场景</strong>：高并发、计算密集型场景。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-------------------+</span><br><span class="line">|     Reactor       |</span><br><span class="line">| (Event Dispatcher)|</span><br><span class="line">+--------+----------+</span><br><span class="line">         |</span><br><span class="line">         | 事件分发</span><br><span class="line">         v</span><br><span class="line">+--------+----------+</span><br><span class="line">|  Thread Pool      |</span><br><span class="line">| (Event Handlers)  |</span><br><span class="line">+-------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>多 Reactor 多线程模型</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>结构</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">多个 Reactor 线程，每个负责监听和分发一部分事件。</li>
+<li class="lvl-7">事件处理由线程池中的多个线程完成。</li>
+</ul>
+</li>
+<li class="lvl-5"><strong>优点</strong>：进一步提升并发处理能力，减少单 Reactor 的瓶颈。</li>
+<li class="lvl-5"><strong>缺点</strong>：实现复杂，线程间协调开销增加。</li>
+<li class="lvl-5"><strong>适用场景</strong>：极高并发、高吞吐量场景。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-------------------+       +-------------------+</span><br><span class="line">|  Reactor 1        |       |  Reactor N        |</span><br><span class="line">| (Event Dispatcher)| ...   | (Event Dispatcher)|</span><br><span class="line">+--------+----------+       +--------+----------+</span><br><span class="line">         |                          |</span><br><span class="line">         | 事件分发                  | 事件分发</span><br><span class="line">         v                          v</span><br><span class="line">+--------+----------+       +--------+----------+</span><br><span class="line">|  Thread Pool      |       |  Thread Pool      |</span><br><span class="line">| (Event Handlers)  |       | (Event Handlers)  |</span><br><span class="line">+-------------------+       +-------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>Reactor 模型的优点</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>高并发</strong>：通过事件驱动和非阻塞 I/O 处理大量并发连接。</li>
+<li class="lvl-5"><strong>低延迟</strong>：减少线程切换和上下文切换，提升响应速度。</li>
+<li class="lvl-5"><strong>可扩展性</strong>：通过增加 Reactor 和线程池，提升系统处理能力。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Reactor 模型的缺点</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>复杂性</strong>：实现和调试复杂，需处理线程同步和事件分发。</li>
+<li class="lvl-5"><strong>调试困难</strong>：事件驱动和非阻塞 I/O 增加调试难度。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-5"><a class="markdownIt-Anchor" href="#总结-5"></a> 总结</h3>
+<p>Reactor 线程模型通过事件驱动和非阻塞 I/O 高效处理大量并发请求。常见的实现方式有单 Reactor 单线程、单 Reactor 多线程和多 Reactor 多线程模型，各有优缺点，适用于不同场景。</p>
+<h2 id="java-线程池核心线程数在运行过程中能修改吗如何修改"><a class="markdownIt-Anchor" href="#java-线程池核心线程数在运行过程中能修改吗如何修改"></a> Java 线程池核心线程数在运行过程中能修改吗？如何修改？</h2>
+<p>在Java中，线程池的核心线程数在运行过程中是可以修改的，但是这取决于所使用的线程池实现。对于<code>ThreadPoolExecutor</code>类，它是可以修改核心线程数的。下面是如何修改核心线程数的方法：</p>
+<h3 id="修改核心线程数"><a class="markdownIt-Anchor" href="#修改核心线程数"></a> 修改核心线程数</h3>
+<p><code>ThreadPoolExecutor</code>提供了<code>setCorePoolSize(int corePoolSize)</code>方法来修改核心线程数。这个方法允许你在运行时动态地改变核心线程数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"><span class="comment">// 假设你有一个ThreadPoolExecutor实例叫做executor</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> ...;</span><br><span class="line"><span class="comment">// 修改核心线程数为新的值，例如10</span></span><br><span class="line">executor.setCorePoolSize(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="注意事项-2"><a class="markdownIt-Anchor" href="#注意事项-2"></a> 注意事项</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>线程池状态</strong>：只有在线程池是运行状态时，修改核心线程数才是有效的。</p>
+</li>
+<li class="lvl-3">
+<p><strong>增加核心线程数</strong>：如果增加核心线程数，线程池会尝试添加新的核心线程，直到达到新的核心线程数。</p>
+</li>
+<li class="lvl-3">
+<p><strong>减少核心线程数</strong>：如果减少核心线程数，已经存在的核心线程不会立即被终止。它们会继续执行直到完成当前任务，然后根据线程池的空闲时间策略来决定是否终止。</p>
+</li>
+<li class="lvl-3">
+<p><strong>核心线程超时</strong>：默认情况下，核心线程不会因为空闲而终止。但是，你可以通过<code>allowCoreThreadTimeOut(boolean value)</code>方法来允许核心线程在空闲时终止。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 允许核心线程在空闲时终止</span></span><br><span class="line">executor.allowCoreThreadTimeOut(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>线程池类型</strong>：对于<code>Executors</code>工厂方法创建的某些线程池，如<code>newFixedThreadPool</code>、<code>newSingleThreadExecutor</code>等，它们的核心线程数是固定的，通常不需要修改。</p>
+</li>
+</ol>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>以下是一个简单的示例，展示如何创建一个<code>ThreadPoolExecutor</code>并修改其核心线程数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.LinkedBlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个线程池</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">corePoolSize</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maximumPoolSize</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">long</span> <span class="variable">keepAliveTime</span> <span class="operator">=</span> <span class="number">5000</span>;</span><br><span class="line">        <span class="type">TimeUnit</span> <span class="variable">unit</span> <span class="operator">=</span> TimeUnit.MILLISECONDS;</span><br><span class="line">        BlockingQueue&lt;Runnable&gt; workQueue = <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;();</span><br><span class="line">        <span class="type">ThreadPoolExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">                corePoolSize,</span><br><span class="line">                maximumPoolSize,</span><br><span class="line">                keepAliveTime,</span><br><span class="line">                unit,</span><br><span class="line">                workQueue);</span><br><span class="line">        <span class="comment">// 修改核心线程数为8</span></span><br><span class="line">        executor.setCorePoolSize(<span class="number">8</span>);</span><br><span class="line">        <span class="comment">// 提交一些任务到线程池</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            executor.execute(() -&gt; &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; is running&quot;</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，我们创建了一个<code>ThreadPoolExecutor</code>，并在运行时将其核心线程数从5修改为8。然后，我们提交了一些任务到线程池，并最终关闭了线程池。</p>
+<p>总之，<code>ThreadPoolExecutor</code>的核心线程数是可以在运行过程中修改的，但是需要谨慎操作，以避免对线程池的稳定性和性能产生不良影响。</p>
+<h2 id="tcpip-四层模型是什么"><a class="markdownIt-Anchor" href="#tcpip-四层模型是什么"></a> TCP/IP 四层模型是什么？</h2>
+<p>TCP/IP四层模型，也称为TCP/IP协议栈，是一种用于计算机网络通信的分层模型。它将网络通信过程划分为四个不同的层次，每一层都负责特定的功能，并且每一层都为上一层提供服务。这四层从上到下分别是：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>应用层（Application Layer）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">这是最高层，直接为用户应用提供网络服务。</li>
+<li class="lvl-5">包括各种网络应用协议，如HTTP（网页浏览）、FTP（文件传输）、SMTP（邮件发送）、DNS（域名解析）等。</li>
+<li class="lvl-5">应用层协议定义了数据交换的格式和规则。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>传输层（Transport Layer）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">负责提供端到端的通信服务。</li>
+<li class="lvl-5">主要协议包括TCP（传输控制协议）和UDP（用户数据报协议）。</li>
+<li class="lvl-5">TCP提供可靠的数据传输，具有错误检测、数据重传、流量控制等功能。</li>
+<li class="lvl-5">UDP提供不可靠但快速的数据传输，适用于实时应用如音视频传输。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>网络层（Internet Layer）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">负责数据包从源主机到目标主机的路由和转发。</li>
+<li class="lvl-5">主要协议是IP（互联网协议），包括IPv4和IPv6。</li>
+<li class="lvl-5">IP协议负责为数据包分配地址（IP地址），并决定数据包的传输路径。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>网络接口层（Network Interface Layer）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">也称为数据链路层或网络访问层。</li>
+<li class="lvl-5">负责在物理网络中传输数据帧。</li>
+<li class="lvl-5">包括各种网络接口卡（NIC）和物理介质，如以太网（Ethernet）、Wi-Fi、令牌环（Token Ring）等。</li>
+<li class="lvl-5">这一层处理数据的封装、解封、错误检测和纠正等。<br />
+每一层在处理数据时，都会在数据上添加自己的头部信息（如源地址、目标地址、序列号等），这样接收方就可以根据这些信息正确地处理数据。这种分层结构使得网络通信更加有序和高效。<br />
+TCP/IP四层模型与OSI七层模型有所不同，但它们的基本思想是相似的，都是为了实现网络通信的分层和模块化。TCP/IP模型更加简洁，适用于实际的互联网环境。</li>
+</ul>
+</li>
+</ol>
+<h2 id="说说-mybatis-的缓存机制"><a class="markdownIt-Anchor" href="#说说-mybatis-的缓存机制"></a> 说说 MyBatis 的缓存机制？</h2>
+<p>MyBatis 是一个流行的 Java 持久层框架，它提供了强大的 SQL 映射和动态 SQL 功能。MyBatis 的缓存机制是其性能优化的重要组成部分，主要包括两级缓存：一级缓存和二级缓存。</p>
+<h3 id="一级缓存"><a class="markdownIt-Anchor" href="#一级缓存"></a> 一级缓存</h3>
+<p>一级缓存是 MyBatis 的默认缓存，也称为本地缓存或会话缓存。它存在于 SqlSession 的生命周期中，即同一个 SqlSession 中执行相同的查询语句时，第一次查询结果会被缓存，后续的查询会直接从缓存中获取结果，而不需要再次执行 SQL 语句。</p>
+<p><strong>一级缓存的特点：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>默认开启，无法关闭。</p>
+</li>
+<li class="lvl-2">
+<p>生命周期与 SqlSession 相同。</p>
+</li>
+<li class="lvl-2">
+<p>缓存的数据只在当前会话中有效。</p>
+</li>
+<li class="lvl-2">
+<p>基于内存存储，速度快。</p>
+</li>
+<li class="lvl-2">
+<p>当执行更新操作（如 insert、update、delete）时，缓存会失效。</p>
+</li>
+</ul>
+<p><strong>一级缓存的问题：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在不同的 SqlSession 中，缓存数据不共享。</p>
+</li>
+<li class="lvl-2">
+<p>在分布式环境下，缓存不一致。</p>
+</li>
+</ul>
+<h3 id="二级缓存"><a class="markdownIt-Anchor" href="#二级缓存"></a> 二级缓存</h3>
+<p>二级缓存是 MyBatis 的全局缓存，它存在于 SqlSessionFactory 的生命周期中。二级缓存可以跨多个 SqlSession 共享数据，即不同的 SqlSession 可以访问相同的缓存数据。</p>
+<p><strong>二级缓存的特点：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要手动开启和配置。</p>
+</li>
+<li class="lvl-2">
+<p>生命周期与 SqlSessionFactory 相同。</p>
+</li>
+<li class="lvl-2">
+<p>缓存的数据在所有会话中共享。</p>
+</li>
+<li class="lvl-2">
+<p>可以配置存储介质，如内存、磁盘等。</p>
+</li>
+<li class="lvl-2">
+<p>提供了更细粒度的缓存控制，如缓存分区、缓存失效策略等。</p>
+</li>
+</ul>
+<p><strong>二级缓存的配置：</strong></p>
+<ol>
+<li class="lvl-3">
+<p>在 MyBatis 配置文件中开启二级缓存。</p>
+</li>
+<li class="lvl-3">
+<p>在映射文件中配置缓存策略。</p>
+</li>
+<li class="lvl-3">
+<p>在对应的 POJO 类上实现 Serializable 接口。</p>
+</li>
+</ol>
+<p><strong>二级缓存的问题：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>缓存数据的一致性问题，特别是在分布式环境下。</p>
+</li>
+<li class="lvl-2">
+<p>缓存的管理和监控相对复杂。</p>
+</li>
+</ul>
+<h3 id="缓存的使用场景"><a class="markdownIt-Anchor" href="#缓存的使用场景"></a> 缓存的使用场景</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>一级缓存</strong>适用于单个会话内的频繁查询，可以减少数据库访问次数，提高性能。</p>
+</li>
+<li class="lvl-2">
+<p><strong>二级缓存</strong>适用于多个会话间的数据共享，可以减少数据库的整体负载。</p>
+</li>
+</ul>
+<h3 id="注意事项-3"><a class="markdownIt-Anchor" href="#注意事项-3"></a> 注意事项</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用缓存时，需要考虑数据的一致性和时效性。</p>
+</li>
+<li class="lvl-2">
+<p>缓存不适合用于实时性要求高的场景。</p>
+</li>
+<li class="lvl-2">
+<p>在分布式系统中，需要考虑缓存的同步和失效问题。</p>
+</li>
+</ul>
+<p>MyBatis 的缓存机制可以显著提高应用性能，但需要根据具体场景合理配置和使用。不当的缓存策略可能会导致数据不一致或其他问题。</p>
+<h2 id="什么是-spring-boot"><a class="markdownIt-Anchor" href="#什么是-spring-boot"></a> 什么是 Spring Boot？</h2>
+<p>Spring Boot 是一个基于 Spring 框架的开源项目，它旨在简化 Spring 应用的创建、配置和部署过程。Spring Boot 使得开发者能够更快速、更轻松地开发和交付基于 Spring 的应用。</p>
+<h3 id="主要特点"><a class="markdownIt-Anchor" href="#主要特点"></a> 主要特点：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>快速启动</strong>：Spring Boot 提供了大量的启动器依赖（Starter Dependencies），这些依赖简化了项目构建和配置过程。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自动配置</strong>：Spring Boot 会根据项目中的依赖自动配置 Spring 应用，减少了手动配置的工作量。</p>
+</li>
+<li class="lvl-3">
+<p><strong>独立运行</strong>：Spring Boot 应用可以打包成独立的 JAR 文件，包含所有必要的依赖，可以直接运行。</p>
+</li>
+<li class="lvl-3">
+<p><strong>嵌入式服务器</strong>：Spring Boot 支持嵌入式服务器，如 Tomcat、Jetty 等，无需部署到外部应用服务器。</p>
+</li>
+<li class="lvl-3">
+<p><strong>监控和管理</strong>：Spring Boot 提供了内置的监控和管理功能，如 Actuator，可以方便地监控应用的健康状况和性能。</p>
+</li>
+<li class="lvl-3">
+<p><strong>易于测试</strong>：Spring Boot 提供了丰富的测试支持，包括单元测试和集成测试。</p>
+</li>
+<li class="lvl-3">
+<p><strong>灵活配置</strong>：支持多种配置方式，包括属性文件、YAML 文件、环境变量等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>社区支持</strong>：Spring Boot 拥有庞大的社区和丰富的文档资源。</p>
+</li>
+</ol>
+<h3 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景：</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>微服务架构</strong>：Spring Boot 是构建微服务的理想选择，可以轻松创建独立、轻量级的服务。</p>
+</li>
+<li class="lvl-2">
+<p><strong>快速原型开发</strong>：适用于快速构建和测试应用原型。</p>
+</li>
+<li class="lvl-2">
+<p><strong>传统应用现代化</strong>：可以将传统的 Spring 应用迁移到 Spring Boot，以简化配置和部署。</p>
+</li>
+<li class="lvl-2">
+<p><strong>新项目开发</strong>：对于新项目，Spring Boot 提供了一个高效、简洁的开发起点。</p>
+</li>
+</ul>
+<h3 id="核心组件"><a class="markdownIt-Anchor" href="#核心组件"></a> 核心组件：</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Spring Boot Starter</strong>：一系列预定义的依赖，用于简化项目构建。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Boot Autoconfigure</strong>：自动配置 Spring 应用的组件。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Boot Actuator</strong>：提供应用监控和管理功能。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Boot CLI</strong>：命令行工具，用于快速开发和测试 Spring Boot 应用。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Boot Maven/Gradle Plugins</strong>：用于构建和打包 Spring Boot 应用的插件。</p>
+</li>
+</ul>
+<p>Spring Boot 的出现极大地改变了 Java 应用的开发方式，使得开发者可以更专注于业务逻辑而不是繁琐的配置。</p>
+<h2 id="java-中如何创建多线程"><a class="markdownIt-Anchor" href="#java-中如何创建多线程"></a> Java 中如何创建多线程？</h2>
+<p>在Java中，创建多线程主要有两种方式：</p>
+<h3 id="1-继承thread类"><a class="markdownIt-Anchor" href="#1-继承thread类"></a> 1. 继承<code>Thread</code>类</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 在这里编写线程执行的代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;线程运行中！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyThread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();</span><br><span class="line">        thread.start(); <span class="comment">// 启动线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：不要直接调用<code>run()</code>方法，这样不会启动新线程，而是直接在当前线程中执行。应该调用<code>start()</code>方法来启动新线程。</p>
+<h3 id="2-实现runnable接口"><a class="markdownIt-Anchor" href="#2-实现runnable接口"></a> 2. 实现<code>Runnable</code>接口</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 在这里编写线程执行的代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;线程运行中！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">MyRunnable</span>());</span><br><span class="line">        thread.start(); <span class="comment">// 启动线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：实现<code>Runnable</code>接口的方式更加灵活，因为Java不支持多继承，但可以多个接口。因此，这种方式更适合在已经继承了其他类的类中实现多线程。</p>
+<h3 id="3-使用callable和futurejava-5"><a class="markdownIt-Anchor" href="#3-使用callable和futurejava-5"></a> 3. 使用<code>Callable</code>和<code>Future</code>（Java 5+）</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.FutureTask;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyCallable</span> <span class="keyword">implements</span> <span class="title class_">Callable</span>&lt;String&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 在这里编写线程执行的代码</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;线程运行结果&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException &#123;</span><br><span class="line">        <span class="type">MyCallable</span> <span class="variable">callable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyCallable</span>();</span><br><span class="line">        FutureTask&lt;String&gt; futureTask = <span class="keyword">new</span> <span class="title class_">FutureTask</span>&lt;&gt;(callable);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(futureTask);</span><br><span class="line">        thread.start(); <span class="comment">// 启动线程</span></span><br><span class="line">        <span class="comment">// 获取线程执行结果</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> futureTask.get();</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：<code>Callable</code>可以返回结果，并且可以抛出异常。<code>Future</code>可以用来获取<code>Callable</code>的返回结果。</p>
+<h3 id="4-使用线程池java-5"><a class="markdownIt-Anchor" href="#4-使用线程池java-5"></a> 4. 使用线程池（Java 5+）</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">5</span>); <span class="comment">// 创建固定大小的线程池</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="type">Runnable</span> <span class="variable">runnable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;线程池中的线程运行中！&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            executorService.execute(runnable); <span class="comment">// 提交任务到线程池</span></span><br><span class="line">        &#125;</span><br><span class="line">        executorService.shutdown(); <span class="comment">// 关闭线程池</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：线程池可以有效地管理线程资源，避免频繁地创建和销毁线程。适用于大量短生命周期的异步任务。</p>
+<h3 id="总结-6"><a class="markdownIt-Anchor" href="#总结-6"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>继承<code>Thread</code>类和实现<code>Runnable</code>接口是基本的创建多线程的方式。</p>
+</li>
+<li class="lvl-2">
+<p><code>Callable</code>和<code>Future</code>提供了更强大的功能，如返回结果和异常处理。</p>
+</li>
+<li class="lvl-2">
+<p>线程池适用于需要高效管理大量线程的场景。</p>
+</li>
+</ul>
+<p>选择哪种方式取决于具体的需求和场景。</p>
+<h2 id="redis-中跳表的实现原理是什么"><a class="markdownIt-Anchor" href="#redis-中跳表的实现原理是什么"></a> Redis 中跳表的实现原理是什么？</h2>
+<p>Redis 中的跳表（Skip List）是一种用于实现有序集合（Sorted Set）的数据结构，它通过多层链表实现高效的查找、插入和删除操作。以下是跳表的实现原理：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>基本结构</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>节点</strong>：每个节点包含多个指针，指向不同层的下一个节点。</li>
+<li class="lvl-5"><strong>层数</strong>：节点的层数是随机生成的，层数越高，概率越低。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">节点结构：</span><br><span class="line">+-------------------+</span><br><span class="line">| 成员 (member)      |</span><br><span class="line">| 分值 (score)       |</span><br><span class="line">| 后退指针 (backward)|</span><br><span class="line">| 层 (level)         |</span><br><span class="line">| 前进指针 (forward) |</span><br><span class="line">+-------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>跳表的层级</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>多层链表</strong>：跳表由多层链表组成，底层包含所有元素，每层链表都是前一层的子集。</li>
+<li class="lvl-5"><strong>随机层数</strong>：每个节点的层数是随机生成的，通常使用概率分布（如 1/2 的概率增加一层）。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跳表示例：</span><br><span class="line">层 3: 1 --------------------------------&gt; 9</span><br><span class="line">层 2: 1 ------------&gt; 5 ------------&gt; 9</span><br><span class="line">层 1: 1 ---&gt; 3 ---&gt; 5 ---&gt; 7 ---&gt; 9</span><br><span class="line">层 0: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; 9</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>查找操作</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>从高层开始</strong>：从最高层开始查找，找到小于目标值的最大节点。</li>
+<li class="lvl-5"><strong>逐层下降</strong>：在当前层找不到时，下降到下一层继续查找。</li>
+<li class="lvl-5"><strong>时间复杂度</strong>：O(log n)，n 为元素数量。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查找元素 7：</span><br><span class="line">1. 层 3: 1 -&gt; 9 (9 &gt; 7，下降)</span><br><span class="line">2. 层 2: 1 -&gt; 5 -&gt; 9 (5 &lt; 7，继续)</span><br><span class="line">3. 层 1: 5 -&gt; 7 -&gt; 9 (找到 7)</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>插入操作</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>查找插入位置</strong>：从最高层开始查找插入位置。</li>
+<li class="lvl-5"><strong>随机生成层数</strong>：为新节点随机生成层数。</li>
+<li class="lvl-5"><strong>更新指针</strong>：在各层链表中插入新节点，更新前后节点的指针。</li>
+<li class="lvl-5"><strong>时间复杂度</strong>：O(log n)。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">插入元素 6：</span><br><span class="line">1. 查找插入位置：1 -&gt; 3 -&gt; 5 -&gt; 7 -&gt; 9</span><br><span class="line">2. 随机生成层数：假设为 2</span><br><span class="line">3. 更新指针：</span><br><span class="line">   层 2: 1 -&gt; 5 -&gt; 6 -&gt; 9</span><br><span class="line">   层 1: 1 -&gt; 3 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; 9</span><br><span class="line">   层 0: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; 9</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>删除操作</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>查找目标节点</strong>：从最高层开始查找目标节点。</li>
+<li class="lvl-5"><strong>更新指针</strong>：在各层链表中删除目标节点，更新前后节点的指针。</li>
+<li class="lvl-5"><strong>时间复杂度</strong>：O(log n)。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">删除元素 5：</span><br><span class="line">1. 查找目标节点：1 -&gt; 3 -&gt; 5 -&gt; 7 -&gt; 9</span><br><span class="line">2. 更新指针：</span><br><span class="line">   层 2: 1 -&gt; 6 -&gt; 9</span><br><span class="line">   层 1: 1 -&gt; 3 -&gt; 6 -&gt; 7 -&gt; 9</span><br><span class="line">   层 0: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; 9</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-3">
+<p><strong>跳表的优点</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>高效查找</strong>：平均时间复杂度为 O(log n)，接近平衡二叉树的性能。</li>
+<li class="lvl-5"><strong>简单实现</strong>：相比平衡二叉树，跳表实现更简单。</li>
+<li class="lvl-5"><strong>动态调整</strong>：插入和删除操作高效，适合动态数据集合。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>跳表的缺点</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>空间开销</strong>：多层链表结构增加了空间开销。</li>
+<li class="lvl-5"><strong>随机性</strong>：层数的随机性可能导致性能波动。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-7"><a class="markdownIt-Anchor" href="#总结-7"></a> 总结</h3>
+<p>Redis 中的跳表通过多层链表实现高效的有序集合操作，具有 O(log n) 的查找、插入和删除时间复杂度。其简单实现和高效性能使其成为 Redis 有序集合的理想选择。</p>
+<h2 id="redis-性能瓶颈时如何处理"><a class="markdownIt-Anchor" href="#redis-性能瓶颈时如何处理"></a> Redis 性能瓶颈时如何处理？</h2>
+<p>当面临Redis性能瓶颈时，可以采取多种策略来优化和提升其性能。以下是一些常见的处理方法：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>优化数据结构和使用方式</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>选择合适的数据类型</strong>：根据应用场景选择合适的Redis数据类型，例如，使用Hash存储对象以减少内存使用。</li>
+<li class="lvl-5"><strong>避免大键和大值</strong>：大键和大值会增加内存使用和延迟，应尽量分解。</li>
+<li class="lvl-5"><strong>合理使用Redis命令</strong>：避免使用复杂度高或阻塞的命令，如<code>KEYS</code>、<code>FLUSHDB</code>等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>提升硬件性能</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>增加内存</strong>：Redis性能很大程度上受内存大小影响，增加内存可以存储更多数据，减少磁盘IO。</li>
+<li class="lvl-5"><strong>使用SSD</strong>：相比于HDD，SSD具有更快的读写速度，可以显著提升性能。</li>
+<li class="lvl-5"><strong>提升网络带宽</strong>：确保网络带宽足够，以支持高吞吐量的数据传输。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>优化Redis配置</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>调整内存淘汰策略</strong>：根据需求设置合适的内存淘汰策略，如<code>allkeys-lru</code>、<code>volatile-lru</code>等。</li>
+<li class="lvl-5"><strong>调整最大连接数</strong>：根据客户端数量调整<code>maxclients</code>。</li>
+<li class="lvl-5"><strong>开启持久化</strong>：根据需求选择RDB或AOF持久化，并调整相关配置，如<code>save</code>间隔、<code>appendfsync</code>策略等。</li>
+<li class="lvl-5"><strong>调整线程数</strong>：Redis 6.0及以上版本支持多线程，可以调整<code>io-threads</code>和<code>io-threads-do-reads</code>来提升性能。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>使用Redis集群</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>分片</strong>：通过Redis集群进行数据分片，将数据分布到多个节点上，提升整体性能和容量。</li>
+<li class="lvl-5"><strong>读写分离</strong>：在集群中使用主从复制，将读操作分散到多个从节点上，减轻主节点压力。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>缓存优化</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>缓存预热</strong>：提前将热点数据加载到缓存中，避免冷启动问题。</li>
+<li class="lvl-5"><strong>缓存失效策略</strong>：合理设置缓存过期时间，避免缓存雪崩。</li>
+<li class="lvl-5"><strong>缓存穿透防护</strong>：使用布隆过滤器等机制防止缓存穿透。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>监控和调优</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>使用监控工具</strong>：如Redis自带的<code>INFO</code>命令、Redis监控工具（如Redis Insight、Prometheus等）来监控Redis性能指标。</li>
+<li class="lvl-5"><strong>慢查询分析</strong>：通过<code>SLOWLOG</code>查看慢查询，分析并优化慢命令。</li>
+<li class="lvl-5"><strong>性能测试</strong>：使用工具如<code>redis-benchmark</code>进行性能测试，找出瓶颈并进行调优。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>代码和架构优化</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>减少网络往返</strong>：批量操作、pipeline等技术可以减少网络往返次数，提升性能。</li>
+<li class="lvl-5"><strong>异步处理</strong>：使用异步编程模型来处理Redis操作，避免阻塞主线程。</li>
+<li class="lvl-5"><strong>架构优化</strong>：如使用缓存层、分布式缓存架构等来进一步提升性能和可靠性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>考虑使用Redis替代品</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>如果Redis无法满足性能需求</strong>，可以考虑使用其他高性能缓存系统，如Memcached、Rockset等。</li>
+</ul>
+</li>
+</ol>
+<p>在处理Redis性能瓶颈时，通常需要结合多种策略来进行综合优化。首先进行性能监控和分析，找出瓶颈所在，然后针对性地采取上述措施进行优化。</p>
+<h2 id="osi-七层模型是什么"><a class="markdownIt-Anchor" href="#osi-七层模型是什么"></a> OSI 七层模型是什么？</h2>
+<p>OSI（Open Systems Interconnection）七层模型是一个由国际标准化组织（ISO）提出的网络通信模型，它定义了网络通信的七个不同层次，每一层都有特定的功能和协议。这个模型的主要目的是为了促进不同网络设备之间的互操作性，确保不同厂商的设备和软件能够在同一网络中协同工作。以下是OSI七层模型的详细描述：</p>
+<ol>
+<li class="lvl-3">
+<p>物理层（Physical Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：负责传输比特流，即0和1的电信号或光信号，以及物理介质的机械和电气特性。</li>
+<li class="lvl-5"><strong>设备</strong>：集线器、中继器、电缆、光纤等。</li>
+<li class="lvl-5"><strong>示例</strong>：以太网（Ethernet）、光纤分布式数据接口（FDDI）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>数据链路层（Data Link Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：在相邻节点之间提供可靠的数据传输，将比特流组织成数据帧，并进行错误检测和纠正。</li>
+<li class="lvl-5"><strong>设备</strong>：交换机、网桥等。</li>
+<li class="lvl-5"><strong>协议</strong>：以太网（Ethernet）、点对点协议（PPP）、高级数据链路控制（HDLC）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>网络层（Network Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：负责数据包从源到目的地的路由和转发，以及逻辑地址的分配。</li>
+<li class="lvl-5"><strong>设备</strong>：路由器等。</li>
+<li class="lvl-5"><strong>协议</strong>：互联网协议（IP）、互联网控制消息协议（ICMP）、地址解析协议（ARP）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>传输层（Transport Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：提供端到端的通信服务，确保数据可靠、顺序、无错地从源传输到目的地。</li>
+<li class="lvl-5"><strong>协议</strong>：传输控制协议（TCP）、用户数据报协议（UDP）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>会话层（Session Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：管理网络中的会话，包括建立、维护和终止会话。</li>
+<li class="lvl-5"><strong>示例</strong>：远程过程调用（RPC）、安全套接字层（SSL）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>表示层（Presentation Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：确保数据在网络中传输前后的表示格式一致，包括数据加密、压缩、转换等。</li>
+<li class="lvl-5"><strong>示例</strong>：加密标准（如SSL/TLS）、图像和视频编码（如JPEG、MPEG）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>应用层（Application Layer）</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>功能</strong>：为应用程序提供网络服务，包括电子邮件、文件传输、网络管理等。</li>
+<li class="lvl-5"><strong>协议</strong>：超文本传输协议（HTTP）、简单邮件传输协议（SMTP）、文件传输协议（FTP）、域名系统（DNS）。</li>
+</ul>
+</li>
+</ol>
+<p>OSI七层模型是一个理论模型，实际上，许多网络协议和实现并没有严格遵循这个模型。例如，TCP/IP模型将OSI模型中的会话层、表示层和应用层合并为应用层，而数据链路层和物理层通常被合并为网络接口层。尽管如此，OSI模型仍然是一个重要的参考框架，用于理解网络通信的复杂性和不同层次的功能。</p>
+<h2 id="说说-aqs-吧"><a class="markdownIt-Anchor" href="#说说-aqs-吧"></a> 说说 AQS 吧？</h2>
+<p><strong>AQS（AbstractQueuedSynchronizer）</strong> 是 Java 中用于构建锁和其他同步器的一个抽象类。它提供了一种高效的操作阻塞队列的方法，以实现多线程环境下的同步。<br />
+<strong>AQS 的核心思想</strong> 是，如果一个线程想要执行某个操作，但该操作所需的资源被其他线程持有，那么这个线程就必须进行等待。AQS 就是通过维护一个 FIFO（先进先出）的队列来管理这些等待的线程。</p>
+<p><strong>AQS 的主要组成部分</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>同步队列（Sync Queue）</strong>：这是一个双向链表，用于存储等待获取资源的线程。当线程请求资源失败时，会被封装成节点（Node）加入到这个队列的尾部。</p>
+</li>
+<li class="lvl-3">
+<p><strong>条件队列（Condition Queue）</strong>：与同步队列类似，也是一个双向链表。但它用于存储等待某个条件的线程。当线程等待某个条件时，会被加入到条件队列中。</p>
+</li>
+</ol>
+<p><strong>AQS 的主要方法</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>acquire(int arg)</code>：独占式获取资源。如果获取成功，则直接返回；如果获取失败，则将当前线程加入到同步队列中等待。</p>
+</li>
+<li class="lvl-2">
+<p><code>release(int arg)</code>：独占式释放资源。会唤醒同步队列中的第一个线程（如果存在）。</p>
+</li>
+<li class="lvl-2">
+<p><code>acquireShared(int arg)</code>：共享式获取资源。与独占式获取类似，但允许多个线程同时获取资源。</p>
+</li>
+<li class="lvl-2">
+<p><code>releaseShared(int arg)</code>：共享式释放资源。会唤醒同步队列中的所有等待线程。</p>
+</li>
+<li class="lvl-2">
+<p><code>await()</code>：使当前线程等待某个条件。会释放当前线程持有的资源，并将线程加入到条件队列中。</p>
+</li>
+<li class="lvl-2">
+<p><code>signal()</code>：唤醒条件队列中的第一个线程（如果存在）。</p>
+</li>
+<li class="lvl-2">
+<p><code>signalAll()</code>：唤醒条件队列中的所有线程。</p>
+</li>
+</ul>
+<p><strong>AQS 的应用</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>ReentrantLock</code>：基于 AQS 实现的可重入锁。</p>
+</li>
+<li class="lvl-2">
+<p><code>ReentrantReadWriteLock</code>：基于 AQS 实现的可重入读写锁。</p>
+</li>
+<li class="lvl-2">
+<p><code>Semaphore</code>：基于 AQS 实现的信号量。</p>
+</li>
+<li class="lvl-2">
+<p><code>CountDownLatch</code>：基于 AQS 实现的倒计时门闩。</p>
+</li>
+<li class="lvl-2">
+<p><code>CyclicBarrier</code>：基于 AQS 实现的循环屏障。</p>
+</li>
+</ul>
+<p><strong>AQS 的优点</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>提供了一种通用的框架，可以方便地实现各种同步器。</p>
+</li>
+<li class="lvl-2">
+<p>高效地管理了线程的阻塞和唤醒，减少了线程状态转换的开销。</p>
+</li>
+<li class="lvl-2">
+<p>提供了丰富的同步机制，可以满足各种复杂的同步需求。</p>
+</li>
+</ul>
+<p>总之，AQS 是 Java 中实现多线程同步的重要基础，理解 AQS 的原理和机制对于深入理解 Java 的并发编程至关重要。</p>
+<h2 id="cookie-session-token-之间有什么区别"><a class="markdownIt-Anchor" href="#cookie-session-token-之间有什么区别"></a> Cookie、Session、Token 之间有什么区别？</h2>
+<p>Cookie、Session 和 Token 是用于管理用户状态和身份验证的常见机制，它们的主要区别如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>Cookie</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>定义</strong>：Cookie 是服务器发送到用户浏览器并保存在本地的一小段数据，浏览器会在后续请求中自动将其发送回服务器。</li>
+<li class="lvl-5"><strong>存储位置</strong>：客户端（浏览器）。</li>
+<li class="lvl-5"><strong>用途</strong>：常用于会话管理、个性化设置、跟踪用户行为等。</li>
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">可以设置过期时间。</li>
+<li class="lvl-7">每次请求都会自动发送，可能增加带宽消耗。</li>
+<li class="lvl-7">安全性较低，容易被窃取或篡改。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Session</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>定义</strong>：Session 是服务器端存储的用户会话数据，通常通过唯一的 Session ID 来标识。</li>
+<li class="lvl-5"><strong>存储位置</strong>：服务器端。</li>
+<li class="lvl-5"><strong>用途</strong>：用于在服务器端保存用户的状态信息，如登录状态、购物车内容等。</li>
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">Session ID 通常通过 Cookie 传递给客户端。</li>
+<li class="lvl-7">数据存储在服务器，安全性较高。</li>
+<li class="lvl-7">服务器需要维护 Session 数据，可能增加内存消耗。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Token</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>定义</strong>：Token 是一种用于身份验证的令牌，通常采用 JSON Web Token (JWT) 格式。</li>
+<li class="lvl-5"><strong>存储位置</strong>：客户端（如浏览器的 LocalStorage 或 Cookie）。</li>
+<li class="lvl-5"><strong>用途</strong>：用于无状态的身份验证和授权。</li>
+<li class="lvl-5"><strong>特点</strong>：
+<ul class="lvl-4">
+<li class="lvl-7">自包含，包含用户信息和签名，服务器无需存储。</li>
+<li class="lvl-7">适合分布式系统和 RESTful API。</li>
+<li class="lvl-7">安全性较高，但需防止泄露。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="主要区别"><a class="markdownIt-Anchor" href="#主要区别"></a> 主要区别</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Cookie</th>
+<th>Session</th>
+<th>Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>存储位置</strong></td>
+<td>客户端</td>
+<td>服务器端</td>
+<td>客户端</td>
+</tr>
+<tr>
+<td><strong>安全性</strong></td>
+<td>较低</td>
+<td>较高</td>
+<td>较高</td>
+</tr>
+<tr>
+<td><strong>状态管理</strong></td>
+<td>有状态</td>
+<td>有状态</td>
+<td>无状态</td>
+</tr>
+<tr>
+<td><strong>传输方式</strong></td>
+<td>自动通过 HTTP 头部发送</td>
+<td>通过 Session ID</td>
+<td>手动通过 HTTP 头部发送</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>会话管理、个性化</td>
+<td>会话管理、用户状态</td>
+<td>无状态身份验证、API 授权</td>
+</tr>
+</tbody>
+</table>
+<h3 id="总结-8"><a class="markdownIt-Anchor" href="#总结-8"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Cookie</strong> 适合需要在客户端存储少量数据的场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Session</strong> 适合需要在服务器端管理用户状态的场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Token</strong> 适合无状态的身份验证和分布式系统。</p>
+</li>
+</ul>
+<p>根据具体需求选择合适的机制。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-02-08</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

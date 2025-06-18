@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="第13章-项目资源管理" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    第13章-项目资源管理
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：7.3k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC13%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 第13章-项目资源管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#131-%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80"><span class="post-toc-text"> 13.1 管理基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1311-%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="post-toc-text"> 13.1.1 相关术语和定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%A9%AC%E6%96%AF%E6%B4%9B%E9%9C%80%E6%B1%82%E5%B1%82%E6%AC%A1%E7%90%86%E8%AE%BA"><span class="post-toc-text"> 马斯洛需求层次理论</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%AB%E8%8C%A8%E4%BC%AF%E6%A0%BC%E5%8F%8C%E5%9B%A0%E7%B4%A0%E7%90%86%E8%AE%BA"><span class="post-toc-text"> 赫茨伯格双因素理论</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#x%E7%90%86%E8%AE%BA"><span class="post-toc-text"> X理论</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#y%E7%90%86%E8%AE%BA"><span class="post-toc-text"> Y理论</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%9C%9F%E6%9C%9B%E7%90%86%E8%AE%BA"><span class="post-toc-text"> 期望理论</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1312-%E7%AE%A1%E7%90%86%E6%96%B0%E5%AE%9E%E8%B7%B5"><span class="post-toc-text"> 13.1.2 管理新实践</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#132-%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 13.2 项目资源管理过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1321-%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="post-toc-text"> 13.2.1 过程概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 规划资源管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BC%B0%E7%AE%97%E6%B4%BB%E5%8A%A8%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 估算活动资源</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 获取资源</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%BB%BA%E8%AE%BE%E5%9B%A2%E9%98%9F"><span class="post-toc-text"> 建设团队</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E5%9B%A2%E9%98%9F"><span class="post-toc-text"> 管理团队</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 控制资源</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1322-%E8%A3%81%E5%89%AA%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="post-toc-text"> 13.2.2 裁剪考虑因素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1323-%E6%95%8F%E6%8D%B7%E4%B8%8E%E9%80%82%E5%BA%94%E6%96%B9%E6%B3%95"><span class="post-toc-text"> 13.2.3 敏捷与适应方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#133-%E8%A7%84%E5%88%92%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 13.3 规划资源管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 规划资源管理-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-itto"><span class="post-toc-text"> 规划资源管理-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%92%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 规划资源管理-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"><span class="post-toc-text"> 资源管理计划</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9B%A2%E9%98%9F%E7%AB%A0%E7%A8%8B"><span class="post-toc-text"> 团队章程</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%BB%84%E7%BB%87%E5%88%86%E8%A7%A3%E7%BB%93%E6%9E%84obs"><span class="post-toc-text"> 组织分解结构（OBS）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B4%A3%E4%BB%BB%E5%88%86%E9%85%8D%E7%9F%A9%E9%98%B5ram"><span class="post-toc-text"> 责任分配矩阵（RAM）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="post-toc-text"> 资源直方图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#134-%E4%BC%B0%E7%AE%97%E6%B4%BB%E5%8A%A8%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 13.4 估算活动资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%B0%E7%AE%97%E6%B4%BB%E5%8A%A8%E8%B5%84%E6%BA%90-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 估算活动资源-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%B0%E7%AE%97%E6%B4%BB%E5%8A%A8%E8%B5%84%E6%BA%90-itto"><span class="post-toc-text"> 估算活动资源-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BC%B0%E7%AE%97%E6%B4%BB%E5%8A%A8%E8%B5%84%E6%BA%90-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 估算活动资源-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E9%9C%80%E6%B1%82"><span class="post-toc-text"> 资源需求</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%B1%BB%E6%AF%94%E4%BC%B0%E7%AE%97"><span class="post-toc-text"> 类比估算</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%B0%E7%AE%97"><span class="post-toc-text"> 参数估算</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E4%BC%B0%E7%AE%97"><span class="post-toc-text"> 自下而上估算</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E8%A7%A3%E7%BB%93%E6%9E%84"><span class="post-toc-text"> 资源分解结构</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#135-%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 13.5 获取资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 获取资源-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90-itto"><span class="post-toc-text"> 获取资源-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 获取资源-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%84%E6%BA%90%E6%97%A5%E5%8E%86"><span class="post-toc-text"> 资源日历</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%A2%84%E5%88%86%E6%B4%BE"><span class="post-toc-text"> 预分派</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B0%88%E5%88%A4"><span class="post-toc-text"> 谈判</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%9B%A2%E9%98%9F"><span class="post-toc-text"> 虚拟团队</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#136-%E5%BB%BA%E8%AE%BE%E5%9B%A2%E9%98%9F"><span class="post-toc-text"> 13.6 建设团队</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E8%AE%BE%E5%9B%A2%E9%98%9F-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 建设团队-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E8%AE%BE%E5%9B%A2%E9%98%9F-itto"><span class="post-toc-text"> 建设团队-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E8%AE%BE%E5%9B%A2%E9%98%9F-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 建设团队-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9B%A2%E9%98%9F%E7%BB%A9%E6%95%88%E8%AF%84%E4%BB%B7"><span class="post-toc-text"> 团队绩效评价</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#137-%E7%AE%A1%E7%90%86%E5%9B%A2%E9%98%9F"><span class="post-toc-text"> 13.7 管理团队</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E5%9B%A2%E9%98%9F-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 管理团队-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E5%9B%A2%E9%98%9F-itto"><span class="post-toc-text"> 管理团队-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E5%9B%A2%E9%98%9F-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 管理团队-相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%86%B2%E7%AA%81%E7%AE%A1%E7%90%86"><span class="post-toc-text"> 冲突管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%9B%A2%E9%98%9F%E6%8A%80%E8%83%BD"><span class="post-toc-text"> 人际关系与团队技能</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#138-%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90"><span class="post-toc-text"> 13.8 控制资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90-%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 控制资源-定义、作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90-itto"><span class="post-toc-text"> 控制资源-ITTO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> 控制资源-相关概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#139-%E6%9C%AC%E7%AB%A0%E7%BB%83%E4%B9%A0"><span class="post-toc-text"> 13.9 本章练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E9%80%89%E6%8B%A9%E9%A2%98"><span class="post-toc-text"> 1.选择题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2%E5%88%A4%E6%96%AD%E9%A2%98"><span class="post-toc-text"> 2.判断题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3%E6%80%9D%E8%80%83%E9%A2%98"><span class="post-toc-text"> 3.思考题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4%E6%A1%88%E4%BE%8B%E9%A2%98"><span class="post-toc-text"> 4.案例题</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="第13章-项目资源管理"><a class="markdownIt-Anchor" href="#第13章-项目资源管理"></a> 第13章-项目资源管理</h2>
+<p><mark>引言</mark></p>
+<p>项目资源管理包括识别、获取和管理所需资源以成功完成项目的各个过程，这些过程有助于确保项目经理和项目团队在正确的时简和地点使用正确的资源。<br />
+项目资源是指对于项目来说，一切具有使用价值，可为项目接受和利用，且属于项目发展过程所需要的客观存在的资源，包括实物资源和团队资源。<br />
+项目资源管理是为了降低项目成本，而对项目所需的人力、材料、机械、技术、资金等资源所进行的计划、组织、指挥、协调和控制等的活动</p>
+<h3 id="131-管理基础"><a class="markdownIt-Anchor" href="#131-管理基础"></a> 13.1 管理基础</h3>
+<h4 id="1311-相关术语和定义"><a class="markdownIt-Anchor" href="#1311-相关术语和定义"></a> 13.1.1 相关术语和定义</h4>
+<p>项目团队是执行项目工作，以实现项目目标的一组人员，由为了完成项目而承担不同角色与职责的人员组成。</p>
+<p>项目管理团队（Project Management Team）是直接参与项目管理活动的项目团队成员，负责项目管理和领导活动，如各项目阶段的启动、规划、执行、监督、控制和收尾。项目管理团队也称为核心团队或领导团队。对于小型项目，项目管理职责可由整个项目团队分担，或者由项目经理独自承担。</p>
+<p>项目经理是由执行组织委派，领导项目团队实现项目目标的个人。</p>
+<hr />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>领导者（Leader）的工作主要涉及3个方面。<br />
+①确定方向：为团队设定目标，描绘愿景，制定战略；<br />
+②统一思想：协调人员，团结尽可能多的力量来实现愿景和项目目标；<br />
+③激励和鼓舞：在向项目目标努力的过程中不可避免地要遇到艰难险阻，领导者要激励和鼓舞大家克服困难奋勇前进。</p>
+</li>
+<li class="lvl-2">
+<p>管理者（Manager）被组织赋予职位和权力，负责某件事情的管理或实现某个目标。管理者主要关心持续不断地为干系人创造他们所期望的成果。</p>
+</li>
+</ul>
+<p>通俗地说，领导者设定目标，管理者率众实现目标。<br />
+尽管在项目的每个阶段都需要有效的领导力，但在项目的开始阶段特别需要。<br />
+项目经理具有领导者和管理者的双重身份。对于大型复杂项目，领导能力尤为重要。</p>
+<p>权力（Power）是影响行为、改变事情的过程和方向、克服阻力，使人们进行原本并不愿意进行的事情的潜在能力。</p>
+<table>
+<thead>
+<tr>
+<th>职位权力</th>
+<th>组织正式授权</th>
+<th>组织授予</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>惩罚权力</td>
+<td>不要滥用</td>
+<td>组织授予</td>
+</tr>
+<tr>
+<td>奖励权力</td>
+<td>真正激励不容易</td>
+<td>组织授予</td>
+</tr>
+<tr>
+<td>专家权力</td>
+<td>专业、权威、令人信服</td>
+<td>自身修炼</td>
+</tr>
+<tr>
+<td>参照权力</td>
+<td>视为榜样、愿意模仿和服从</td>
+<td>自身修炼</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>冲突（Conflict）是指两个或两个以上的社会单元在目标上互不相容或互相排斥，从而产生心理上的或行为上的予盾。冲突的产生不仅会使个体体验到一种过分紧张的情绪，而且还会影响正常的群体活动与组织秩序，对管理产生重大影响。</p>
+<p>竞争（Competition）的双方则具有同一个目标，不需要发生势不两立的争夺。</p>
+<p>冲突并不一定是有害的，在某些情境中，只有当冲突存在，效率才会更高。</p>
+<p>项目经理对于有害的冲突要设法加以解决或减少；对有益的冲突要加以利用，要鼓励团队成员良性竞争。</p>
+<hr />
+<p>团队发展阶段（塔克曼阶梯理论）</p>
+<ol>
+<li class="lvl-3">
+<p>形成阶段。成员相互认识，了解项目情况及角色与职责；团队成员倾向于相互独立，不一定开诚布公。</p>
+</li>
+<li class="lvl-3">
+<p>震荡阶段。团队开始从事项目工作，如果不能合作团队环境可能变得事与愿违。</p>
+</li>
+<li class="lvl-3">
+<p>规范阶段。开始协同工作，并调整各目的工作习惯和行为来支持团队，成员开始相互信任。</p>
+</li>
+<li class="lvl-3">
+<p>发挥阶段。团队就像一个组织有序的单位那样工作，成员之间相互依靠，平稳高效地解决问题。</p>
+</li>
+<li class="lvl-3">
+<p>解散阶段。团队成员离开项目。</p>
+</li>
+</ol>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/9ywmDxPnZIRvirU.jpg" title="193.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/9ywmDxPnZIRvirU.jpg" alt="193.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/193.jpg) -->
+<h5 id="马斯洛需求层次理论"><a class="markdownIt-Anchor" href="#马斯洛需求层次理论"></a> 马斯洛需求层次理论</h5>
+<p>人们的行为受到一系列需求的引导和刺激在不同的层次满足不同的需求，才能达到激励的作用</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/dknCrcg3qhieHwN.jpg" title="194.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/dknCrcg3qhieHwN.jpg" alt="194.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/194.jpg) -->
+<h5 id="赫茨伯格双因素理论"><a class="markdownIt-Anchor" href="#赫茨伯格双因素理论"></a> 赫茨伯格双因素理论</h5>
+<p>激励因素</p>
+<p>成就、承认、工作本身、责任、发展机会<br />
+满足：满意<br />
+不满足：没有不满意</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/oBpcSUivP5mxJTR.jpg" title="196.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/oBpcSUivP5mxJTR.jpg" alt="196.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/196.jpg) -->
+<p>保健因素</p>
+<p>工作环境、工资薪水、公司政策、个人生活、管理监督<br />
+满足：没有不满意<br />
+不满足：不满意</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/gefnPQmvCHBOWZ9.jpg" title="195.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/gefnPQmvCHBOWZ9.jpg" alt="195.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/195.jpg) -->
+<h5 id="x理论"><a class="markdownIt-Anchor" href="#x理论"></a> X理论</h5>
+<p>x 天性好逸恶劳，只要有可能就会逃避工作<br />
+x 生来就以自我为中心，漠视组织的要求<br />
+x 缺乏进取心，逃避责任，安于现状，没有创造性<br />
+x 通常容易受骗，易受人煽动<br />
+x 天生反对改革<br />
+x 工作动机就是为了获得经济报酬</p>
+<p>总结<br />
+注重惩罚<br />
+高度控制<br />
+集中管理</p>
+<h5 id="y理论"><a class="markdownIt-Anchor" href="#y理论"></a> Y理论</h5>
+<p>√ 热爱工作，从工作得到满足感和成就感<br />
+√ 能够自我确定目标，自我指挥和自我控制<br />
+√ 适当的条件下，人们愿意主动承担责任<br />
+√ 大多数人具有一定的想象力和创造力<br />
+√ 如果给予机会，人们喜欢工作，并渴望发挥其才能</p>
+<p>总结<br />
+以人为本<br />
+宽容放权<br />
+自由创新</p>
+<h5 id="期望理论"><a class="markdownIt-Anchor" href="#期望理论"></a> 期望理论</h5>
+<p>期望理论。是一种通过考察人们的努力行为与其所获得的最终奖酬之间的因果关系，来说明激励过程，并以选择合适的行为达到最终的奖酬目标的理论。</p>
+<p>一个目标对人的激励程度受2个因素影响。<br />
+①目标效价：指实现该目标对个人有多大价值的主观判断。<br />
+②期望值：指个人对实现该目标可能性大小的主观估计。</p>
+<p>激励水平等于目标效价和期望值的乘积：目标效价×期望值</p>
+<p>总结<br />
+奖罚分明<br />
+加大效价<br />
+控制概率</p>
+<h4 id="1312-管理新实践"><a class="markdownIt-Anchor" href="#1312-管理新实践"></a> 13.1.2 管理新实践</h4>
+<p>项目资源管理的趋势和新实践包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>资源管理方法。新的方法，比如精益管理、准时制（JIT）生产、Kaizen（持续改善）、全员生产维护（TPM）、约束理论等。</p>
+</li>
+<li class="lvl-2">
+<p>情商（EI）。</p>
+</li>
+<li class="lvl-2">
+<p>自组织团队（无须集中管控运作）。项目经理这一角色主要是为团队创造环境，支持并信任团队可以完成工作。成功的自组织团队通常由通用的专业人才而不是主题专家组成，他们能够不断适应变化的环境并采纳建设性反馈。</p>
+</li>
+<li class="lvl-2">
+<p>虚拟团队/分布式团队。</p>
+</li>
+</ul>
+<h3 id="132-项目资源管理过程"><a class="markdownIt-Anchor" href="#132-项目资源管理过程"></a> 13.2 项目资源管理过程</h3>
+<h4 id="1321-过程概述"><a class="markdownIt-Anchor" href="#1321-过程概述"></a> 13.2.1 过程概述</h4>
+<p>项目资源管理（管好团队）</p>
+<h5 id="规划资源管理"><a class="markdownIt-Anchor" href="#规划资源管理"></a> 规划资源管理</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>资源管理计划</mark>、<mark>团队章程</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、 数据表现、组织理论、会议</p>
+</li>
+</ul>
+<h5 id="估算活动资源"><a class="markdownIt-Anchor" href="#估算活动资源"></a> 估算活动资源</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>资源需求</mark>、估算依据、<mark>资源分解结构</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、<mark>自下而上估算</mark>、<mark>类比估算</mark>、<mark>参数估算</mark>、数据分析、项目管理信息系统、会议</p>
+</li>
+</ul>
+<h5 id="获取资源"><a class="markdownIt-Anchor" href="#获取资源"></a> 获取资源</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>物质资源分配单</mark>、<mark>项目团队派工单</mark>、<mark>资源日历</mark>、变更请求、项目管理计划更新、项目文件更新、事业环境因素更新、组织过程资产更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：决策、人际关系与团队技能、<mark>预分派</mark>、<mark>虚拟团队</mark></p>
+</li>
+</ul>
+<h5 id="建设团队"><a class="markdownIt-Anchor" href="#建设团队"></a> 建设团队</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：团队绩效评价、变更请求、项目管理计划更新、项目文件更新、事业环境因素更新、组织过程资产更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：<mark>集中办公</mark>、<mark>虚拟团队</mark>、沟通技术、人际关系与团队技能、<mark>认可与奖励</mark>、<mark>培训</mark>、<mark>个人和团队评估</mark>、会议</p>
+</li>
+</ul>
+<h5 id="管理团队"><a class="markdownIt-Anchor" href="#管理团队"></a> 管理团队</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、<mark>工作绩效报告</mark>、<mark>团队绩效评价</mark>、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：变更请求、项目管理计划更新、项目文件更新、事业环境因素更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：人际关系与团队技能、项目管理信息系统</p>
+</li>
+</ul>
+<h5 id="控制资源"><a class="markdownIt-Anchor" href="#控制资源"></a> 控制资源</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效<mark>数据</mark>、协议、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：工作绩效<mark>信息</mark>、变更请求、项目管理计更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据分析、问题解决、人际关系与团队技能、项目管理信息系统</p>
+</li>
+</ul>
+<h4 id="1322-裁剪考虑因素"><a class="markdownIt-Anchor" href="#1322-裁剪考虑因素"></a> 13.2.2 裁剪考虑因素</h4>
+<p>裁剪时应考虑的因素包括：多元化：物理位置；行业特定资源；团队成员的获得；团队管理；生命周期方法。</p>
+<h4 id="1323-敏捷与适应方法"><a class="markdownIt-Anchor" href="#1323-敏捷与适应方法"></a> 13.2.3 敏捷与适应方法</h4>
+<p>对于易变性高的项目，更适合采用能够最大限度地集中和协作的团队结构形式。协作旨在提高生产率和促进创新问题的解决，协作型团队可以促进不同工作活动的快速整合、改善沟通、增加知识分享，灵活地分配工作。</p>
+<p>虽然协作型团队也适用干其他项目环境，但更适合于易变性高且快速变化的项目。</p>
+<h3 id="133-规划资源管理"><a class="markdownIt-Anchor" href="#133-规划资源管理"></a> 13.3 规划资源管理</h3>
+<h4 id="规划资源管理-定义-作用"><a class="markdownIt-Anchor" href="#规划资源管理-定义-作用"></a> 规划资源管理-定义、作用</h4>
+<p>规划资源管理是定义如何估算、获取、管理和利用团队以及实物资源的过程。</p>
+<p>主要作用是，根据项目类型和复杂程度确定适用于项目资源的管理方法和管理程度。</p>
+<p>本过程仅开展一次或仅在项目的预定义点开展。</p>
+<h4 id="规划资源管理-itto"><a class="markdownIt-Anchor" href="#规划资源管理-itto"></a> 规划资源管理-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目章程、项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>资源管理计划</mark>、<mark>团队章程</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、 数据表现、组织理论、会议</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/hItbZTGLVrJ92Sz.jpg" title="197.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/hItbZTGLVrJ92Sz.jpg" alt="197.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/197.jpg) -->
+<h4 id="规划资源管理-相关概念"><a class="markdownIt-Anchor" href="#规划资源管理-相关概念"></a> 规划资源管理-相关概念</h4>
+<h5 id="资源管理计划"><a class="markdownIt-Anchor" href="#资源管理计划"></a> 资源管理计划</h5>
+<p>提供关于如何分类、分配、管理和释放项目资源的指南。</p>
+<p>包括：识别资源。获取资源。角色与职责。项目组织图。项目团队资源管理。培训。团队建设。资源控制。认可计划。</p>
+<p>项目人力资源管理</p>
+<blockquote>
+<p>借、用、育、还</p>
+</blockquote>
+<p>企业人力资源管理</p>
+<blockquote>
+<p>选、用、育、留</p>
+</blockquote>
+<h5 id="团队章程"><a class="markdownIt-Anchor" href="#团队章程"></a> 团队章程</h5>
+<p>团队章程是为团队创建团队价值观、共识和工作指南的文件。<br />
+包括：团队价值观；沟通指南；决策标准和过程；冲突处理过程；会议指南；团队共识。</p>
+<blockquote>
+<p>例子<br />
+每天早上11点开每日站会；<br />
+站会不超过15分钟；<br />
+开会迟到者做10个俯卧撑；<br />
+有不同意见要第一时间提出；<br />
+少数服从多数。</p>
+</blockquote>
+<h5 id="组织分解结构obs"><a class="markdownIt-Anchor" href="#组织分解结构obs"></a> 组织分解结构（OBS）</h5>
+<p>按照组织现有的部门、单元或团队排列，并在每个部门下列出项目活动或工作包。例如：运营部门（如信息技术部或采购部）只需要找到其所在的OBS位置，就能看到自己的全部项目职责。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/8iAYZyrNGQVnUO7.jpg" title="198.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/8iAYZyrNGQVnUO7.jpg" alt="198.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/198.jpg) -->
+<h5 id="责任分配矩阵ram"><a class="markdownIt-Anchor" href="#责任分配矩阵ram"></a> 责任分配矩阵（RAM）</h5>
+<p>可视化展示每个人的职责<br />
+⬇️<br />
+在项目经理与团队之间，达成关于角色/职责的共识<br />
+⬇️<br />
+为管理团队提供依据</p>
+<h5 id="资源直方图"><a class="markdownIt-Anchor" href="#资源直方图"></a> 资源直方图</h5>
+<p>显示在整个项目期间，每周（或每月）需要某人，某部门或整个项目团队的工作小时数</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/q8kdOpou35VHhgm.jpg" title="200.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/q8kdOpou35VHhgm.jpg" alt="200.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/27/z6kR8cPFYBwWhqn.jpg" title="199.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/27/z6kR8cPFYBwWhqn.jpg" alt="199.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/200.jpg) -->
+<!-- ![alt text](/img/xmm/199.jpg) -->
+<h3 id="134-估算活动资源"><a class="markdownIt-Anchor" href="#134-估算活动资源"></a> 13.4 估算活动资源</h3>
+<h4 id="估算活动资源-定义-作用"><a class="markdownIt-Anchor" href="#估算活动资源-定义-作用"></a> 估算活动资源-定义、作用</h4>
+<p>估算活动资源是估算执行项目所需的团队资源，以及材料、设备和用品的类型和数量的过程。</p>
+<p>主要作用是明确完成项目所需的资源种类、数量和特性。</p>
+<p>本过程应根据需要在整个项目期间定期开展。</p>
+<h4 id="估算活动资源-itto"><a class="markdownIt-Anchor" href="#估算活动资源-itto"></a> 估算活动资源-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>资源需求</mark>、估算依据、<mark>资源分解结构</mark>、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：专家判断、<mark>自下而上估算</mark>、<mark>类比估算</mark>、<mark>参数估算</mark>、数据分析、项目管理信息系统、会议</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/CsPiLpGDTlv3KMa.jpg" title="201.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/CsPiLpGDTlv3KMa.jpg" alt="201.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/201.jpg) -->
+<h4 id="估算活动资源-相关概念"><a class="markdownIt-Anchor" href="#估算活动资源-相关概念"></a> 估算活动资源-相关概念</h4>
+<h5 id="资源需求"><a class="markdownIt-Anchor" href="#资源需求"></a> 资源需求</h5>
+<p>内涵（定义）</p>
+<blockquote>
+<p>资源需求明确了每个工作包或每个活动所需的资源类型和数量</p>
+</blockquote>
+<p>外延（例子）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">活动（学习写代码）资源需求：</span><br><span class="line">1. 张三（人）；</span><br><span class="line">2. 需求文件（物）；</span><br><span class="line">3. 笔记本电脑（物）；</span><br><span class="line">4. 水杯（物）</span><br><span class="line">5. ...</span><br></pre></td></tr></table></figure>
+<h5 id="类比估算"><a class="markdownIt-Anchor" href="#类比估算"></a> 类比估算</h5>
+<p>类比估算将以往类似项目的资源相关信息作为估算未来项目的基础。 这是一种快速估算方法， 适用于项目经理只能识别WBS的几个高层级的情况。</p>
+<h5 id="参数估算"><a class="markdownIt-Anchor" href="#参数估算"></a> 参数估算</h5>
+<p>参数估算基于历史数据和项目参数，使用某种算法或历史数据与其他变量之间的统计关系，来计算活动所需的资源数量。</p>
+<p>例如，一项活动需要4000小时的编码时间，1年之内完成，则需要2人编码（每人每年付出2000小时）。 参数估算的准确性取决于参数模型的成熟度和基础数据的可靠性。</p>
+<h5 id="自下而上估算"><a class="markdownIt-Anchor" href="#自下而上估算"></a> 自下而上估算</h5>
+<p>自下而上估算是首先对团队和实物资源在活动级别上进行估算，然后汇总成工作包、控制账户和总体项目层级上的估算。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/zjhZdVNULx82gB7.jpg" title="202.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/zjhZdVNULx82gB7.jpg" alt="202.jpg" /></a></p>
+</blockquote>
+<h5 id="资源分解结构"><a class="markdownIt-Anchor" href="#资源分解结构"></a> 资源分解结构</h5>
+<p>是资源依类别和类型的层级展现。<br />
+资源类别包括：人力、材料、设备和用品；<br />
+资源类型包括：技能水平、要求证书、等级水平，或适用于项目的其他类型。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/cWXwCmGosMIHlxf.jpg" title="203.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/cWXwCmGosMIHlxf.jpg" alt="203.jpg" /></a></p>
+</blockquote>
+<h3 id="135-获取资源"><a class="markdownIt-Anchor" href="#135-获取资源"></a> 13.5 获取资源</h3>
+<h4 id="获取资源-定义-作用"><a class="markdownIt-Anchor" href="#获取资源-定义-作用"></a> 获取资源-定义、作用</h4>
+<p>获取资源是获取项目所需的团队成员、设施、设备、材料、用品和其他资源的过程。</p>
+<p>主要作用：<br />
+①概述和指导资源的选择；<br />
+②将选择的资源分配给相应的活动。</p>
+<p>本过程应根据需要在整个项目期间定期开展。</p>
+<h4 id="获取资源-itto"><a class="markdownIt-Anchor" href="#获取资源-itto"></a> 获取资源-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：<mark>物质资源分配单</mark>、<mark>项目团队派工单</mark>、<mark>资源日历</mark>、变更请求、项目管理计划更新、项目文件更新、事业环境因素更新、组织过程资产更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：决策、人际关系与团队技能、<mark>预分派</mark>、<mark>虚拟团队</mark></p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/vLayzHPGNBOlQej.jpg" title="204.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/vLayzHPGNBOlQej.jpg" alt="204.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/204.jpg) -->
+<h4 id="获取资源-相关概念"><a class="markdownIt-Anchor" href="#获取资源-相关概念"></a> 获取资源-相关概念</h4>
+<h5 id="资源日历"><a class="markdownIt-Anchor" href="#资源日历"></a> 资源日历</h5>
+<p>是表明每种具体资源的可用工作日或工作班次的日历。<br />
+规定了在项目期间特定的项目资源何时可用、可用多久。</p>
+<blockquote>
+<p>示例<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/yb1CsHhuZOwnq6g.jpg" title="205.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/yb1CsHhuZOwnq6g.jpg" alt="205.jpg" /></a></p>
+</blockquote>
+<h5 id="预分派"><a class="markdownIt-Anchor" href="#预分派"></a> 预分派</h5>
+<p>项目团队成员是事先选定的<br />
+下列情况下发生：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在竞标过程中承诺分派特定人员进行项目工作；</p>
+</li>
+<li class="lvl-2">
+<p>项目取决于特定人员的专有技能；</p>
+</li>
+<li class="lvl-2">
+<p>项目章程中指定了某些人员的工作分派。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/yn5S1g7YMZL8Jw2.jpg" title="206.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/yn5S1g7YMZL8Jw2.jpg" alt="206.jpg" /></a></p>
+<h5 id="谈判"><a class="markdownIt-Anchor" href="#谈判"></a> 谈判</h5>
+<p>许多项目中，通过谈判完成人员分派。<br />
+管理团队需要与下列各方谈判：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>职能经理；</p>
+</li>
+<li class="lvl-2">
+<p>执行组织中的其他项目管理团队；</p>
+</li>
+<li class="lvl-2">
+<p>外部组织、卖方、供应商、承包商。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/AK5hc4deBlLHOyg.jpg" title="207.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/AK5hc4deBlLHOyg.jpg" alt="207.jpg" /></a></p>
+<h5 id="虚拟团队"><a class="markdownIt-Anchor" href="#虚拟团队"></a> 虚拟团队</h5>
+<p>具有共同目标、在完成角色任务的过程中很少或没有时间面对面工作的一群人。<br />
+可能产生误解，有孤立感，成员之间难以分享知识和经验。</p>
+<p>虚拟团队模式使人们有可能：</p>
+<ol>
+<li class="lvl-3">
+<p>在组织内部地处不同地理位置的员工之间组建团队；</p>
+</li>
+<li class="lvl-3">
+<p>为项目团队增加特殊技能，即使相应的专家不在同一地理区域；</p>
+</li>
+<li class="lvl-3">
+<p>将在家办公的员工纳入团队；</p>
+</li>
+<li class="lvl-3">
+<p>在工作班次、工作小时或工作日不同的员工之间组建团队；</p>
+</li>
+<li class="lvl-3">
+<p>将行动不便者或残疾人纳入团队；</p>
+</li>
+<li class="lvl-3">
+<p>执行那些原本会因差旅费用过高而被搁置或取消的项目；</p>
+</li>
+<li class="lvl-3">
+<p>节省员工所需的办公室和所有实物设备的开支等。</p>
+</li>
+</ol>
+<p>沟通规划变得尤为重要。应设定明确的期望、促进沟通、制定冲突解决方法、召集人员参与决策、理解文化差异，以及共享成功喜悦。</p>
+<h3 id="136-建设团队"><a class="markdownIt-Anchor" href="#136-建设团队"></a> 13.6 建设团队</h3>
+<h4 id="建设团队-定义-作用"><a class="markdownIt-Anchor" href="#建设团队-定义-作用"></a> 建设团队-定义、作用</h4>
+<p>建设团队是提高工作能力，促进团队成员互动，改善团队整体氛围，以提高项目绩效的过程。</p>
+<p>主要作用是，改进团队协作、增强人际关系技能、激励员工、减少摩擦以及提升整体项目绩效。</p>
+<p>本过程需要在整个项目期间开展。</p>
+<h4 id="建设团队-itto"><a class="markdownIt-Anchor" href="#建设团队-itto"></a> 建设团队-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：团队绩效评价、变更请求、项目管理计划更新、项目文件更新、事业环境因素更新、组织过程资产更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：<mark>集中办公</mark>、<mark>虚拟团队</mark>、沟通技术、人际关系与团队技能、<mark>认可与奖励</mark>、<mark>培训</mark>、<mark>个人和团队评估</mark>、会议</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/5fnb1hDstCQ9k3l.jpg" title="209.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/5fnb1hDstCQ9k3l.jpg" alt="209.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/209.jpg) -->
+<h4 id="建设团队-相关概念"><a class="markdownIt-Anchor" href="#建设团队-相关概念"></a> 建设团队-相关概念</h4>
+<h5 id="团队绩效评价"><a class="markdownIt-Anchor" href="#团队绩效评价"></a> 团队绩效评价</h5>
+<p>基于项目技术成功度、项目进度绩效和成本绩效，来评价团队绩效。<br />
+以任务和结果为导向是高效团队的重要特征。<br />
+指标可包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>个人技能的改进</p>
+</li>
+<li class="lvl-2">
+<p>团队能力的改进</p>
+</li>
+<li class="lvl-2">
+<p>团队成员离职率的降低</p>
+</li>
+<li class="lvl-2">
+<p>团队凝聚力的加强</p>
+</li>
+</ul>
+<hr />
+<table>
+<thead>
+<tr>
+<th>管理者</th>
+<th>培训责任</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人力资源经理</td>
+<td>公司规章、流程、制度</td>
+<td>怎么请年假；报销流程</td>
+</tr>
+<tr>
+<td>资源经理（职能经理）</td>
+<td>业务、技术能力</td>
+<td>如何开发自动化测试脚本</td>
+</tr>
+<tr>
+<td>项目经理</td>
+<td>项目管理的知识、工具、方法</td>
+<td>如何识别关键路径</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table>
+<thead>
+<tr>
+<th></th>
+<th>有效的项目团队</th>
+<th>无效的项目团队</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标</td>
+<td>拥有共同的目标</td>
+<td>每个人对目标的理解不一致</td>
+</tr>
+<tr>
+<td>团结</td>
+<td>喜欢一起工作，互相帮助</td>
+<td>彼此排斥，单打独斗</td>
+</tr>
+<tr>
+<td>分工</td>
+<td>分工明确，优势互补</td>
+<td>职责不清，专业重复或缺位</td>
+</tr>
+<tr>
+<td>凝聚力</td>
+<td>凝聚力强，彼此信任</td>
+<td>产生冲突和不良的竞争</td>
+</tr>
+<tr>
+<td>沟通</td>
+<td>沟通顺畅，主动分享</td>
+<td>沟通有障碍，会议无效率</td>
+</tr>
+<tr>
+<td>绩效</td>
+<td>总能按计划达成目标</td>
+<td>遭遇挫折，进行无谓的返工</td>
+</tr>
+<tr>
+<td>表现</td>
+<td>1+1&gt;2</td>
+<td>1+1&lt;2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="137-管理团队"><a class="markdownIt-Anchor" href="#137-管理团队"></a> 13.7 管理团队</h3>
+<h4 id="管理团队-定义-作用"><a class="markdownIt-Anchor" href="#管理团队-定义-作用"></a> 管理团队-定义、作用</h4>
+<p>管理团队是跟踪团队成员工作表现、提供反馈、解决问题并管理团队变更以优化项目绩效的过程。</p>
+<p>主要作用是，影响团队行为、管理冲突以及解决问题。</p>
+<p>本过程需要在整个项目期间开展。</p>
+<h4 id="管理团队-itto"><a class="markdownIt-Anchor" href="#管理团队-itto"></a> 管理团队-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、<mark>工作绩效报告</mark>、<mark>团队绩效评价</mark>、事业环境因素、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：变更请求、项目管理计划更新、项目文件更新、事业环境因素更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：人际关系与团队技能、项目管理信息系统</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/9UHTYxuEqjDl6MP.jpg" title="213.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/9UHTYxuEqjDl6MP.jpg" alt="213.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/213.jpg) -->
+<h4 id="管理团队-相关概念"><a class="markdownIt-Anchor" href="#管理团队-相关概念"></a> 管理团队-相关概念</h4>
+<h5 id="冲突管理"><a class="markdownIt-Anchor" href="#冲突管理"></a> 冲突管理</h5>
+<p>在项目环境中，冲突不可避免。<br />
+成功的冲突管理可提高生产力、改进工作关系、提高创造力、改进决策。<br />
+意见分歧成为负面因素，应该首先由项目团队成员负责解决；<br />
+如果冲突升级，项目经理应提供协助。</p>
+<ol>
+<li class="lvl-3">
+<p>撤退/回避。从实际或潜在冲突中退出，将问题推迟到准备充分的时候，或者将问题推给其他人员解决。</p>
+</li>
+<li class="lvl-3">
+<p>缓和/包容。强调一致而非差异；为维持和谐与关系，而退让一步，考虑其他方的需要。</p>
+</li>
+<li class="lvl-3">
+<p>妥协/调解。为了暂时或部分解决冲突，寻找能让各方都在一定程度上满意的方案。</p>
+</li>
+<li class="lvl-3">
+<p>强迫/命令。以牺牲其他方为代价，推行某一方的观点；只提供赢-输方案。利用权力来<br />
+强行解决紧急问题。</p>
+</li>
+<li class="lvl-3">
+<p>合作/解决问题。综合考虑不同的观点和意见，采用合作的态度和开放式对话引导各方达<br />
+成共识和承诺。</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/am5DkOApXyINsZC.jpg" title="214.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/am5DkOApXyINsZC.jpg" alt="214.jpg" /></a><br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/uKpHVk2fDyYiE75.jpg" title="215.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/uKpHVk2fDyYiE75.jpg" alt="215.jpg" /></a></p>
+<h5 id="人际关系与团队技能"><a class="markdownIt-Anchor" href="#人际关系与团队技能"></a> 人际关系与团队技能</h5>
+<p>√ 领导力。对沟通愿景及鼓舞项目团队高效工作十分重要<br />
+√ 影响力。主要体现在：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>说服别人，以及清晰表达观点和立场的能力</p>
+</li>
+<li class="lvl-2">
+<p>积极且有效的倾听</p>
+</li>
+<li class="lvl-2">
+<p>了解并综合考虑各种观点</p>
+</li>
+<li class="lvl-2">
+<p>收集相关且关键的信息，以解决重要问题，维护</p>
+</li>
+<li class="lvl-2">
+<p>相互信任，达成一致意见</p>
+</li>
+</ul>
+<p>√ 有效决策。包括谈判能力，以及影响组织与项目管理团队的能力。</p>
+<p>进行有效决策需要：</p>
+<p>着眼于所要达到的目标<br />
+遵循决策流程<br />
+研究环境因素<br />
+分析可用信息<br />
+提升团队成员个人素质<br />
+激发团队创造力<br />
+管理风险</p>
+<h3 id="138-控制资源"><a class="markdownIt-Anchor" href="#138-控制资源"></a> 13.8 控制资源</h3>
+<h4 id="控制资源-定义-作用"><a class="markdownIt-Anchor" href="#控制资源-定义-作用"></a> 控制资源-定义、作用</h4>
+<p>控制资源是确保按计划为项目分配实物资源，以及根据资源使用计划监督资源实际使用情况，并采取必要纠正措施的过程。</p>
+<p>主要作用：<br />
+①确保所分配的资源适时、适地可用于项目；<br />
+②资源在不再需要时被释放。</p>
+<p>本过程需要在整个项目期间开展。</p>
+<h4 id="控制资源-itto"><a class="markdownIt-Anchor" href="#控制资源-itto"></a> 控制资源-ITTO</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：项目管理计划、项目文件、工作绩效<mark>数据</mark>、协议、组织过程资产</p>
+</li>
+<li class="lvl-2">
+<p>输出：工作绩效<mark>信息</mark>、变更请求、项目管理计更新、项目文件更新</p>
+</li>
+<li class="lvl-2">
+<p>技术：数据分析、问题解决、人际关系与团队技能、项目管理信息系统</p>
+</li>
+</ul>
+<blockquote>
+<p>数据流向图<br />
+<a target="_blank" rel="noopener" href="https://s2.loli.net/2024/04/10/p6eXTSCjOHbKBAm.jpg" title="218.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://s2.loli.net/2024/04/10/p6eXTSCjOHbKBAm.jpg" alt="218.jpg" /></a></p>
+</blockquote>
+<!-- ![alt text](/img/xmm/218.jpg) -->
+<h4 id="控制资源-相关概念"><a class="markdownIt-Anchor" href="#控制资源-相关概念"></a> 控制资源-相关概念</h4>
+<p>控制资源过程关注：</p>
+<ol>
+<li class="lvl-3">
+<p>监督资源支出；</p>
+</li>
+<li class="lvl-3">
+<p>及时识别和处理资源缺乏/剩余情况；</p>
+</li>
+<li class="lvl-3">
+<p>确保根据计划和项目需求使用并释放资源；</p>
+</li>
+<li class="lvl-3">
+<p>出现资源相关问题时通知相应干系人；</p>
+</li>
+<li class="lvl-3">
+<p>影响可以导致资源使用变更的因素；</p>
+</li>
+<li class="lvl-3">
+<p>在变更实际发生时对其进行管理等。</p>
+</li>
+</ol>
+<h3 id="139-本章练习"><a class="markdownIt-Anchor" href="#139-本章练习"></a> 13.9 本章练习</h3>
+<h4 id="1选择题"><a class="markdownIt-Anchor" href="#1选择题"></a> 1.选择题</h4>
+<p>（1）项目经理对于____的冲突要设法加以____；对____的冲突要加以利用，要鼓励团队成员良性竞争。<br />
+A.有害，解决或减少，有益<br />
+B.有益，解决或减少，有害<br />
+C.有害，解决或增加，有益<br />
+D.有益，鼓励或增加，有害</p>
+<details> <summary>Answer</summary> 参考答案：A </details>
+<hr />
+<p>（2）使用项目资源、做出决策、签字批准、验收可交付成果并影响他人开展项目工作的权力，称之为____。<br />
+A.角色<br />
+B.职责<br />
+C.职权<br />
+D.能力</p>
+<details> <summary>Answer</summary> 参考答案：C </details>
+<hr />
+<p>（3）获取资源过程的输出中，____识别了每种具体资源可用时的工作日、班次、正常营业的上下班时间、周末和公共假期。<br />
+A.组织过程资产更新<br />
+B.物质资源分配单<br />
+C.项目团队派工单<br />
+D.资源日历</p>
+<details> <summary>Answer</summary> 参考答案：D </details>
+<hr />
+<p>（4）虚拟团队的使用能带来很多好处，不包括____。<br />
+A.减少出差及搬迁费用<br />
+B.减少信息分享带来的安全风险<br />
+C.利用技术来营造在线团队环境<br />
+D.拉近团队成员与供应商、客户或其他重要干系人的距离</p>
+<details> <summary>Answer</summary> 参考答案：B </details>
+<hr />
+<p>（5）评价团队有效性的指标，不包括____。<br />
+A.个人技能的改进<br />
+B.团队成员离职率的提升<br />
+C.团队能力的改进<br />
+D.团队凝聚力的加强</p>
+<details> <summary>Answer</summary> 参考答案：B </details>
+<hr />
+<h4 id="2判断题"><a class="markdownIt-Anchor" href="#2判断题"></a> 2.判断题</h4>
+<p>判断下列表述正误，正确的选√，错误的选×。<br />
+（1）缓和/包容是指，为了暂时或部分解决冲突，寻找能让各方都在一定程度上满意的方案，但这种方法有时会导致“双输”局面。<br />
+（2）通俗地说，领导者设定目标，管理者率众实现目标。<br />
+（3）冲突并不一定是有害的，“一团和气”的集体不一定是一个高效率的集体。<br />
+（4）组织分解结构用来显示如何把项目可交付成果分解为工作包，这有助于明确高层级的职责。</p>
+<details> <summary>Answer</summary> 参考答案：（1）×（2）√（3）√（4）×
+</details>
+<h4 id="3思考题"><a class="markdownIt-Anchor" href="#3思考题"></a> 3.思考题</h4>
+<p>有一种关于团队发展的模型叫塔克曼阶梯理论，其中包括团队建设通常要经过的5个阶段。</p>
+<p>尽管这些阶段通常按顺序进行，然而，团队停滞在某个阶段或退回到较早阶段的情况也并非罕见：而如果团队成员曾经共事过，项目团队建设也可跳过某个阶段。</p>
+<p>请简述团队建设通常要经过的5个阶段。</p>
+<p>参考答案：略</p>
+<hr />
+<h4 id="4案例题"><a class="markdownIt-Anchor" href="#4案例题"></a> 4.案例题</h4>
+<p>阅读下列说明，回答问题1～问题3，将解答填入答题纸的对应栏内。</p>
+<p>【说明】<br />
+Simple公司刚刚中标某电子政务系统开发项目，用户单位要求电子政务系统必须在年底前投入使用。王某是Simple公司的项目经理，并且刚成功地领导一个6人的项目团队完成了一个类似项目，因此公司指派主某带领原来的团队负责该项目。</p>
+<p>王某带领原项目团队结合以往经验顺利完成了需求分析、项目范围说明书等前期工作，并通过了审查，得到了申方的确认。由于进度紧张，王某又从公司申请调来了2名开发人员进入项目团队。</p>
+<p>项目并始实施后，项目团队原成员和新加入成员之间经常发生争执，对发生的错误相互推。项目团队原成员认为新加入的成员效率低下，延误项目进度；新加入成员则认为项目团队原成员不好相处，不能有效沟通。王某认为这是正常的项目团队磨合过程，没有过多干预：同时，批评新加入成员效率低下，认为项目团队原成员更有经验，要求新加入成员要多向老成员虚心请教。</p>
+<p>项目实施两个月后，王某发现大家汇报的项目进度言过其实，进度远没有达到计划目标，项目已陷入困境。</p>
+<p>【问题1】请简要分析造成该项目上述问题的可能原因。<br />
+【问题2】结合你的实际经验，概述成功团队的特征。<br />
+【问题3】针对项目目前的状况，在项目人力资源管理方面王某可以采取哪些补救措施？</p>
+<details> <summary>Answer</summary>
+<p>解答：</p>
+<p>【问题1】<br />
+问题产生的可能原因有：<br />
+（1）王某对新员工的工作能力和团队合作素质没有进行考察；<br />
+（2）王某没有进行有效的团队建设和团队管理：<br />
+（3）王某对于冲突的处理方式过于简单；<br />
+（4）王某对人员的绩效评估缺乏有效的考核手段；<br />
+（5）王某没有对进度进行有效控制。</p>
+<p>【问题2】<br />
+成功团队的特征：<br />
+（1）团队的目标明确，成员清楚自己工作对目标的贡献：<br />
+（2）团队的组织结构清晰，岗位明确；<br />
+（3）有成文或习惯的工作流程和方法，而且流程简明有效：<br />
+（4）项目经理对团队成员有明确的考核和评价标准，工作结果公正公开，赏罚分明；<br />
+（5）有共同制定并遵守的组织纪律；<br />
+（6）团队成员相互信任，协同工作，善于总结和学习。</p>
+<p>【问题3】<br />
+（1）采用合适的团队建设手段，消除团队成员间的隔阅：<br />
+（2）明确项目团队的目标及项目组各成员的分工：<br />
+（3）建立清晰的工作流程和沟通机制；<br />
+（4）建立明确的考核评价标准；<br />
+（5）鼓励团队成员之间建立参与和分享的氛围：<br />
+（6）制定有效的激励措施。</p>
+</details>
+<hr />
+<p>end</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-18</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/PM/'>
+                            PM
+                        </a>
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E6%95%99%E7%A8%8B/'>
+                            信息系统项目管理师教程
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%AB%98%E9%A1%B9/'>
+                            高项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

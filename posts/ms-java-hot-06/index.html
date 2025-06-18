@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java 热门面试题-06" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java 热门面试题-06
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-27</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：12.2k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E6%88%96%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 什么是分库分表？分库分表有哪些类型（或策略）？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="post-toc-text"> 什么是分库分表？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%88%96%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 分库分表的类型（或策略）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E5%BA%93"><span class="post-toc-text"> 分库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E8%A1%A8"><span class="post-toc-text"> 分表</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%AD%96%E7%95%A5"><span class="post-toc-text"> 常见的分库分表策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%9A%84%E6%8C%91%E6%88%98"><span class="post-toc-text"> 分库分表的挑战</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mybatis-%E4%B8%AD-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> MyBatis 中 #{} 和 ${} 的区别是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1"><span class="post-toc-text"> 1. #{}</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2"><span class="post-toc-text"> 2. ${}</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 主要区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java-%E4%B8%AD%E7%9A%84-final-%E5%85%B3%E9%94%AE%E5%AD%97%E6%98%AF%E5%90%A6%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="post-toc-text"> Java 中的 final 关键字是否能保证变量的可见性？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#final-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E7%89%B9%E6%80%A7"><span class="post-toc-text"> final 关键字的特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#final-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="post-toc-text"> final 关键字的可见性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="post-toc-text"> 示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E7%9A%84-hash-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text"> Redis 的 hash 是什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hash-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-text"> Hash 的特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="post-toc-text"> 常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="post-toc-text"> 示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E%E7%BD%91%E7%BB%9C%E8%A7%92%E5%BA%A6%E6%9D%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BB%8E%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%88%B0%E7%BD%91%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%9C%9F%E9%97%B4%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="post-toc-text"> 从网络角度来看，用户从输入网址到网页显示，期间发生了什么？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dubbo-%E5%92%8C-spring-cloud-gateway-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> Dubbo 和 Spring Cloud Gateway 有什么区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-java-%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7-%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="post-toc-text"> 什么是 Java 中的原子性、可见性和有序性？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="post-toc-text"> 示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 线程和进程有什么区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%A7%8D-io-%E6%A8%A1%E5%9E%8B"><span class="post-toc-text"> 说说你知道的几种 I&#x2F;O 模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mybatis-%E4%B8%8E-hibernate-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%90%8C"><span class="post-toc-text"> MyBatis 与 Hibernate 有哪些不同？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-10"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8Bjmm"><span class="post-toc-text"> 什么是 Java 内存模型（JMM）？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="post-toc-text"> Java 内存模型的核心概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A7%84%E5%88%99"><span class="post-toc-text"> Java 内存模型的规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="post-toc-text"> 示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-11"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E5%92%8C-memcached-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> Redis 和 Memcached 有哪些区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93-12"><span class="post-toc-text"> 总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80"><span class="post-toc-text"> 什么是物理地址，什么是逻辑地址？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AF-api-%E7%BD%91%E5%85%B3%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 说说什么是 API 网关？它有什么作用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-java-%E7%9A%84-cascompare-and-swap%E6%93%8D%E4%BD%9C"><span class="post-toc-text"> 什么是 Java 的 CAS（Compare-And-Swap）操作？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#select-poll-epoll-%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> Select、Poll、Epoll 之间有什么区别？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#select"><span class="post-toc-text"> Select</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#poll"><span class="post-toc-text"> Poll</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#epoll"><span class="post-toc-text"> Epoll</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 关键区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text"> 使用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-mybatis-plus%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%E5%AE%83%E5%92%8C-mybatis-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 什么是 MyBatis-Plus？它有什么作用？它和 MyBatis 有哪些区别？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-java-%E4%B8%AD%E7%9A%84-threadlocal-%E5%AF%B9-key-%E7%9A%84%E5%BC%95%E7%94%A8%E4%B8%BA%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="post-toc-text"> 为什么 Java 中的 ThreadLocal 对 key 的引用为弱引用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C%E4%B8%8E%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88jvm-%E4%BD%BF%E7%94%A8%E5%93%AA%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="post-toc-text"> 编译执行与解释执行的区别是什么？JVM 使用哪种方式？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C"><span class="post-toc-text"> 编译执行：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C"><span class="post-toc-text"> 解释执行：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jvm%E7%9A%84%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="post-toc-text"> JVM的执行方式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis-%E6%94%AF%E6%8C%81%E4%BA%8B%E5%8A%A1%E5%90%97%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="post-toc-text"> Redis 支持事务吗？如何实现？</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><!-- 
+什么是分库分表？分库分表有哪些类型（或策略）？
+MyBatis 中 #{} 和 ${} 的区别是什么？
+Java 中的 final 关键字是否能保证变量的可见性？
+Redis 的 hash 是什么？
+从网络角度来看，用户从输入网址到网页显示，期间发生了什么？
+Dubbo 和 Spring Cloud Gateway 有什么区别？
+什么是 Java 中的原子性、可见性和有序性？
+线程和进程有什么区别？
+说说你知道的几种 I/O 模型
+MyBatis 与 Hibernate 有哪些不同？
+什么是 Java 内存模型（JMM）？
+Redis 和 Memcached 有哪些区别？
+什么是物理地址，什么是逻辑地址？
+说说什么是 API 网关？它有什么作用？
+什么是 Java 的 CAS（Compare-And-Swap）操作？
+Select、Poll、Epoll 之间有什么区别？
+什么是 MyBatis-Plus？它有什么作用？它和 MyBatis 有哪些区别？
+为什么 Java 中的 ThreadLocal 对 key 的引用为弱引用？
+编译执行与解释执行的区别是什么？JVM 使用哪种方式？
+Redis 支持事务吗？如何实现？
+
+-->
+<h2 id="什么是分库分表分库分表有哪些类型或策略"><a class="markdownIt-Anchor" href="#什么是分库分表分库分表有哪些类型或策略"></a> 什么是分库分表？分库分表有哪些类型（或策略）？</h2>
+<h3 id="什么是分库分表"><a class="markdownIt-Anchor" href="#什么是分库分表"></a> 什么是分库分表？</h3>
+<p><strong>分库分表</strong>是一种数据库水平拆分的策略，旨在解决单库单表数据量过大导致的性能瓶颈问题。通过将数据分散到多个数据库或表中，提升系统的扩展性和性能。</p>
+<h3 id="分库分表的类型或策略"><a class="markdownIt-Anchor" href="#分库分表的类型或策略"></a> 分库分表的类型（或策略）</h3>
+<p>分库分表主要有两种类型：<strong>分库</strong>和<strong>分表</strong>，每种类型又有多种策略。</p>
+<h4 id="分库"><a class="markdownIt-Anchor" href="#分库"></a> <strong>分库</strong></h4>
+<p>分库是将数据分散到多个数据库中，常见的策略有：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>垂直分库</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定义</strong>：按业务模块将不同表分布到不同数据库。</li>
+<li class="lvl-4"><strong>优点</strong>：降低单库压力，模块间解耦。</li>
+<li class="lvl-4"><strong>缺点</strong>：跨库查询复杂，事务处理困难。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>水平分库</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定义</strong>：将同一表的数据按规则分布到多个数据库。</li>
+<li class="lvl-4"><strong>优点</strong>：分散单库压力，提升并发能力。</li>
+<li class="lvl-4"><strong>缺点</strong>：跨库查询和事务处理复杂。</li>
+</ul>
+</li>
+</ul>
+<h4 id="分表"><a class="markdownIt-Anchor" href="#分表"></a> <strong>分表</strong></h4>
+<p>分表是将数据分散到多个表中，常见的策略有：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>垂直分表</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定义</strong>：按列将表拆分为多个表，通常将常用和不常用的字段分开。</li>
+<li class="lvl-4"><strong>优点</strong>：减少单表数据量，提升查询效率。</li>
+<li class="lvl-4"><strong>缺点</strong>：查询多个表时需 JOIN 操作。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>水平分表</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定义</strong>：按行将表数据按规则分布到多个表。</li>
+<li class="lvl-4"><strong>优点</strong>：减少单表数据量，提升查询和写入性能。</li>
+<li class="lvl-4"><strong>缺点</strong>：跨表查询复杂，需额外路由逻辑。</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见的分库分表策略"><a class="markdownIt-Anchor" href="#常见的分库分表策略"></a> 常见的分库分表策略</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>按范围分片</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">按某个字段的范围（如用户 ID 或时间）将数据分布到不同库或表。</li>
+<li class="lvl-4"><strong>优点</strong>：简单易实现。</li>
+<li class="lvl-4"><strong>缺点</strong>：可能导致数据分布不均。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>按哈希分片</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">对某个字段进行哈希计算，按结果分布数据。</li>
+<li class="lvl-4"><strong>优点</strong>：数据分布均匀。</li>
+<li class="lvl-4"><strong>缺点</strong>：扩展性较差，增加节点时需重新哈希。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>按列表分片</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">按预定义的列表（如地区或类别）分布数据。</li>
+<li class="lvl-4"><strong>优点</strong>：灵活，适合特定业务场景。</li>
+<li class="lvl-4"><strong>缺点</strong>：需维护分片规则。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>按时间分片</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">按时间（如按月或年）分布数据。</li>
+<li class="lvl-4"><strong>优点</strong>：适合时间序列数据。</li>
+<li class="lvl-4"><strong>缺点</strong>：可能导致数据分布不均。</li>
+</ul>
+</li>
+</ul>
+<h3 id="分库分表的挑战"><a class="markdownIt-Anchor" href="#分库分表的挑战"></a> 分库分表的挑战</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>跨库/跨表查询</strong>：需额外处理。</p>
+</li>
+<li class="lvl-2">
+<p><strong>事务管理</strong>：分布式事务复杂。</p>
+</li>
+<li class="lvl-2">
+<p><strong>数据一致性</strong>：需额外机制保证。</p>
+</li>
+<li class="lvl-2">
+<p><strong>路由逻辑</strong>：需维护数据分布规则。</p>
+</li>
+</ul>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>分库分表通过水平拆分提升数据库性能和扩展性，常见策略包括垂直和水平分库分表，以及按范围、哈希、列表和时间分片。实施时需考虑跨库查询、事务管理和数据一致性等挑战。</p>
+<h2 id="mybatis-中-和-的区别是什么"><a class="markdownIt-Anchor" href="#mybatis-中-和-的区别是什么"></a> MyBatis 中 #{} 和 ${} 的区别是什么？</h2>
+<p>在 MyBatis 中，<code>#&#123;&#125;</code> 和 <code>$&#123;&#125;</code> 是两种不同的参数占位符，它们的主要区别在于处理方式和安全性。</p>
+<h3 id="1"><a class="markdownIt-Anchor" href="#1"></a> 1. <strong>#{}</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>处理方式</strong>：<code>#&#123;&#125;</code> 是预编译处理，MyBatis 会将其替换为 <code>?</code>，并通过 <code>PreparedStatement</code> 设置参数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>安全性</strong>：能有效防止 SQL 注入，因为参数值会被转义。</p>
+</li>
+<li class="lvl-2">
+<p><strong>使用场景</strong>：适用于传递参数值，如 WHERE 条件、INSERT 值等。</p>
+</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;userId&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>生成的 SQL 类似于：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> ?</span><br></pre></td></tr></table></figure>
+<p>参数值会安全地传递给 <code>PreparedStatement</code>。</p>
+<h3 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2. <strong>${}</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>处理方式</strong>：<code>$&#123;&#125;</code> 是直接替换，MyBatis 会将其替换为实际的参数值。</p>
+</li>
+<li class="lvl-2">
+<p><strong>安全性</strong>：存在 SQL 注入风险，因为参数值直接拼接到 SQL 中。</p>
+</li>
+<li class="lvl-2">
+<p><strong>使用场景</strong>：适用于动态 SQL 片段，如表名、列名等。</p>
+</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">    SELECT * FROM $&#123;tableName&#125; WHERE id = #&#123;userId&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>生成的 SQL 类似于：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><code>$&#123;tableName&#125;</code> 被直接替换为 <code>user</code>。</p>
+<h3 id="主要区别"><a class="markdownIt-Anchor" href="#主要区别"></a> 主要区别</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>#&#123;&#125;</code></th>
+<th><code>$&#123;&#125;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>处理方式</strong></td>
+<td>预编译，替换为 <code>?</code></td>
+<td>直接替换为实际值</td>
+</tr>
+<tr>
+<td><strong>安全性</strong></td>
+<td>安全，防止 SQL 注入</td>
+<td>不安全，存在 SQL 注入风险</td>
+</tr>
+<tr>
+<td><strong>使用场景</strong></td>
+<td>传递参数值</td>
+<td>动态 SQL 片段（如表名、列名）</td>
+</tr>
+<tr>
+<td><strong>示例</strong></td>
+<td><code>SELECT * FROM user WHERE id = #&#123;userId&#125;</code></td>
+<td><code>SELECT * FROM $&#123;tableName&#125; WHERE id = 1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong><code>#&#123;&#125;</code></strong>：安全，适合传递参数值。</p>
+</li>
+<li class="lvl-2">
+<p><strong><code>$&#123;&#125;</code></strong>：不安全，适合动态 SQL 片段。</p>
+</li>
+</ul>
+<p>在大多数情况下，优先使用 <code>#&#123;&#125;</code> 以确保安全性，仅在必要时使用 <code>$&#123;&#125;</code>，并确保输入值可信。</p>
+<h2 id="java-中的-final-关键字是否能保证变量的可见性"><a class="markdownIt-Anchor" href="#java-中的-final-关键字是否能保证变量的可见性"></a> Java 中的 final 关键字是否能保证变量的可见性？</h2>
+<p>在 Java 中，<code>final</code> 关键字用于声明常量、不可继承的类或不可重写的方法。虽然 <code>final</code> 关键字在多线程环境下对变量的可见性有一定影响，但它<strong>不能完全保证变量的可见性</strong>。</p>
+<h3 id="final-关键字的特性"><a class="markdownIt-Anchor" href="#final-关键字的特性"></a> <code>final</code> 关键字的特性</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>不可变性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">对于基本类型，<code>final</code> 变量一旦赋值后不可更改。</li>
+<li class="lvl-5">对于引用类型，<code>final</code> 变量引用不可更改，但对象内部状态可以修改。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>初始化安全性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在构造函数中正确构造的 <code>final</code> 变量，对其他线程可见，无需额外同步。</li>
+</ul>
+</li>
+</ol>
+<h3 id="final-关键字的可见性"><a class="markdownIt-Anchor" href="#final-关键字的可见性"></a> <code>final</code> 关键字的可见性</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>构造函数中的 <code>final</code> 变量</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">在对象构造完成后，<code>final</code> 变量的值对其他线程可见。</li>
+<li class="lvl-4">这是由 Java 内存模型（JMM）保证的。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>非 <code>final</code> 变量</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">非 <code>final</code> 变量的可见性需要额外的同步机制（如 <code>volatile</code> 或 <code>synchronized</code>）来保证。</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FinalExample</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> finalVar;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> nonFinalVar;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">FinalExample</span><span class="params">(<span class="type">int</span> finalVar, <span class="type">int</span> nonFinalVar)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.finalVar = finalVar;</span><br><span class="line">        <span class="built_in">this</span>.nonFinalVar = nonFinalVar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printVars</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;finalVar: &quot;</span> + finalVar);</span><br><span class="line">        System.out.println(<span class="string">&quot;nonFinalVar: &quot;</span> + nonFinalVar);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>finalVar</code> 在构造函数中初始化后，对其他线程可见。</p>
+</li>
+<li class="lvl-2">
+<p><code>nonFinalVar</code> 的可见性需要额外同步机制。</p>
+</li>
+</ul>
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong><code>final</code> 关键字</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">保证构造函数中初始化的变量对其他线程可见。</li>
+<li class="lvl-4">不保证非 <code>final</code> 变量的可见性。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>可见性保证</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要完全保证变量可见性时，应使用 <code>volatile</code> 或 <code>synchronized</code> 等同步机制。</li>
+</ul>
+</li>
+</ul>
+<p>因此，<code>final</code> 关键字不能完全保证变量的可见性，仅在特定情况下提供部分保证。</p>
+<h2 id="redis-的-hash-是什么"><a class="markdownIt-Anchor" href="#redis-的-hash-是什么"></a> Redis 的 hash 是什么？</h2>
+<p>Redis 的 <strong>Hash</strong> 是一种数据结构，用于存储字段（field）和值（value）之间的映射。它类似于编程语言中的字典或哈希表，适合存储对象或结构化数据。</p>
+<h3 id="hash-的特点"><a class="markdownIt-Anchor" href="#hash-的特点"></a> Hash 的特点</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>存储结构</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">每个 Hash 可以存储多个字段和值。</li>
+<li class="lvl-5">字段和值都是字符串类型。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>适用场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">存储对象属性（如用户信息）。</li>
+<li class="lvl-5">存储结构化数据（如商品详情）。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>操作效率</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">支持高效的字段级操作（如增删改查）。</li>
+<li class="lvl-5">适合频繁更新部分字段的场景。</li>
+</ul>
+</li>
+</ol>
+<h3 id="常用命令"><a class="markdownIt-Anchor" href="#常用命令"></a> 常用命令</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>HSET</strong>：设置字段值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HSET user:1000 name &quot;Alice&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HGET</strong>：获取字段值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HGET user:1000 name</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HMSET</strong>：设置多个字段值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMSET user:1000 name &quot;Alice&quot; age &quot;30&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HMGET</strong>：获取多个字段值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMGET user:1000 name age</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HGETALL</strong>：获取所有字段和值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HGETALL user:1000</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HDEL</strong>：删除字段。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HDEL user:1000 age</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p><strong>HINCRBY</strong>：增加字段的整数值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HINCRBY user:1000 age 1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="示例-2"><a class="markdownIt-Anchor" href="#示例-2"></a> 示例</h3>
+<p>存储用户信息：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HSET user:1000 name &quot;Alice&quot;</span><br><span class="line">HSET user:1000 age &quot;30&quot;</span><br><span class="line">HSET user:1000 email &quot;alice@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>获取用户信息：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HGETALL user:1000</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) &quot;name&quot;</span><br><span class="line">2) &quot;Alice&quot;</span><br><span class="line">3) &quot;age&quot;</span><br><span class="line">4) &quot;30&quot;</span><br><span class="line">5) &quot;email&quot;</span><br><span class="line">6) &quot;alice@example.com&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="总结-4"><a class="markdownIt-Anchor" href="#总结-4"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis Hash</strong> 是一种存储字段和值映射的数据结构。</p>
+</li>
+<li class="lvl-2">
+<p>适合存储对象或结构化数据。</p>
+</li>
+<li class="lvl-2">
+<p>支持高效的字段级操作，适合频繁更新部分字段的场景。</p>
+</li>
+</ul>
+<h2 id="从网络角度来看用户从输入网址到网页显示期间发生了什么"><a class="markdownIt-Anchor" href="#从网络角度来看用户从输入网址到网页显示期间发生了什么"></a> 从网络角度来看，用户从输入网址到网页显示，期间发生了什么？</h2>
+<p>从用户输入网址到网页显示，期间经历了一系列复杂的网络通信过程。以下是详细的步骤：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>URL 解析</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>输入网址</strong>：用户输入网址（如 <code>https://www.example.com</code>）。</li>
+<li class="lvl-5"><strong>解析协议</strong>：浏览器解析协议（如 <code>https</code>）、域名（如 <code>www.example.com</code>）和路径。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>DNS 解析</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>查询 DNS</strong>：浏览器向 DNS 服务器查询域名对应的 IP 地址。</li>
+<li class="lvl-5"><strong>递归查询</strong>：若本地 DNS 缓存无记录，则递归查询直到获得 IP 地址。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>建立 TCP 连接</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>三次握手</strong>：浏览器与服务器通过三次握手建立 TCP 连接。</li>
+<li class="lvl-5"><strong>HTTPS</strong>：若使用 HTTPS，还需进行 TLS 握手以建立安全连接。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>发送 HTTP 请求</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>请求行</strong>：浏览器发送 HTTP 请求，包含方法（如 <code>GET</code>）、路径和协议版本。</li>
+<li class="lvl-5"><strong>请求头</strong>：包含浏览器信息、接受的内容类型等。</li>
+<li class="lvl-5"><strong>请求体</strong>：对于 <code>POST</code> 请求，包含提交的数据。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>服务器处理请求</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>接收请求</strong>：服务器接收并解析 HTTP 请求。</li>
+<li class="lvl-5"><strong>处理请求</strong>：服务器根据请求路径和参数生成响应内容。</li>
+<li class="lvl-5"><strong>访问数据库</strong>：若需动态内容，服务器可能查询数据库。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>服务器发送 HTTP 响应</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>状态行</strong>：包含状态码（如 <code>200 OK</code>）和协议版本。</li>
+<li class="lvl-5"><strong>响应头</strong>：包含内容类型、长度等信息。</li>
+<li class="lvl-5"><strong>响应体</strong>：包含 HTML、CSS、JavaScript 等内容。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>浏览器渲染页面</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>解析 HTML</strong>：浏览器解析 HTML 并构建 DOM 树。</li>
+<li class="lvl-5"><strong>解析 CSS</strong>：解析 CSS 并构建 CSSOM 树。</li>
+<li class="lvl-5"><strong>构建渲染树</strong>：结合 DOM 和 CSSOM 生成渲染树。</li>
+<li class="lvl-5"><strong>布局和绘制</strong>：计算布局并绘制页面内容。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>加载外部资源</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>请求资源</strong>：浏览器解析到外部资源（如图片、CSS、JavaScript）时，发起额外请求。</li>
+<li class="lvl-5"><strong>并行加载</strong>：现代浏览器支持并行加载资源以加快速度。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>执行 JavaScript</strong></p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>解析执行</strong>：浏览器解析并执行 JavaScript 代码。</li>
+<li class="lvl-5"><strong>动态修改</strong>：JavaScript 可动态修改 DOM 和 CSSOM，触发重新渲染。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>页面显示</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p><strong>完成渲染</strong>：所有资源加载并执行完毕后，页面完全显示。</p>
+</li>
+<li class="lvl-5">
+<p><strong>用户交互</strong>：用户可与页面进行交互，触发事件处理。</p>
+</li>
+</ul>
+<h3 id="总结-5"><a class="markdownIt-Anchor" href="#总结-5"></a> 总结</h3>
+<p>从输入网址到网页显示，主要步骤包括：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>URL 解析</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>DNS 解析</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>建立 TCP 连接</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>发送 HTTP 请求</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>服务器处理请求</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>服务器发送 HTTP 响应</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>浏览器渲染页面</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>加载外部资源</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>执行 JavaScript</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>页面显示</strong></p>
+</li>
+</ol>
+<p>这些步骤涉及多个网络协议和技术，确保用户能够快速、安全地访问网页。</p>
+<h2 id="dubbo-和-spring-cloud-gateway-有什么区别"><a class="markdownIt-Anchor" href="#dubbo-和-spring-cloud-gateway-有什么区别"></a> Dubbo 和 Spring Cloud Gateway 有什么区别？</h2>
+<p>Dubbo 和 Spring Cloud Gateway 是两种不同的技术，分别用于微服务架构中的服务调用和 API 网关。它们的主要区别如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>定位和用途</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定位</strong>：高性能的 RPC 框架。</li>
+<li class="lvl-4"><strong>用途</strong>：用于服务之间的远程调用，支持多种协议（如 Dubbo、HTTP、gRPC）。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>定位</strong>：API 网关。</li>
+<li class="lvl-4"><strong>用途</strong>：用于请求路由、负载均衡、安全控制等，作为微服务架构的入口。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>核心功能</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>服务调用</strong>：提供高效的远程调用。</li>
+<li class="lvl-4"><strong>负载均衡</strong>：支持多种负载均衡策略。</li>
+<li class="lvl-4"><strong>服务治理</strong>：提供服务注册与发现、容错、监控等功能。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>路由转发</strong>：根据规则将请求路由到后端服务。</li>
+<li class="lvl-4"><strong>负载均衡</strong>：集成 Ribbon 实现负载均衡。</li>
+<li class="lvl-4"><strong>安全控制</strong>：支持身份验证、权限控制。</li>
+<li class="lvl-4"><strong>限流熔断</strong>：集成 Hystrix 或 Resilience4j 实现限流和熔断。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>架构角色</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>服务提供者</strong>：提供服务实现并注册到注册中心。</li>
+<li class="lvl-4"><strong>服务消费者</strong>：从注册中心获取服务列表并调用服务。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>API 网关</strong>：作为所有外部请求的入口，负责路由和过滤。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li class="lvl-3">
+<p><strong>技术栈</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>协议</strong>：支持 Dubbo、HTTP、gRPC 等。</li>
+<li class="lvl-4"><strong>注册中心</strong>：支持 Zookeeper、Nacos、Consul 等。</li>
+<li class="lvl-4"><strong>编程语言</strong>：主要用于 Java。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>协议</strong>：基于 HTTP/HTTPS。</li>
+<li class="lvl-4"><strong>注册中心</strong>：集成 Eureka、Consul、Nacos 等。</li>
+<li class="lvl-4"><strong>编程语言</strong>：基于 Java，属于 Spring Cloud 生态。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>使用场景</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>适用场景</strong>：适合需要高效 RPC 调用的微服务架构，特别是对性能要求较高的场景。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>适用场景</strong>：适合需要统一入口、路由转发、安全控制等功能的微服务架构。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li class="lvl-3">
+<p><strong>生态系统</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Dubbo</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>生态系统</strong>：Dubbo 生态系统包括 Dubbo、Dubbo Admin、Dubbo Monitor 等。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Spring Cloud Gateway</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>生态系统</strong>：属于 Spring Cloud 生态系统，与 Eureka、Ribbon、Hystrix 等组件集成。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-6"><a class="markdownIt-Anchor" href="#总结-6"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Dubbo</th>
+<th>Spring Cloud Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定位</strong></td>
+<td>RPC 框架</td>
+<td>API 网关</td>
+</tr>
+<tr>
+<td><strong>核心功能</strong></td>
+<td>服务调用、负载均衡、服务治理</td>
+<td>路由转发、负载均衡、安全控制</td>
+</tr>
+<tr>
+<td><strong>架构角色</strong></td>
+<td>服务提供者、服务消费者</td>
+<td>API 网关</td>
+</tr>
+<tr>
+<td><strong>技术栈</strong></td>
+<td>多协议、多注册中心、Java</td>
+<td>HTTP/HTTPS、Spring Cloud 生态、Java</td>
+</tr>
+<tr>
+<td><strong>使用场景</strong></td>
+<td>高效 RPC 调用</td>
+<td>统一入口、路由转发、安全控制</td>
+</tr>
+<tr>
+<td><strong>生态系统</strong></td>
+<td>Dubbo 生态系统</td>
+<td>Spring Cloud 生态系统</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dubbo</strong> 主要用于服务间的高效调用，而 <strong>Spring Cloud Gateway</strong> 则用于管理外部请求的路由和安全控制。两者可以结合使用，构建完整的微服务架构。</p>
+<h2 id="什么是-java-中的原子性-可见性和有序性"><a class="markdownIt-Anchor" href="#什么是-java-中的原子性-可见性和有序性"></a> 什么是 Java 中的原子性、可见性和有序性？</h2>
+<p>在 Java 并发编程中，<strong>原子性</strong>、<strong>可见性</strong>和<strong>有序性</strong>是三个核心概念，用于描述多线程环境下对共享变量的操作特性。理解这些概念对于编写线程安全的代码至关重要。</p>
+<ol>
+<li class="lvl-3">
+<p><strong>原子性（Atomicity）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：原子性指一个操作是不可分割的，要么全部执行成功，要么全部不执行。</p>
+</li>
+<li class="lvl-2">
+<p><strong>示例</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">基本类型的读写（除 <code>long</code> 和 <code>double</code> 外）是原子的。</li>
+<li class="lvl-4"><code>i++</code> 不是原子操作，因为它包含读取、增加和写入三个步骤。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>保证方式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">使用 <code>synchronized</code> 块或方法。</li>
+<li class="lvl-4">使用 <code>java.util.concurrent.atomic</code> 包中的原子类（如 <code>AtomicInteger</code>）。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>可见性（Visibility）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：可见性指一个线程对共享变量的修改对其他线程立即可见。</p>
+</li>
+<li class="lvl-2">
+<p><strong>问题</strong>：由于 CPU 缓存和指令重排序，一个线程的修改可能不会立即反映到主存，导致其他线程看到过期的值。</p>
+</li>
+<li class="lvl-2">
+<p><strong>保证方式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">使用 <code>volatile</code> 关键字。</li>
+<li class="lvl-4">使用 <code>synchronized</code> 块或方法。</li>
+<li class="lvl-4">使用 <code>java.util.concurrent</code> 包中的锁（如 <code>ReentrantLock</code>）。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>有序性（Ordering）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>定义</strong>：有序性指程序执行的顺序按照代码的先后顺序执行。</p>
+</li>
+<li class="lvl-2">
+<p><strong>问题</strong>：由于指令重排序，代码的实际执行顺序可能与编写顺序不一致。</p>
+</li>
+<li class="lvl-2">
+<p><strong>保证方式</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">使用 <code>volatile</code> 关键字。</li>
+<li class="lvl-4">使用 <code>synchronized</code> 块或方法。</li>
+<li class="lvl-4">使用 <code>java.util.concurrent</code> 包中的锁（如 <code>ReentrantLock</code>）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例-3"><a class="markdownIt-Anchor" href="#示例-3"></a> 示例</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">increment</span><span class="params">()</span> &#123;</span><br><span class="line">        count++;  <span class="comment">// 非原子操作</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFlag</span><span class="params">()</span> &#123;</span><br><span class="line">        flag = <span class="literal">true</span>;  <span class="comment">// 保证可见性</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (!flag) &#123;</span><br><span class="line">            <span class="comment">// 等待 flag 变为 true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 保证有序性</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Count: &quot;</span> + count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结-7"><a class="markdownIt-Anchor" href="#总结-7"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>定义</th>
+<th>问题</th>
+<th>保证方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原子性</strong></td>
+<td>操作不可分割，要么全执行，要么全不执行</td>
+<td><code>i++</code> 等复合操作非原子</td>
+<td><code>synchronized</code>、原子类</td>
+</tr>
+<tr>
+<td><strong>可见性</strong></td>
+<td>一个线程的修改对其他线程立即可见</td>
+<td>CPU 缓存和指令重排序导致过期值</td>
+<td><code>volatile</code>、<code>synchronized</code>、锁</td>
+</tr>
+<tr>
+<td><strong>有序性</strong></td>
+<td>程序执行顺序按代码顺序</td>
+<td>指令重排序导致执行顺序不一致</td>
+<td><code>volatile</code>、<code>synchronized</code>、锁</td>
+</tr>
+</tbody>
+</table>
+<p>理解并正确应用这些概念，可以有效避免多线程环境下的并发问题，确保线程安全。</p>
+<h2 id="线程和进程有什么区别"><a class="markdownIt-Anchor" href="#线程和进程有什么区别"></a> 线程和进程有什么区别？</h2>
+<p><strong>线程</strong>和<strong>进程</strong>是操作系统中用于执行任务的两种基本单位，它们的主要区别如下：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>定义</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">进程是操作系统分配资源的基本单位，每个进程都有独立的内存空间和系统资源。</li>
+<li class="lvl-4">进程是程序的实例，包含代码、数据和系统资源。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">线程是 CPU 调度的基本单位，是进程内的一个执行单元。</li>
+<li class="lvl-4">一个进程可以包含多个线程，这些线程共享进程的内存和资源。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>资源分配</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">每个进程有独立的内存空间和系统资源（如文件句柄、网络连接）。</li>
+<li class="lvl-4">进程间通信（IPC）需要通过特定机制（如管道、消息队列、共享内存）。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">线程共享进程的内存和资源，每个线程有独立的栈和寄存器。</li>
+<li class="lvl-4">线程间通信更简单，可以直接读写共享内存。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>创建和销毁</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">创建和销毁进程开销较大，涉及分配和回收内存、资源。</li>
+<li class="lvl-4">进程切换开销也较大，需要保存和恢复整个进程的状态。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">创建和销毁线程开销较小，因为共享进程资源。</li>
+<li class="lvl-4">线程切换开销较小，只需保存和恢复线程的上下文。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li class="lvl-3">
+<p><strong>并发性</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">进程间并发执行，互不干扰。</li>
+<li class="lvl-4">进程间通信复杂，需通过 IPC 机制。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">线程间并发执行，共享内存和资源。</li>
+<li class="lvl-4">线程间通信简单，但需同步机制（如锁、信号量）避免竞争条件。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>独立性</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">进程独立，一个进程崩溃不会影响其他进程。</li>
+<li class="lvl-4">进程间隔离性好，安全性高。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">线程依赖进程，一个线程崩溃可能导致整个进程崩溃。</li>
+<li class="lvl-4">线程间共享资源，需同步机制保证数据一致性。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li class="lvl-3">
+<p><strong>使用场景</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>进程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">适合需要高隔离性和独立性的任务（如浏览器多标签页、独立应用程序）。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>线程</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">适合需要高并发和资源共享的任务（如 Web 服务器处理请求、多线程计算）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-8"><a class="markdownIt-Anchor" href="#总结-8"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>进程</th>
+<th>线程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>资源分配的基本单位</td>
+<td>CPU 调度的基本单位</td>
+</tr>
+<tr>
+<td><strong>资源分配</strong></td>
+<td>独立内存空间和系统资源</td>
+<td>共享进程的内存和资源</td>
+</tr>
+<tr>
+<td><strong>创建销毁</strong></td>
+<td>开销大</td>
+<td>开销小</td>
+</tr>
+<tr>
+<td><strong>并发性</strong></td>
+<td>进程间并发，通信复杂</td>
+<td>线程间并发，通信简单</td>
+</tr>
+<tr>
+<td><strong>独立性</strong></td>
+<td>独立，崩溃不影响其他进程</td>
+<td>依赖进程，崩溃可能影响整个进程</td>
+</tr>
+<tr>
+<td><strong>使用场景</strong></td>
+<td>高隔离性和独立性的任务</td>
+<td>高并发和资源共享的任务</td>
+</tr>
+</tbody>
+</table>
+<p>理解这些区别有助于在实际开发中选择合适的并发模型。</p>
+<h2 id="说说你知道的几种-io-模型"><a class="markdownIt-Anchor" href="#说说你知道的几种-io-模型"></a> 说说你知道的几种 I/O 模型</h2>
+<p>在计算机系统中，I/O 模型决定了应用程序如何处理输入和输出操作。常见的 I/O 模型有以下几种：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>阻塞 I/O（Blocking I/O）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>描述</strong>：应用程序发起 I/O 操作后，线程会被阻塞，直到操作完成。</p>
+</li>
+<li class="lvl-2">
+<p><strong>特点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">简单易用。</li>
+<li class="lvl-4">线程在等待 I/O 完成时无法执行其他任务，效率低。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>适用场景</strong>：适合连接数少、I/O 操作不频繁的场景。</p>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>非阻塞 I/O（Non-blocking I/O）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>描述</strong>：应用程序发起 I/O 操作后立即返回，线程不会被阻塞，可以继续执行其他任务。</p>
+</li>
+<li class="lvl-2">
+<p><strong>特点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">需要轮询检查 I/O 操作是否完成。</li>
+<li class="lvl-4">提高了 CPU 利用率，但轮询增加了开销。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>适用场景</strong>：适合 I/O 操作频繁但连接数较少的场景。</p>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>I/O 多路复用（I/O Multiplexing）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>描述</strong>：使用 <code>select</code>、<code>poll</code> 或 <code>epoll</code> 等机制，同时监控多个 I/O 操作，当某个操作就绪时通知应用程序。</p>
+</li>
+<li class="lvl-2">
+<p><strong>特点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">单线程可以处理多个 I/O 操作，提高了并发能力。</li>
+<li class="lvl-4">减少了线程切换开销。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>适用场景</strong>：适合高并发、连接数多的场景（如 Web 服务器）。</p>
+</li>
+</ul>
+<ol start="4">
+<li class="lvl-3">
+<p><strong>信号驱动 I/O（Signal-driven I/O）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>描述</strong>：应用程序发起 I/O 操作后继续执行，当 I/O 操作就绪时，操作系统通过信号通知应用程序。</p>
+</li>
+<li class="lvl-2">
+<p><strong>特点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">避免了轮询，减少了 CPU 开销。</li>
+<li class="lvl-4">实现复杂，信号处理可能引入额外问题。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>适用场景</strong>：适合 I/O 操作不频繁但需要及时响应的场景。</p>
+</li>
+</ul>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>异步 I/O（Asynchronous I/O）</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>描述</strong>：应用程序发起 I/O 操作后立即返回，操作系统在操作完成后通知应用程序。</p>
+</li>
+<li class="lvl-2">
+<p><strong>特点</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">真正的异步操作，应用程序无需等待或轮询。</li>
+<li class="lvl-4">实现复杂，需要操作系统和编程语言的支持。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>适用场景</strong>：适合高并发、高吞吐量的场景（如高性能服务器）。</p>
+</li>
+</ul>
+<h3 id="总结-9"><a class="markdownIt-Anchor" href="#总结-9"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>I/O 模型</th>
+<th>描述</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>阻塞 I/O</strong></td>
+<td>线程阻塞直到 I/O 操作完成</td>
+<td>简单易用，效率低</td>
+<td>连接数少、I/O 操作不频繁</td>
+</tr>
+<tr>
+<td><strong>非阻塞 I/O</strong></td>
+<td>线程立即返回，需轮询检查 I/O 操作状态</td>
+<td>提高 CPU 利用率，轮询增加开销</td>
+<td>I/O 操作频繁但连接数较少</td>
+</tr>
+<tr>
+<td><strong>I/O 多路复用</strong></td>
+<td>使用 <code>select</code>、<code>poll</code> 或 <code>epoll</code> 监控多个 I/O 操作</td>
+<td>单线程处理多个 I/O 操作，减少线程切换开销</td>
+<td>高并发、连接数多</td>
+</tr>
+<tr>
+<td><strong>信号驱动 I/O</strong></td>
+<td>操作系统通过信号通知应用程序 I/O 操作就绪</td>
+<td>避免轮询，减少 CPU 开销，实现复杂</td>
+<td>I/O 操作不频繁但需及时响应</td>
+</tr>
+<tr>
+<td><strong>异步 I/O</strong></td>
+<td>操作系统在 I/O 操作完成后通知应用程序</td>
+<td>真正的异步操作，实现复杂</td>
+<td>高并发、高吞吐量</td>
+</tr>
+</tbody>
+</table>
+<p>选择合适的 I/O 模型可以显著提升应用程序的性能和响应能力。</p>
+<h2 id="mybatis-与-hibernate-有哪些不同"><a class="markdownIt-Anchor" href="#mybatis-与-hibernate-有哪些不同"></a> MyBatis 与 Hibernate 有哪些不同？</h2>
+<p>MyBatis 和 Hibernate 是两种广泛使用的 Java 持久层框架，它们在设计理念和使用方式上有显著区别。以下是它们的主要不同点：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>设计理念</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>SQL 映射框架</strong>：MyBatis 强调 SQL 的灵活性和控制力，开发者需手动编写 SQL 语句。</li>
+<li class="lvl-4"><strong>半自动化</strong>：开发者需管理 SQL 和结果映射，框架负责执行 SQL 和结果集映射。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>ORM 框架</strong>：Hibernate 是对象关系映射框架，自动将 Java 对象映射到数据库表。</li>
+<li class="lvl-4"><strong>全自动化</strong>：开发者无需编写 SQL，框架自动生成并执行 SQL。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>SQL 控制</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>手动编写 SQL</strong>：开发者需编写和维护 SQL 语句，适合复杂查询和优化。</li>
+<li class="lvl-4"><strong>灵活性高</strong>：适合需要精细控制 SQL 的场景。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>自动生成 SQL</strong>：框架根据对象模型自动生成 SQL，开发者无需手动编写。</li>
+<li class="lvl-4"><strong>灵活性较低</strong>：复杂查询和优化需使用 HQL 或 Criteria API。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>性能</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>性能较高</strong>：手动编写 SQL 可优化性能，减少框架开销。</li>
+<li class="lvl-4"><strong>适合复杂查询</strong>：对复杂查询和批量操作有更好的控制。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>性能较低</strong>：自动生成 SQL 可能不够高效，框架开销较大。</li>
+<li class="lvl-4"><strong>适合简单操作</strong>：对简单 CRUD 操作性能较好。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li class="lvl-3">
+<p><strong>学习曲线</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>学习曲线较平缓</strong>：需掌握 SQL 和结果映射，适合熟悉 SQL 的开发者。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>学习曲线较陡峭</strong>：需掌握 ORM 概念和 HQL，适合熟悉面向对象编程的开发者。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>缓存机制</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>缓存支持</strong>：提供一级和二级缓存，但需手动配置和管理。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>缓存支持</strong>：提供一级、二级和查询缓存，缓存机制更强大和自动化。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li class="lvl-3">
+<p><strong>适用场景</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>MyBatis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>适用场景</strong>：适合需要精细控制 SQL、复杂查询和优化的项目。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Hibernate</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>适用场景</strong>：适合快速开发、简单 CRUD 操作和面向对象设计的项目。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-10"><a class="markdownIt-Anchor" href="#总结-10"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>MyBatis</th>
+<th>Hibernate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>设计理念</strong></td>
+<td>SQL 映射框架，半自动化</td>
+<td>ORM 框架，全自动化</td>
+</tr>
+<tr>
+<td><strong>SQL 控制</strong></td>
+<td>手动编写 SQL，灵活性高</td>
+<td>自动生成 SQL，灵活性较低</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>性能较高，适合复杂查询</td>
+<td>性能较低，适合简单操作</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>较平缓，需掌握 SQL</td>
+<td>较陡峭，需掌握 ORM 和 HQL</td>
+</tr>
+<tr>
+<td><strong>缓存机制</strong></td>
+<td>提供一级和二级缓存，需手动配置</td>
+<td>提供一级、二级和查询缓存，自动化</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>精细控制 SQL、复杂查询</td>
+<td>快速开发、简单 CRUD 操作</td>
+</tr>
+</tbody>
+</table>
+<p>根据项目需求选择合适的框架，MyBatis 适合需要精细控制 SQL 的场景，而 Hibernate 适合快速开发和简单操作。</p>
+<h2 id="什么是-java-内存模型jmm"><a class="markdownIt-Anchor" href="#什么是-java-内存模型jmm"></a> 什么是 Java 内存模型（JMM）？</h2>
+<p><strong>Java 内存模型（Java Memory Model, JMM）</strong> 是 Java 虚拟机（JVM）规范的一部分，定义了多线程环境下线程如何与内存交互，确保线程安全性和内存可见性。JMM 的主要目标是解决多线程并发访问共享数据时的内存一致性问题。</p>
+<h3 id="java-内存模型的核心概念"><a class="markdownIt-Anchor" href="#java-内存模型的核心概念"></a> Java 内存模型的核心概念</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>主内存和工作内存</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>主内存</strong>：所有共享变量存储的区域，所有线程均可访问。</li>
+<li class="lvl-5"><strong>工作内存</strong>：每个线程有自己的工作内存，存储主内存中共享变量的副本。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>内存间交互操作</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>read</strong>：从主内存读取变量到工作内存。</li>
+<li class="lvl-5"><strong>load</strong>：将读取的变量值放入工作内存的变量副本。</li>
+<li class="lvl-5"><strong>use</strong>：线程使用工作内存中的变量值。</li>
+<li class="lvl-5"><strong>assign</strong>：线程将新值赋给工作内存中的变量。</li>
+<li class="lvl-5"><strong>store</strong>：将工作内存中的变量值写回主内存。</li>
+<li class="lvl-5"><strong>write</strong>：将存储的变量值更新到主内存中的变量。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>原子性、可见性和有序性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>原子性</strong>：操作不可分割，要么全部执行，要么全部不执行。</li>
+<li class="lvl-5"><strong>可见性</strong>：一个线程对共享变量的修改对其他线程立即可见。</li>
+<li class="lvl-5"><strong>有序性</strong>：程序执行顺序按代码顺序执行。</li>
+</ul>
+</li>
+</ol>
+<h3 id="java-内存模型的规则"><a class="markdownIt-Anchor" href="#java-内存模型的规则"></a> Java 内存模型的规则</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>顺序一致性</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">单线程内，操作按程序顺序执行。</li>
+<li class="lvl-5">多线程间，操作顺序可能重排序，但需保证最终一致性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>volatile 关键字</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">保证变量的可见性和有序性。</li>
+<li class="lvl-5">每次读取都从主内存获取最新值，每次写入都立即刷新到主内存。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>synchronized 关键字</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">保证代码块的原子性、可见性和有序性。</li>
+<li class="lvl-5">线程进入同步块前，从主内存读取共享变量；退出同步块时，将共享变量写回主内存。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>final 关键字</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">保证构造函数中的 <code>final</code> 变量在对象构造完成后对其他线程可见。</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例-4"><a class="markdownIt-Anchor" href="#示例-4"></a> 示例</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JMMExample</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">sharedVariable</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writer</span><span class="params">()</span> &#123;</span><br><span class="line">        sharedVariable = <span class="number">42</span>;  <span class="comment">// 操作1</span></span><br><span class="line">        flag = <span class="literal">true</span>;          <span class="comment">// 操作2</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reader</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (flag) &#123;           <span class="comment">// 操作3</span></span><br><span class="line">            System.out.println(sharedVariable);  <span class="comment">// 操作4</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>可见性</strong>：<code>volatile</code> 关键字确保 <code>flag</code> 的修改对其他线程立即可见。</p>
+</li>
+<li class="lvl-2">
+<p><strong>有序性</strong>：<code>volatile</code> 关键字防止操作1和操作2的重排序。</p>
+</li>
+</ul>
+<h3 id="总结-11"><a class="markdownIt-Anchor" href="#总结-11"></a> 总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Java 内存模型（JMM）</strong> 定义了多线程环境下线程与内存的交互方式，确保线程安全性和内存可见性。</p>
+</li>
+<li class="lvl-2">
+<p><strong>核心概念</strong> 包括主内存、工作内存、内存间交互操作、原子性、可见性和有序性。</p>
+</li>
+<li class="lvl-2">
+<p><strong>规则</strong> 包括顺序一致性、<code>volatile</code> 关键字、<code>synchronized</code> 关键字和 <code>final</code> 关键字。</p>
+</li>
+</ul>
+<p>理解 JMM 有助于编写高效、线程安全的并发程序。</p>
+<h2 id="redis-和-memcached-有哪些区别"><a class="markdownIt-Anchor" href="#redis-和-memcached-有哪些区别"></a> Redis 和 Memcached 有哪些区别？</h2>
+<p><strong>Redis</strong> 和 <strong>Memcached</strong> 是两种常用的内存缓存系统，尽管它们都用于缓存数据，但在功能和使用场景上有显著区别。以下是它们的主要区别：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>数据结构</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">支持多种数据结构：字符串、列表、集合、有序集合、哈希表等。</li>
+<li class="lvl-4">适合复杂数据操作，如范围查询、排序等。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">仅支持简单的键值对存储，值只能是字符串。</li>
+<li class="lvl-4">适合简单的缓存需求。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>持久化</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">支持持久化，可将数据保存到磁盘（RDB 和 AOF 两种方式）。</li>
+<li class="lvl-4">适合需要数据持久化的场景。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">不支持持久化，数据仅存储在内存中，重启后数据丢失。</li>
+<li class="lvl-4">适合临时缓存场景。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li class="lvl-3">
+<p><strong>性能</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">单线程模型，性能较高，适合读多写少的场景。</li>
+<li class="lvl-4">复杂数据操作可能影响性能。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">多线程模型，适合高并发读写场景。</li>
+<li class="lvl-4">简单键值操作性能极高。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li class="lvl-3">
+<p><strong>内存管理</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">使用自己的内存分配器，支持数据淘汰策略（如 LRU）。</li>
+<li class="lvl-4">适合需要精细内存管理的场景。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">使用 Slab 分配器，内存管理简单高效。</li>
+<li class="lvl-4">适合大规模缓存场景。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li class="lvl-3">
+<p><strong>集群支持</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">支持主从复制、哨兵模式和集群模式。</li>
+<li class="lvl-4">适合高可用和分布式场景。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">通过客户端实现分布式，无内置集群支持。</li>
+<li class="lvl-4">适合简单分布式缓存场景。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li class="lvl-3">
+<p><strong>使用场景</strong></p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Redis</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">适合复杂数据结构、持久化、高可用和分布式场景。</li>
+<li class="lvl-4">常见应用：缓存、会话存储、消息队列、排行榜等。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>Memcached</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4">适合简单键值缓存、高并发读写场景。</li>
+<li class="lvl-4">常见应用：网页缓存、数据库查询缓存等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-12"><a class="markdownIt-Anchor" href="#总结-12"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Redis</th>
+<th>Memcached</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据结构</strong></td>
+<td>支持多种数据结构</td>
+<td>仅支持键值对</td>
+</tr>
+<tr>
+<td><strong>持久化</strong></td>
+<td>支持 RDB 和 AOF 持久化</td>
+<td>不支持持久化</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>单线程，适合读多写少</td>
+<td>多线程，适合高并发读写</td>
+</tr>
+<tr>
+<td><strong>内存管理</strong></td>
+<td>支持数据淘汰策略</td>
+<td>使用 Slab 分配器</td>
+</tr>
+<tr>
+<td><strong>集群支持</strong></td>
+<td>支持主从复制、哨兵和集群模式</td>
+<td>通过客户端实现分布式</td>
+</tr>
+<tr>
+<td><strong>使用场景</strong></td>
+<td>复杂数据结构、持久化、高可用</td>
+<td>简单键值缓存、高并发读写</td>
+</tr>
+</tbody>
+</table>
+<p>根据具体需求选择合适的缓存系统，Redis 适合复杂场景，Memcached 适合简单高并发场景。</p>
+<h2 id="什么是物理地址什么是逻辑地址"><a class="markdownIt-Anchor" href="#什么是物理地址什么是逻辑地址"></a> 什么是物理地址，什么是逻辑地址？</h2>
+<p><strong>物理地址</strong>和<strong>逻辑地址</strong>是计算机内存管理中的两个基本概念，它们在计算机系统中的存储和访问数据时扮演着不同的角色。<br />
+<strong>物理地址</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>物理地址是指内存单元的实际地址，即硬件地址。</p>
+</li>
+<li class="lvl-2">
+<p>它是内存芯片上存储单元的绝对地址，用于直接访问内存中的数据。</p>
+</li>
+<li class="lvl-2">
+<p>物理地址是唯一且固定的，由内存控制器直接使用。</p>
+</li>
+<li class="lvl-2">
+<p>操作系统和管理程序通常不直接使用物理地址，而是通过逻辑地址来间接引用。</p>
+</li>
+</ul>
+<p><strong>逻辑地址</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>逻辑地址是由程序员在编写程序时使用的地址，也称为虚拟地址。</p>
+</li>
+<li class="lvl-2">
+<p>它是程序代码中的地址，用于表示数据或指令在逻辑上的位置。</p>
+</li>
+<li class="lvl-2">
+<p>逻辑地址通过内存管理单元（MMU）映射到物理地址。</p>
+</li>
+<li class="lvl-2">
+<p>逻辑地址使得程序可以在不同的物理内存布局中运行，提供了内存保护、多任务处理和虚拟内存等高级功能。</p>
+</li>
+</ul>
+<p><strong>区别与联系</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>区别</strong>：物理地址是实际的硬件地址，而逻辑地址是程序使用的抽象地址。</p>
+</li>
+<li class="lvl-2">
+<p><strong>联系</strong>：逻辑地址通过地址转换机制（如页表或段表）映射到物理地址，从而实现程序对物理内存的访问。</p>
+</li>
+</ul>
+<p><strong>地址转换</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当程序运行时，CPU生成的逻辑地址会通过MMU进行转换，查找页表或段表以获得对应的物理地址。</p>
+</li>
+<li class="lvl-2">
+<p>这种转换是透明的，程序员无需关心具体的物理地址，只需使用逻辑地址即可。</p>
+</li>
+</ul>
+<p><strong>为什么使用逻辑地址</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>内存保护</strong>：防止程序访问不属于它的内存区域。</p>
+</li>
+<li class="lvl-2">
+<p><strong>虚拟内存</strong>：允许程序使用比实际物理内存更大的地址空间。</p>
+</li>
+<li class="lvl-2">
+<p><strong>多任务</strong>：不同程序可以使用相同的逻辑地址空间，而不会相互干扰。</p>
+</li>
+<li class="lvl-2">
+<p><strong>灵活性</strong>：程序可以在不同的物理内存配置上运行，无需修改。</p>
+</li>
+</ul>
+<p>总之，物理地址和逻辑地址的分离是现代操作系统实现高效、安全内存管理的关键技术之一。</p>
+<h2 id="说说什么是-api-网关它有什么作用"><a class="markdownIt-Anchor" href="#说说什么是-api-网关它有什么作用"></a> 说说什么是 API 网关？它有什么作用？</h2>
+<p><strong>API网关</strong>是一种位于客户端和后端服务之间的中间层，用于处理进入和出去的API调用。它充当了一个反向代理的角色，将客户端的请求路由到适当的后端服务，并将后端服务的响应返回给客户端。</p>
+<p><strong>API网关的主要作用包括：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>请求路由</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关负责将客户端的请求路由到正确的后端服务实例。</li>
+<li class="lvl-5">它可以根据请求的路径、方法、头部等信息进行路由决策。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>负载均衡</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以在多个后端服务实例之间分配请求负载，以提高系统的可用性和性能。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>协议转换</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以支持多种客户端协议（如HTTP、HTTPS、WebSocket等）和后端服务协议（如REST、gRPC、GraphQL等），并在两者之间进行协议转换。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>身份验证和授权</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以集成身份验证和授权机制，如OAuth、JWT等，以确保只有合法用户才能访问API。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>限流和配额管理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以实施限流策略，如请求速率限制、并发请求限制等，以防止后端服务过载。</li>
+<li class="lvl-5">它还可以管理API的使用配额，确保每个用户或服务在给定时间内不会超过其允许的调用次数。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>监控和日志记录</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以收集关于API使用情况的监控数据，如请求次数、响应时间、错误率等。</li>
+<li class="lvl-5">它还可以记录API调用的日志，用于审计和分析。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>缓存</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以实现缓存机制，以减少对后端服务的重复请求，提高响应速度。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>服务熔断和降级</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在后端服务出现故障或性能问题时，API网关可以实施熔断策略，暂时切断对该服务的请求，以防止故障蔓延。</li>
+<li class="lvl-5">它还可以实现服务降级，为用户提供备选的响应或功能。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>跨域资源共享（CORS）</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">API网关可以处理跨域请求，允许不同域的客户端访问API。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>API版本管理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">API网关可以支持多个版本的API，并根据客户端的请求将它们路由到正确的版本。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>安全防护</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-6">API网关可以提供一层安全防护，如防止SQL注入、XSS攻击等，以保护后端服务免受恶意攻击。</li>
+</ul>
+</li>
+</ol>
+<p>通过这些功能，API网关简化了客户端与后端服务之间的交互，提高了系统的可扩展性、安全性和可维护性。它还使得开发者可以更专注于业务逻辑的开发，而不需要关心底层的网络和传输细节。</p>
+<h2 id="什么是-java-的-cascompare-and-swap操作"><a class="markdownIt-Anchor" href="#什么是-java-的-cascompare-and-swap操作"></a> 什么是 Java 的 CAS（Compare-And-Swap）操作？</h2>
+<p>Java的CAS（Compare-And-Swap）操作是一种在多线程环境中实现原子性更新的技术。它是一种硬件支持的原子性操作，用于在不需要锁的情况下实现线程安全。</p>
+<p><strong>CAS操作的基本思想是：</strong></p>
+<ol>
+<li class="lvl-3">
+<p><strong>读取内存中的值</strong>：线程从内存中读取某个变量的当前值。</p>
+</li>
+<li class="lvl-3">
+<p><strong>进行比较</strong>：线程将读取到的值与预期值进行比较。</p>
+</li>
+<li class="lvl-3">
+<p><strong>交换</strong>：如果读取到的值与预期值相同，那么线程将使用新值更新该变量的值；如果不同，说明在读取值和进行比较之间，该变量的值已经被其他线程修改过，此时CAS操作失败，线程可以重新尝试或者放弃操作。</p>
+</li>
+</ol>
+<p><strong>CAS操作的特点：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>原子性</strong>：CAS操作是原子性的，即在同一时刻，只有一个线程能够成功执行CAS操作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>无锁</strong>：CAS操作不需要使用锁，因此可以减少线程争用锁的开销，提高并发性能。</p>
+</li>
+<li class="lvl-2">
+<p><strong>轻量级</strong>：CAS操作通常比使用锁更加轻量级，因为它只涉及对单个变量的操作。</p>
+</li>
+</ul>
+<p><strong>Java中的CAS操作实现：</strong></p>
+<p>在Java中，CAS操作通常通过<code>java.util.concurrent.atomic</code>包下的原子类实现，如<code>AtomicInteger</code>、<code>AtomicLong</code>、<code>AtomicReference</code>等。这些类提供了<code>compareAndSet</code>方法，用于执行CAS操作。</p>
+<p>例如，<code>AtomicInteger</code>的<code>compareAndSet</code>方法签名如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">compareAndSet</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> update)</span></span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>expect</code>：预期值，即线程期望内存中的值。</p>
+</li>
+<li class="lvl-2">
+<p><code>update</code>：新值，即如果比较成功，线程希望更新成的值。</p>
+</li>
+</ul>
+<p>如果内存中的值与<code>expect</code>相同，那么将内存中的值更新为<code>update</code>，方法返回<code>true</code>；否则，不进行更新，方法返回<code>false</code>。</p>
+<p><strong>CAS操作的局限性：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>ABA问题</strong>：CAS操作可能导致ABA问题，即一个线程将变量的值从A改为B，然后又改回A，此时另一个线程进行CAS操作时，可能会误认为变量没有被修改过。为了解决ABA问题，可以使用<code>AtomicStampedReference</code>或<code>AtomicMarkableReference</code>等带有版本号或标记的原子类。</p>
+</li>
+<li class="lvl-2">
+<p><strong>循环开销</strong>：CAS操作失败后，线程通常需要重新尝试，这可能导致循环开销。</p>
+</li>
+<li class="lvl-2">
+<p><strong>只能用于单个变量</strong>：CAS操作只能用于单个变量的原子性更新，对于多个变量的原子性更新，需要使用其他机制，如锁。</p>
+</li>
+</ul>
+<p>尽管有这些局限性，CAS操作仍然是多线程编程中实现原子性更新的一种有效手段。</p>
+<h2 id="select-poll-epoll-之间有什么区别"><a class="markdownIt-Anchor" href="#select-poll-epoll-之间有什么区别"></a> Select、Poll、Epoll 之间有什么区别？</h2>
+<p>Select、Poll和Epoll都是Unix系统中用于I/O多路复用的系统调用，它们允许程序同时监控多个文件描述符，以发现哪些文件描述符已经准备好进行读写操作。它们之间的主要区别包括：</p>
+<h3 id="select"><a class="markdownIt-Anchor" href="#select"></a> Select</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>历史</strong>：最早出现，几乎所有的Unix系统都支持。</p>
+</li>
+<li class="lvl-2">
+<p><strong>限制</strong>：支持的文件描述符数量有限，通常为1024个，这个限制可以通过修改系统参数来增加，但不是动态的。</p>
+</li>
+<li class="lvl-2">
+<p><strong>效率</strong>：每次调用select时，都需要将整个文件描述符集合从用户空间复制到内核空间，效率较低。</p>
+</li>
+<li class="lvl-2">
+<p><strong>可移植性</strong>：具有良好的可移植性，几乎所有的平台都支持。</p>
+</li>
+</ul>
+<h3 id="poll"><a class="markdownIt-Anchor" href="#poll"></a> Poll</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>历史</strong>：比select出现稍晚，作为select的改进。</p>
+</li>
+<li class="lvl-2">
+<p><strong>限制</strong>：没有固定的文件描述符数量限制，但是仍然需要遍历所有文件描述符来检查哪些准备好了。</p>
+</li>
+<li class="lvl-2">
+<p><strong>效率</strong>：与select类似，需要将整个文件描述符集合复制到内核空间，但是poll使用数组而不是位图来存储文件描述符，可以支持更多的文件描述符。</p>
+</li>
+<li class="lvl-2">
+<p><strong>可移植性</strong>：也具有良好的可移植性，但不如select广泛。</p>
+</li>
+</ul>
+<h3 id="epoll"><a class="markdownIt-Anchor" href="#epoll"></a> Epoll</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>历史</strong>：是Linux特有的系统调用，用于替代select和poll。</p>
+</li>
+<li class="lvl-2">
+<p><strong>限制</strong>：没有文件描述符数量的限制，可以动态地增加或删除文件描述符。</p>
+</li>
+<li class="lvl-2">
+<p><strong>效率</strong>：epoll使用一个事件表来存储准备好的文件描述符，不需要每次都复制整个集合。当文件描述符状态发生变化时，内核会通知用户空间，因此效率更高。</p>
+</li>
+<li class="lvl-2">
+<p><strong>可移植性</strong>：仅限于Linux系统。</p>
+</li>
+</ul>
+<h3 id="关键区别"><a class="markdownIt-Anchor" href="#关键区别"></a> 关键区别</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>文件描述符数量</strong>：select有固定限制，poll理论上无限制但效率不高，epoll无限制且效率高。</p>
+</li>
+<li class="lvl-3">
+<p><strong>效率</strong>：select和poll都需要遍历所有文件描述符，而epoll只需要关注那些状态发生变化的文件描述符。</p>
+</li>
+<li class="lvl-3">
+<p><strong>通知机制</strong>：select和poll是轮询的方式，epoll是事件驱动的方式，只有当文件描述符状态发生变化时才通知用户空间。</p>
+</li>
+<li class="lvl-3">
+<p><strong>可移植性</strong>：select最具可移植性，poll次之，epoll仅限于Linux。</p>
+</li>
+</ol>
+<h3 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>Select</strong>：适用于文件描述符数量较少的场景，或者需要跨平台的场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Poll</strong>：适用于文件描述符数量较多，但仍然不是非常巨大的场景。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Epoll</strong>：适用于文件描述符数量非常多，且只需要在Linux平台上运行的场景。</p>
+</li>
+</ul>
+<p>在实际应用中，epoll由于其高效性和灵活性，已经成为Linux系统中高性能网络服务器的主流选择。而select和poll则更多用于兼容性要求较高的场合。</p>
+<h2 id="什么是-mybatis-plus它有什么作用它和-mybatis-有哪些区别"><a class="markdownIt-Anchor" href="#什么是-mybatis-plus它有什么作用它和-mybatis-有哪些区别"></a> 什么是 MyBatis-Plus？它有什么作用？它和 MyBatis 有哪些区别？</h2>
+<p><strong>MyBatis-Plus</strong> 是一个基于 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。它提供了丰富的功能，包括但不限于：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>代码生成器</strong>：可以快速生成 Mapper、Model、Service、Controller 等代码，减少手动编写。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自动填充</strong>：支持插入和更新时自动填充字段，如创建时间、更新时间等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>逻辑删除</strong>：支持逻辑删除，不需要真正从数据库删除数据，而是通过一个标志位来表示数据是否有效。</p>
+</li>
+<li class="lvl-3">
+<p><strong>分页插件</strong>：内置分页插件，方便进行分页查询。</p>
+</li>
+<li class="lvl-3">
+<p><strong>性能分析</strong>：支持 SQL 性能分析，帮助开发者优化 SQL 语句。</p>
+</li>
+<li class="lvl-3">
+<p><strong>序列化支持</strong>：支持多种序列化方式，如 JSON、XML 等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自定义 SQL</strong>：允许开发者自定义 SQL 语句，满足复杂查询需求。</p>
+</li>
+</ol>
+<p><strong>MyBatis-Plus 的作用</strong>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>简化开发</strong>：通过自动生成代码、自动填充、逻辑删除等功能，减少开发者的工作量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>提高效率</strong>：通过内置的分页插件、性能分析等功能，提高开发效率。</p>
+</li>
+<li class="lvl-2">
+<p><strong>增强功能</strong>：在 MyBatis 的基础上增加了许多实用功能，使得 MyBatis 更加强大。</p>
+</li>
+</ul>
+<p><strong>MyBatis-Plus 和 MyBatis 的区别</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>功能增强</strong>：MyBatis-Plus 在 MyBatis 的基础上增加了许多功能，如代码生成、自动填充、逻辑删除等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>简化配置</strong>：MyBatis-Plus 提供了更多的默认配置，减少了开发者的配置工作。</p>
+</li>
+<li class="lvl-3">
+<p><strong>性能优化</strong>：MyBatis-Plus 对一些常用操作进行了性能优化，如分页查询。</p>
+</li>
+<li class="lvl-3">
+<p><strong>扩展性</strong>：MyBatis-Plus 允许开发者通过插件的方式进行扩展，灵活性更高。</p>
+</li>
+<li class="lvl-3">
+<p><strong>学习成本</strong>：由于 MyBatis-Plus 增加了许多新功能，因此学习成本相对较高，但一旦掌握，开发效率会大大提高。</p>
+</li>
+</ol>
+<p>总的来说，MyBatis-Plus 是 MyBatis 的一个增强版，它在保持 MyBatis 灵活性的同时，提供了更多便捷的功能，旨在简化开发、提高效率。对于新项目或希望提高开发效率的项目，可以考虑使用 MyBatis-Plus。</p>
+<h2 id="为什么-java-中的-threadlocal-对-key-的引用为弱引用"><a class="markdownIt-Anchor" href="#为什么-java-中的-threadlocal-对-key-的引用为弱引用"></a> 为什么 Java 中的 ThreadLocal 对 key 的引用为弱引用？</h2>
+<p>Java中的<code>ThreadLocal</code>使用弱引用（WeakReference）来引用其内部<code>ThreadLocalMap</code>的键（key）是出于避免内存泄漏的考虑。下面是详细的原因：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>防止内存泄漏</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><code>ThreadLocal</code>用于存储线程局部变量，每个线程都有自己的<code>ThreadLocalMap</code>，这个映射表的键是<code>ThreadLocal</code>实例，值是线程局部变量。</li>
+<li class="lvl-5">如果<code>ThreadLocal</code>实例的强引用存在于线程的生命周期内，那么即使这个<code>ThreadLocal</code>实例不再被使用，它也不会被垃圾回收，因为线程还持有它的强引用。</li>
+<li class="lvl-5">这就可能导致内存泄漏，因为<code>ThreadLocal</code>实例及其关联的线程局部变量将无法被回收。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>弱引用的作用</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">使用弱引用作为<code>ThreadLocalMap</code>的键，意味着<code>ThreadLocal</code>实例如果没有其他强引用指向它，那么它就可以被垃圾回收。</li>
+<li class="lvl-5">一旦<code>ThreadLocal</code>实例被回收，其对应的键在<code>ThreadLocalMap</code>中就变成了无效的弱引用，这时<code>ThreadLocalMap</code>会在下一次访问时清理这些无效的条目。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>清理机制</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><code>ThreadLocal</code>的<code>get()</code>、<code>set()</code>和<code>remove()</code>方法中都包含了清理无效条目的逻辑。</li>
+<li class="lvl-5">这种设计确保了即使开发者忘记调用<code>remove()</code>方法来清理<code>ThreadLocal</code>实例，垃圾回收器仍然可以回收它们，从而减少内存泄漏的风险。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>线程池场景</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">在使用线程池的情况下，线程会被重用，如果<code>ThreadLocal</code>实例不被及时清理，那么它的生命周期可能会比预期的长，增加内存泄漏的风险。</li>
+<li class="lvl-5">弱引用的设计在这种场景下尤其有用，因为它允许<code>ThreadLocal</code>实例在不再被使用时能够被回收。</li>
+</ul>
+</li>
+</ol>
+<p>总之，<code>ThreadLocal</code>对键使用弱引用是为了确保<code>ThreadLocal</code>实例在不再被使用时能够被垃圾回收，从而避免内存泄漏。然而，这并不意味着使用<code>ThreadLocal</code>就完全不会发生内存泄漏，开发者仍然需要合理使用<code>ThreadLocal</code>，并在适当的时候调用<code>remove()</code>方法来清理线程局部变量。</p>
+<h2 id="编译执行与解释执行的区别是什么jvm-使用哪种方式"><a class="markdownIt-Anchor" href="#编译执行与解释执行的区别是什么jvm-使用哪种方式"></a> 编译执行与解释执行的区别是什么？JVM 使用哪种方式？</h2>
+<p>编译执行和解释执行是两种不同的程序执行方式，它们的主要区别如下：</p>
+<h3 id="编译执行"><a class="markdownIt-Anchor" href="#编译执行"></a> 编译执行：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>过程</strong>：源代码被编译器一次性翻译成可执行文件或目标代码，然后由计算机执行。</p>
+</li>
+<li class="lvl-3">
+<p><strong>速度</strong>：通常执行速度较快，因为编译后的代码是直接由计算机硬件执行的。</p>
+</li>
+<li class="lvl-3">
+<p><strong>灵活性</strong>：灵活性较差，因为编译后的代码通常与特定的硬件和操作系统相关联，不易移植。</p>
+</li>
+<li class="lvl-3">
+<p><strong>例子</strong>：C、C++等语言通常使用编译执行。</p>
+</li>
+</ol>
+<h3 id="解释执行"><a class="markdownIt-Anchor" href="#解释执行"></a> 解释执行：</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>过程</strong>：源代码被解释器逐行翻译和执行，不生成独立的目标代码。</p>
+</li>
+<li class="lvl-3">
+<p><strong>速度</strong>：通常执行速度较慢，因为每执行一次都需要重新翻译源代码。</p>
+</li>
+<li class="lvl-3">
+<p><strong>灵活性</strong>：灵活性较高，因为解释器可以运行在任何支持它的硬件和操作系统上，易于移植。</p>
+</li>
+<li class="lvl-3">
+<p><strong>例子</strong>：早期的JavaScript、Python等语言通常使用解释执行。</p>
+</li>
+</ol>
+<h3 id="jvm的执行方式"><a class="markdownIt-Anchor" href="#jvm的执行方式"></a> JVM的执行方式：</h3>
+<p>Java虚拟机（JVM）结合了编译执行和解释执行的特点，采用了一种混合模式：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>即时编译（JIT）</strong>：JVM在运行时使用即时编译器（Just-In-Time Compiler）将字节码编译成本地机器码执行，这提高了执行效率。</p>
+</li>
+<li class="lvl-3">
+<p><strong>解释执行</strong>：对于一些不常用的代码或者初次执行的代码，JVM可能会采用解释执行的方式。</p>
+</li>
+<li class="lvl-3">
+<p><strong>动态优化</strong>：JVM会根据代码的运行情况动态调整执行策略，对于热点代码（频繁执行的代码）会进行优化编译。</p>
+</li>
+</ol>
+<p>这种混合模式使得JVM能够兼顾执行速度和灵活性，既能够快速启动和执行，又能够根据实际情况优化性能。<br />
+总结来说，JVM使用的是一种结合了编译执行和解释执行的混合模式，通过即时编译和动态优化来提高Java程序的执行效率。</p>
+<h2 id="redis-支持事务吗如何实现"><a class="markdownIt-Anchor" href="#redis-支持事务吗如何实现"></a> Redis 支持事务吗？如何实现？</h2>
+<p><strong>Redis支持事务</strong>，但是它与关系型数据库中的事务有所不同。Redis的事务主要提供了一种将多个命令打包执行的机制，并且确保这些命令在执行过程中不会被其他命令打断。这种事务机制被称为<strong>MULTI/EXEC</strong>事务。</p>
+<p><strong>Redis事务的实现方式如下</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>开启事务</strong>：使用<code>MULTI</code>命令开启一个事务。此时，Redis会返回一个<code>OK</code>状态，表示已经进入了事务状态。</p>
+</li>
+<li class="lvl-3">
+<p><strong>命令入队</strong>：在开启事务后，后续发送的命令不会立即执行，而是被放入一个事务队列中。这些命令会排队等待执行。</p>
+</li>
+<li class="lvl-3">
+<p><strong>执行事务</strong>：使用<code>EXEC</code>命令执行事务。此时，Redis会按照事务队列中的顺序依次执行所有命令，并返回每个命令的执行结果。</p>
+</li>
+<li class="lvl-3">
+<p><strong>放弃事务</strong>：如果在执行事务前想要放弃事务，可以使用<code>DISCARD</code>命令。这个命令会清空事务队列，并退出事务状态。</p>
+</li>
+<li class="lvl-3">
+<p><strong>错误处理</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>语法错误</strong>：如果在命令入队时存在语法错误，Redis会拒绝执行整个事务，并返回错误。</li>
+<li class="lvl-5"><strong>运行时错误</strong>：如果命令在执行时出现运行时错误（例如对不存在键进行操作），那么出现错误的命令不会执行，但其他命令仍会正常执行。</li>
+</ul>
+</li>
+</ol>
+<p><strong>需要注意的是</strong>，Redis的事务不提供回滚机制。一旦执行了<code>EXEC</code>命令，即使某些命令执行失败，也不会回滚之前已经执行的命令。</p>
+<p>此外，Redis还提供了<code>WATCH</code>命令，用于实现<strong>乐观锁</strong>。通过<code>WATCH</code>命令可以监视一个或多个键，如果在执行事务前这些键被其他客户端修改，那么事务会被放弃执行。</p>
+<p>总的来说，Redis的事务提供了一种将多个命令原子化执行的机制，但与关系型数据库的事务相比，它在一致性和回滚方面有所不足。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-02-08</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+                            面试题
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>
