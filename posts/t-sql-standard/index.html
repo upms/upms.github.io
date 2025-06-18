@@ -60,8 +60,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 7.1.1"></head>
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
     
     
 
@@ -81,19 +81,21 @@
     
     
 
-    
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -127,14 +129,14 @@
     <ul class="nav">
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -157,7 +159,7 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-05-27</span> 
+                    <span>最近更新：2025-06-18</span> 
                 
                 
                     
@@ -418,7 +420,7 @@
 </ul>
 <h4 id="29-一个规范的建表语句示例"><a class="markdownIt-Anchor" href="#29-一个规范的建表语句示例"></a> 2.9 一个规范的建表语句示例</h4>
 <p>一个较为规范的建表语句为：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> web_user (</span><br><span class="line">id <span class="type">bigint</span> unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;主键自增ID&#x27;</span>,</span><br><span class="line">user_id <span class="type">bigint</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">username <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;真实姓名&#x27;</span>,</span><br><span class="line">email <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户邮箱&#x27;</span>,</span><br><span class="line">nickname <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;昵称&#x27;</span>,</span><br><span class="line">avatar <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;头像&#x27;</span>,</span><br><span class="line">birthday <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;生日&#x27;</span>,</span><br><span class="line">sex tinyint(<span class="number">4</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">short_introduce <span class="type">varchar</span>(<span class="number">150</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;一句话介绍自己，最多50个汉字&#x27;</span>,</span><br><span class="line">user_resume <span class="type">varchar</span>(<span class="number">300</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户提交的简历存放地址&#x27;</span>,</span><br><span class="line">user_register_ip <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户注册时的源ip&#x27;</span>,</span><br><span class="line">create_time datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户记录创建的时间&#x27;</span>,</span><br><span class="line">update_time datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户资料修改的时间&#x27;</span>,</span><br><span class="line">user_review_status tinyint <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户资料审核状态，1为通过，2为审核中，3为未通过，4为还未提交审核&#x27;</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY (id),</span><br><span class="line"><span class="keyword">UNIQUE</span> KEY uniq_user_id (user_id),</span><br><span class="line">KEY idx_username(username),</span><br><span class="line">KEY idx_create_time(create_time,user_review_status)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;网站用户基本信息&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> web_user (</span><br><span class="line">id <span class="type">bigint</span> unsigned <span class="keyword">NOT NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;主键自增ID&#x27;</span>,</span><br><span class="line">user_id <span class="type">bigint</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">username <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;真实姓名&#x27;</span>,</span><br><span class="line">email <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;用户邮箱&#x27;</span>,</span><br><span class="line">nickname <span class="type">varchar</span>(<span class="number">45</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;昵称&#x27;</span>,</span><br><span class="line">avatar <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;头像&#x27;</span>,</span><br><span class="line">birthday <span class="type">date</span> <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;生日&#x27;</span>,</span><br><span class="line">sex tinyint(<span class="number">4</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">short_introduce <span class="type">varchar</span>(<span class="number">150</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;一句话介绍自己，最多50个汉字&#x27;</span>,</span><br><span class="line">user_resume <span class="type">varchar</span>(<span class="number">300</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;用户提交的简历存放地址&#x27;</span>,</span><br><span class="line">user_register_ip <span class="type">int</span> <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;用户注册时的源ip&#x27;</span>,</span><br><span class="line">create_time datetime <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户记录创建的时间&#x27;</span>,</span><br><span class="line">update_time datetime <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;用户资料修改的时间&#x27;</span>,</span><br><span class="line">user_review_status tinyint <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;用户资料审核状态，1为通过，2为审核中，3为未通过，4为还未提交审核&#x27;</span>,</span><br><span class="line"><span class="keyword">PRIMARY KEY</span> (id),</span><br><span class="line"><span class="keyword">UNIQUE</span> KEY uniq_user_id (user_id),</span><br><span class="line">KEY idx_username(username),</span><br><span class="line">KEY idx_create_time(create_time,user_review_status)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;网站用户基本信息&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="3-sql编写开发规范"><a class="markdownIt-Anchor" href="#3-sql编写开发规范"></a> 3. SQL编写(开发规范)</h3>
 <h4 id="31-dml语句"><a class="markdownIt-Anchor" href="#31-dml语句"></a> 3.1 DML语句</h4>
 <ul class="lvl-0">
@@ -608,9 +610,9 @@
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -627,6 +629,11 @@
             
                 
                     / <a href="/ch"> Channel </a>
+                
+
+            
+                
+                    / <a href="/sitemap.xml"> Sitemap </a>
                 
 
             
@@ -729,7 +736,7 @@
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -741,7 +748,7 @@
 </html>
 <script src="/js/emojiHandler.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    wrapEmojis('.paper');
-  });
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
 </script>

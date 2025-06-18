@@ -60,8 +60,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 7.1.1"></head>
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
     
     
 
@@ -81,19 +81,21 @@
     
     
 
-    
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -127,14 +129,14 @@
     <ul class="nav">
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -157,7 +159,7 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-05-27</span> 
+                    <span>最近更新：2025-06-18</span> 
                 
                 
                     
@@ -422,11 +424,11 @@ Redis 中的缓存击穿、缓存穿透和缓存雪崩是什么？
 <ol>
 <li class="lvl-3">
 <p><strong>posts 表</strong>：存储帖子的信息。</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    post_id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    content TEXT <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    like_count <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> posts (</span><br><span class="line">    post_id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    like_count <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 <li class="lvl-3">
 <p><strong>likes 表</strong>：记录用户的点赞行为。</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> likes (</span><br><span class="line">    like_id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    user_id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    post_id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    created_at <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line">    <span class="keyword">UNIQUE</span> KEY (user_id, post_id),</span><br><span class="line">    <span class="keyword">FOREIGN</span> KEY (user_id) <span class="keyword">REFERENCES</span> users(user_id),</span><br><span class="line">    <span class="keyword">FOREIGN</span> KEY (post_id) <span class="keyword">REFERENCES</span> posts(post_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> likes (</span><br><span class="line">    like_id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    user_id <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    post_id <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    created_at <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line">    <span class="keyword">UNIQUE</span> KEY (user_id, post_id),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (user_id) <span class="keyword">REFERENCES</span> users(user_id),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (post_id) <span class="keyword">REFERENCES</span> posts(post_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="3-api-接口设计"><a class="markdownIt-Anchor" href="#3-api-接口设计"></a> 3. API 接口设计</h4>
@@ -1971,9 +1973,9 @@ Spring的三级缓存机制通过在不同阶段存储Bean的引用和工厂对�
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -1990,6 +1992,11 @@ Spring的三级缓存机制通过在不同阶段存储Bean的引用和工厂对�
             
                 
                     / <a href="/ch"> Channel </a>
+                
+
+            
+                
+                    / <a href="/sitemap.xml"> Sitemap </a>
                 
 
             
@@ -2092,7 +2099,7 @@ Spring的三级缓存机制通过在不同阶段存储Bean的引用和工厂对�
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -2104,7 +2111,7 @@ Spring的三级缓存机制通过在不同阶段存储Bean的引用和工厂对�
 </html>
 <script src="/js/emojiHandler.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    wrapEmojis('.paper');
-  });
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
 </script>
