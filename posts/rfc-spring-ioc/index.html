@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Spring IOC 设计思想及实践" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/blank.png">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/blank.png" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Spring IOC 设计思想及实践
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-20</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.7k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
+<p>本文档阐述 Spring 框架的核心设计思想——控制反转（IOC），分析其解决的问题、实现机制、优势与局限性，并通过代码对比展示传统开发与使用 Spring IOC 的差异。目标是帮助开发者理解 IOC 的设计哲学，并指导其在项目中合理应用。</p>
+<hr />
+<h2 id="问题和结论"><a class="markdownIt-Anchor" href="#问题和结论"></a> 问题和结论</h2>
+<h3 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>强耦合</strong>：传统开发中，对象直接创建和管理依赖，导致代码难以维护和扩展。</p>
+</li>
+<li class="lvl-3">
+<p><strong>重复劳动</strong>：依赖对象的创建逻辑分散在各处，无法复用。</p>
+</li>
+<li class="lvl-3">
+<p><strong>测试困难</strong>：依赖硬编码，难以替换为 Mock 对象。</p>
+</li>
+</ol>
+<h3 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案</h3>
+<p>Spring IOC 通过以下机制解决问题：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>控制反转</strong>：将对象的创建和依赖管理交给容器。</p>
+</li>
+<li class="lvl-2">
+<p><strong>依赖注入（DI）</strong>：通过注解（如 <code>@Autowired</code>）自动装配依赖。</p>
+</li>
+<li class="lvl-2">
+<p><strong>解耦与灵活性</strong>：依赖关系通过配置或注解定义，易于修改和扩展。</p>
+</li>
+</ul>
+<hr />
+<h2 id="目标和非目标"><a class="markdownIt-Anchor" href="#目标和非目标"></a> 目标和非目标</h2>
+<h3 id="目标"><a class="markdownIt-Anchor" href="#目标"></a> 目标</h3>
+<ol>
+<li class="lvl-3">
+<p>解耦组件，提升代码可维护性。</p>
+</li>
+<li class="lvl-3">
+<p>统一管理依赖，减少重复代码。</p>
+</li>
+<li class="lvl-3">
+<p>支持动态替换依赖，便于测试和扩展。</p>
+</li>
+</ol>
+<h3 id="非目标"><a class="markdownIt-Anchor" href="#非目标"></a> 非目标</h3>
+<ol>
+<li class="lvl-3">
+<p>替代所有手动对象创建场景（如简单工具类）。</p>
+</li>
+<li class="lvl-3">
+<p>解决与依赖管理无关的性能问题。</p>
+</li>
+</ol>
+<hr />
+<h2 id="背景和动机"><a class="markdownIt-Anchor" href="#背景和动机"></a> 背景和动机</h2>
+<h3 id="现状"><a class="markdownIt-Anchor" href="#现状"></a> 现状</h3>
+<p>传统 Java 开发中，对象通过 <code>new</code> 关键字直接创建依赖，导致代码高度耦合。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserDao</span> <span class="variable">userDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserDao</span>(); <span class="comment">// 硬编码依赖</span></span><br></pre></td></tr></table></figure>
+<h3 id="动机"><a class="markdownIt-Anchor" href="#动机"></a> 动机</h3>
+<p>Spring IOC 通过容器集中管理对象生命周期和依赖关系，实现：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>好莱坞原则</strong>：“不要调用我们，我们会调用你”（依赖由容器注入，而非主动创建）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>标准化开发模式</strong>：统一依赖管理，降低团队协作成本。</p>
+</li>
+</ul>
+<hr />
+<h2 id="设计"><a class="markdownIt-Anchor" href="#设计"></a> 设计</h2>
+<h3 id="架构"><a class="markdownIt-Anchor" href="#架构"></a> 架构</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>IOC 容器</strong>：核心接口 <code>ApplicationContext</code>，负责创建、配置和管理 Bean。</p>
+</li>
+<li class="lvl-3">
+<p><strong>Bean 定义</strong>：通过注解（如 <code>@Service</code>、<code>@Repository</code>）或 XML 配置声明组件。</p>
+</li>
+<li class="lvl-3">
+<p><strong>依赖注入</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>字段注入</strong>：<code>@Autowired</code> 直接注入字段。</li>
+<li class="lvl-5"><strong>构造器注入</strong>：推荐方式，支持不可变依赖。</li>
+</ul>
+</li>
+</ol>
+<h3 id="流程图"><a class="markdownIt-Anchor" href="#流程图"></a> 流程图</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────┐    ┌─────────────┐    ┌─────────────┐</span><br><span class="line">│  Bean定义   │ →  │  IOC容器    │ →  │ 依赖注入    │</span><br><span class="line">│ (@Component)│    │ (扫描并管理)│    │ (@Autowired)│</span><br><span class="line">└─────────────┘    └─────────────┘    └─────────────┘</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="依赖项"><a class="markdownIt-Anchor" href="#依赖项"></a> 依赖项</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>Spring Core</strong>：提供基础 IOC 容器功能。</p>
+</li>
+<li class="lvl-3">
+<p><strong>Spring Context</strong>：扩展功能（如事件传播、国际化）。</p>
+</li>
+</ol>
+<hr />
+<h2 id="考虑的替代方案-现有技术"><a class="markdownIt-Anchor" href="#考虑的替代方案-现有技术"></a> 考虑的替代方案 / 现有技术</h2>
+<h3 id="替代方案"><a class="markdownIt-Anchor" href="#替代方案"></a> 替代方案</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>手动依赖管理</strong>：直接 <code>new</code> 对象，灵活性差。</p>
+</li>
+<li class="lvl-3">
+<p><strong>工厂模式</strong>：集中创建对象，但仍需手动调用工厂。</p>
+</li>
+</ol>
+<h3 id="为什么选择-spring-ioc"><a class="markdownIt-Anchor" href="#为什么选择-spring-ioc"></a> 为什么选择 Spring IOC？</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>标准化</strong>：Spring 生态广泛支持。</p>
+</li>
+<li class="lvl-2">
+<p><strong>功能集成</strong>：与 AOP、事务管理等无缝协作。</p>
+</li>
+</ul>
+<hr />
+<h2 id="操作"><a class="markdownIt-Anchor" href="#操作"></a> 操作</h2>
+<h3 id="新流程"><a class="markdownIt-Anchor" href="#新流程"></a> 新流程</h3>
+<ol>
+<li class="lvl-3">
+<p>开发者通过注解声明 Bean 和依赖关系。</p>
+</li>
+<li class="lvl-3">
+<p>容器启动时扫描并初始化所有 Bean。</p>
+</li>
+<li class="lvl-3">
+<p>运行时自动注入依赖。</p>
+</li>
+</ol>
+<h3 id="维护责任"><a class="markdownIt-Anchor" href="#维护责任"></a> 维护责任</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>开发团队</strong>：负责正确使用注解和配置。</p>
+</li>
+<li class="lvl-2">
+<p><strong>框架</strong>：管理生命周期和依赖解析。</p>
+</li>
+</ul>
+<hr />
+<h2 id="安全-隐私-合规"><a class="markdownIt-Anchor" href="#安全-隐私-合规"></a> 安全 / 隐私 / 合规</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>Bean 作用域</strong>：避免单例 Bean 持有敏感数据。</p>
+</li>
+<li class="lvl-3">
+<p><strong>依赖暴露</strong>：确保注入的依赖是可信的（如避免 SQL 注入）。</p>
+</li>
+</ol>
+<hr />
+<h2 id="风险"><a class="markdownIt-Anchor" href="#风险"></a> 风险</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>启动性能</strong>：大型项目容器初始化较慢。</p>
+</li>
+<li class="lvl-3">
+<p><strong>调试复杂度</strong>：依赖链复杂时，错误难以追踪。</p>
+</li>
+<li class="lvl-3">
+<p><strong>过度依赖框架</strong>：可能掩盖设计问题（如违反单一职责原则）。</p>
+</li>
+</ol>
+<hr />
+<h2 id="代码集成示例"><a class="markdownIt-Anchor" href="#代码集成示例"></a> 代码集成示例</h2>
+<h3 id="传统方式-vs-spring-ioc"><a class="markdownIt-Anchor" href="#传统方式-vs-spring-ioc"></a> 传统方式 vs. Spring IOC</h3>
+<h4 id="传统方式强耦合"><a class="markdownIt-Anchor" href="#传统方式强耦合"></a> 传统方式（强耦合）</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">UserDao</span> <span class="variable">userDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserDao</span>(); <span class="comment">// 硬编码依赖</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="spring-ioc解耦"><a class="markdownIt-Anchor" href="#spring-ioc解耦"></a> Spring IOC（解耦）</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 依赖由容器注入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优势对比"><a class="markdownIt-Anchor" href="#优势对比"></a> 优势对比</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统方式</th>
+<th>Spring IOC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>耦合度</strong></td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>修改需改动代码</td>
+<td>修改配置或注解即可</td>
+</tr>
+<tr>
+<td><strong>测试</strong></td>
+<td>需手动 Mock</td>
+<td>轻松替换依赖</td>
+</tr>
+</tbody>
+</table>
+<h2 id="大白话-举例说明"><a class="markdownIt-Anchor" href="#大白话-举例说明"></a> ◇ 大白话-举例说明</h2>
+<p>Q: 用大白话举例子说明 spring ioc的原理和机制，不用 ioc和用了之后解决哪些问题，或者又新带来哪些问题？</p>
+<p>AI: 好的！我用一个开饭店的例子来给你讲清楚Spring IOC的原理和机制，保证你听完就懂！</p>
+<hr />
+<h3 id="不用ioc的情况自己买菜自己做"><a class="markdownIt-Anchor" href="#不用ioc的情况自己买菜自己做"></a> <strong>不用IOC的情况：自己买菜自己做</strong></h3>
+<p>假设你开一家饭店：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>你需要自己买菜</strong>：每天早起去菜市场挑土豆、西红柿、牛肉…</p>
+</li>
+<li class="lvl-3">
+<p><strong>你需要自己炒菜</strong>：客人点菜后，你现切菜、现开火、现调味。</p>
+</li>
+<li class="lvl-3">
+<p><strong>问题来了</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">哪天土豆涨价了，你得自己跑腿换供应商。</li>
+<li class="lvl-5">想换一道新菜（比如把红烧牛肉改成咖喱牛肉），你得重新研究菜谱。</li>
+<li class="lvl-5">后厨和买菜强耦合，你一个人忙成狗。</li>
+</ul>
+</li>
+</ol>
+<p>👉 <strong>这就是传统开发方式</strong>：每个对象（比如<code>Service</code>）自己<code>new</code>依赖的对象（比如<code>Dao</code>），代码像一团乱麻。</p>
+<hr />
+<h3 id="用了ioc雇了一个采购管家"><a class="markdownIt-Anchor" href="#用了ioc雇了一个采购管家"></a> <strong>用了IOC：雇了一个采购管家</strong></h3>
+<p>现在你雇了一个<strong>采购管家（IOC容器）</strong>：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>你只管提需求</strong>：写个清单（配置文件或注解）告诉管家：</p>
+<ul class="lvl-2">
+<li class="lvl-5">“我要土豆，找老王供应商进货”</li>
+<li class="lvl-5">“我要牛肉，找老李供应商进货”</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>管家帮你搞定一切</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5">每天自动送菜到后厨（<strong>依赖注入</strong>）。</li>
+<li class="lvl-5">土豆涨价了？你只需要让管家换老张供应商（<strong>改配置就行，不用改代码</strong>）。</li>
+<li class="lvl-5">想换咖喱牛肉？你让管家把&quot;红烧调料&quot;换成&quot;咖喱调料&quot;（<strong>动态替换依赖</strong>）。</li>
+</ul>
+</li>
+</ol>
+<p>👉 <strong>这就是IOC的核心</strong>：把对象的创建和依赖关系交给Spring管理，你只管用，不用自己<code>new</code>。</p>
+<hr />
+<h3 id="解决了哪些问题"><a class="markdownIt-Anchor" href="#解决了哪些问题"></a> <strong>解决了哪些问题？</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>解耦</strong>：后厨不用关心菜是谁送的，只管做菜（类只关注业务，不关注依赖创建）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>灵活</strong>：换供应商、换菜谱不用改代码（修改配置即可）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>方便测试</strong>：比如测试时，管家可以给你送&quot;假牛肉&quot;（Mock对象）。</p>
+</li>
+</ol>
+<hr />
+<h3 id="新带来哪些问题"><a class="markdownIt-Anchor" href="#新带来哪些问题"></a> <strong>新带来哪些问题？</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>理解成本</strong>：管家虽然好用，但你要先学会怎么使唤它（学习Spring配置）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>调试麻烦</strong>：菜送错了？你得查是清单写错了，还是管家拿错了（依赖关系复杂时调试费劲）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>启动慢</strong>：管家得提前整理所有食材（应用启动时初始化容器需要时间）。</p>
+</li>
+</ol>
+<hr />
+<h3 id="终极比喻总结"><a class="markdownIt-Anchor" href="#终极比喻总结"></a> <strong>终极比喻总结</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>不用IOC</strong>：像自己开店，又当老板又当采购又当厨子，累死。</p>
+</li>
+<li class="lvl-2">
+<p><strong>用了IOC</strong>：像连锁店老板，只管定标准，采购、配送、库存全交给总部（Spring），你只数钱。</p>
+</li>
+</ul>
+<p>这样是不是好理解了？😄</p>
+<h2 id="具体代码-举例说明"><a class="markdownIt-Anchor" href="#具体代码-举例说明"></a> ◇ 具体代码-举例说明</h2>
+<p>Q: 用 spring 具体实现的代码说明，ioc用之前和之后的典型场景</p>
+<p>AI: 好的！我用一个 <strong>用户注册</strong> 的功能来对比 <strong>不用IOC</strong> 和 <strong>用了IOC（Spring）</strong> 的代码区别，让你直观感受IOC的作用。</p>
+<hr />
+<h3 id="场景用户注册功能"><a class="markdownIt-Anchor" href="#场景用户注册功能"></a> <strong>场景：用户注册功能</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>需求</strong>：用户注册时，需要将用户信息存入数据库，并发送一封欢迎邮件。</p>
+</li>
+<li class="lvl-2">
+<p><strong>涉及对象</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-4"><code>UserService</code>：处理用户注册逻辑</li>
+<li class="lvl-4"><code>UserDao</code>：负责数据库操作（如保存用户）</li>
+<li class="lvl-4"><code>EmailService</code>：负责发送邮件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="1-不用ioc传统方式"><a class="markdownIt-Anchor" href="#1-不用ioc传统方式"></a> <strong>1. 不用IOC（传统方式）</strong></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. UserDao（数据库操作）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveUser</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;用户保存到数据库: &quot;</span> + username);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. EmailService（发邮件）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmailService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendEmail</span><span class="params">(String email)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;发送欢迎邮件至: &quot;</span> + email);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. UserService（注册逻辑）-- 需要自己new依赖的对象！</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">UserDao</span> <span class="variable">userDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserDao</span>();      <span class="comment">// 自己创建UserDao</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">EmailService</span> <span class="variable">emailService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EmailService</span>(); <span class="comment">// 自己创建EmailService</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(String username, String email)</span> &#123;</span><br><span class="line">        userDao.saveUser(username);   <span class="comment">// 调用Dao存数据</span></span><br><span class="line">        emailService.sendEmail(email); <span class="comment">// 调用发邮件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>(); <span class="comment">// 自己new UserService</span></span><br><span class="line">        userService.register(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;zhangsan@example.com&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="问题-2"><a class="markdownIt-Anchor" href="#问题-2"></a> <strong>问题</strong></h4>
+<ol>
+<li class="lvl-3">
+<p><strong>强耦合</strong>：<code>UserService</code> 直接 <code>new</code> 了 <code>UserDao</code> 和 <code>EmailService</code>，如果想替换实现（比如换一个<code>MockUserDao</code>测试），必须改代码。</p>
+</li>
+<li class="lvl-3">
+<p><strong>难以维护</strong>：如果<code>UserDao</code>的构造函数变了（比如需要传数据库连接参数），所有用到它的地方都要改。</p>
+</li>
+<li class="lvl-3">
+<p><strong>无法复用</strong>：<code>UserDao</code> 和 <code>EmailService</code> 无法被其他Service共享（比如<code>OrderService</code>也想发邮件，又得<code>new</code>一遍）。</p>
+</li>
+</ol>
+<hr />
+<h3 id="2-用了iocspring方式"><a class="markdownIt-Anchor" href="#2-用了iocspring方式"></a> <strong>2. 用了IOC（Spring方式）</strong></h3>
+<h4 id="1定义bean用注解标记哪些类交给spring管理"><a class="markdownIt-Anchor" href="#1定义bean用注解标记哪些类交给spring管理"></a> <strong>（1）定义Bean（用注解标记哪些类交给Spring管理）</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. UserDao</span></span><br><span class="line"><span class="meta">@Repository</span>  <span class="comment">// 告诉Spring：这个类你帮我管理，别名叫&quot;userDao&quot;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveUser</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;用户保存到数据库: &quot;</span> + username);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. EmailService</span></span><br><span class="line"><span class="meta">@Service</span>     <span class="comment">// 告诉Spring：这个类你帮我管理，别名叫&quot;emailService&quot;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmailService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendEmail</span><span class="params">(String email)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;发送欢迎邮件至: &quot;</span> + email);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. UserService</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span>  <span class="comment">// 告诉Spring：自动把UserDao和EmailService塞进来（依赖注入）</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmailService emailService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(String username, String email)</span> &#123;</span><br><span class="line">        userDao.saveUser(username);</span><br><span class="line">        emailService.sendEmail(email);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2spring配置xml或java-config这里用java-config"><a class="markdownIt-Anchor" href="#2spring配置xml或java-config这里用java-config"></a> <strong>（2）Spring配置（XML或Java Config，这里用Java Config）</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.example&quot;)</span> <span class="comment">// 告诉Spring：去扫描com.example包下的@Repository/@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">    <span class="comment">// 不需要手动写Bean定义，注解已经搞定</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3测试代码"><a class="markdownIt-Anchor" href="#3测试代码"></a> <strong>（3）测试代码</strong></h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 由Spring容器接管所有对象的创建和依赖注入</span></span><br><span class="line">        <span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>(AppConfig.class);</span><br><span class="line">      </span><br><span class="line">        <span class="comment">// 直接从Spring拿UserService（不用自己new！）</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> context.getBean(UserService.class);</span><br><span class="line">        userService.register(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;zhangsan@example.com&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优势"><a class="markdownIt-Anchor" href="#优势"></a> <strong>优势</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>解耦</strong>：<code>UserService</code> 不需要知道 <code>UserDao</code> 和 <code>EmailService</code> 怎么创建的，只管用。</p>
+</li>
+<li class="lvl-3">
+<p><strong>灵活替换</strong>：如果想用 <code>MockUserDao</code> 测试，只需加一个 <code>@Profile(&quot;test&quot;)</code> 的模拟实现，不用改 <code>UserService</code>。</p>
+</li>
+<li class="lvl-3">
+<p><strong>依赖自动注入</strong>：<code>@Autowired</code> 自动装配，即使依赖关系复杂（比如<code>A依赖B，B依赖C</code>），Spring也能搞定。</p>
+</li>
+<li class="lvl-3">
+<p><strong>单例复用</strong>：Spring默认管理的是单例，<code>UserDao</code> 和 <code>EmailService</code> 可以被多个Service共享。</p>
+</li>
+</ol>
+<hr />
+<h3 id="关键区别总结"><a class="markdownIt-Anchor" href="#关键区别总结"></a> <strong>关键区别总结</strong></h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>不用IOC</th>
+<th>用了IOC（Spring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>对象创建</strong></td>
+<td>自己<code>new</code></td>
+<td>Spring容器自动创建</td>
+</tr>
+<tr>
+<td><strong>依赖管理</strong></td>
+<td>硬编码在代码里</td>
+<td>通过<code>@Autowired</code>自动注入</td>
+</tr>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>改依赖必须改代码</td>
+<td>改配置或注解即可</td>
+</tr>
+<tr>
+<td><strong>测试</strong></td>
+<td>难Mock（必须改代码）</td>
+<td>轻松替换Mock对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="用spring-ioc后带来的新问题"><a class="markdownIt-Anchor" href="#用spring-ioc后带来的新问题"></a> <strong>用Spring IOC后带来的新问题</strong></h3>
+<ol>
+<li class="lvl-3">
+<p><strong>学习成本</strong>：要理解<code>@Autowired</code>、<code>@Component</code>等注解。</p>
+</li>
+<li class="lvl-3">
+<p><strong>启动速度</strong>：Spring容器初始化需要时间（尤其是大型项目）。</p>
+</li>
+<li class="lvl-3">
+<p><strong>调试复杂度</strong>：如果注入失败（比如漏了<code>@Service</code>），报错可能不够直观。</p>
+</li>
+</ol>
+<hr />
+<h3 id="最终结论"><a class="markdownIt-Anchor" href="#最终结论"></a> <strong>最终结论</strong></h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>不用IOC</strong>：像自己做饭，所有事亲力亲为，改需求麻烦。</p>
+</li>
+<li class="lvl-2">
+<p><strong>用了IOC</strong>：像点外卖，想吃啥告诉平台（Spring），它给你送上门，但你得先学会用APP（Spring框架）。</p>
+</li>
+</ul>
+<h2 id="概括性总结"><a class="markdownIt-Anchor" href="#概括性总结"></a> 概括性总结</h2>
+<p>Spring IOC 通过将控制权从代码转移到容器，实现了组件间的解耦和依赖管理的自动化。尽管引入了一定复杂性和学习成本，但其在可维护性、测试性和扩展性上的优势使其成为企业级开发的核心范式。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-06-19</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/Spring/'>
+                            Spring
+                        </a>
+                    
+                        <a href='/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/'>
+                            技术文档
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/list"> Archive </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+                
+                    / <a href="/sitemap.xml"> Sitemap </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

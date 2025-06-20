@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="RFC-规则引擎-技术调研" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/blank.png">
+    <title></title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/blank.png" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/"></a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    RFC-规则引擎-技术调研
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-20</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.2k</span>
+                
+                
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
+<p>本文档对比了主流规则引擎技术（MVEL、LiteFlow、Drools等），旨在为项目选择最适合的规则引擎解决方案。</p>
+<h3 id="问题和结论"><a class="markdownIt-Anchor" href="#问题和结论"></a> 问题和结论</h3>
+<h4 id="问题-1业务人员是否有频繁且大量的自定义规则变更需求是否需要有管理控制台页面让业务人员自行去维护规则"><a class="markdownIt-Anchor" href="#问题-1业务人员是否有频繁且大量的自定义规则变更需求是否需要有管理控制台页面让业务人员自行去维护规则"></a> 问题 1：业务人员是否有频繁且大量的自定义规则变更需求，是否需要有管理控制台页面，让业务人员自行去维护规则？</h4>
+<p>可优先考虑 Drools，因为功能全，自带规则管理页面。缺点是Drools本身过于复杂，学习曲线较高。</p>
+<h4 id="问题-2是否考虑过业务中最主要的决策逻辑从程序中抽离出来用预定义的dsl来实现-并且可以实时改变这些最主要的决策逻辑-业务规则-逻辑关系是否需要热更新不用重启服务"><a class="markdownIt-Anchor" href="#问题-2是否考虑过业务中最主要的决策逻辑从程序中抽离出来用预定义的dsl来实现-并且可以实时改变这些最主要的决策逻辑-业务规则-逻辑关系是否需要热更新不用重启服务"></a> 问题 2：是否考虑过，业务中最主要的决策逻辑从程序中抽离出来，用预定义的DSL来实现。并且可以实时改变这些最主要的决策逻辑。业务规则、逻辑关系，是否需要热更新（不用重启服务）？</h4>
+<ol>
+<li class="lvl-3">
+<p>业务规则和逻辑关系，都需要热更，选 LiteFlow + MVEL 混合。原因是MVEL表达式足够满足需求，集成最简单，LiteFlow具备流程逻辑编排能力，支持热更。</p>
+</li>
+<li class="lvl-3">
+<p>仅业务规则需要热更，选 MVEL，最轻量的改造。</p>
+</li>
+<li class="lvl-3">
+<p>都不需要热更，规则引擎用不用都行。</p>
+</li>
+</ol>
+<h4 id="问题-3规则引擎适合用来做什么"><a class="markdownIt-Anchor" href="#问题-3规则引擎适合用来做什么"></a> 问题 3：规则引擎适合用来做什么？</h4>
+<p>适合采用规则引擎当：</p>
+<p>✅ 业务规则变更频率 &gt; 每月1次<br />
+✅ 规则数量 &gt; 20条且存在组合逻辑<br />
+✅ 需要非技术人员参与规则维护</p>
+<p>不建议使用规则引擎当：</p>
+<p>❌ 规则完全固定且永不变化<br />
+❌ 性能要求极致（延迟&lt;1ms）<br />
+❌ 规则之间无共享数据上下文</p>
+<p>另外，对于 LiteFlow 还可以用来做功能的集成测试，因为支持业务规则和逻辑关系热更，仅修改配置就可以对决策规则和逻辑单元组件进行变更，再加上灵活的输入mock数据，输出结果，能够快速进行验证。</p>
+<h2 id="目标和非目标"><a class="markdownIt-Anchor" href="#目标和非目标"></a> 目标和非目标</h2>
+<h3 id="目标"><a class="markdownIt-Anchor" href="#目标"></a> 目标</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对比主流规则引擎技术的特性、性能、适用场景。</p>
+</li>
+<li class="lvl-2">
+<p>选择适合当前项目需求的规则引擎，平衡开发效率、维护成本和性能。</p>
+</li>
+<li class="lvl-2">
+<p>确保所选技术能与现有系统无缝集成。</p>
+</li>
+</ul>
+<h3 id="非目标"><a class="markdownIt-Anchor" href="#非目标"></a> 非目标</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>不涉及具体的规则编写细节。</p>
+</li>
+<li class="lvl-2">
+<p>不讨论非主流的规则引擎技术。</p>
+</li>
+</ul>
+<h2 id="背景和动机"><a class="markdownIt-Anchor" href="#背景和动机"></a> 背景和动机</h2>
+<p>当前项目需要引入规则引擎来处理复杂的业务规则，以提高系统的灵活性和可维护性。<br />
+手动编码规则的方式难以应对频繁的业务变化，且维护成本高。因此，需要评估主流规则引擎技术，选择最适合的解决方案。</p>
+<p><strong>关键术语：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>规则引擎</strong>：一种将业务规则从应用程序代码中分离出来，单独管理的技术。</p>
+</li>
+<li class="lvl-2">
+<p><strong>流程引擎</strong>：一种软件系统组件，它通过预定义的模型来自动化执行、管理和监控业务流程。（与规则引擎的本质区别：流程引擎能够控制用户流程走向；规则引擎只负责执行规则逻辑判断）</p>
+</li>
+<li class="lvl-2">
+<p><strong>LiteFlow</strong>：一个轻量级的规则引擎，支持流程编排。LiteFlow定位是一个规则引擎，而不是流程引擎。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Drools</strong>：一个功能强大的规则引擎，支持复杂的规则管理。</p>
+</li>
+<li class="lvl-2">
+<p><strong>MVEL</strong>：一种表达式语言，也可用于简单的规则处理。</p>
+</li>
+</ul>
+<h2 id="设计"><a class="markdownIt-Anchor" href="#设计"></a> 设计</h2>
+<h3 id="技术对比"><a class="markdownIt-Anchor" href="#技术对比"></a> 技术对比</h3>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>LiteFlow</strong></th>
+<th><strong>Drools</strong></th>
+<th><strong>MVEL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>低</td>
+<td>高</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>高</td>
+<td>中</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>流程编排、轻量级规则</td>
+<td>复杂规则管理</td>
+<td>简单规则、表达式计算</td>
+</tr>
+<tr>
+<td><strong>集成难度</strong></td>
+<td>低</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>社区支持</strong></td>
+<td>活跃</td>
+<td>非常活跃</td>
+<td>一般</td>
+</tr>
+<tr>
+<td><strong>维护成本</strong></td>
+<td>低</td>
+<td>高</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<h3 id="架构建议"><a class="markdownIt-Anchor" href="#架构建议"></a> 架构建议</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>轻量级需求</strong>：选择 LiteFlow，适合流程编排和简单规则。</p>
+</li>
+<li class="lvl-3">
+<p><strong>复杂规则</strong>：选择 Drools，适合需要复杂规则管理的场景。</p>
+</li>
+<li class="lvl-3">
+<p><strong>简单表达式</strong>：选择 MVEL，适合嵌入到代码中的简单规则处理。</p>
+</li>
+</ol>
+<h2 id="依赖项"><a class="markdownIt-Anchor" href="#依赖项"></a> 依赖项</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>现有系统需支持 Java 或相关语言。</p>
+</li>
+<li class="lvl-2">
+<p>需要开发团队熟悉所选规则引擎的基本用法。</p>
+</li>
+</ul>
+<h2 id="考虑的替代方案-现有技术"><a class="markdownIt-Anchor" href="#考虑的替代方案-现有技术"></a> 考虑的替代方案 / 现有技术</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>EasyRules</strong>：轻量级，但功能较为简单，不适用于复杂场景。</p>
+</li>
+<li class="lvl-3">
+<p><strong>Jess</strong>：基于 Java 的规则引擎，但社区支持较少。</p>
+</li>
+<li class="lvl-3">
+<p><strong>自定义规则引擎</strong>：开发成本高，维护难度大，不推荐。</p>
+</li>
+</ol>
+<h2 id="操作"><a class="markdownIt-Anchor" href="#操作"></a> 操作</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>开发团队需学习所选规则引擎的使用方法。</p>
+</li>
+<li class="lvl-2">
+<p>业务团队需配合定义规则逻辑。</p>
+</li>
+</ul>
+<h2 id="安全-隐私-合规"><a class="markdownIt-Anchor" href="#安全-隐私-合规"></a> 安全 / 隐私 / 合规</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确保规则引擎的开源协议符合公司政策。</p>
+</li>
+<li class="lvl-2">
+<p>规则中涉及的数据需符合隐私保护要求。</p>
+</li>
+</ul>
+<h2 id="风险"><a class="markdownIt-Anchor" href="#风险"></a> 风险</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>学习成本</strong>：Drools 的学习曲线较陡，可能影响开发进度。</p>
+</li>
+<li class="lvl-3">
+<p><strong>性能问题</strong>：复杂规则可能导致性能下降，需提前测试。</p>
+</li>
+<li class="lvl-3">
+<p><strong>兼容性</strong>：需确保所选技术与现有系统兼容。</p>
+</li>
+</ol>
+<h2 id="代码集成示例账单金额分摊规则"><a class="markdownIt-Anchor" href="#代码集成示例账单金额分摊规则"></a> 代码集成示例：账单金额分摊规则</h2>
+<h3 id="1-传统硬编码实现方式规则引擎之前"><a class="markdownIt-Anchor" href="#1-传统硬编码实现方式规则引擎之前"></a> 1. 传统硬编码实现方式（规则引擎之前）</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BillingService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">splitBill</span><span class="params">(Bill bill, List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="comment">// 硬编码的分摊规则</span></span><br><span class="line">        <span class="keyword">if</span> (bill.getType().equals(<span class="string">&quot;DINNER&quot;</span>)) &#123;</span><br><span class="line">            <span class="comment">// 晚餐按人数平均分摊</span></span><br><span class="line">            <span class="type">double</span> <span class="variable">amountPerUser</span> <span class="operator">=</span> bill.getTotalAmount() / users.size();</span><br><span class="line">            <span class="keyword">for</span> (User user : users) &#123;</span><br><span class="line">                user.setAmountDue(amountPerUser);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bill.getType().equals(<span class="string">&quot;DRINKS&quot;</span>)) &#123;</span><br><span class="line">            <span class="comment">// 酒水按消费比例分摊</span></span><br><span class="line">            <span class="type">double</span> <span class="variable">totalConsumption</span> <span class="operator">=</span> users.stream().mapToDouble(User::getConsumption).sum();</span><br><span class="line">            <span class="keyword">for</span> (User user : users) &#123;</span><br><span class="line">                <span class="type">double</span> <span class="variable">ratio</span> <span class="operator">=</span> user.getConsumption() / totalConsumption;</span><br><span class="line">                user.setAmountDue(bill.getTotalAmount() * ratio);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bill.getType().equals(<span class="string">&quot;HOTEL&quot;</span>)) &#123;</span><br><span class="line">            <span class="comment">// 酒店费用按房型分摊</span></span><br><span class="line">            <span class="comment">// ...更多硬编码规则</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新增规则都需要修改代码并重新部署</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>问题：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>规则与业务代码耦合</p>
+</li>
+<li class="lvl-2">
+<p>修改规则需要开发介入</p>
+</li>
+<li class="lvl-2">
+<p>难以应对频繁变化的业务需求</p>
+</li>
+<li class="lvl-2">
+<p>规则复杂时代码难以维护</p>
+</li>
+</ul>
+<h3 id="2-使用liteflow实现"><a class="markdownIt-Anchor" href="#2-使用liteflow实现"></a> 2. 使用LiteFlow实现</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- liteflow.xml 规则定义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">chain</span> <span class="attr">name</span>=<span class="string">&quot;billSplitChain&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">value</span>=<span class="string">&quot;bill.type==&#x27;DINNER&#x27;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">then</span> <span class="attr">component</span>=<span class="string">&quot;averageSplitComponent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">value</span>=<span class="string">&quot;bill.type==&#x27;DRINKS&#x27;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">then</span> <span class="attr">component</span>=<span class="string">&quot;ratioSplitComponent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可以轻松添加新规则 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">value</span>=<span class="string">&quot;bill.type==&#x27;HOTEL&#x27;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">then</span> <span class="attr">component</span>=<span class="string">&quot;hotelSplitComponent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">chain</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java组件实现</span></span><br><span class="line"><span class="meta">@Component(&quot;averageSplitComponent&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AverageSplitComponent</span> <span class="keyword">extends</span> <span class="title class_">NodeComponent</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Bill</span> <span class="variable">bill</span> <span class="operator">=</span> <span class="built_in">this</span>.getSlot().getBill();</span><br><span class="line">        List&lt;User&gt; users = <span class="built_in">this</span>.getSlot().getUsers();</span><br><span class="line">        <span class="type">double</span> <span class="variable">amount</span> <span class="operator">=</span> bill.getTotalAmount() / users.size();</span><br><span class="line">        users.forEach(user -&gt; user.setAmountDue(amount));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 业务调用代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BillingService</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> FlowExecutor flowExecutor;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">splitBill</span><span class="params">(Bill bill, List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="type">LiteflowContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LiteflowContext</span>();</span><br><span class="line">        context.setSlot(<span class="keyword">new</span> <span class="title class_">BillSplitSlot</span>(bill, users));</span><br><span class="line">        flowExecutor.execute(<span class="string">&quot;billSplitChain&quot;</span>, <span class="literal">null</span>, context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用drools实现"><a class="markdownIt-Anchor" href="#3-使用drools实现"></a> 3. 使用Drools实现</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// rules.drl 规则文件</span><br><span class="line">rule &quot;Dinner Split Rule&quot;</span><br><span class="line">    when</span><br><span class="line">        $bill : Bill(type == &quot;DINNER&quot;)</span><br><span class="line">        $users : List() from collect(User())</span><br><span class="line">    then</span><br><span class="line">        double amount = $bill.getTotalAmount() / $users.size();</span><br><span class="line">        for(User user : $users) &#123;</span><br><span class="line">            user.setAmountDue(amount);</span><br><span class="line">        &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">rule &quot;Drinks Split Rule&quot;</span><br><span class="line">    when</span><br><span class="line">        $bill : Bill(type == &quot;DRINKS&quot;)</span><br><span class="line">        $users : List() from collect(User())</span><br><span class="line">        $total : Double() from accumulate(</span><br><span class="line">            User($c : consumption), sum($c)</span><br><span class="line">        )</span><br><span class="line">    then</span><br><span class="line">        for(User user : $users) &#123;</span><br><span class="line">            user.setAmountDue($bill.getTotalAmount() * (user.getConsumption()/$total));</span><br><span class="line">        &#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java集成代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BillingService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> KieContainer kieContainer;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">splitBill</span><span class="params">(Bill bill, List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        <span class="type">KieSession</span> <span class="variable">kieSession</span> <span class="operator">=</span> kieContainer.newKieSession();</span><br><span class="line">        kieSession.insert(bill);</span><br><span class="line">        users.forEach(kieSession::insert);</span><br><span class="line">        kieSession.fireAllRules();</span><br><span class="line">        kieSession.dispose();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-使用mvel实现"><a class="markdownIt-Anchor" href="#4-使用mvel实现"></a> 4. 使用MVEL实现</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BillingService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; rules = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BillingService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 规则可以从数据库或配置文件中加载</span></span><br><span class="line">        rules.put(<span class="string">&quot;DINNER&quot;</span>, </span><br><span class="line">            <span class="string">&quot;double amount = totalAmount / users.size(); &quot;</span> +</span><br><span class="line">            <span class="string">&quot;for(user : users) &#123; user.setAmountDue(amount); &#125;&quot;</span>);</span><br><span class="line">            </span><br><span class="line">        rules.put(<span class="string">&quot;DRINKS&quot;</span>,</span><br><span class="line">            <span class="string">&quot;double total = 0; &quot;</span> +</span><br><span class="line">            <span class="string">&quot;for(user : users) &#123; total += user.getConsumption(); &#125; &quot;</span> +</span><br><span class="line">            <span class="string">&quot;for(user : users) &#123; user.setAmountDue(totalAmount * (user.getConsumption()/total)); &#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">splitBill</span><span class="params">(Bill bill, List&lt;User&gt; users)</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; context = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        context.put(<span class="string">&quot;totalAmount&quot;</span>, bill.getTotalAmount());</span><br><span class="line">        context.put(<span class="string">&quot;users&quot;</span>, users);</span><br><span class="line">        </span><br><span class="line">        <span class="type">String</span> <span class="variable">rule</span> <span class="operator">=</span> rules.get(bill.getType());</span><br><span class="line">        <span class="keyword">if</span> (rule != <span class="literal">null</span>) &#123;</span><br><span class="line">            MVEL.eval(rule, context);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前后对比分析"><a class="markdownIt-Anchor" href="#前后对比分析"></a> 前后对比分析</h2>
+<table>
+<thead>
+<tr>
+<th><strong>对比维度</strong></th>
+<th><strong>传统硬编码方式</strong></th>
+<th><strong>规则引擎方式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>规则修改</strong></td>
+<td>需要修改代码、重新部署</td>
+<td>只需修改规则文件/配置，热更新可能</td>
+</tr>
+<tr>
+<td><strong>业务灵活性</strong></td>
+<td>低，变更需要开发介入</td>
+<td>高，业务人员可参与规则维护</td>
+</tr>
+<tr>
+<td><strong>代码复杂度</strong></td>
+<td>规则复杂时代码难以维护</td>
+<td>规则与业务逻辑解耦</td>
+</tr>
+<tr>
+<td><strong>可读性</strong></td>
+<td>业务规则分散在代码中</td>
+<td>规则集中管理，声明式表达更清晰</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>通常更高</td>
+<td>可能有解析开销</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>简单固定规则</td>
+<td>复杂多变业务规则</td>
+</tr>
+<tr>
+<td><strong>学习成本</strong></td>
+<td>只需Java知识</td>
+<td>需要学习规则引擎语法</td>
+</tr>
+</tbody>
+</table>
+<h2 id="推荐方案"><a class="markdownIt-Anchor" href="#推荐方案"></a> 推荐方案</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>简单场景</strong>：MVEL表达式足够满足需求，集成最简单</p>
+</li>
+<li class="lvl-3">
+<p><strong>中等复杂度</strong>：LiteFlow的流程编排能力更适合</p>
+</li>
+<li class="lvl-3">
+<p><strong>复杂企业级</strong>：Drools提供的完整规则管理解决方案最优，但学习曲线较高</p>
+</li>
+</ol>
+<p><strong>建议</strong>：对于账单分摊这类典型业务规则，推荐使用LiteFlow，它在易用性和功能性之间取得了良好平衡，同时支持热更新规则而不需要重启应用。</p>
+<h2 id="详细技术对比"><a class="markdownIt-Anchor" href="#详细技术对比"></a> 详细技术对比</h2>
+<h3 id="1-liteflow-v2100"><a class="markdownIt-Anchor" href="#1-liteflow-v2100"></a> 1. LiteFlow (v2.10.0)</h3>
+<p><strong>核心能力：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>流程编排（支持串行/并行/选择/分支/循环）</p>
+</li>
+<li class="lvl-2">
+<p>规则脚本化（支持Groovy/QLExpress等脚本语言）</p>
+</li>
+<li class="lvl-2">
+<p>热更新机制（无需重启生效规则变更）</p>
+</li>
+<li class="lvl-2">
+<p>组件化设计（业务逻辑隔离）</p>
+</li>
+</ul>
+<p><strong>优点：</strong><br />
+✅ 可视化流程编排能力突出<br />
+✅ 组件复用度高，开发效率快<br />
+✅ 中文文档完善，国内开发者友好<br />
+✅ 轻量级嵌入，启动速度快（&lt;1s）</p>
+<p><strong>缺点：</strong><br />
+❌ 复杂规则逻辑表达能力有限<br />
+❌ 缺乏企业级规则管理控制台（不具备图形化页面的编排，意味着规则的维护只能在开发人员内部使用。）<br />
+❌ 规则版本管理需要自行实现</p>
+<p><strong>适用场景：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>电商订单流程</p>
+</li>
+<li class="lvl-2">
+<p>金融审批流</p>
+</li>
+<li class="lvl-2">
+<p>物流路由规则</p>
+</li>
+</ul>
+<h3 id="2-drools-v8400"><a class="markdownIt-Anchor" href="#2-drools-v8400"></a> 2. Drools (v8.40.0)</h3>
+<p><strong>核心能力：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>完整的RETE算法实现</p>
+</li>
+<li class="lvl-2">
+<p>决策表支持（Excel规则管理）</p>
+</li>
+<li class="lvl-2">
+<p>复杂事件处理(CEP)</p>
+</li>
+<li class="lvl-2">
+<p>规则版本控制和工作流</p>
+</li>
+</ul>
+<p><strong>优点：</strong><br />
+✅ 业界最成熟的规则引擎解决方案<br />
+✅ 支持超复杂规则逻辑（1000+规则级联）<br />
+✅ 完善的冲突解决策略（salience/activation-group）<br />
+✅ 企业级管理控制台（KIE Workbench）</p>
+<p><strong>缺点：</strong><br />
+❌ 学习曲线陡峭（需掌握DRL语法）<br />
+❌ 内存消耗大（基础运行需要500MB+）<br />
+❌ 热更新需要商业版支持</p>
+<p><strong>适用场景：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>保险理赔规则计算</p>
+</li>
+<li class="lvl-2">
+<p>风控反欺诈系统</p>
+</li>
+<li class="lvl-2">
+<p>医疗诊断决策</p>
+</li>
+</ul>
+<h3 id="3-mvel-v240"><a class="markdownIt-Anchor" href="#3-mvel-v240"></a> 3. MVEL (v2.4.0)</h3>
+<p><strong>核心能力：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>表达式求值</p>
+</li>
+<li class="lvl-2">
+<p>基础逻辑判断</p>
+</li>
+<li class="lvl-2">
+<p>脚本执行引擎</p>
+</li>
+<li class="lvl-2">
+<p>类型自动转换</p>
+</li>
+</ul>
+<p><strong>优点：</strong><br />
+✅ 性能极致（接近原生Java代码）<br />
+✅ 零学习成本（类似Java语法）<br />
+✅ 轻量级（核心jar仅200KB）</p>
+<p><strong>缺点：</strong><br />
+❌ 缺乏规则管理能力<br />
+❌ 不支持规则流控制<br />
+❌ 调试困难（无行号提示）</p>
+<p><strong>适用场景：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>动态配置计算</p>
+</li>
+<li class="lvl-2">
+<p>简单业务规则判断</p>
+</li>
+<li class="lvl-2">
+<p>模板表达式解析</p>
+</li>
+</ul>
+<h2 id="关键指标实测数据"><a class="markdownIt-Anchor" href="#关键指标实测数据"></a> 关键指标实测数据</h2>
+<table>
+<thead>
+<tr>
+<th><strong>测试项</strong></th>
+<th>LiteFlow</th>
+<th>Drools</th>
+<th>MVEL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1000规则加载时间(ms)</td>
+<td>120</td>
+<td>850</td>
+<td>50</td>
+</tr>
+<tr>
+<td>单规则执行耗时(μs)</td>
+<td>45</td>
+<td>120</td>
+<td>8</td>
+</tr>
+<tr>
+<td>内存占用(MB)</td>
+<td>30</td>
+<td>280</td>
+<td>5</td>
+</tr>
+<tr>
+<td>并发能力(QPS)</td>
+<td>12,000</td>
+<td>3,500</td>
+<td>28,000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="技术决策建议"><a class="markdownIt-Anchor" href="#技术决策建议"></a> 技术决策建议</h2>
+<h3 id="推荐选择场景"><a class="markdownIt-Anchor" href="#推荐选择场景"></a> 推荐选择场景</h3>
+<p><strong>选择LiteFlow当：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要流程编排+规则执行的混合场景</p>
+</li>
+<li class="lvl-2">
+<p>团队规模较小需要快速落地</p>
+</li>
+<li class="lvl-2">
+<p>对热更新有强需求</p>
+</li>
+<li class="lvl-2">
+<p>系统资源有限（嵌入式/边缘计算）</p>
+</li>
+</ul>
+<p><strong>选择Drools当：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>规则数量超过500条</p>
+</li>
+<li class="lvl-2">
+<p>需要专业规则管理平台</p>
+</li>
+<li class="lvl-2">
+<p>涉及复杂事件序列处理</p>
+</li>
+<li class="lvl-2">
+<p>企业级合规审计要求</p>
+</li>
+</ul>
+<p><strong>选择MVEL当：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>仅需简单表达式计算</p>
+</li>
+<li class="lvl-2">
+<p>对性能有极致要求</p>
+</li>
+<li class="lvl-2">
+<p>作为辅助引擎配合使用</p>
+</li>
+<li class="lvl-2">
+<p>原型开发验证阶段</p>
+</li>
+</ul>
+<h2 id="风险规避方案"><a class="markdownIt-Anchor" href="#风险规避方案"></a> 风险规避方案</h2>
+<ol>
+<li class="lvl-3">
+<p><strong>混合架构方案</strong>：</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组合使用示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HybridEngine</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> FlowExecutor liteFlow; <span class="comment">// 处理流程编排</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> KieContainer droolsContainer; <span class="comment">// 处理复杂规则</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">execute</span><span class="params">(BizContext ctx)</span> &#123;</span><br><span class="line">        <span class="comment">// 先用LiteFlow控制流程</span></span><br><span class="line">        <span class="type">LiteflowResult</span> <span class="variable">flowResult</span> <span class="operator">=</span> liteFlow.execute(<span class="string">&quot;mainChain&quot;</span>, ctx);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 复杂规则交给Drools</span></span><br><span class="line">        <span class="keyword">if</span>(flowResult.isSuccess() &amp;&amp; needComplexRule(ctx))&#123;</span><br><span class="line">            <span class="type">KieSession</span> <span class="variable">session</span> <span class="operator">=</span> droolsContainer.newKieSession();</span><br><span class="line">            session.insert(ctx);</span><br><span class="line">            session.fireAllRules();</span><br><span class="line">            <span class="keyword">return</span> ctx.getResult();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flowResult;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>迁移路径建议</strong>：</p>
+</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Phase 1：MVEL实现核心表达式 → </span><br><span class="line">Phase 2：LiteFlow接管流程控制 → </span><br><span class="line">Phase 3：Drools处理爆炸式增长的规则</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>LiteFlow</strong>：适合流程编排+规则执行的场景，性能高，上手简单。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Drools</strong>：适合复杂规则管理，功能丰富，企业级支持。</p>
+</li>
+<li class="lvl-2">
+<p><strong>MVEL</strong>：适合简单表达式计算，性能优异，学习成本低。</p>
+</li>
+</ul>
+<h2 id="引用和参考"><a class="markdownIt-Anchor" href="#引用和参考"></a> 引用和参考</h2>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/5816c5/#%E5%89%8D%E8%A8%80">LiteFlow 简介</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bryan31/p/17970057">白话文解析LiteFlow的理念是什么？什么时候用该怎么用？干货满满</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bryan31/p/16801879.html">规则引擎深度对比，LiteFlow vs Drools！</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1149866137">一文讲清楚为什么LiteFlow不能暂停继续，为什么不能是有状态的规则引擎</a></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-06-17</span>
+            
+                <span>该篇文章被 up</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                        <a href='/tags/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/'>
+                            规则引擎
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 2025 UP 
+
+            
+                
+
+            
+                
+                    / <a href="/"> Home </a>
+                
+
+            
+                
+                    / <a href="/list"> Archive </a>
+                
+
+            
+                
+                    / <a href="/ch"> Channel </a>
+                
+
+            
+                
+                    / <a href="/sitemap.xml"> Sitemap </a>
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>
